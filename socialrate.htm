@@ -13,6 +13,7 @@
     body {
         background: #E5E5E5;
         margin: 0px;
+        font-family: Roboto;
     }
 
     .container {
@@ -20,8 +21,6 @@
         grid-gap: 20px;
         width: 100%;
         padding: 20px;
-        justify-items: center;
-        align-items: center;
     }
 
     .charles {
@@ -40,19 +39,17 @@
 
     .picture {
         max-height: 200px;
-         box-sizing: border-box;
-         border-radius: 50%;
+        border-radius: 50%;
     }
 
     h1 {
-            text-align: center;
-            font-size: 36px;
-            font-family: Roboto;
-            font-style: normal;
-            line-height: 42px;
-            font-weight: 500;
-            color: #434343;
-            margin: 0;
+        text-align: center;
+        font-size: 36px;
+        font-style: normal;
+        line-height: 42px;
+        font-weight: 500;
+        color: #434343;
+        margin: 0;
 
    }
 
@@ -65,10 +62,10 @@
    
    .rating {
         
-         display: flex;
-         white-space: nowrap;
-         justify-content: center;
-         margin-bottom: 5px;
+        display: flex;
+        white-space: nowrap;
+        justify-content: center;
+        margin-bottom: 5px;
 
      }
 
@@ -78,7 +75,6 @@
          }
 
      p {
-        font-family: Roboto;
         font-weight: 500;
         font-size: 18px;
         color: #434343;
@@ -87,7 +83,6 @@
 
      .visits {
         margin-top: 10px;
-     font-family: Roboto;
         font-weight: bold;
         font-style: normal;
         line-height: 21px;
@@ -134,15 +129,10 @@
 
      .user-text {
          margin-top: 20px;
-         display: flex;
-         flex-direction: column;
-         align-items: flex-start;
      }
 
      .bio {
-         font-family: Roboto;
          color: #727272;
-         font-weight: normal;
          font-size: 14px;
          margin-top: 10px;
      }
@@ -150,26 +140,18 @@
 
 @media screen and (min-width: 682px) {
     
-    
-
-
     .container {
-        display: grid;
-    grid-gap: 20px;
-    align-items: start;
-    grid-template-columns: 40% auto;
+        align-items: start;
+        grid-template-columns: 40% auto;
     }
 
     .container-2 {
-        display: flex;
         width: 100%;
-        flex-direction: column;
     }
 
     .picture {
         max-height: 175px;
-         box-sizing: border-box;
-         border-radius: 50%;
+        border-radius: 50%;
     }
 
     
@@ -178,19 +160,14 @@
     }
 
     @media screen and (min-width: 895px) {
-        .container {
-        display: grid;
-    grid-gap: 20px;
-    align-items: start;
-    grid-template-columns: 30% auto;
+    
+    .container {
+        align-items: start;
+        grid-template-columns: 30% auto;
     }
 
     .visitors {
-        display:grid;
-        grid-gap: 10px;
-        width: 100%;
         grid-template-columns: auto auto;
-
     }
 
 
@@ -200,18 +177,13 @@
 
 
     @media screen and (min-width: 1024px) {
-        .container {
-        display: grid;
-    grid-gap: 20px;
-    align-items: start;
-    grid-template-columns: minmax(250px, 420px) auto;
+
+    .container {
+        grid-template-columns: minmax(250px, 420px) auto;
 
     }
 
     .visitors {
-        display:grid;
-        grid-gap: 10px;
-        width: 100%;
         grid-template-columns: 1fr 1fr 1fr;
 
     }
@@ -239,9 +211,13 @@
         <div class="charles">
 
             <img class="picture" src="https://pbs.twimg.com/profile_images/1262096411816005632/UYdSrhh5_400x400.jpg">
+
             <h1>Fala, Charles!</h1> 
+
             <hr/>
+
             <div class="rating">
+
             <i class="material-icons">star</i>
             <i class="material-icons">star</i>
             <i class="material-icons">star</i>
@@ -254,343 +230,378 @@
 
 
         <div class="container-2">
-        <div> 
+            <div> 
             <p>Last visits</p>
-        </div>
+            </div>
 
     
 
-    <div class="visitors">
+             <div class="visitors">
 
-     <div class="card"> 
-         <div class="user-icons">
-             <div>
-            <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/2890064361/5f8c62272b6ca1cadd7da9151f27c02b_400x400.jpeg>
-            </div>
-            <div class="ratingvisitor">
-                <i class="material-icons">star</i>
-                <i class="material-icons">star</i>
-                <i class="material-icons">star</i>
-                <i class="material-icons">star</i>
-                <i class="material-icons">star_outline</i>
-                </div>
+                <div class="card"> 
+                    <div class="user-icons">
+                        <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/2890064361/5f8c62272b6ca1cadd7da9151f27c02b_400x400.jpeg>
+
+                        <div class="ratingvisitor">
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                         <i class="material-icons">star_outline</i>
+                        </div>
                  
-        </div>
-        <div class="user-text">
-            
-            <p>Amaro Neto</p> 
-            
-            <p class="bio">Só mais um comediante stand up. </p>
-        
-    </div>
-    </div>
-
-        <div class="card">
-            <div class="user-icons">
-                <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/1243525941835546625/2MEyuOjQ_400x400.jpg>
-            
-                <div class="ratingvisitor">
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star_outline</i>
-                    <i class="material-icons">star_outline</i>
                     </div>
+                    <div class="user-text">            
+                        <p>Amaro Neto</p> 
+                        <p class="bio">Só mais um comediante stand up. </p>
+                     </div>
                 </div>
-           
-                <div class="user-text">
-                <p>Abraão Segundo</p> 
-                <p class="bio">Porque a vida não passa de uma grande piada. </p>
-            </div>    
-        </div>
 
-        <div class="card">
-
-            <div class="user-icons">
-                <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/1054282272038416384/DeaSy2JM_400x400.jpg>
-                <div class="ratingvisitor">
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star_outline</i>
-                    <i class="material-icons">star_outline</i>
-                    <i class="material-icons">star_outline</i>
-                    </div>
-                     
-            </div>
-                <div class="user-text">
-                <p>Diego Ciro</p> 
-                <p class="bio">Traga a vasilha. </p>
-            </div>
-
-        </div>
-        <div class="card">
-            <div class="user-icons">
-                <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/2890064361/5f8c62272b6ca1cadd7da9151f27c02b_400x400.jpeg>
-                <div class="ratingvisitor">
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star_outline</i>
-                    </div>
-                     
-            </div>
-                <div class="user-text">
-                <p>Amaro Neto</p> 
-                <p class="bio">Só mais um comediante stand up. </p>
-            </div>     
-          </div>
-
-            <div class="card">
-                <div class="user-icons">
-                    <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/1243525941835546625/2MEyuOjQ_400x400.jpg>
-                    <div class="ratingvisitor">
-                        <i class="material-icons">star</i>
-                        <i class="material-icons">star</i>
-                        <i class="material-icons">star</i>
-                        <i class="material-icons">star_outline</i>
-                        <i class="material-icons">star_outline</i>
-                        </div>
-                         
-                </div>
-                    <div class="user-text">
-                    <p>Abraão Segundo</p> 
-                    <p class="bio">Porque a vida não passa de uma grande piada. </p>
-                </div>
-            </div>
-    
-            <div class="card">
-                <div class="user-icons">
-                    <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/1054282272038416384/DeaSy2JM_400x400.jpg>
-                    <div class="ratingvisitor">
-                        <i class="material-icons">star</i>
-                        <i class="material-icons">star</i>
-                        <i class="material-icons">star_outline</i>
-                        <i class="material-icons">star_outline</i>
-                        <i class="material-icons">star_outline</i>
-                        </div>
-                         
-                </div>
-                    <div class="user-text">
-                    <p>Diego Ciro</p> 
-                    <p class="bio">Traga a vasilha. </p>
-                </div>
-            </div>
-     
-            <div class="card">
-                <div class="user-icons">
-                    <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/2890064361/5f8c62272b6ca1cadd7da9151f27c02b_400x400.jpeg>
-                    <div class="ratingvisitor">
-                        <i class="material-icons">star</i>
-                        <i class="material-icons">star</i>
-                        <i class="material-icons">star</i>
-                        <i class="material-icons">star</i>
-                        <i class="material-icons">star_outline</i>
-                        </div>
-                         
-                </div>
-                    <div class="user-text">
-                    <p>Amaro Neto</p> 
-                    <p class="bio">Só mais um comediante stand up. </p>
-                </div> </div>
-    
                 <div class="card">
                     <div class="user-icons">
                         <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/1243525941835546625/2MEyuOjQ_400x400.jpg>
+            
                         <div class="ratingvisitor">
                             <i class="material-icons">star</i>
                             <i class="material-icons">star</i>
                             <i class="material-icons">star</i>
                             <i class="material-icons">star_outline</i>
                             <i class="material-icons">star_outline</i>
-                            </div>
-                             
+                        </div>
                     </div>
-                        <div class="user-text">
+           
+                    <div class="user-text">
                         <p>Abraão Segundo</p> 
                         <p class="bio">Porque a vida não passa de uma grande piada. </p>
-                    </div>
+                    </div>    
                 </div>
-        
-                <div class="card">
+
+                 <div class="card">
                     <div class="user-icons">
                         <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/1054282272038416384/DeaSy2JM_400x400.jpg>
+                
                         <div class="ratingvisitor">
                             <i class="material-icons">star</i>
                             <i class="material-icons">star</i>
                             <i class="material-icons">star_outline</i>
                             <i class="material-icons">star_outline</i>
                             <i class="material-icons">star_outline</i>
-                            </div>
-                             
+                        </div>
+                     
                     </div>
-                        <div class="user-text">
+
+                    <div class="user-text">
                         <p>Diego Ciro</p> 
                         <p class="bio">Traga a vasilha. </p>
                     </div>
-                </div>
-                <div class="card">
+
+                </div>        
+                
+                
+                
+                <div class="card"> 
                     <div class="user-icons">
                         <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/2890064361/5f8c62272b6ca1cadd7da9151f27c02b_400x400.jpeg>
+
                         <div class="ratingvisitor">
                             <i class="material-icons">star</i>
                             <i class="material-icons">star</i>
                             <i class="material-icons">star</i>
                             <i class="material-icons">star</i>
-                            <i class="material-icons">star_outline</i>
-                            </div>
-                             
+                         <i class="material-icons">star_outline</i>
+                        </div>
+                 
                     </div>
-                        <div class="user-text">
+                    <div class="user-text">            
                         <p>Amaro Neto</p> 
                         <p class="bio">Só mais um comediante stand up. </p>
-                    </div> </div>
-        
-                    <div class="card">
-                        <div class="user-icons">
-                            <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/1243525941835546625/2MEyuOjQ_400x400.jpg>
-                            <div class="ratingvisitor">
-                                <i class="material-icons">star</i>
-                                <i class="material-icons">star</i>
-                                <i class="material-icons">star</i>
-                                <i class="material-icons">star_outline</i>
-                                <i class="material-icons">star_outline</i>
-                                </div>
-                                 
-                        </div>
-                            <div class="user-text">
-                            <p>Abraão Segundo</p> 
-                            <p class="bio">Porque a vida não passa de uma grande piada. </p>
+                     </div>
+                </div>
+
+                <div class="card">
+                    <div class="user-icons">
+                        <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/1243525941835546625/2MEyuOjQ_400x400.jpg>
+            
+                        <div class="ratingvisitor">
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star_outline</i>
+                            <i class="material-icons">star_outline</i>
                         </div>
                     </div>
-            
-                    <div class="card">
-                        <div class="user-icons">
-                            <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/1054282272038416384/DeaSy2JM_400x400.jpg>
-                            <div class="ratingvisitor">
-                                <i class="material-icons">star</i>
-                                <i class="material-icons">star</i>
-                                <i class="material-icons">star_outline</i>
-                                <i class="material-icons">star_outline</i>
-                                <i class="material-icons">star_outline</i>
-                                </div>
-                                 
+           
+                    <div class="user-text">
+                        <p>Abraão Segundo</p> 
+                        <p class="bio">Porque a vida não passa de uma grande piada. </p>
+                    </div>    
+                </div>
+
+                 <div class="card">
+                    <div class="user-icons">
+                        <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/1054282272038416384/DeaSy2JM_400x400.jpg>
+                
+                        <div class="ratingvisitor">
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star_outline</i>
+                            <i class="material-icons">star_outline</i>
+                            <i class="material-icons">star_outline</i>
                         </div>
-                            <div class="user-text">
-                            <p>Diego Ciro</p> 
-                            <p class="bio">Traga a vasilha. </p>
+                     
+                    </div>
+
+                    <div class="user-text">
+                        <p>Diego Ciro</p> 
+                        <p class="bio">Traga a vasilha. </p>
+                    </div>
+
+                </div>
+
+                
+                <div class="card"> 
+                    <div class="user-icons">
+                        <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/2890064361/5f8c62272b6ca1cadd7da9151f27c02b_400x400.jpeg>
+
+                        <div class="ratingvisitor">
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                         <i class="material-icons">star_outline</i>
+                        </div>
+                 
+                    </div>
+                    <div class="user-text">            
+                        <p>Amaro Neto</p> 
+                        <p class="bio">Só mais um comediante stand up. </p>
+                     </div>
+                </div>
+
+                <div class="card">
+                    <div class="user-icons">
+                        <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/1243525941835546625/2MEyuOjQ_400x400.jpg>
+            
+                        <div class="ratingvisitor">
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star_outline</i>
+                            <i class="material-icons">star_outline</i>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="user-icons">
-                            <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/2890064361/5f8c62272b6ca1cadd7da9151f27c02b_400x400.jpeg>
-                            <div class="ratingvisitor">
-                                <i class="material-icons">star</i>
-                                <i class="material-icons">star</i>
-                                <i class="material-icons">star</i>
-                                <i class="material-icons">star</i>
-                                <i class="material-icons">star_outline</i>
-                                </div>
-                                 
+           
+                    <div class="user-text">
+                        <p>Abraão Segundo</p> 
+                        <p class="bio">Porque a vida não passa de uma grande piada. </p>
+                    </div>    
+                </div>
+
+                 <div class="card">
+                    <div class="user-icons">
+                        <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/1054282272038416384/DeaSy2JM_400x400.jpg>
+                
+                        <div class="ratingvisitor">
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star_outline</i>
+                            <i class="material-icons">star_outline</i>
+                            <i class="material-icons">star_outline</i>
                         </div>
-                            <div class="user-text">
-                            <p>Amaro Neto</p> 
-                            <p class="bio">Só mais um comediante stand up. </p>
-                        </div> </div>
+                     
+                    </div>
+
+                    <div class="user-text">
+                        <p>Diego Ciro</p> 
+                        <p class="bio">Traga a vasilha. </p>
+                    </div>
+
+                </div>
+
+                
+                <div class="card"> 
+                    <div class="user-icons">
+                        <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/2890064361/5f8c62272b6ca1cadd7da9151f27c02b_400x400.jpeg>
+
+                        <div class="ratingvisitor">
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                         <i class="material-icons">star_outline</i>
+                        </div>
+                 
+                    </div>
+                    <div class="user-text">            
+                        <p>Amaro Neto</p> 
+                        <p class="bio">Só mais um comediante stand up. </p>
+                     </div>
+                </div>
+
+                <div class="card">
+                    <div class="user-icons">
+                        <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/1243525941835546625/2MEyuOjQ_400x400.jpg>
             
-                        <div class="card">
-                            <div class="user-icons">
-                                <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/1243525941835546625/2MEyuOjQ_400x400.jpg>
-                                <div class="ratingvisitor">
-                                    <i class="material-icons">star</i>
-                                    <i class="material-icons">star</i>
-                                    <i class="material-icons">star</i>
-                                    <i class="material-icons">star_outline</i>
-                                    <i class="material-icons">star_outline</i>
-                                    </div>
-                                     
-                            </div>
-                                <div class="user-text">
-                                <p>Abraão Segundo</p> 
-                                <p class="bio">Porque a vida não passa de uma grande piada. </p>
-                            </div>
+                        <div class="ratingvisitor">
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star_outline</i>
+                            <i class="material-icons">star_outline</i>
                         </div>
+                    </div>
+           
+                    <div class="user-text">
+                        <p>Abraão Segundo</p> 
+                        <p class="bio">Porque a vida não passa de uma grande piada. </p>
+                    </div>    
+                </div>
+
+                 <div class="card">
+                    <div class="user-icons">
+                        <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/1054282272038416384/DeaSy2JM_400x400.jpg>
                 
-                        <div class="card">
-                            <div class="user-icons">
-                                <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/1054282272038416384/DeaSy2JM_400x400.jpg>
-                                <div class="ratingvisitor">
-                                    <i class="material-icons">star</i>
-                                    <i class="material-icons">star</i>
-                                    <i class="material-icons">star_outline</i>
-                                    <i class="material-icons">star_outline</i>
-                                    <i class="material-icons">star_outline</i>
-                                    </div>
-                                     
-                            </div>
-                                <div class="user-text">
-                                <p>Diego Ciro</p> 
-                                <p class="bio">Traga a vasilha. </p>
-                            </div>
+                        <div class="ratingvisitor">
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star_outline</i>
+                            <i class="material-icons">star_outline</i>
+                            <i class="material-icons">star_outline</i>
                         </div>
-                        <div class="card">
-                            <div class="user-icons">
-                                <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/2890064361/5f8c62272b6ca1cadd7da9151f27c02b_400x400.jpeg>
-                                <div class="ratingvisitor">
-                                    <i class="material-icons">star</i>
-                                    <i class="material-icons">star</i>
-                                    <i class="material-icons">star</i>
-                                    <i class="material-icons">star</i>
-                                    <i class="material-icons">star_outline</i>
-                                    </div>
-                                     
-                            </div>
-                                <div class="user-text">
-                                <p>Amaro Neto</p> 
-                                <p class="bio">Só mais um comediante stand up. </p>
-                            </div>  </div>
+                     
+                    </div>
+
+                    <div class="user-text">
+                        <p>Diego Ciro</p> 
+                        <p class="bio">Traga a vasilha. </p>
+                    </div>
+
+                </div>
+
                 
-                            <div class="card">
-                                <div class="user-icons">
-                                    <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/1243525941835546625/2MEyuOjQ_400x400.jpg>
-                                    <div class="ratingvisitor">
-                                        <i class="material-icons">star</i>
-                                        <i class="material-icons">star</i>
-                                        <i class="material-icons">star</i>
-                                        <i class="material-icons">star_outline</i>
-                                        <i class="material-icons">star_outline</i>
-                                        </div>
-                                         
-                                </div>
-                                    <div class="user-text">
-                                    <p>Abraão Segundo</p> 
-                                    <p class="bio">Porque a vida não passa de uma grande piada. </p>
-                                </div>
-                            </div>
-                    
-                            <div class="card">
-                                <div class="user-icons">
-                                    <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/1054282272038416384/DeaSy2JM_400x400.jpg>
-                                    <div class="ratingvisitor">
-                                        <i class="material-icons">star</i>
-                                        <i class="material-icons">star</i>
-                                        <i class="material-icons">star_outline</i>
-                                        <i class="material-icons">star_outline</i>
-                                        <i class="material-icons">star_outline</i>
-                                        </div>
-                                         
-                                </div>
-                                    <div class="user-text">
-                                    <p>Diego Ciro</p> 
-                                    <p class="bio">Traga a vasilha. </p>
-                                </div>
-                            </div>
-                                        
+                <div class="card"> 
+                    <div class="user-icons">
+                        <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/2890064361/5f8c62272b6ca1cadd7da9151f27c02b_400x400.jpeg>
+
+                        <div class="ratingvisitor">
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                         <i class="material-icons">star_outline</i>
+                        </div>
+                 
+                    </div>
+                    <div class="user-text">            
+                        <p>Amaro Neto</p> 
+                        <p class="bio">Só mais um comediante stand up. </p>
+                     </div>
+                </div>
+
+                <div class="card">
+                    <div class="user-icons">
+                        <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/1243525941835546625/2MEyuOjQ_400x400.jpg>
+            
+                        <div class="ratingvisitor">
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star_outline</i>
+                            <i class="material-icons">star_outline</i>
+                        </div>
+                    </div>
+           
+                    <div class="user-text">
+                        <p>Abraão Segundo</p> 
+                        <p class="bio">Porque a vida não passa de uma grande piada. </p>
+                    </div>    
+                </div>
+
+                 <div class="card">
+                    <div class="user-icons">
+                        <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/1054282272038416384/DeaSy2JM_400x400.jpg>
+                
+                        <div class="ratingvisitor">
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star_outline</i>
+                            <i class="material-icons">star_outline</i>
+                            <i class="material-icons">star_outline</i>
+                        </div>
+                     
+                    </div>
+
+                    <div class="user-text">
+                        <p>Diego Ciro</p> 
+                        <p class="bio">Traga a vasilha. </p>
+                    </div>
+
+                </div>
+
+                
+                <div class="card"> 
+                    <div class="user-icons">
+                        <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/2890064361/5f8c62272b6ca1cadd7da9151f27c02b_400x400.jpeg>
+
+                        <div class="ratingvisitor">
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                         <i class="material-icons">star_outline</i>
+                        </div>
+                 
+                    </div>
+                    <div class="user-text">            
+                        <p>Amaro Neto</p> 
+                        <p class="bio">Só mais um comediante stand up. </p>
+                     </div>
+                </div>
+
+                <div class="card">
+                    <div class="user-icons">
+                        <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/1243525941835546625/2MEyuOjQ_400x400.jpg>
+            
+                        <div class="ratingvisitor">
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star_outline</i>
+                            <i class="material-icons">star_outline</i>
+                        </div>
+                    </div>
+           
+                    <div class="user-text">
+                        <p>Abraão Segundo</p> 
+                        <p class="bio">Porque a vida não passa de uma grande piada. </p>
+                    </div>    
+                </div>
+
+                 <div class="card">
+                    <div class="user-icons">
+                        <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/1054282272038416384/DeaSy2JM_400x400.jpg>
+                
+                        <div class="ratingvisitor">
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star_outline</i>
+                            <i class="material-icons">star_outline</i>
+                            <i class="material-icons">star_outline</i>
+                        </div>
+                     
+                    </div>
+
+                    <div class="user-text">
+                        <p>Diego Ciro</p> 
+                        <p class="bio">Traga a vasilha. </p>
+                    </div>
+
+                </div>
 
 
+    
+        </div>
     </div>
-</div>
-</div>
 </body>
 
 </html>
