@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jhonnymichel/xarlinhos-academy/issues"
   },
-  "homepage": "https://github.com/jhonnymichel/xarlinhos-academy#readme"
+  "homepage": "https://github.com/jhonnymichel/xarlinhos-academy#readme",
+  "dependencies": {
+    "browser-sync": "^2.26.7"
+  }
 }
