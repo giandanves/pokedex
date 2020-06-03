@@ -1,0 +1,43 @@
+.user-box {
+   display: flex;
+   width: 100%;
+   flex-direction: column;
+   border-radius: 10px;
+   align-items: center;
+   padding: 20px;
+   background: $second-color;
+   box-shadow: $shadow;
+   
+
+   .picture {
+       max-height: 200px;
+       border-radius: 50%;
+   }   
+
+   h1 {
+       font-size: 36px;
+       font-style: normal;
+       line-height: 42px;
+       font-weight: 500;
+       margin: 0;
+   }
+
+   hr {
+       height: 2px;
+       width: 100%;
+       color: #EBEBEB;
+   }
+
+   .ratinguser  {
+        margin-bottom: 5px;
+    }
+
+    .visits {
+        margin-top: 10px;
+        font-weight: bold;
+        font-style: normal;
+        line-height: 21px;
+        font-size: 18px;
+    }
+  
+}
