@@ -1,0 +1,90 @@
+    $font-stack: Roboto;
+    $primary-color: #434343;
+    $second-color: white;
+    $shadow: 0px 10px 10px rgba(0, 0, 0, 0.16);    
+
+    @import 'card', 'header';
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+         font: 100% $font-stack;
+        color: $primary-color;
+        background: #E3E3E3;
+        margin: 0px;
+    }
+    
+    .maincontainer {
+        display: grid;
+        grid-gap: 20px;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .friendscontainer {
+        display:grid;
+        grid-gap: 10px;
+        width: 100%;
+
+    }
+
+       
+    .material-icons {
+        color: rgba(0, 0, 0, 0.54);
+    }
+    
+        
+    h2, .friendname {
+        font-weight: 500;
+        font-size: 18px;
+        margin: 0;
+    }
+    
+    figure {
+        margin: 0;
+    }
+
+@media screen and (min-width: 682px) {
+        
+    .maincontainer {
+        align-items: start;
+        grid-template-columns: 40% auto;
+    }
+    
+    .rightcontainer {
+        width: 100%;
+    }
+    
+    .picture {
+        max-height: 175px;
+        border-radius: 50%;
+    }
+    
+}
+    
+@media screen and (min-width: 895px) {
+        
+    .maincontainer {
+        align-items: start;
+        grid-template-columns: 30% auto;
+        }
+    
+    .friendscontainer {
+        grid-template-columns: auto auto;
+    }
+    
+}
+    
+@media screen and (min-width: 1024px) {
+ 
+    .maincontainer {
+        grid-template-columns: minmax(250px, 420px) auto;
+    }
+    
+    .friendscontainer {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+        
+}
