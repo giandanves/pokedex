@@ -8,6 +8,9 @@
    background: $second-color;
    box-shadow: $shadow;
    
+ animation: popin 1s;
+
+
 
    .picture {
        max-height: 200px;
@@ -20,17 +23,25 @@
        line-height: 42px;
        font-weight: 500;
        margin: 0;
+
+       animation: surgeh1 0.5s 1.5s, appear 2.5s;
    }
 
    hr {
        height: 2px;
        width: 100%;
        color: #EBEBEB;
+       animation: stretch 0.5s 1s, appear 1.5s;
    }
 
    .ratinguser  {
         margin-bottom: 5px;
+
+        animation: surge 0.5s 1.5s, appear 2.5s;
+
     }
+ 
+  
 
     .visits {
         margin-top: 10px;
@@ -38,6 +49,50 @@
         font-style: normal;
         line-height: 21px;
         font-size: 18px;
+
+        animation: moving 0.5s 1.5s, appear 2.5s;
+
+
     }
   
 }
+
+//keyframes 
+
+@keyframes popin {
+    0% {
+        transform: scale(0);
+        transform-origin: top center;
+    }
+
+    75% {
+        transform: scale(1.1);
+    }
+
+   }
+@keyframes stretch {
+    0% {
+        width: 0px;  
+    }
+    100% {
+        width: 100%;
+    }
+
+   }
+
+@keyframes moving {
+    from {transform: translateX(-50px)}
+    to {transform: translateX(0px)}
+}
+
+@keyframes surge {
+    from {transform: translateY(-10px)}
+    to {transform: translateY(0px)}
+   }
+
+   @keyframes surgeh1 {
+    from {transform: translateY(10px)}
+    to {transform: translateY(0px)}
+    
+
+   }
