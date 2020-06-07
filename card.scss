@@ -4,6 +4,12 @@
     background-color: $second-color;
     padding: 5px;
     box-shadow: $shadow;
+    opacity: 0;
+
+    animation-name: appear, move;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
 
     .user-icons {
         display: flex;
@@ -34,3 +40,37 @@
         margin-top: 10px;
     }
 }
+//pseudo-elementos criados para animar os cards de forma distinta
+.card:nth-child(even) {
+    animation-delay: 2.5s; 
+}
+
+.card:nth-child(odd) {
+    animation-delay: 2.2s;
+}
+
+.card:nth-child(3n+3) {
+    animation-delay: 2.8s; 
+}
+
+//propriedades dos keyframes 
+
+    @keyframes appear {
+        0%  {
+            opacity: 0;
+           
+        }
+
+        100% {
+            opacity: 1;
+          
+        }
+
+
+    }
+
+    @keyframes move {
+        from {transform: translateX(50px)}
+        to {transform: translateX(0px)}
+
+    }
