@@ -8,8 +8,9 @@
    background: $second-color;
    box-shadow: $shadow;
    
- animation: popin 1s;
-
+ animation-name: popin;
+ animation-duration: 1s;
+animation-timing-function: ease-in-out;
 
 
    .picture {
@@ -23,21 +24,23 @@
        line-height: 42px;
        font-weight: 500;
        margin: 0;
+       opacity: 0;
 
-       animation: surgeh1 0.5s 1.5s, appear 2.5s;
+       animation: surgeh1 0.5s 1.5s, appear 0.5s 1.5s forwards;
    }
 
    hr {
        height: 2px;
        width: 100%;
        color: #EBEBEB;
-       animation: stretch 0.5s 1s, appear 1.5s;
+       opacity: 0;
+       animation: stretch 0.5s 1s, appear 0.5s 1s forwards;
    }
 
    .ratinguser  {
         margin-bottom: 5px;
-
-        animation: surge 0.5s 1.5s, appear 2.5s;
+        opacity: 0;
+        animation: surge 0.5s 1.5s, appear 0.5s 1.5s forwards;
 
     }
  
@@ -49,8 +52,8 @@
         font-style: normal;
         line-height: 21px;
         font-size: 18px;
-
-        animation: moving 0.5s 1.5s, appear 2.5s;
+        opacity: 0;
+        animation: moving 0.5s 1.5s, appear 0.5s 1.5s forwards;
 
 
     }
@@ -65,8 +68,8 @@
         transform-origin: top center;
     }
 
-    75% {
-        transform: scale(1.1);
+    100% {
+        transform: scale(1.3);
     }
 
    }
