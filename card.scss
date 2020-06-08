@@ -1,3 +1,12 @@
+%move-animation {
+    opacity: 0;
+    animation: move, appear;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+}
+
+
 .card {
     display: flex;
     border-radius: 10px;
@@ -6,10 +15,7 @@
     box-shadow: $shadow;
     opacity: 0;
 
-    animation-name: appear, move;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-in;
+    @extend %move-animation;
 
     .user-icons {
         display: flex;
