@@ -1,47 +1,60 @@
+//Variables
 $jump-effect: (cubic-bezier(.05,1.84,1,1.01));
 
-%popin {
+//Mixin
+@mixin appear-animation ($duration, $delay, $timing-function) {
+    opacity: 0;
+    animation-name: appear;
+    animation-duration: $duration;
+    animation-delay: $delay;
+    animation-timing-function: $timing-function;
+    animation-fill-mode: forwards;
+}
+
+
+@mixin popin-animation ($duration, $delay) {
 animation-name: popin;
-animation-duration: 1s;
+animation-duration: $duration;
 animation-timing-function: $jump-effect;
 }
 
-%appear-animation {
+@mixin from-bottom-animation ($duration, $delay) {
     opacity: 0;
-    animation-name: appear;
-    animation-duration: 0.5s;
+    animation-name: appear, surgeh1;
+    animation-duration: 0.1s, $duration;
+    animation-delay: $delay;
+    animation-timing-function: linear, $jump-effect;
     animation-fill-mode: forwards;
 }
 
-%surgeh1-animation {
+@mixin stretch-animation ($duration, $delay, $timing-function) {
     opacity: 0;
-   animation-name: appear, surgeh1;
-   animation-duration: 0.1s, 0.5s;
-   animation-timing-function: linear, $jump-effect;
-   animation-fill-mode: forwards; 
-}
-%stretch-animation {
-    opacity: 0;
+    width: 0;
     animation-name: appear, stretch;
-    animation-duration: 0.5s;
+    animation-duration: $duration;
+    animation-delay: $delay;
+    animation-timing-function: $timing-function;
     animation-fill-mode: forwards;
 }
 
-%surge-animation { 
+@mixin from-top-animation ($duration, $delay) {
     opacity: 0;
-    animation: surge, appear;
-    animation-duration: 0.5s, 0.1s;
+    animation-name: appear, surge;
+    animation-duration: 0.1s, $duration;
+    animation-delay: $delay;
+    animation-timing-function: linear, $jump-effect;
     animation-fill-mode: forwards;
-    animation-timing-function: $jump-effect, linear; 
 }
 
-%moving-animation {
+@mixin moving-animation ($duration, $delay) {
     opacity: 0;
     animation: moving, appear;
-    animation-duration: 0.5s;
+    animation-duration: $duration;
+    animation-delay: $delay; 
     animation-fill-mode: forwards;
 }
 
+//SASS Code
 .user-box {
    display: flex;
    width: 100%;
@@ -51,52 +64,43 @@ animation-timing-function: $jump-effect;
    padding: 20px;
    background: $second-color;
    box-shadow: $shadow;
-   @extend %popin; 
+   @include popin-animation(1s, 0s);
 
 
    .picture {
        max-height: 200px;
        border-radius: 50%;
+       @include from-bottom-animation(0.5s, 2s);
    }   
 
+
    h1 {
-       font-size: 36px;
-       font-style: normal;
-       line-height: 42px;
-       font-weight: 500;
-       margin: 0;
-
-       @extend %surgeh1-animation;
-       animation-delay: 1.5s;
-
+        font-size: 36px;
+        font-style: normal;
+        line-height: 42px;
+        font-weight: 500;
+        margin: 0;
+        @include from-bottom-animation(0.5s, 1.5s);
    }
 
    hr {
        height: 2px;
-       width: 100%;
        color: #EBEBEB;
-       opacity: 0;
-       @extend %stretch-animation;
-       animation-delay: 1s;
-      
+       @include stretch-animation(0.5s, 1s, linear);
    }
 
    .ratinguser  {
         margin-bottom: 5px;
-        @extend %surge-animation;
-        animation-delay: 1.5s;
+        @include from-top-animation(0.5s, 1.5s);
     }
  
-  
-
     .visits {
         margin-top: 10px;
         font-weight: bold;
         font-style: normal;
         line-height: 21px;
         font-size: 18px;
-        @extend %moving-animation;
-        animation-delay: 1.5s;
+        @include moving-animation(0.5s, 1.5s);
     }
   
 }

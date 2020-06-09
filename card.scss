@@ -1,9 +1,9 @@
-%move-animation {
+@mixin move-animation ($duration, $timing-function) {
     opacity: 0;
     animation: move, appear;
-    animation-duration: 0.5s;
+    animation-duration: $duration;
     animation-fill-mode: forwards;
-    animation-timing-function: ease-in;
+    animation-timing-function: $timing-function;
 }
 
 
@@ -13,9 +13,7 @@
     background-color: $second-color;
     padding: 5px;
     box-shadow: $shadow;
-    opacity: 0;
-
-    @extend %move-animation;
+    @include move-animation(0.5s, ease-in);
 
     .user-icons {
         display: flex;
@@ -32,6 +30,8 @@
         .ratingvisitor {
             font-size: 0px;
             white-space: nowrap;
+            @include move-animation (0.2s, ease-in);
+            animation-delay: 3.3s;
         }
     
     }
