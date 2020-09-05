@@ -1,4 +1,8 @@
 import data from './data.js';
 
 // do your shit here man
-console.log('heaheahea')
+
+const maincontainer = document.querySelector ('maincontainer');
+const userbox = document.querySelector('#userbox');
+
+maincontainer.appendChild(userbox);
