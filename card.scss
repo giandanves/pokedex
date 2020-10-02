@@ -17,11 +17,13 @@
 
 
     .picturevisitor {
-        max-height: 90px;
-        max-width: 90px;    
+        height: 90px;
+        width: 90px;    
         border-radius: 50%;
         margin-top: 5px;
         align-items: center;
+        background-position: center;
+        background-size: cover;
      }
 
 
