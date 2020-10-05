@@ -1,9 +1,41 @@
 import data from './data.js';
 
-// do your shit here man
 
 
 //userbox 
+const user = data.profile;
+
+const profileimage = document.querySelector('#profile-image');
+profileimage.src = user.imgUrl;
+
+const welcome = document.querySelector('#welcome-message');
+welcome.textContent = `Welcome, ${user.name}!`;
+
+var ratinguser = document.querySelector("#ratinguser");
+
+var stars = user.rate;
+var i = 0;
+while (i  < 5) {
+
+    if (stars >= i+1) {
+        var starposition = document.createElement ('i');
+        starposition.textContent += 'star';
+        } else if (stars <= i) {
+            var starposition = document.createElement ('i');
+            starposition.textContent += 'star_outline';
+        } else {
+            var starposition = document.createElement ('i');
+            starposition.textContent += 'star_half';
+         }        
+    i++;
+    starposition.className = ('material-icons');    
+    ratinguser.appendChild(starposition);     
+
+}
+
+
+
+
 
 const friendscontainer = document.querySelector('#friends-container');
 const friends = data.friends;
@@ -34,16 +66,24 @@ var ratingvisitor = document.createElement ('div');
 ratingvisitor.className = ('ratingvisitor');
 usericons.appendChild(ratingvisitor); //appending 
 
-var stars = b.rate;
-var i = 1;
-while (i  <= 5) {
+stars = b.rate;
+i = 0;
+while (i  < 5) {
 
-    if (i <= stars) {
-        ratingvisitor.innerHTML += '<i class="material-icons">star</i>';
-    } else {
-        ratingvisitor.innerHTML += '<i class="material-icons">star_outline</i>';
-    }
+    if (stars >= i+1) {
+        starposition = document.createElement ('i');
+        starposition.textContent += 'star';
+        } else if (stars <= i) {
+            starposition = document.createElement ('i');
+            starposition.textContent += 'star_outline';
+        } else {
+            starposition = document.createElement ('i');
+            starposition.textContent += 'star_half';
+         }        
     i++;
+    starposition.className = ('material-icons');    
+    ratingvisitor.appendChild(starposition);     
+
 }
 
 var usertext = document.createElement('div');

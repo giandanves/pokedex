@@ -39,7 +39,7 @@ const friends = [
   },
   {
     name: 'Mari Baianinha',
-    rate: '5',
+    rate: '15',
     imgUrl: 'https://uploads.metropoles.com/wp-content/uploads/2020/01/25154911/mari-gonzalez-marido.jpg',
     description: 'Ex Pãnico, Ex A Fazenda, Ex BBB. Atual do Jonas <3.',
   },
