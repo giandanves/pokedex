@@ -11,6 +11,12 @@ profileimage.src = user.imgUrl;
 const welcome = document.querySelector('#welcome-message');
 welcome.textContent = `Welcome, ${user.name}!`;
 
+const visits = document.querySelector('#profile-visits');
+visits.textContent = `${user.profileVisits} profile visits last week`;
+const ratedBy = document.querySelector('#profile-rated-by');
+ratedBy.textContent = `${user.ratedBy} people rated your profile`;
+
+
 var ratinguser = document.querySelector("#ratinguser");
 
 var stars = user.rate;
