@@ -44,5 +44,4 @@ const friends = [
     description: 'Ex Pãnico, Ex A Fazenda, Ex BBB. Atual do Jonas <3.',
   },
 ];
-//console.log(friends[5]);
 export default { profile, friends };
