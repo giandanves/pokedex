@@ -89,7 +89,7 @@ animation-timing-function: $jump-effect;
        @include stretch-animation(0.5s, 1s, linear);
    }
 
-   .ratinguser  {
+   .userrating  {
         margin-bottom: 5px;
         @include from-top-animation(0.5s, 1.5s);
     }
