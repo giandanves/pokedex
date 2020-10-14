@@ -8,10 +8,10 @@ const profile = {
 
 const friends = [
   {
-    name: 'Higo Vinícius',
-    rate: '4',
-    imgUrl: 'images/higo.jpg',
-    description: 'gaymer, formado em história e em busca de um novo amor.',
+    name: 'Andressa Barreto',
+    rate: '1.5',
+    imgUrl: 'images/andressa.jpg',
+    description: 'Não me chame pra sair.',
   },
   {
     name: 'Tecia Lima',

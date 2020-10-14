@@ -4,23 +4,23 @@ import data from './data.js';
 function renderRating(stars) {
   const rating = document.createElement('div');
   for (let i = 0; i < 5; i++) {
-    const starposition = document.createElement('i');
+    const starPosition = document.createElement('i');
     if (stars >= i + 1) {
-      starposition.textContent += 'star';
+      starPosition.textContent += 'star';
     } else if (stars <= i) {
-      starposition.textContent += 'star_outline';
+      starPosition.textContent += 'star_outline';
     } else {
-      starposition.textContent += 'star_half';
+      starPosition.textContent += 'star_half';
     }
-    starposition.className = ('material-icons');
-    rating.appendChild(starposition);
+    starPosition.className = ('material-icons');
+    rating.appendChild(starPosition);
   }
   return rating;
 }
 
 function renderProfileInfo(user) {
-  const profileimage = document.querySelector('#profile-image');
-  profileimage.src = user.imgUrl;
+  const profileImage = document.querySelector('#profile-image');
+  profileImage.src = user.imgUrl;
 
   const welcomeMessage = document.querySelector('#welcome-message');
   welcomeMessage.textContent = `Welcome, ${user.name}!`;
@@ -37,16 +37,16 @@ function renderProfileInfo(user) {
 
 }
 
-function renderFriend(friend) {
+function createFriend(friend) {
   const card = document.createElement('article');
   card.className = 'card';
 
-  const friendicons = document.createElement('footer');
-  friendicons.className = 'friend-icons';
-  card.appendChild(friendicons);
+  const friendIcons = document.createElement('footer');
+  friendIcons.className = 'friend-icons';
+  card.appendChild(friendIcons);
 
   const figure = document.createElement('figure');
-  friendicons.appendChild(figure);
+  friendIcons.appendChild(figure);
 
   const photo = document.createElement('img');
   photo.className = 'picturevisitor';
@@ -58,32 +58,32 @@ function renderFriend(friend) {
   ratingVisitor.className = 'ratingvisitor';
   const rating = renderRating(friend.rate);
   ratingVisitor.appendChild(rating);
-  friendicons.appendChild(ratingVisitor);
+  friendIcons.appendChild(ratingVisitor);
 
-  const usertext = document.createElement('div');
-  usertext.className = 'user-text';
-  card.appendChild(usertext);
+  const userText = document.createElement('div');
+  userText.className = 'user-text';
+  card.appendChild(userText);
 
-  const friendname = document.createElement('header');
-  friendname.innerHTML += `<h3 class = "friendname">${friend.name}</h3>`
-  usertext.appendChild(friendname);
+  const friendName = document.createElement('header');
+  friendName.innerHTML += `<h3 class = "friendname">${friend.name}</h3>`
+  userText.appendChild(friendName);
 
   const bio = document.createElement('p');
   bio.className = 'bio';
   bio.innerHTML = friend.description;
-  usertext.appendChild(bio);
+  userText.appendChild(bio);
 
   return card;
 }
 
-function renderFriendsList(friends) {
-  const friendscontainer = document.querySelector('#friends-container');
+function createFriendsList(friends) {
+  const friendsContainer = document.querySelector('#friends-container');
   friends.forEach(function (friend) {
-    const cardFriend = renderFriend(friend);
-    friendscontainer.appendChild(cardFriend);
+    const cardFriend = createFriend(friend);
+    friendsContainer.appendChild(cardFriend);
   })
 
 }
 
 renderProfileInfo(data.profile);
-renderFriendsList(data.friends);
+createFriendsList(data.friends);
