@@ -10,22 +10,30 @@
 .card {
     display: flex;
     border-radius: 10px;
-    background-color: $second-color;
+    background-color: white;
     padding: 5px;
     box-shadow: $shadow;
     @include move-animation(0.5s, ease-in);
 
-    .user-icons {
+
+    .picturevisitor {
+        height: 90px;
+        width: 90px;    
+        border-radius: 50%;
+        margin-top: 5px;
+        align-items: center;
+        background-position: center;
+        background-size: cover;
+     }
+
+
+    .friend-icons {
         display: flex;
          flex-direction: column;
          align-items: center;
      
-        .picturevisitor {
-            max-height: 90px;
-            max-width: 90px;    
-            border-radius: 50%;
-            margin-top: 5px;
-         }
+         
+        
 
         .ratingvisitor {
             font-size: 0px;

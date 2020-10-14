@@ -1,72 +1,47 @@
 <html>
+
 <head>
     <title>Social Rate - Another Futile Appxxx</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
 
 </head>
 
-<body>    
+<body>
     <div class="maincontainer">
-        <header class="user-box">
+        <header class="user-box" id="userbox">
             <figure>
                 <img id="profile-image" class="picture" src="">
             </figure>
-            <h1 id="welcome-message"></h1> 
+            <h1 id="welcome-message"></h1>
 
-            <hr/>
+            <hr />
 
-            <div class="ratinguser">
+            <div id="user-rating" class="userrating">
+            </div>
+            <h2 class="visits"><span id="profile-visits"></span> <br />
+                <span id="profile-rated-by"></span><br /></h2>
 
-            <i class="material-icons">star</i>
-            <i class="material-icons">star</i>
-            <i class="material-icons">star</i>
-            <i class="material-icons">star_half</i>
-            <i class="material-icons">star_outline</i>
-            </div>  
-          <h2 class="visits"><span id="profile-visits"></span><span id="profile-rated-by"></span><br/></h2>
-        
         </header>
 
 
         <div class="rightcontainer">
-            <header> 
-            <h2>Last visits</h2>
+            <header>
+                <h2>Last visits</h2>
             </header>
 
-    
 
-             <section id="friends-container" class="friendscontainer">
-                <!-- deixando um card aqui só pra vc lembrar mais facilmente de como é a estrutura dele -->
-                <!-- <article class="card"> 
-                    <footer class="user-icons">
-                        <figure>
-                            <img class="picturevisitor" src=https://pbs.twimg.com/profile_images/2890064361/5f8c62272b6ca1cadd7da9151f27c02b_400x400.jpeg>
-                        </figure>    
-                        <div class="ratingvisitor">
-                            <i class="material-icons">star</i>
-                            <i class="material-icons">star</i>
-                            <i class="material-icons">star</i>
-                            <i class="material-icons">star</i>
-                         <i class="material-icons">star_outline</i>
-                        </div>
-                 
-                    </footer>
 
-                    <div class="user-text">            
-                        <header> <h3 class="friendname">Amaro Neto</h3> </header> 
-                        <p class="bio">Só mais um comediante stand up. </p>
-                     </div>
-                    </article> -->
-    
-             </section>
-          </div>   
+            <section id="friends-container" class="friendscontainer">
+            </section>
+        </div>
     </div>
     <script src="scripts/main.js" type="module"></script>
 </body>

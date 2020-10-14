@@ -8,10 +8,10 @@ const profile = {
 
 const friends = [
   {
-    name: 'Higo Vinícius',
-    rate: '4',
-    imgUrl: 'images/higo.jpg',
-    description: 'gaymer, formado em história e em busca de um novo amor.',
+    name: 'Andressa Barreto',
+    rate: '1.5',
+    imgUrl: 'images/andressa.jpg',
+    description: 'Não me chame pra sair.',
   },
   {
     name: 'Tecia Lima',
@@ -39,10 +39,9 @@ const friends = [
   },
   {
     name: 'Mari Baianinha',
-    rate: '5',
+    rate: '15',
     imgUrl: 'https://uploads.metropoles.com/wp-content/uploads/2020/01/25154911/mari-gonzalez-marido.jpg',
     description: 'Ex Pãnico, Ex A Fazenda, Ex BBB. Atual do Jonas <3.',
   },
 ];
-
 export default { profile, friends };
