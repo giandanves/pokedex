@@ -38,6 +38,7 @@
         .ratingvisitor {
             font-size: 0px;
             white-space: nowrap;
+            margin-right: 10px;
             @include move-animation (0.2s, ease-in);
             animation-delay: 3.3s;
         }

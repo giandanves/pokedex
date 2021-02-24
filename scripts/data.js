@@ -43,5 +43,11 @@ const friends = [
     imgUrl: 'https://uploads.metropoles.com/wp-content/uploads/2020/01/25154911/mari-gonzalez-marido.jpg',
     description: 'Ex Pãnico, Ex A Fazenda, Ex BBB. Atual do Jonas <3.',
   },
+  {
+    name: 'Amaro B. Neto',
+    rate: '3.5',
+    imgUrl: 'images/amaro.jpg',
+    description: 'Pera, falo já.',
+  },
 ];
 export default { profile, friends };
