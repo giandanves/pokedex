@@ -1,4 +1,26 @@
-import data from './data.js';
+
+fetch('http://www.jhonnymichel.com/frontend-academy/api/profile/')
+  .then((response) => {
+    return response.json();
+  }).then(data => {
+    renderProfileInfo(data);
+  }).catch((err) => {
+    console.log('rejected', err);
+  })
+  ;
+
+
+fetch('http://www.jhonnymichel.com/frontend-academy/api/friends/')
+  .then((response) => {
+    return response.json();
+  }).then(data => {
+    createFriendsList(data);
+  }).catch((err) => {
+    console.log('rejected', err);
+  })
+  ;
+
+const apiUrl = 'http://www.jhonnymichel.com/frontend-academy/';
 
 //functions 
 function renderRating(stars) {
@@ -20,7 +42,7 @@ function renderRating(stars) {
 
 function renderProfileInfo(user) {
   const profileImage = document.querySelector('#profile-image');
-  profileImage.src = user.imgUrl;
+  profileImage.style.backgroundImage = `url(${apiUrl + user.imgUrl})`
 
   const welcomeMessage = document.querySelector('#welcome-message');
   welcomeMessage.textContent = `Welcome, ${user.name}!`;
@@ -45,13 +67,10 @@ function createFriend(friend) {
   friendIcons.className = 'friend-icons';
   card.appendChild(friendIcons);
 
-  const figure = document.createElement('figure');
-  friendIcons.appendChild(figure);
-
-  const photo = document.createElement('img');
+  const photo = document.createElement('div');
   photo.className = 'picturevisitor';
-  photo.style.backgroundImage = `url('${friend.imgUrl}')`;
-  figure.appendChild(photo);
+  photo.style.backgroundImage = `url(${apiUrl + friend.imgUrl})`
+  friendIcons.appendChild(photo);
 
 
   const ratingVisitor = document.createElement('div');
@@ -84,6 +103,3 @@ function createFriendsList(friends) {
   })
 
 }
-
-renderProfileInfo(data.profile);
-createFriendsList(data.friends);
