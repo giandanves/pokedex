@@ -68,12 +68,12 @@ animation-timing-function: $jump-effect;
 
 
    .picture {
-    width: 200px; 
-    height: 200PX;
-    border-radius: 50%; 
-    background-size: cover; 
-    background-position: center center;   
-    @include from-bottom-animation(0.5s, 2s);
+        width: 200px; 
+        height: 200PX;
+        border-radius: 50%; 
+        background-size: cover; 
+        background-position: center center;   
+        @include from-bottom-animation(0.5s, 2s);
    }  
    
 

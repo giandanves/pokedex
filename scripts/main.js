@@ -1,5 +1,3 @@
-import data from './data.js';
-
 
 fetch('http://www.jhonnymichel.com/frontend-academy/api/profile/')
   .then((response) => {
@@ -22,6 +20,7 @@ fetch('http://www.jhonnymichel.com/frontend-academy/api/friends/')
   })
   ;
 
+const apiUrl = 'http://www.jhonnymichel.com/frontend-academy/';
 
 //functions 
 function renderRating(stars) {
@@ -43,7 +42,7 @@ function renderRating(stars) {
 
 function renderProfileInfo(user) {
   const profileImage = document.querySelector('#profile-image');
-  profileImage.style.backgroundImage = `url(${'http://www.jhonnymichel.com/frontend-academy/' + user.imgUrl})`
+  profileImage.style.backgroundImage = `url(${apiUrl + user.imgUrl})`
 
   const welcomeMessage = document.querySelector('#welcome-message');
   welcomeMessage.textContent = `Welcome, ${user.name}!`;
@@ -70,7 +69,7 @@ function createFriend(friend) {
 
   const photo = document.createElement('div');
   photo.className = 'picturevisitor';
-  photo.style.backgroundImage = `url(${'http://www.jhonnymichel.com/frontend-academy' + friend.imgUrl})`
+  photo.style.backgroundImage = `url(${apiUrl + friend.imgUrl})`
   friendIcons.appendChild(photo);
 
 
