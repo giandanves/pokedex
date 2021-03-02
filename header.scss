@@ -75,10 +75,29 @@ $jump-effect: (cubic-bezier(.05,1.84,1,1.01));
     }
 
     .loaderfadeout {
-
-        animation: fadeout 1s; 
-    }
         
+}
+
+.popin {
+ @include popin-animation(0.3s, $loader-fade-out-duration);   
+
+    .picture {
+        @include from-bottom-animation(0.2s, $loader-fade-out-duration + 0.5s);
+    }
+    h1 {
+        @include from-bottom-animation(0.4s, $loader-fade-out-duration + 0.6s);
+    }
+    hr {
+        @include stretch-animation(0.6s, $loader-fade-out-duration + 0.6s, linear);
+    }
+    .userrating {
+        @include from-top-animation(0.4s, $loader-fade-out-duration + 0.6s);
+    }
+    .visits {
+        @include moving-animation(0.4s, $loader-fade-out-duration + 0.6s);
+    }
+}
+
 }
 
 .user-box {
