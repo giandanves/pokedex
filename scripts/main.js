@@ -4,6 +4,8 @@ fetch('http://www.jhonnymichel.com/frontend-academy/api/profile/')
     return response.json();
   }).then(data => {
     renderProfileInfo(data);
+    const userLoader = document.getElementById("loader");
+    //userLoader.classList.add('loaderfadeout');
   }).catch((err) => {
     console.log('rejected', err);
   })
@@ -15,6 +17,7 @@ fetch('http://www.jhonnymichel.com/frontend-academy/api/friends/')
     return response.json();
   }).then(data => {
     createFriendsList(data);
+    document.getElementById("loadersGrid").style.display = "none";
   }).catch((err) => {
     console.log('rejected', err);
   })
@@ -58,6 +61,16 @@ function renderProfileInfo(user) {
   userRating.appendChild(rating);
 
 }
+
+var counter = 1;
+function cardLoaders(counter) {
+  while (counter <= 6) {
+    const cardLoader = document.createElement('article');
+    cardLoader.className = 'cardLoader';
+    counter++;
+  }
+}
+
 
 function createFriend(friend) {
   const card = document.createElement('article');
