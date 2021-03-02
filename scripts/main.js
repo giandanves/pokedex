@@ -5,7 +5,15 @@ fetch('http://www.jhonnymichel.com/frontend-academy/api/profile/')
   }).then(data => {
     renderProfileInfo(data);
     const userLoader = document.getElementById("loader");
-    //userLoader.classList.add('loaderfadeout');
+    const userBox = document.querySelector('#userbox');
+
+    userBox.classList.add('popin')
+    userLoader.classList.add('hidden')
+
+    setTimeout(() => {
+      userLoader.remove();
+    }, 1000)
+
   }).catch((err) => {
     console.log('rejected', err);
   })
