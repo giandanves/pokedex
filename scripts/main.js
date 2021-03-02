@@ -1,5 +1,10 @@
 
+const delay = (data) => new Promise(resolve => {
+  setTimeout(() => {resolve(data)}, 1000)
+})
+
 fetch('http://www.jhonnymichel.com/frontend-academy/api/profile/')
+  .then(delay)
   .then((response) => {
     return response.json();
   }).then(data => {
@@ -21,11 +26,18 @@ fetch('http://www.jhonnymichel.com/frontend-academy/api/profile/')
 
 
 fetch('http://www.jhonnymichel.com/frontend-academy/api/friends/')
+  .then(delay)
   .then((response) => {
     return response.json();
   }).then(data => {
-    createFriendsList(data);
-    document.getElementById("loadersGrid").style.display = "none";
+    const loadersGrid = document.querySelector("#loadersGrid");
+    loadersGrid.classList.add('cardLoaderContainerFadeOut');
+
+    setTimeout(() => {
+      loadersGrid.remove()
+      createFriendsList(data);
+    }, 1200)
+    
   }).catch((err) => {
     console.log('rejected', err);
   })
