@@ -90,10 +90,7 @@ $jump-effect: (cubic-bezier(.05,1.84,1,1.01));
    padding: 20px;
    background: $second-color;
    box-shadow: $shadow;
-   @include popin-animation(0.3s, 0.2s);
-
-   
-
+   opacity: 0;
 
    .picture {
         width: 200px; 
@@ -110,18 +107,18 @@ $jump-effect: (cubic-bezier(.05,1.84,1,1.01));
         line-height: 42px;
         font-weight: 500;
         margin: 0;
-        @include from-bottom-animation(0.2s, 0.6s);
+        
    }
 
    hr {
        height: 2px;
        color: #EBEBEB;
-       @include stretch-animation(0.3s, 0.6s, linear);
+       
    }
 
    .userrating  {
         margin-bottom: 5px;
-        @include from-top-animation(0.2s, 0.6s);
+       
     }
  
     .visits {
@@ -130,7 +127,7 @@ $jump-effect: (cubic-bezier(.05,1.84,1,1.01));
         font-style: normal;
         line-height: 21px;
         font-size: 18px;
-        @include moving-animation(0.2s, 0.6s);
+        
     }
   
 }
