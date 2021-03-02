@@ -6,6 +6,9 @@
     animation-timing-function: $timing-function;
 }
 
+.move {
+    @include move-animation(0.3s, ease-in);
+}
 
 .cardLoader {
     display: flex;
@@ -24,7 +27,6 @@
     background-color: white;
     padding: 5px;
     box-shadow: $shadow;
-    @include move-animation(0.3s, ease-in);
 
 
     .picturevisitor {
@@ -68,15 +70,15 @@
 }
 
 //pseudo-elementos criados para animar os cards de forma distinta
-.card:nth-child(even) {
+.move:nth-child(even) {
     animation-delay: 0.5s; 
 }
 
-.card:nth-child(odd) {
+.move:nth-child(odd) {
     animation-delay: 0.7s;
 }
 
-.card:nth-child(3n+3) {
+.move:nth-child(3n+3) {
     animation-delay: 0.9s; 
 }
 

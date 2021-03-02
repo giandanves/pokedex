@@ -82,7 +82,7 @@ function cardLoaders(counter) {
 
 function createFriend(friend) {
   const card = document.createElement('article');
-  card.className = 'card';
+  card.className = 'card move';
 
   const friendIcons = document.createElement('footer');
   friendIcons.className = 'friend-icons';
