@@ -74,7 +74,6 @@ $jump-effect: (cubic-bezier(.05,1.84,1,1.01));
         position: absolute;
     }
 
-    .loaderfadeout {
         
 }
 
@@ -98,6 +97,9 @@ $jump-effect: (cubic-bezier(.05,1.84,1,1.01));
     }
 }
 
+
+.hidden {
+    opacity: 0;
 }
 
 .user-box {
