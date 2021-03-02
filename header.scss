@@ -1,5 +1,6 @@
 //Variables
 $jump-effect: (cubic-bezier(.05,1.84,1,1.01));
+$loader-fade-out-duration: 300ms;
 
 //Mixin
 @mixin appear-animation ($duration, $delay, $timing-function) {
@@ -57,7 +58,6 @@ $jump-effect: (cubic-bezier(.05,1.84,1,1.01));
     animation-fill-mode: forwards;
 }
 
-
 //SASS Code
 .maincontainer {
     position: relative;
@@ -72,6 +72,7 @@ $jump-effect: (cubic-bezier(.05,1.84,1,1.01));
         height: 150px;
         animation: spin 2s linear infinite;
         position: absolute;
+        transition: opacity $loader-fade-out-duration ease-out;
     }
 
         
@@ -119,7 +120,7 @@ $jump-effect: (cubic-bezier(.05,1.84,1,1.01));
         border-radius: 50%; 
         background-size: cover; 
         background-position: center center;   
-        @include from-bottom-animation(0.1s, 0.5s);
+       
    }  
    
    h1 {
