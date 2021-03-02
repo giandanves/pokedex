@@ -11,10 +11,7 @@
 }
 
 .cardLoader {
-    display: flex;
-    border-radius: 10px;
-    background-color: white;
-    padding: 5px;
+    @extend .card;
     box-shadow: $shadow;
     animation: blink 2s linear  infinite;
     height: 120px;
