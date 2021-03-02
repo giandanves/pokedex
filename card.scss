@@ -13,7 +13,8 @@
 .cardLoader {
     @extend .card;
     box-shadow: $shadow;
-    animation: blink 2s linear  infinite;
+    animation: blink 2s linear infinite;
+    transition: opacity 1000ms ease-out;
     height: 120px;
 }
 
