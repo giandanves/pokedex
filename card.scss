@@ -6,6 +6,26 @@
     animation-timing-function: $timing-function;
 }
 
+.move {
+    @include move-animation(0.3s, ease-in);
+}
+
+.cardLoader {
+    @extend .card;
+    box-shadow: $shadow;
+    animation: blink 2s linear infinite;
+    transition: opacity 1000ms ease-out;
+    height: 120px;
+}
+ 
+.cardLoaderContainerFadeOut {
+    .cardLoader {
+        @extend .move;
+        opacity: 1;
+        animation-direction: reverse;
+    }
+}
+
 
 .card {
     display: flex;
@@ -13,8 +33,6 @@
     background-color: white;
     padding: 5px;
     box-shadow: $shadow;
-    @include move-animation(0.5s, ease-in);
-
 
     .picturevisitor {
         height: 90px;
@@ -40,7 +58,7 @@
             white-space: nowrap;
             margin-right: 10px;
             @include move-animation (0.2s, ease-in);
-            animation-delay: 3.3s;
+            animation-delay: 1s;
         }
     
     }
@@ -55,20 +73,49 @@
         margin-top: 10px;
     }
 }
+
 //pseudo-elementos criados para animar os cards de forma distinta
-.card:nth-child(even) {
-    animation-delay: 2.5s; 
+.move:nth-child(even) {
+    animation-delay: 0.5s; 
 }
 
-.card:nth-child(odd) {
-    animation-delay: 2.2s;
+.move:nth-child(odd) {
+    animation-delay: 0.7s;
 }
 
-.card:nth-child(3n+3) {
-    animation-delay: 2.8s; 
+.move:nth-child(3n+3) {
+    animation-delay: 0.9s; 
 }
 
 //propriedades dos keyframes 
+
+@keyframes blink {
+    0%  {
+        opacity: 1;
+       
+    }
+
+    25% {
+        opacity: 0;
+
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+      
+    }
+
+
+}
+
 
     @keyframes appear {
         0%  {
@@ -84,8 +131,11 @@
 
     }
 
+
+
     @keyframes move {
         from {transform: translateX(50px)}
         to {transform: translateX(0px)}
 
     }
+//

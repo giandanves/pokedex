@@ -1,5 +1,6 @@
 //Variables
 $jump-effect: (cubic-bezier(.05,1.84,1,1.01));
+$loader-fade-out-duration: 300ms;
 
 //Mixin
 @mixin appear-animation ($duration, $delay, $timing-function) {
@@ -13,9 +14,12 @@ $jump-effect: (cubic-bezier(.05,1.84,1,1.01));
 
 
 @mixin popin-animation ($duration, $delay) {
-animation-name: popin;
-animation-duration: $duration;
-animation-timing-function: $jump-effect;
+    opacity: 0;
+    animation-name: appear, popin;
+    animation-duration: $duration;
+    animation-delay: $delay;
+    animation-timing-function: linear, $jump-effect;
+    animation-fill-mode: forwards;
 }
 
 @mixin from-bottom-animation ($duration, $delay) {
@@ -55,6 +59,50 @@ animation-timing-function: $jump-effect;
 }
 
 //SASS Code
+.maincontainer {
+    position: relative;
+
+    .loader {
+        margin-top: 5%;
+        margin-left: 10%;
+        border: 16px solid #f3f3f3; /* Light grey */
+        border-top: 16px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        animation: spin 2s linear infinite;
+        position: absolute;
+        transition: opacity $loader-fade-out-duration ease-out;
+    }
+
+        
+}
+
+.popin {
+ @include popin-animation(0.3s, $loader-fade-out-duration);   
+
+    .picture {
+        @include from-bottom-animation(0.2s, $loader-fade-out-duration + 0.5s);
+    }
+    h1 {
+        @include from-bottom-animation(0.4s, $loader-fade-out-duration + 0.6s);
+    }
+    hr {
+        @include stretch-animation(0.6s, $loader-fade-out-duration + 0.6s, linear);
+    }
+    .userrating {
+        @include from-top-animation(0.4s, $loader-fade-out-duration + 0.6s);
+    }
+    .visits {
+        @include moving-animation(0.4s, $loader-fade-out-duration + 0.6s);
+    }
+}
+
+
+.hidden {
+    opacity: 0;
+}
+
 .user-box {
    display: flex;
    width: 100%;
@@ -64,38 +112,35 @@ animation-timing-function: $jump-effect;
    padding: 20px;
    background: $second-color;
    box-shadow: $shadow;
-   @include popin-animation(1s, 0s);
-
+   opacity: 0;
 
    .picture {
         width: 200px; 
-        height: 200PX;
+        height: 200px;
         border-radius: 50%; 
         background-size: cover; 
         background-position: center center;   
-        @include from-bottom-animation(0.5s, 2s);
+       
    }  
    
-
-
    h1 {
         font-size: 36px;
         font-style: normal;
         line-height: 42px;
         font-weight: 500;
         margin: 0;
-        @include from-bottom-animation(0.5s, 1.5s);
+        
    }
 
    hr {
        height: 2px;
        color: #EBEBEB;
-       @include stretch-animation(0.5s, 1s, linear);
+       
    }
 
    .userrating  {
         margin-bottom: 5px;
-        @include from-top-animation(0.5s, 1.5s);
+       
     }
  
     .visits {
@@ -104,12 +149,13 @@ animation-timing-function: $jump-effect;
         font-style: normal;
         line-height: 21px;
         font-size: 18px;
-        @include moving-animation(0.5s, 1.5s);
+        
     }
   
 }
 
 //keyframes 
+
 
 @keyframes popin {
     0% {
@@ -148,3 +194,20 @@ animation-timing-function: $jump-effect;
 
 
    }
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeout {
+    0%  {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+
+
+}

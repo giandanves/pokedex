@@ -1,9 +1,24 @@
 
+const delay = (data) => new Promise(resolve => {
+  setTimeout(() => {resolve(data)}, 1000)
+})
+
 fetch('http://www.jhonnymichel.com/frontend-academy/api/profile/')
+  .then(delay)
   .then((response) => {
     return response.json();
   }).then(data => {
     renderProfileInfo(data);
+    const userLoader = document.getElementById("loader");
+    const userBox = document.querySelector('#userbox');
+
+    userBox.classList.add('popin')
+    userLoader.classList.add('hidden')
+
+    setTimeout(() => {
+      userLoader.remove();
+    }, 1000)
+
   }).catch((err) => {
     console.log('rejected', err);
   })
@@ -11,10 +26,18 @@ fetch('http://www.jhonnymichel.com/frontend-academy/api/profile/')
 
 
 fetch('http://www.jhonnymichel.com/frontend-academy/api/friends/')
+  .then(delay)
   .then((response) => {
     return response.json();
   }).then(data => {
-    createFriendsList(data);
+    const loadersGrid = document.querySelector("#loadersGrid");
+    loadersGrid.classList.add('cardLoaderContainerFadeOut');
+
+    setTimeout(() => {
+      loadersGrid.remove()
+      createFriendsList(data);
+    }, 1200)
+    
   }).catch((err) => {
     console.log('rejected', err);
   })
@@ -59,9 +82,19 @@ function renderProfileInfo(user) {
 
 }
 
+var counter = 1;
+function cardLoaders(counter) {
+  while (counter <= 6) {
+    const cardLoader = document.createElement('article');
+    cardLoader.className = 'cardLoader';
+    counter++;
+  }
+}
+
+
 function createFriend(friend) {
   const card = document.createElement('article');
-  card.className = 'card';
+  card.className = 'card move';
 
   const friendIcons = document.createElement('footer');
   friendIcons.className = 'friend-icons';
