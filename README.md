@@ -15,7 +15,7 @@ We will be much more organized now, with well-defined steps and rigidness.
 ![Architecture](docs/architecture.png)
 [View in figma](https://www.figma.com/file/J7ymhrHDASUOpXp2jHO2Dh/Architecture-chart)
 
-This architecture above follows the [MVC](https://pt.wikipedia.org/wiki/MVC) (Model, View, Controller) pattern. And each view, model, service and controller
+This architecture above is inspired by the [MVC](https://pt.wikipedia.org/wiki/MVC) (Model, View, Controller) pattern. And each view, model, service and controller
 must follow the [SOLID](https://pt.wikipedia.org/wiki/SOLID) principles.
 
 ### Views
