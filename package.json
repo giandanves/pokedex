@@ -11,10 +11,14 @@
     "webpack-cli": "^4.6.0",
     "webpack": "^5.33.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack",
+    "start": "webpack serve --open",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
