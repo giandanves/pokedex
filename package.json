@@ -1,0 +1,30 @@
+{
+  "name": "xarlinhos-academy",
+  "version": "1.0.0",
+  "description": "![Logo](docs/Izipizi.png)",
+  "private": "true",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "node-sass": "^4.14.1",
+    "webpack-cli": "^4.6.0",
+    "webpack": "^5.33.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhonnymichel/xarlinhos-academy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhonnymichel/xarlinhos-academy/issues"
+  },
+  "homepage": "https://github.com/jhonnymichel/xarlinhos-academy#readme"
+}
