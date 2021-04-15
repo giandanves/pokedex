@@ -7,6 +7,7 @@
     "doc": "docs"
   },
   "dependencies": {
+    "eslint": "^7.24.0",
     "node-sass": "^4.14.1",
     "webpack-cli": "^4.6.0"
   },
