@@ -3,6 +3,6 @@
   "editor.formatOnSave": false,
 
   "[javascript]": { "editor.formatOnSave": true },
-  "[scss]":  { "editor.formatOnSave": true },
-  "[html]":  { "editor.formatOnSave": true }
+  "[html]": { "editor.formatOnSave": true },
+  "[scss]": { "editor.formatOnSave": true }
 }
