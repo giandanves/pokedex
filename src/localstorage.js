@@ -35,30 +35,9 @@ class Storage {
     }
   }
 
-  first() {}
-
-  findAll() {}
-
-  delete() {}
-
-  deleteMany() {}
-
-  addMany() {}
-}
-
-class TestObject {
-  constructor(name, id) {
-    this.name = name;
-    this.id = id;
+  first() {
+    return this.history[this.history.length - 1];
   }
-}
-
-class localStorage {
-  save() {}
-
-  find() {}
-
-  first() {}
 
   findAll() {}
 
@@ -68,3 +47,21 @@ class localStorage {
 
   addMany() {}
 }
+
+//class localStorage {
+//save() {}
+
+// find() {}
+
+//first() {}
+
+// findAll() {}
+
+//delete() {}
+
+//  deleteMany() {}
+
+//addMany() {}
+//}
+
+export default Storage;
