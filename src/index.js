@@ -1,5 +1,10 @@
 import './style.scss';
-const p = document.createElement('p');
-p.textContent = 'this is a test';
+import Storage from './localstorage.js';
 
-document.body.appendChild(p);
+class TestObject {
+  constructor(id, date, content) {
+    this.id = id;
+    this.date = date;
+    this.content = content;
+  }
+}
