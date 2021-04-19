@@ -18,7 +18,22 @@ class Storage {
     }
   }
 
-  find() {}
+  find({ id, date, content }) {
+    if (
+      id == undefined &&
+      date == undefined &&
+      content == undefined
+    ) {
+      return null;
+    } else {
+      return this.history.find(
+        (object) =>
+          (object.id == id || id == undefined) &&
+          (object.date == date || date == undefined) &&
+          (object.content == content || content == undefined),
+      );
+    }
+  }
 
   first() {}
 
