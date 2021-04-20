@@ -53,10 +53,14 @@ class Storage {
 
   delete() {}
 
-  deleteMany() {}
-
-  addMany() {}
-}
+  delete(id) {
+    const i = this.history.findIndex((object) => object.id == id);
+    if (i != -1) {
+      return this.history.splice(i, 1);
+    } else {
+      return 'Ta errado';
+    }
+  }
 
 //class localStorage {
 //save() {}
