@@ -39,7 +39,17 @@ class Storage {
     return this.history[this.history.length - 1];
   }
 
-  findAll() {}
+  findAll({ id, date, content }) {
+    const allMatches = [];
+    this.history.map((object) => {
+      if (
+        (object.id == id || id == undefined) &&
+        (object.date == date || date == undefined) &&
+        (object.content == content || content == undefined)
+      ) {
+        allMatches.push(object);
+      }
+    });
 
   delete() {}
 
