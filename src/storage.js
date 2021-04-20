@@ -62,8 +62,9 @@ class Storage {
     }
   }
 
-//class localStorage {
-//save() {}
+  deleteMany(array) {
+    const deletable = [];
+    let i;
 
 // find() {}
 
