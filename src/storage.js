@@ -86,13 +86,24 @@ class Storage {
     }
   }
 
-// findAll() {}
+  addMany(array) {
+    const addable = [];
+    let i;
 
-//delete() {}
+    array.map((object) => {
+      i = this.history.find((element) => element.id == object.id);
+      if (i == undefined) {
+        addable.push(object);
+      }
+    });
 
-//  deleteMany() {}
-
-//addMany() {}
-//}
+    if (addable.length != array.length) {
+      return 'Ta errado';
+    } else {
+      addable.map((object) => this.history.push(object));
+    }
+    return addable;
+  }
+}
 
 export default Storage;
