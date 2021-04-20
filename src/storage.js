@@ -66,9 +66,25 @@ class Storage {
     const deletable = [];
     let i;
 
-// find() {}
+    array.map((object) => {
+      i = this.history.find((element) => element.id == object);
+      if (i != undefined) {
+        deletable.push(i);
+      }
+    });
 
-//first() {}
+    if (deletable.length != array.length) {
+      return 'Ta errado';
+    } else {
+      deletable.map((object) => {
+        this.history.splice(
+          this.history.findIndex((element) => element == object),
+          1,
+        );
+      });
+      return deletable;
+    }
+  }
 
 // findAll() {}
 
