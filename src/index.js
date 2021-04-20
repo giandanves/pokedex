@@ -1,5 +1,5 @@
 import './style.scss';
-import Storage from './localstorage.js';
+import Storage from './storage.js';
 
 class TestObject {
   constructor(id, date, content) {
