@@ -51,7 +51,8 @@ class Storage {
       }
     });
 
-  delete() {}
+    return allMatches;
+  }
 
   delete(id) {
     const i = this.history.findIndex((object) => object.id == id);
