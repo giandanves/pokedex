@@ -89,16 +89,30 @@ class Storage {
 
   addMany(array) {
     const addable = [];
-    let i;
+    let repeatCheck = false;
+
+    for (let i = 0; i < array.length; i++) {
+      for (let j = 0; j < array.length; j++) {
+        if (i !== j) {
+          if (array[i].id === array[j].id) {
+            repeatCheck = true;
+            break;
+          }
+        }
+      }
+    }
 
     array.map((object) => {
-      i = this.history.find((element) => element.id == object.id);
-      if (i == undefined) {
+      let sameIDCheck = this.history.find(
+        (element) => element.id == object.id,
+      );
+
+      if (sameIDCheck == undefined) {
         addable.push(object);
       }
     });
 
-    if (addable.length != array.length) {
+    if (addable.length != array.length || repeatCheck == true) {
       return 'Ta errado';
     } else {
       addable.map((object) => this.history.push(object));
