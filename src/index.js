@@ -1,26 +1,12 @@
 import './style.scss';
 
-import LocalStorage from './localstorage.js';
-
-class TestObject {
-  constructor(id, date, content) {
-    this.id = id;
-    this.date = date;
-    this.content = content;
+const testObject = (id, date, content) => {
+  if (id == undefined || date == undefined || content == undefined) {
+    throw new Error('Insufficient parameters');
+  } else {
+    return { id, date, content };
   }
-}
+};
 
-const one = new TestObject('15', '25', 'bola');
-const two = new TestObject('16', '25', 'rato');
-const three = new TestObject('17', 'bola', 'arroz');
-
-localStorage.clear();
-
-const storage = new LocalStorage();
-
-storage.save(one);
-storage.addMany([two, three]);
-console.log(storage.first());
-console.log(storage.find({ id: '16' }));
-console.log(storage.findAll({ date: '27' }));
-console.log(storage.deleteMany(['15', '17']));
+const one = testObject('15', '25', '25+5=30');
+console.log(one);
