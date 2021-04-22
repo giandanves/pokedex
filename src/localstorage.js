@@ -1,12 +1,15 @@
 class LocalStorage {
-  constructor() {
-    this.history = [];
+  get history() {
+    return JSON.parse(window.localStorage.getItem('history')) ?? [];
   }
 
+  set history(history) {
+    window.localStorage.setItem('history', JSON.stringify(history));
+  }
   save(operation) {
-    //this.history = JSON.parse(window.localStorage.getItem(history));
     let i = 0;
-    this.history.forEach((saved) => {
+    const history = this.history;
+    history.forEach((saved) => {
       if (operation.id == saved.id) {
         i++;
       }
@@ -15,11 +18,8 @@ class LocalStorage {
     if (i > 0) {
       console.log('Ta errado');
     } else {
-      this.history.push(operation);
-      window.localStorage.setItem(
-        'history',
-        JSON.stringify(this.history),
-      );
+      history.push(operation);
+      this.history = history;
     }
   }
 
@@ -46,6 +46,7 @@ class LocalStorage {
 
   findAll({ id, date, content }) {
     const allMatches = [];
+
     this.history.map((object) => {
       if (
         (object.id == id || id == undefined) &&
@@ -60,13 +61,11 @@ class LocalStorage {
   }
 
   delete(id) {
-    const i = this.history.findIndex((object) => object.id == id);
+    const history = this.history;
+    let i = history.findIndex((object) => object.id == id);
     if (i != -1) {
-      let deleted = this.history.splice(i, 1);
-      window.localStorage.setItem(
-        'history',
-        JSON.stringify(this.history),
-      );
+      let deleted = history.splice(i, 1);
+      this.history = history;
       return deleted;
     } else {
       return 'Ta errado';
@@ -75,10 +74,11 @@ class LocalStorage {
 
   deleteMany(array) {
     const deletable = [];
+    const history = this.history;
     let i;
 
     array.map((object) => {
-      i = this.history.find((element) => element.id == object);
+      i = history.find((element) => element.id == object);
       if (i != undefined) {
         deletable.push(i);
       }
@@ -88,16 +88,13 @@ class LocalStorage {
       return 'Ta errado';
     } else {
       deletable.map((object) => {
-        this.history.splice(
-          this.history.findIndex((element) => element == object),
+        history.splice(
+          history.findIndex((element) => element == object),
           1,
         );
       });
 
-      window.localStorage.setItem(
-        'history',
-        JSON.stringify(this.history),
-      );
+      this.history = history;
 
       return deletable;
     }
@@ -106,6 +103,7 @@ class LocalStorage {
   addMany(array) {
     const addable = [];
     let repeatCheck = false;
+    const history = this.history;
 
     for (let i = 0; i < array.length; i++) {
       for (let j = 0; j < array.length; j++) {
@@ -119,7 +117,7 @@ class LocalStorage {
     }
 
     array.map((object) => {
-      let sameIDCheck = this.history.find(
+      let sameIDCheck = history.find(
         (element) => element.id == object.id,
       );
 
@@ -131,13 +129,10 @@ class LocalStorage {
     if (addable.length != array.length || repeatCheck == true) {
       return 'Ta errado';
     } else {
-      addable.map((object) => this.history.push(object));
+      addable.map((object) => history.push(object));
     }
 
-    window.localStorage.setItem(
-      'history',
-      JSON.stringify(this.history),
-    );
+    this.history = history;
     return addable;
   }
 }
