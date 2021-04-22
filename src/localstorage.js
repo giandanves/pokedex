@@ -28,11 +28,15 @@ class LocalStorage {
     ) {
       return null;
     } else {
-      return this.history.find(
-        (object) =>
-          (object.id == id || id == undefined) &&
-          (object.date == date || date == undefined) &&
-          (object.content == content || content == undefined),
+      return new Promise((resolve) =>
+        resolve(
+          this.history.find(
+            (object) =>
+              (object.id == id || id == undefined) &&
+              (object.date == date || date == undefined) &&
+              (object.content == content || content == undefined),
+          ),
+        ),
       );
     }
   }
@@ -83,7 +87,7 @@ class LocalStorage {
     const history = this.history;
 
     for (let i of array) {
-      if (array.filter((item) => item === i).length > 1) {
+      if (array.filter((item) => item.id === i.id).length > 1) {
         throw new Error('Repeated IDs provided');
       }
     }
