@@ -1,23 +1,29 @@
 class LocalStorage {
   get history() {
-    return JSON.parse(window.localStorage.getItem('history')) ?? [];
+    return new Promise((resolve) => {
+      resolve(
+        JSON.parse(window.localStorage.getItem('history') ?? '[]'),
+      );
+    });
   }
 
   set history(history) {
     window.localStorage.setItem('history', JSON.stringify(history));
   }
   save(operation) {
-    const history = this.history;
-    const idExists = history.find(
-      (saved) => operation.id === saved.id,
-    );
+    return this.history.then((history) => {
+      const idExists = history.find(
+        (saved) => operation.id === saved.id,
+      );
 
-    if (idExists) {
-      throw new Error('This ID already exists on memory');
-    } else {
-      history.push(operation);
-      this.history = history;
-    }
+      if (idExists) {
+        throw new Error('This ID already exists on memory');
+      } else {
+        history.push(operation);
+        this.history = history;
+        return operation;
+      }
+    });
   }
 
   find({ id, date, content }) {
@@ -28,16 +34,16 @@ class LocalStorage {
     ) {
       return null;
     } else {
-      return new Promise((resolve) =>
-        resolve(
-          this.history.find(
-            (object) =>
-              (object.id == id || id == undefined) &&
-              (object.date == date || date == undefined) &&
-              (object.content == content || content == undefined),
+      return this.history.then((history) => {
+        return history.find(
+          (object) =>
+            (object.id == id || id == undefined) &&
+            (object.date == date || date == undefined) &&
+            (object.content == content || content == undefined),
           ),
         ),
-      );
+        );
+      });
     }
   }
 
