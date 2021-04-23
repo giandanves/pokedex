@@ -55,17 +55,17 @@ class LocalStorage {
   }
 
   delete(id) {
-    const filteredHistory = this.history.filter(
-      (object) => object.id !== id,
-    );
-    const deletedItem = this.history.find(
-      (object) => object.id === id,
-    );
-    if (!deletedItem) {
-      throw new Error('id is not registered');
-    }
-    this.history = filteredHistory;
-    return deletedItem;
+    return this.history.then((history) => {
+      const filteredHistory = history.filter(
+        (object) => object.id !== id,
+      );
+      const deletedItem = history.find((object) => object.id === id);
+      if (!deletedItem) {
+        throw new Error('id is not registered');
+      }
+      this.history = filteredHistory;
+      return deletedItem;
+    });
   }
 
   deleteMany(ids) {
