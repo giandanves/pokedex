@@ -46,12 +46,14 @@ class LocalStorage {
   }
 
   findAll({ id, date, content }) {
-    return this.history.filter(
-      (object) =>
-        (object.id == id || id == undefined) &&
-        (object.date == date || date == undefined) &&
-        (object.content == content || content == undefined),
-    );
+    return this.history.then((history) => {
+      return history.filter(
+        (object) =>
+          (object.id == id || id == undefined) &&
+          (object.date == date || date == undefined) &&
+          (object.content == content || content == undefined),
+      );
+    });
   }
 
   delete(id) {
