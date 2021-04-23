@@ -8,9 +8,4 @@ const testObject = (id, date, content) => {
   }
 };
 
-localStorage.clear();
-const one = testObject('15', '25', '25+5=30');
 const storage = new LocalStorage();
-storage.save(one);
-
-storage.find({ date: '25' }).then((r) => console.log(r));

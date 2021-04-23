@@ -40,8 +40,6 @@ class LocalStorage {
             (object.id == id || id == undefined) &&
             (object.date == date || date == undefined) &&
             (object.content == content || content == undefined),
-          ),
-        ),
         );
       });
     }
@@ -83,20 +81,19 @@ class LocalStorage {
       const filteredHistory = history.filter(
         (object) => !ids.includes(object.id),
       );
-    const deletedItems = this.history.filter((object) =>
-      ids.includes(object.id),
-    );
-    if (deletedItems.length !== ids.length) {
-      throw new Error('Some id is not registered');
-    }
-    this.history = filteredHistory;
-    return deletedItems;
+      const deletedItems = history.filter((object) =>
+        ids.includes(object.id),
+      );
+      if (deletedItems.length !== ids.length) {
+        throw new Error('Some id is not registered');
+      }
+      this.history = filteredHistory;
+      return deletedItems;
     });
   }
 
   addMany(array) {
     const addable = [];
-    const history = this.history;
 
     for (let i of array) {
       if (array.filter((item) => item.id === i.id).length > 1) {
