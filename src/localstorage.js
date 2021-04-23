@@ -69,9 +69,10 @@ class LocalStorage {
   }
 
   deleteMany(ids) {
-    const filteredHistory = this.history.filter(
-      (object) => !ids.includes(object.id),
-    );
+    return this.history.then((history) => {
+      const filteredHistory = history.filter(
+        (object) => !ids.includes(object.id),
+      );
     const deletedItems = this.history.filter((object) =>
       ids.includes(object.id),
     );
@@ -80,6 +81,7 @@ class LocalStorage {
     }
     this.history = filteredHistory;
     return deletedItems;
+    });
   }
 
   addMany(array) {
