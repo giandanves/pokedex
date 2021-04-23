@@ -42,7 +42,9 @@ class LocalStorage {
   }
 
   first() {
-    return this.history[this.history.length - 1];
+    return this.history.then((history) => {
+      return history[history.length - 1];
+    });
   }
 
   findAll({ id, date, content }) {
