@@ -91,27 +91,28 @@ class LocalStorage {
         throw new Error('Repeated IDs provided');
       }
     }
+    return this.history.then((history) => {
+      array.find((object) => {
+        let sameIDCheck = history.find(
+          (element) => element.id == object.id,
+        );
 
-    array.find((object) => {
-      let sameIDCheck = history.find(
-        (element) => element.id == object.id,
-      );
+        if (sameIDCheck) {
+          throw new Error('Repeated IDs');
+        } else {
+          addable.push(object);
+        }
+      });
 
-      if (sameIDCheck) {
-        throw new Error('Repeated IDs');
+      if (addable.length != array.length) {
+        throw new Error('Cannot add all the provided items');
       } else {
-        addable.push(object);
+        addable.forEach((object) => history.push(object));
       }
+
+      this.history = history;
+      return addable;
     });
-
-    if (addable.length != array.length) {
-      throw new Error('Cannot add all the provided items');
-    } else {
-      addable.forEach((object) => history.push(object));
-    }
-
-    this.history = history;
-    return addable;
   }
 }
 
