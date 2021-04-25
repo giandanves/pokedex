@@ -1,4 +1,4 @@
-class Storage {
+class inMemory {
   constructor() {
     this.history = [];
   }
@@ -6,7 +6,7 @@ class Storage {
   get getHistory() {
     return new Promise((resolve) => resolve(this.history));
   }
-  save(operation) {
+  save = (operation) => {
     return this.getHistory.then((history) => {
       const idExists = history.find(
         (saved) => operation.id === saved.id,
@@ -19,9 +19,9 @@ class Storage {
         return operation;
       }
     });
-  }
+  };
 
-  find({ id, date, content }) {
+  find = ({ id, date, content }) => {
     if (
       id == undefined &&
       date == undefined &&
@@ -38,15 +38,15 @@ class Storage {
         );
       });
     }
-  }
+  };
 
-  first() {
+  first = () => {
     return this.getHistory.then((history) => {
       return history[history.length - 1];
     });
-  }
+  };
 
-  findAll({ id, date, content }) {
+  findAll = ({ id, date, content }) => {
     return this.getHistory.then((history) => {
       return history.filter(
         (object) =>
@@ -55,9 +55,9 @@ class Storage {
           (object.content == content || content == undefined),
       );
     });
-  }
+  };
 
-  delete(id) {
+  delete = (id) => {
     return this.getHistory.then((history) => {
       const filteredHistory = history.filter(
         (object) => object.id !== id,
@@ -69,8 +69,8 @@ class Storage {
       this.history = filteredHistory;
       return deletedItem;
     });
-  }
-  deleteMany(ids) {
+  };
+  deleteMany = (ids) => {
     return this.getHistory.then((history) => {
       const filteredHistory = history.filter(
         (object) => !ids.includes(object.id),
@@ -84,9 +84,9 @@ class Storage {
       this.history = filteredHistory;
       return deletedItems;
     });
-  }
+  };
 
-  addMany(array) {
+  addMany = (array) => {
     const addable = [];
 
     for (let i of array) {
@@ -116,7 +116,7 @@ class Storage {
       this.history = history;
       return addable;
     });
-  }
+  };
 }
 
-export default Storage;
+export default inMemory;
