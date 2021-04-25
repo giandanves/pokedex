@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { TRUE } = require('node-sass');
 
 module.exports = {
   mode: 'development',
@@ -30,6 +31,24 @@ module.exports = {
           'css-loader',
           'sass-loader',
         ],
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              [
+                '@babel/preset-env',
+                {
+                  targets: { esmodules: true },
+                  bugfixes: true,
+                  shippedProposals: true,
+                },
+              ],
+            ],
+            plugins: ['@babel/plugin-proposal-class-properties'],
+          },
+        },
       },
     ],
   },
