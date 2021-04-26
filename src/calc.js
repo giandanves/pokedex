@@ -1,7 +1,8 @@
 function calc(calcString) {
-  const operators = [];
-  const numbers = [];
-
+  const operators = calcString.split(/\d+/, '');
+  const numbers = calcString.split(/\D+/g, '');
+  console.dir(numbers);
+  console.dir(operators);
   let numberFinder = '';
   for (let char of calcString) {
     if (isNaN(char)) {
