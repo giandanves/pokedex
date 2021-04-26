@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { TRUE } = require('node-sass');
 
 module.exports = {
   mode: 'development',
@@ -46,7 +45,6 @@ module.exports = {
                 },
               ],
             ],
-            plugins: ['@babel/plugin-proposal-class-properties'],
           },
         },
       },
