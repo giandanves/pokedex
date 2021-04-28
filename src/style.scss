@@ -1,9 +1,54 @@
 body {
-  background-color: blue;
+  background-color: grey;
+  font-family: Inter;
 }
 
-.calcscreen {
+.calc-screen {
+  display: flex;
+  flex-direction: column;
   height: 569px;
   width: 296px;
-  background-color: white;
+  background-color: #ffffff;
+  margin: 0px;
+}
+
+.screen-header {
+  width: 100%;
+  height: 24px;
+  background-color: #e3e4e5;
+  opacity: 10%;
+}
+
+.screen-display {
+  width: 100%;
+  height: 177px;
+  background-color: aquamarine;
+  opacity: 10%;
+}
+
+.operate-screen {
+  width: 100%;
+  height: 368px;
+  background-color: greenyellow;
+}
+#buttons-container {
+  margin: 20px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+.button {
+  background-color: blueviolet;
+  height: 40px;
+  width: 40px;
+}
+
+.equal-button {
+  width: 112px;
+  height: 40px;
+  background-color: red;
+}
+
+.text-button {
+  text-align: center;
 }

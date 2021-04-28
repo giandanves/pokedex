@@ -1,10 +1,23 @@
 import './style.scss';
+import buttons from './buttons.js';
 
-const calcScreen = document.createElement('div');
-calcScreen.className = 'calcscreen';
-document.body.appendChild(calcScreen);
+const buttonsContainer = document.querySelector('#buttons-container');
 
-const p = document.createElement('p');
-p.textContent = 'this is a test';
+function addButton(buttons) {
+  buttons.forEach((button) => {
+    const btn = document.createElement('div');
+    if (button.title == '=') {
+      btn.className = 'equal-button';
+    } else {
+      btn.className = 'button';
+    }
 
-document.body.appendChild(p);
+    const title = document.createElement('p');
+    title.className = 'text-button';
+    const t = document.createTextNode(`${button.title}`);
+    title.appendChild(t);
+    btn.appendChild(title);
+    buttonsContainer.appendChild(btn);
+  });
+}
+addButton(buttons);
