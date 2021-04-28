@@ -22,14 +22,13 @@ body {
 .screen-display {
   width: 100%;
   height: 177px;
-  background-color: aquamarine;
+  background-color: #e3e4e5;
   opacity: 10%;
 }
 
 .operate-screen {
   width: 100%;
   height: 368px;
-  background-color: greenyellow;
 }
 #buttons-container {
   margin: 20px;
@@ -38,17 +37,25 @@ body {
   gap: 32px;
 }
 .button {
-  background-color: blueviolet;
   height: 40px;
   width: 40px;
+  border-radius: 50%;
 }
 
-.equal-button {
-  width: 112px;
-  height: 40px;
-  background-color: red;
+#operation-button {
+  background-color: rgb(104, 89, 179, 0.05);
 }
 
-.text-button {
+#operation-text {
+  color: rgb(104, 89, 179);
+}
+
+p {
   text-align: center;
+}
+
+#equal-button {
+  width: 112px;
+  border: rgb(104, 89, 179);
+  border-width: 10px;
 }
