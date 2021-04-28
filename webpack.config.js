@@ -7,7 +7,11 @@ module.exports = {
   entry: './src/index.js',
 
   plugins: [
-    new HtmlWebpackPlugin({ title: 'Izipizi' }),
+    new HtmlWebpackPlugin({
+      inject: 'body',
+      template: 'src/index.html',
+      filename: 'index.html',
+    }),
     new MiniCssExtractPlugin({ filename: 'style.css' }),
   ],
 
