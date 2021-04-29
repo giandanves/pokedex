@@ -9,7 +9,17 @@
   <body>
     <div class="calc-screen">
       <div class="screen-header"></div>
-      <div class="screen-display"></div>
+      <div class="screen-display">
+        <div class="method-buttons-container">
+          <div class="method-button" id="copy-button">
+            <p class="method-button-text">copiar</p>
+          </div>
+          <div class="method-button" id="export-button">
+            <p class="method-button-text">exportar</p>
+          </div>
+        </div>
+        <img id="clear-button" src="Group 2.svg" />
+      </div>
       <div class="operate-screen">
         <div id="buttons-container">
           <div class="button"><p>C</p></div>
@@ -38,7 +48,9 @@
           </div>
           <div class="button"><p>0</p></div>
           <div class="button"><p>,</p></div>
-          <div class="button" id="equal-button"><p>=</p></div>
+          <div class="button" id="equal-button">
+            <p id="operation-text">=</p>
+          </div>
         </div>
       </div>
     </div>
