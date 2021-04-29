@@ -10,15 +10,39 @@
     <div class="calc-screen">
       <div class="screen-header"></div>
       <div class="screen-display">
-        <div class="method-buttons-container">
-          <div class="method-button" id="copy-button">
-            <p class="method-button-text">copiar</p>
+        <div class="menu-button">
+          <img
+            id="line1"
+            src="<%= require('./img/menubuttonvector.svg').default %>"
+          /><img
+            id="line2"
+            src="<%= require('./img/menubuttonvector.svg').default %>"
+          /><img
+            id="line3"
+            src="<%= require('./img/menubuttonvector.svg').default %>"
+          />
+        </div>
+        <div class="calculum-render-container">
+          <h3>678 + 910 - 13 x 5 / 7 =</h3>
+          <h2>1.125</h2>
+        </div>
+
+        <div class="display-buttons">
+          <div class="method-buttons-container">
+            <div class="method-button" id="copy-button">
+              <p class="method-button-text">copiar</p>
+            </div>
+            <div class="method-button" id="export-button">
+              <p class="method-button-text">exportar</p>
+            </div>
           </div>
-          <div class="method-button" id="export-button">
-            <p class="method-button-text">exportar</p>
+          <div class="clear-button-container">
+            <img
+              id="clear-button"
+              src="<%= require('./img/clearbutton.svg').default %>"
+            />
           </div>
         </div>
-        <img id="clear-button" src="Group 2.svg" />
       </div>
       <div class="operate-screen">
         <div id="buttons-container">
