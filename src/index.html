@@ -8,73 +8,126 @@
   </head>
   <body>
     <div class="calc-screen">
-      <div class="screen-header"></div>
-      <div class="screen-display">
-        <div class="menu-button">
+      <div class="calc-screen__header"></div>
+      <div class="display">
+        <div class="display__menu-button">
           <img
-            id="line1"
+            class="display__menu-button__line1"
             src="<%= require('./img/menubuttonvector.svg').default %>"
           /><img
-            id="line2"
+            class="display__menu-button__line2"
             src="<%= require('./img/menubuttonvector.svg').default %>"
           /><img
-            id="line3"
+            class="display__menu-button__line3"
             src="<%= require('./img/menubuttonvector.svg').default %>"
           />
         </div>
-        <div class="calculum-render-container">
-          <h3>678 + 910 - 13 x 5 / 7 =</h3>
-          <h2>1.125</h2>
+        <div class="display__calculum-container">
+          <h3 class="display__calculum-container--log">
+            678 + 910 - 13 x 5 / 7 =
+          </h3>
+          <h2 class="display__calculum-container--calculum">1.125</h2>
         </div>
 
-        <div class="display-buttons">
-          <div class="method-buttons-container">
-            <div class="method-button" id="copy-button">
-              <p class="method-button-text">copiar</p>
+        <div class="display__buttons-container">
+          <div class="display__function-buttons-container">
+            <div class="display__function-button" id="copy-button">
+              <p class="display__function-button__text">copiar</p>
             </div>
-            <div class="method-button" id="export-button">
-              <p class="method-button-text">exportar</p>
+            <div class="display__function-button" id="export-button">
+              <p class="display__function-button__text">exportar</p>
             </div>
           </div>
-          <div class="clear-button-container">
+          <div class="display__clear-button-container">
             <img
-              id="clear-button"
+              class="display__clear-button"
               src="<%= require('./img/clearbutton.svg').default %>"
             />
           </div>
         </div>
       </div>
-      <div class="operate-screen">
-        <div id="buttons-container">
-          <div class="button"><p>C</p></div>
-          <div class="button"><p>+/-</p></div>
-          <div class="button"><p>%</p></div>
-          <div class="button" id="operation-button">
-            <p id="operation-text">/</p>
-          </div>
-          <div class="button"><p>7</p></div>
-          <div class="button"><p>8</p></div>
-          <div class="button"><p>9</p></div>
-          <div class="button" id="operation-button">
-            <p id="operation-text">X</p>
-          </div>
-          <div class="button"><p>4</p></div>
-          <div class="button"><p>5</p></div>
-          <div class="button"><p>6</p></div>
-          <div class="button" id="operation-button">
-            <p id="operation-text">-</p>
-          </div>
-          <div class="button"><p>1</p></div>
-          <div class="button"><p>2</p></div>
-          <div class="button"><p>3</p></div>
-          <div class="button" id="operation-button">
-            <p id="operation-text">+</p>
-          </div>
-          <div class="button"><p>0</p></div>
-          <div class="button"><p>,</p></div>
-          <div class="button" id="equal-button">
-            <p id="operation-text">=</p>
-          </div>
+
+      <div class="keyboard">
+        <div class="keyboard__button">
+          <p class="keyboard__button__text">C</p>
+        </div>
+        <div class="keyboard__button">
+          <p class="keyboard__button__text">+/-</p>
+        </div>
+        <div class="keyboard__button">
+          <p class="keyboard__button__text">%</p>
+        </div>
+        <div
+          class="keyboard__button keyboard__button--operation-background"
+        >
+          <p
+            class="keyboard__button__text keyboard__button--operation--text"
+          >
+            /
+          </p>
+        </div>
+        <div class="keyboard__button">
+          <p class="keyboard__button__text">7</p>
+        </div>
+        <div class="keyboard__button">
+          <p class="keyboard__button__text">8</p>
+        </div>
+        <div class="keyboard__button">
+          <p class="keyboard__button__text">9</p>
+        </div>
+        <div
+          class="keyboard__button keyboard__button--operation-background"
+        >
+          <p
+            class="keyboard__button__text keyboard__button--operation--text"
+          >
+            X
+          </p>
+        </div>
+        <div class="keyboard__button">
+          <p class="keyboard__button__text">4</p>
+        </div>
+        <div class="keyboard__button">
+          <p class="keyboard__button__text">5</p>
+        </div>
+        <div class="keyboard__button">
+          <p class="keyboard__button__text">6</p>
+        </div>
+        <div
+          class="keyboard__button keyboard__button--operation-background"
+        >
+          <p
+            class="keyboard__button__text keyboard__button--operation--text"
+          >
+            -
+          </p>
+        </div>
+        <div class="keyboard__button">
+          <p class="keyboard__button__text">1</p>
+        </div>
+        <div class="keyboard__button">
+          <p class="keyboard__button__text">2</p>
+        </div>
+        <div class="keyboard__button">
+          <p class="keyboard__button__text">3</p>
+        </div>
+        <div
+          class="keyboard__button keyboard__button--operation-background"
+        >
+          <p
+            class="keyboard__button__text keyboard__button--operation--text"
+          >
+            +
+          </p>
+        </div>
+        <div class="keyboard__button"><p>0</p></div>
+        <div class="keyboard__button"><p>,</p></div>
+        <div class="keyboard__button keyboard__button__equals">
+          <p
+            class="keyboard__button__text keyboard__button--operation--text"
+          >
+            =
+          </p>
         </div>
       </div>
     </div>

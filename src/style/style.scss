@@ -1,0 +1,29 @@
+@import 'keyboard';
+@import 'display';
+
+body {
+  background-color: grey;
+  font-family: Inter;
+  font-style: normal;
+}
+
+p {
+  text-align: center;
+  margin: 0px;
+}
+
+.calc-screen {
+  display: flex;
+  flex-direction: column;
+  height: 569px;
+  width: 296px;
+  background-color: #ffffff;
+  margin: 5px;
+}
+
+.calc-screen__header {
+  width: 100%;
+  height: 24px;
+  background-color: #e3e4e5;
+  opacity: 10%;
+}
