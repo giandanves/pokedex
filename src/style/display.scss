@@ -1,5 +1,4 @@
 .display {
-  flex: 31;
   width: 100%;
   background-color: rgb(227, 228, 229, 0.1);
   display: flex;
@@ -13,6 +12,21 @@
 }
 
 .display__menu-button__line {
+  width: 20px;
+  height: 0px;
+  border: 1px solid #4c4c4d;
+  margin-bottom: 6px;
+}
+
+.display__menu-button__line--medium {
+  width: 16px;
+  height: 0px;
+  border: 1px solid #4c4c4d;
+  margin-bottom: 6px;
+}
+
+.display__menu-button__line--small {
+  width: 8px;
   height: 0px;
   border: 1px solid #4c4c4d;
   margin-bottom: 6px;
