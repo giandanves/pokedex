@@ -12,13 +12,16 @@
       <div class="display">
         <div class="display__menu-button">
           <img
-            class="display__menu-button__line1"
+            class="display__menu-button__line"
+            style="width: 20px"
             src="<%= require('./img/menubuttonvector.svg').default %>"
           /><img
-            class="display__menu-button__line2"
+            class="display__menu-button__line"
+            style="width: 16px"
             src="<%= require('./img/menubuttonvector.svg').default %>"
           /><img
-            class="display__menu-button__line3"
+            class="display__menu-button__line"
+            style="width: 8px"
             src="<%= require('./img/menubuttonvector.svg').default %>"
           />
         </div>
@@ -120,8 +123,12 @@
             +
           </p>
         </div>
-        <div class="keyboard__button"><p>0</p></div>
-        <div class="keyboard__button"><p>,</p></div>
+        <div class="keyboard__button">
+          <p class="keyboard__button__text">0</p>
+        </div>
+        <div class="keyboard__button">
+          <p class="keyboard__button__text">,</p>
+        </div>
         <div class="keyboard__button keyboard__button__equals">
           <p
             class="keyboard__button__text keyboard__button--operation--text"
