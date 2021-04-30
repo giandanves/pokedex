@@ -1,7 +1,6 @@
 .display {
   flex: 31;
   width: 100%;
-  height: 177px;
   background-color: rgb(227, 228, 229, 0.1);
   display: flex;
   flex-direction: column;
@@ -10,32 +9,17 @@
 .display__menu-button {
   display: flex;
   flex-direction: column;
-  margin-left: 16px;
-  margin-top: 16px;
-  margin-bottom: 8px;
+  padding: 0 8px;
 }
 
-.display__menu-button__line1 {
-  width: 20px;
+.display__menu-button__line {
   height: 0px;
   border: 1px solid #4c4c4d;
   margin-bottom: 6px;
 }
 
-.display__menu-button__line2 {
-  width: 16px;
-  border: 1px solid #4c4c4d;
-  height: 0px;
-  margin-bottom: 6px;
-}
-
-.display__menu-button__line3 {
-  height: 0px;
-  border: 1px solid #4c4c4d;
-  width: 8px;
-}
 .display__calculum-container {
-  margin-right: 16px;
+  padding: 0 16px;
 }
 
 .display__calculum-container--log {
@@ -45,14 +29,14 @@
   letter-spacing: 0em;
   text-align: right;
   color: #979899;
-  margin-top: 0;
-  margin-bottom: 16px;
+  margin: 0;
 }
 
 .display__calculum-container--calculum {
   font-size: 32px;
   font-weight: 500;
   line-height: 32px;
+  padding: 16 0px;
   margin: 0;
   color: #4c4c4d;
   letter-spacing: 0em;
@@ -62,13 +46,12 @@
 .display__buttons-container {
   display: flex;
   height: 100%;
+  padding: 8px 16px;
 }
 
 .display__function-buttons-container {
   display: flex;
   align-items: flex-end;
-  margin-bottom: 16px;
-  margin-left: 16px;
 }
 .display__function-button {
   width: 80px;
@@ -87,8 +70,6 @@
   align-items: flex-end;
   justify-content: flex-end;
   width: 100%;
-  margin-bottom: 19px;
-  margin-right: 28px;
 }
 
 .display__clear-button {
