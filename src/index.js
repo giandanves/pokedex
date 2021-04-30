@@ -6,13 +6,13 @@ let controller;
 let view;
 
 function onClick(btn) {
-  view.setState(controller.updateState(btn));
+  view.renderNumbers(controller.updateState(btn));
 }
 
 function initApp() {
   controller = new Controller();
   view = new View(onClick);
-  view.setState(controller.getState);
+  view.renderNumbers(controller.getState);
 }
 
 initApp();

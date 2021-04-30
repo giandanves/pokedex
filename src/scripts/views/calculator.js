@@ -31,9 +31,11 @@ class View {
     this.onClick(selection);
   };
 
-  setState(state) {
-    this.state = document.querySelector('#calculum-rendered');
-    this.state.textContent = state;
+  renderNumbers(state) {
+    this.calculumRendered = document.querySelector(
+      '#calculum-rendered',
+    );
+    this.calculumRendered.textContent = state;
   }
 }
 
