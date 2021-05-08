@@ -1,18 +1,21 @@
 import './style/style.scss';
 import View from './scripts/views/calculator.js';
-import Controller from './scripts/controllers/calculator';
+import Controller from './scripts/controllers/calculator.js';
 
 let controller;
 let view;
 
 function onClick(btn) {
-  view.renderNumbers(controller.updateState(btn));
+  view.renderCalculum(
+    controller.updateState(btn),
+    controller.getStateLog,
+  );
 }
 
 function initApp() {
   controller = new Controller();
   view = new View(onClick);
-  view.renderNumbers(controller.getState);
+  view.renderCalculum(controller.getState, controller.getStateLog);
 }
 
 initApp();
