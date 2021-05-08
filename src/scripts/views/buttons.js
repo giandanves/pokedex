@@ -5,6 +5,7 @@ const buttons = {
   multiply: '*',
   equals: '=',
   percent: '%',
+  signalchanger: '+/-',
   zero: '0',
   one: '1',
   two: '2',

@@ -64,7 +64,9 @@ class Controller {
   }
 
   updateState(viewState) {
-    if (viewState == '=') {
+    if (viewState == '+/-') {
+      this.state = this.state * -1;
+    } else if (viewState == '=') {
       let calculum = `${this.stateLog} ${this.state}`;
       this.makeOperation();
       this.updateStateLog(calculum, viewState);
