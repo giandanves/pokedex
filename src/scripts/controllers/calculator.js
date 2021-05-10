@@ -64,6 +64,9 @@ class Controller {
   }
 
   updateState(viewState) {
+    if (viewState == 0) {
+      this.lastStateLog = 0;
+    }
     if (viewState == '+/-') {
       this.state = this.state * -1;
       return this.getState;
@@ -94,7 +97,7 @@ class Controller {
     }
 
     if (
-      (this.state == 0 || this.opChecker == 1) &&
+      (this.state == '0' || this.opChecker == 1) &&
       isNaN(viewState) == false
     ) {
       this.getSecondCalcArgument(viewState);
