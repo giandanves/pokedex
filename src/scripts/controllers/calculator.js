@@ -61,14 +61,15 @@ class Controller {
     this.updateStateLog(this.state, viewState);
   }
 
-  updateState(viewState) {
+  caseHandler(viewState) {
     if (viewState == 'del') {
       this.state = this.state.slice(0, -1);
-      return this.getState;
+      return true;
     }
+
     if (viewState == '+/-') {
       this.state = this.state * -1;
-      return this.getState;
+      return true;
     }
 
     if (viewState == '.') {
@@ -79,7 +80,7 @@ class Controller {
     if (viewState == 'clear') {
       this.state = 0;
       this.stateLog = '';
-      return this.getState;
+      return true;
     }
 
     if (viewState == '=') {
@@ -87,11 +88,17 @@ class Controller {
       this.makeOperation();
       this.updateStateLog(calculum, viewState);
       this.lastStateLog = viewState;
-      return this.getState;
+      return true;
     }
 
     if (viewState == '%') {
       this.calcPercent();
+      return true;
+    }
+  }
+
+  updateState(viewState) {
+    if (this.caseHandler(viewState)) {
       return this.getState;
     }
 
