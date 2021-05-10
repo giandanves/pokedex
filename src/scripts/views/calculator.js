@@ -13,19 +13,25 @@ class View {
   }
 
   onButtonClick = (e) => {
-    const selection = buttons[e.currentTarget.id];
+    let selection = buttons[e.currentTarget.id];
     console.log(selection);
+    if (selection == ',') {
+      selection = '.';
+      console.log(selection);
+    }
     this.onClick(selection);
   };
 
   renderCalculum(state, stateLog) {
+    const stateRender = state.toString().replace('.', ',');
+    const stateLogRender = stateLog.toString().replace('.', ',');
     this.calculumLog = document.querySelector('#calculum-log');
-    this.calculumLog.textContent = stateLog;
+    this.calculumLog.textContent = stateLogRender;
 
     this.calculumRendered = document.querySelector(
       '#calculum-rendered',
     );
-    this.calculumRendered.textContent = state;
+    this.calculumRendered.textContent = stateRender;
   }
 }
 
