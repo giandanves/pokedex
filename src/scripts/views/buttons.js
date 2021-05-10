@@ -1,4 +1,5 @@
 const buttons = {
+  clear: 'clear',
   add: '+',
   subtract: '-',
   divide: '/',
@@ -6,6 +7,7 @@ const buttons = {
   equals: '=',
   percent: '%',
   signalchanger: '+/-',
+  comma: ',',
   zero: '0',
   one: '1',
   two: '2',
