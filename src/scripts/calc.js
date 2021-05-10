@@ -1,7 +1,6 @@
 function calc(calcString) {
   const numbers = calcString.match(/[]{0,1}[\d]*[.]{0,1}[\d]+/g);
 
-  console.dir(numbers);
   let operators = calcString.split(/\d+/).filter((obj) => {
     if (obj == '+' || obj == '/' || obj == '-' || obj == '*') {
       return obj;

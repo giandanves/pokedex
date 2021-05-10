@@ -1,4 +1,5 @@
 const buttons = {
+  delete: 'del',
   clear: 'clear',
   add: '+',
   subtract: '-',

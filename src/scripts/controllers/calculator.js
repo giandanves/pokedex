@@ -46,8 +46,6 @@ class Controller {
 
   makeOperation() {
     if (this.stateLog) {
-      console.log(this.getStateLog);
-      console.log(this.state);
       this.state = calc(this.getStateLog + this.state);
     }
   }
@@ -64,8 +62,9 @@ class Controller {
   }
 
   updateState(viewState) {
-    if (viewState == 0) {
-      this.lastStateLog = 0;
+    if (viewState == 'del') {
+      this.state = this.state.slice(0, -1);
+      return this.getState;
     }
     if (viewState == '+/-') {
       this.state = this.state * -1;

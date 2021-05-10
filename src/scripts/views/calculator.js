@@ -14,10 +14,8 @@ class View {
 
   onButtonClick = (e) => {
     let selection = buttons[e.currentTarget.id];
-    console.log(selection);
     if (selection == ',') {
       selection = '.';
-      console.log(selection);
     }
     this.onClick(selection);
   };
