@@ -66,27 +66,46 @@ class Controller {
   updateState(viewState) {
     if (viewState == '+/-') {
       this.state = this.state * -1;
-    } else if (viewState == '=') {
+      return this.getState;
+    }
+
+    if (viewState == '.') {
+      this.state += viewState;
+      return this.state;
+    }
+
+    if (viewState == 'clear') {
+      this.state = 0;
+      this.stateLog = '';
+      return this.getState;
+    }
+
+    if (viewState == '=') {
       let calculum = `${this.stateLog} ${this.state}`;
       this.makeOperation();
       this.updateStateLog(calculum, viewState);
       this.lastStateLog = viewState;
-    } else if (viewState == '%') {
-      this.calcPercent();
-    } else {
-      if (
-        (this.state == 0 || this.opChecker == 1) &&
-        isNaN(viewState) == false
-      ) {
-        this.getSecondCalcArgument(viewState);
-      } else if (isNaN(viewState)) {
-        this.handleOperation(viewState);
-      } else {
-        this.state += viewState;
-      }
-
-      this.lastStateLog = viewState;
+      return this.getState;
     }
+
+    if (viewState == '%') {
+      this.calcPercent();
+      return this.getState;
+    }
+
+    if (
+      (this.state == 0 || this.opChecker == 1) &&
+      isNaN(viewState) == false
+    ) {
+      this.getSecondCalcArgument(viewState);
+    } else if (isNaN(viewState)) {
+      this.handleOperation(viewState);
+    } else {
+      this.state += viewState;
+    }
+
+    this.lastStateLog = viewState;
+
     return this.getState;
   }
 }
