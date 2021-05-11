@@ -24,10 +24,6 @@ class Controller {
   }
 
   storeOperation(stateLog, state, viewState, calculum) {
-    console.log(stateLog);
-    console.log(state);
-    console.log(viewState);
-
     if (this.store) {
       if (viewState == '=') {
         this.store += `${stateLog.substr(
@@ -43,12 +39,11 @@ class Controller {
       this.store += `${stateLog}${state}`;
     }
 
-    console.log(this.store);
     if (viewState == '=') {
       this.locallyStoredOperation = {
         id: this.idController,
         operation: this.store,
-        date: new Date(),
+        date: new Date().toISOString(),
       };
 
       this.store = '';
@@ -129,10 +124,15 @@ class Controller {
     }
 
     if (viewState == '=') {
-      let calculum = `${this.stateLog} ${this.state}`;
-      this.makeOperation(viewState);
-      this.updateStateLog(calculum, viewState);
-      this.lastStateLog = viewState;
+      if (this.lastStateLog == viewState) {
+        return this._state;
+      }
+      if (this.stateLog) {
+        let calculum = `${this.stateLog} ${this.state}`;
+        this.makeOperation(viewState);
+        this.updateStateLog(calculum, viewState);
+        this.lastStateLog = viewState;
+      }
       return this._state;
     }
 
