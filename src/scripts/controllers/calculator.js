@@ -6,6 +6,9 @@ class Controller {
     this.lastStateLog = 0;
     this.stateLog = '';
     this.opChecker = 0;
+    this.store = '';
+    this.storedOperation = '';
+    this.idController = 0;
   }
 
   get _state() {
@@ -14,6 +17,39 @@ class Controller {
 
   get _stateLog() {
     return this.stateLog;
+  }
+
+  storeOperation(stateLog, state, viewState, calculum) {
+    console.log(stateLog);
+    console.log(state);
+    console.log(viewState);
+
+    if (this.store) {
+      if (viewState == '=') {
+        this.store += `${stateLog.substr(
+          -1,
+        )}${state}${viewState}${calculum}`;
+      } else {
+        this.store += `${viewState}${state}`;
+      }
+      console.log(this.store);
+    } else if (viewState == '=') {
+      this.store = `${stateLog}${state}${viewState}${calculum}`;
+    } else {
+      this.store += `${stateLog}${state}`;
+    }
+
+    console.log(this.store);
+    if (viewState == '=') {
+      this.storedOperation = {
+        id: this.idController,
+        operation: this.store,
+        date: new Date(),
+      };
+
+      this.store = '';
+      this.idController++;
+    }
   }
 
   updateStateLog(state, viewState) {
@@ -41,9 +77,16 @@ class Controller {
     );
   }
 
-  makeOperation() {
+  makeOperation(viewState) {
     if (this.stateLog) {
-      this.state = calc(this._stateLog + this.state);
+      let calculum = calc(this._stateLog + this.state);
+      this.storeOperation(
+        this.stateLog,
+        this.state,
+        viewState,
+        calculum,
+      );
+      this.state = calculum;
     }
   }
 
@@ -53,7 +96,7 @@ class Controller {
     if (isNaN(this.lastStateLog)) {
       this.changeOperation(viewState);
     } else {
-      this.makeOperation();
+      this.makeOperation(viewState);
     }
     this.updateStateLog(this.state, viewState);
   }
@@ -82,7 +125,7 @@ class Controller {
 
     if (viewState == '=') {
       let calculum = `${this.stateLog} ${this.state}`;
-      this.makeOperation();
+      this.makeOperation(viewState);
       this.updateStateLog(calculum, viewState);
       this.lastStateLog = viewState;
       return this._state;
