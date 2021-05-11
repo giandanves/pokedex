@@ -1,7 +1,4 @@
-import {
-  calc,
-  percent,
-} from '/home/giandanves/coding/xarlinhos-academy/src/scripts/calc.js';
+import { calc, percent } from '../calc.js';
 
 class Controller {
   constructor() {
@@ -11,11 +8,11 @@ class Controller {
     this.opChecker = 0;
   }
 
-  get getState() {
+  get _state() {
     return this.state;
   }
 
-  get getStateLog() {
+  get _stateLog() {
     return this.stateLog;
   }
 
@@ -46,7 +43,7 @@ class Controller {
 
   makeOperation() {
     if (this.stateLog) {
-      this.state = calc(this.getStateLog + this.state);
+      this.state = calc(this._stateLog + this.state);
     }
   }
 
@@ -61,15 +58,15 @@ class Controller {
     this.updateStateLog(this.state, viewState);
   }
 
-  caseHandler(viewState) {
+  updateState(viewState) {
     if (viewState == 'del') {
       this.state = this.state.slice(0, -1);
-      return true;
+      return this._state;
     }
 
     if (viewState == '+/-') {
       this.state = this.state * -1;
-      return true;
+      return this._state;
     }
 
     if (viewState == '.') {
@@ -80,7 +77,7 @@ class Controller {
     if (viewState == 'clear') {
       this.state = 0;
       this.stateLog = '';
-      return true;
+      return this._state;
     }
 
     if (viewState == '=') {
@@ -88,18 +85,12 @@ class Controller {
       this.makeOperation();
       this.updateStateLog(calculum, viewState);
       this.lastStateLog = viewState;
-      return true;
+      return this._state;
     }
 
     if (viewState == '%') {
       this.calcPercent();
-      return true;
-    }
-  }
-
-  updateState(viewState) {
-    if (this.caseHandler(viewState)) {
-      return this.getState;
+      return this._state;
     }
 
     if (
@@ -115,7 +106,7 @@ class Controller {
 
     this.lastStateLog = viewState;
 
-    return this.getState;
+    return this._state;
   }
 }
 

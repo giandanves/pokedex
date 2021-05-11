@@ -8,14 +8,14 @@ let view;
 function onClick(btn) {
   view.renderCalculum(
     controller.updateState(btn),
-    controller.getStateLog,
+    controller._stateLog,
   );
 }
 
 function initApp() {
   controller = new Controller();
   view = new View(onClick);
-  view.renderCalculum(controller.getState, controller.getStateLog);
+  view.renderCalculum(controller._state, controller._stateLog);
 }
 
 initApp();
