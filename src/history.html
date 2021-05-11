@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>IziPizi - You personal calculator</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter"
+    />
+  </head>
+
+  <body>
+    <div class="history-screen">
+      <div class="history-screen__header"></div>
+      <div class="nav-bar"></div>
+      <div class="history-screen__history-container"></div>
+      <footer class="footer">
+        <div class="footer__nav-bar">
+          <div class="footer__navbar--button">
+            <img
+              class="footer__navbar--button--icon"
+              src="<%= require('./img/trash.svg').default %>"
+            />
+          </div>
+          <div class="footer__navbar--button">
+            <img
+              class="footer__navbar--button--icon"
+              src="<%= require('./img/star.svg').default %>"
+            />
+          </div>
+          <div class="footer__navbar--button">
+            <img
+              class="footer__navbar--button--icon"
+              src="<%= require('./img/stats.svg').default %>"
+            />
+          </div>
+        </div>
+        <div class="footer__calc-button">
+          <p class="footer__calc-button--text">Calcular</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
