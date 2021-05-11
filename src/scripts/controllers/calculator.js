@@ -7,7 +7,7 @@ class Controller {
     this.stateLog = '';
     this.opChecker = 0;
     this.store = '';
-    this.storedOperation = '';
+    this.locallyStoredOperation = '';
     this.idController = 0;
   }
 
@@ -17,6 +17,10 @@ class Controller {
 
   get _stateLog() {
     return this.stateLog;
+  }
+
+  get storedOperation() {
+    return this.locallyStoredOperation;
   }
 
   storeOperation(stateLog, state, viewState, calculum) {
@@ -41,7 +45,7 @@ class Controller {
 
     console.log(this.store);
     if (viewState == '=') {
-      this.storedOperation = {
+      this.locallyStoredOperation = {
         id: this.idController,
         operation: this.store,
         date: new Date(),
@@ -102,6 +106,7 @@ class Controller {
   }
 
   updateState(viewState) {
+    this.locallyStoredOperation = '';
     if (viewState == 'del') {
       this.state = this.state.slice(0, -1);
       return this._state;
