@@ -26,10 +26,14 @@
           />
         </div>
         <div class="display__calculum-container">
-          <h3 class="display__calculum-container--log">
-            678 + 910 - 13 x 5 / 7 =
-          </h3>
-          <h2 class="display__calculum-container--calculum">1.125</h2>
+          <h3
+            class="display__calculum-container--log"
+            id="calculum-log"
+          ></h3>
+          <h2
+            class="display__calculum-container--calculum"
+            id="calculum-rendered"
+          ></h2>
         </div>
 
         <div class="display__buttons-container">
@@ -44,6 +48,7 @@
           <div class="display__clear-button-container">
             <img
               class="display__clear-button"
+              id="delete"
               src="<%= require('./img/clearbutton.svg').default %>"
             />
           </div>
@@ -52,30 +57,31 @@
 
       <div class="keyboard">
         <div class="keyboard__button">
-          <p class="keyboard__button__text">C</p>
+          <p class="keyboard__button__text" id="clear">C</p>
         </div>
         <div class="keyboard__button">
-          <p class="keyboard__button__text">+/-</p>
+          <p class="keyboard__button__text" id="signalchanger">+/-</p>
         </div>
         <div class="keyboard__button">
-          <p class="keyboard__button__text">%</p>
+          <p class="keyboard__button__text" id="percent">%</p>
         </div>
         <div
           class="keyboard__button keyboard__button--operation-background"
         >
           <p
             class="keyboard__button__text keyboard__button--operation--text"
+            id="divide"
           >
             /
           </p>
         </div>
-        <div class="keyboard__button">
+        <div class="keyboard__button" id="seven">
           <p class="keyboard__button__text">7</p>
         </div>
-        <div class="keyboard__button">
+        <div class="keyboard__button" id="eight">
           <p class="keyboard__button__text">8</p>
         </div>
-        <div class="keyboard__button">
+        <div class="keyboard__button" id="nine">
           <p class="keyboard__button__text">9</p>
         </div>
         <div
@@ -83,17 +89,18 @@
         >
           <p
             class="keyboard__button__text keyboard__button--operation--text"
+            id="multiply"
           >
             X
           </p>
         </div>
-        <div class="keyboard__button">
+        <div class="keyboard__button" id="four">
           <p class="keyboard__button__text">4</p>
         </div>
-        <div class="keyboard__button">
+        <div class="keyboard__button" id="five">
           <p class="keyboard__button__text">5</p>
         </div>
-        <div class="keyboard__button">
+        <div class="keyboard__button" id="six">
           <p class="keyboard__button__text">6</p>
         </div>
         <div
@@ -101,17 +108,18 @@
         >
           <p
             class="keyboard__button__text keyboard__button--operation--text"
+            id="subtract"
           >
             -
           </p>
         </div>
-        <div class="keyboard__button">
+        <div class="keyboard__button" id="one">
           <p class="keyboard__button__text">1</p>
         </div>
-        <div class="keyboard__button">
+        <div class="keyboard__button" id="two">
           <p class="keyboard__button__text">2</p>
         </div>
-        <div class="keyboard__button">
+        <div class="keyboard__button" id="three">
           <p class="keyboard__button__text">3</p>
         </div>
         <div
@@ -119,19 +127,21 @@
         >
           <p
             class="keyboard__button__text keyboard__button--operation--text"
+            id="add"
           >
             +
           </p>
         </div>
-        <div class="keyboard__button">
+        <div class="keyboard__button" id="zero">
           <p class="keyboard__button__text">0</p>
         </div>
         <div class="keyboard__button">
-          <p class="keyboard__button__text">,</p>
+          <p class="keyboard__button__text" id="comma">,</p>
         </div>
         <div class="keyboard__button keyboard__button__equals">
           <p
             class="keyboard__button__text keyboard__button--operation--text"
+            id="equals"
           >
             =
           </p>

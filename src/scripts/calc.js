@@ -1,16 +1,30 @@
 function calc(calcString) {
-  const numbers = calcString.split(/\D+/g);
-  const operators = calcString.split(/\d+/).filter((obj) => obj);
+  const numbers = calcString.split(/\+|-|\/|\*/);
 
+  let operators = calcString.split(/\d+/).filter((obj) => {
+    if (obj == '+' || obj == '/' || obj == '-' || obj == '*') {
+      return obj;
+    }
+  });
   let result = numbers[0];
 
+  if (calcString[0] == '-') {
+    result = operators[0] + numbers[0];
+    operators.splice(0, 1);
+  }
+
   operators.forEach((operator, i) => {
-    result = operations[operator](result, numbers[i + 1]);
+    if (i < numbers.length) {
+      result = operations[operator](result, numbers[i + 1]);
+    }
   });
 
   return result;
 }
 
+function percent(n1, n2) {
+  return (n2 * n1.split(/\D+/g)[0]) / 100;
+}
 const operations = {
   '+': (n1, n2) => n1 * 1 + n2 * 1,
   '-': (n1, n2) => n1 * 1 - n2 * 1,
@@ -18,4 +32,4 @@ const operations = {
   '/': (n1, n2) => n1 / n2,
 };
 
-export default calc;
+export { calc, percent };
