@@ -1,5 +1,5 @@
 import { calc, percent } from '../calc.js';
-
+import uniqid from 'uniqid';
 class Controller extends EventTarget {
   constructor() {
     super();
@@ -38,13 +38,13 @@ class Controller extends EventTarget {
       this.dispatchEvent(
         new CustomEvent('operationFinished', {
           detail: {
-            id: this.idController,
+            id: uniqid(),
             operation: this.store,
             date: new Date(),
           },
         }),
       );
-      this.idController++;
+      this.store = '';
     }
   }
 
