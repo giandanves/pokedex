@@ -1,4 +1,4 @@
-class InMemory {
+class inMemory {
   constructor() {
     this.history = [];
   }
@@ -119,4 +119,4 @@ class InMemory {
   };
 }
 
-export default InMemory;
+export default inMemory;

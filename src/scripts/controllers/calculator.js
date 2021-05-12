@@ -1,10 +1,12 @@
 import { calc, percent } from '../calc.js';
 
-class Controller {
+class Controller extends EventTarget {
   constructor() {
+    super();
     this.state = '0';
     this.lastStateLog = 0;
     this.stateLog = '';
+    this.store = '';
     this.opChecker = 0;
   }
 
@@ -14,6 +16,31 @@ class Controller {
 
   get _stateLog() {
     return this.stateLog;
+  }
+
+  storeOperation(stateLog, state, viewState, calculum) {
+    if (this.store) {
+      if (viewState == '=') {
+        this.store += `${stateLog.substr(
+          -1,
+        )}${state}${viewState}${calculum}`;
+      } else {
+        this.store += `${viewState}${state}`;
+      }
+    } else if (viewState == '=') {
+      this.store = `${stateLog}${state}${viewState}${calculum}`;
+    } else {
+      this.store += `${stateLog}${state}`;
+    }
+
+    if (viewState == '=') {
+      this.dispatchEvent(
+        new CustomEvent('operationFinished', {
+          detail: this.store,
+        }),
+      );
+      this.store = '';
+    }
   }
 
   updateStateLog(state, viewState) {
@@ -41,9 +68,16 @@ class Controller {
     );
   }
 
-  makeOperation() {
+  makeOperation(viewState) {
     if (this.stateLog) {
-      this.state = calc(this._stateLog + this.state);
+      let calculum = calc(this._stateLog + this.state);
+      this.storeOperation(
+        this.stateLog,
+        this.state,
+        viewState,
+        calculum,
+      );
+      this.state = calculum;
     }
   }
 
@@ -53,12 +87,13 @@ class Controller {
     if (isNaN(this.lastStateLog)) {
       this.changeOperation(viewState);
     } else {
-      this.makeOperation();
+      this.makeOperation(viewState);
     }
     this.updateStateLog(this.state, viewState);
   }
 
   updateState(viewState) {
+    this.locallyStoredOperation = '';
     if (viewState == 'del') {
       this.state = this.state.slice(0, -1);
       return this._state;
@@ -81,10 +116,15 @@ class Controller {
     }
 
     if (viewState == '=') {
-      let calculum = `${this.stateLog} ${this.state}`;
-      this.makeOperation();
-      this.updateStateLog(calculum, viewState);
-      this.lastStateLog = viewState;
+      if (this.lastStateLog == viewState) {
+        return this._state;
+      }
+      if (this.stateLog) {
+        let calculum = `${this.stateLog} ${this.state}`;
+        this.makeOperation(viewState);
+        this.updateStateLog(calculum, viewState);
+        this.lastStateLog = viewState;
+      }
       return this._state;
     }
 
