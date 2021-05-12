@@ -10,8 +10,56 @@
   <body>
     <div class="history-screen">
       <div class="history-screen__header"></div>
-      <div class="nav-bar"></div>
-      <div class="history-screen__history-container"></div>
+      <div class="history-screen__display">
+        <img
+          class="history-screen__display__back-button"
+          src="<%= require('./img/back-button.svg').default %>"
+        />
+        <div class="nav-bar">
+          <div class="navbar__button">
+            <p class="navbar__button--text--left--history">Histórico</p>
+          </div>
+          <div class="navbar__button" onclick="window.location.href = '/stats.html'">
+            <p class="navbar__button--text--right" >Estatísticas</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="history-screen__history-container">
+        <div class="history-screen__history-container">
+          <div class="history-screen__history-container__empty-history">
+            <p class="empty-history--text">Ainda não há histórico</p>
+            <img
+              class="empty-history--img"
+              src="<%= require('./img/empty-history-img.svg').default %>"
+            />
+          </div>
+        
+          <div class="history-screen__history-container__filled-history">
+            <div class="history-container__calculum">
+              <h3 class="calculum__operation">678+910-13*5/7=</h3>
+              <h2 class="calculum__result">1125</h2>
+            </div>
+            <div class="history-container__calculum">
+              <h3 class="calculum__operation">678+910-13*5/7=</h3>
+              <h2 class="calculum__result">1125</h2>
+            </div>
+            <div class="history-container__calculum">
+              <h3 class="calculum__operation">678+910-13*5/7=</h3>
+              <h2 class="calculum__result">1125</h2>
+            </div>
+            <div class="history-container__calculum">
+              <h3 class="calculum__operation">678+910-13*5/7=</h3>
+              <h2 class="calculum__result">1125</h2>
+            </div>
+            <div class="history-container__calculum">
+              <h3 class="calculum__operation">678+910-13*5/7=</h3>
+              <h2 class="calculum__result">1125</h2>
+            </div>
+        
+          </div>
+        </div>
+        
       <footer class="footer">
         <div class="footer__nav-bar">
           <div class="footer__navbar--button">
