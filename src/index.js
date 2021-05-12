@@ -1,3 +1,4 @@
+import uniqid from 'uniqid';
 import './style/style.scss';
 import View from './scripts/views/calculator.js';
 import Controller from './scripts/controllers/calculator.js';
@@ -8,7 +9,11 @@ let view;
 let storage = new LocalStorage();
 
 controller.addEventListener('operationFinished', (e) => {
-  storage.save(e.detail);
+  storage.save({
+    id: uniqid(),
+    operation: e.detail,
+    date: new Date(),
+  });
   storage.history.then((r) => {
     console.log(r);
   });
