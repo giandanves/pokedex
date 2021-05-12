@@ -17,6 +17,11 @@ module.exports = {
       template: 'src/history.html',
       filename: 'history.html',
     }),
+    new HtmlWebpackPlugin({
+      inject: 'body',
+      template: 'src/stats.html',
+      filename: 'stats.html',
+    }),
     new MiniCssExtractPlugin({ filename: 'style.css' }),
   ],
 
