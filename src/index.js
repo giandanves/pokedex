@@ -1,7 +1,6 @@
 import './style/style.scss';
 import View from './scripts/views/calculator.js';
 import Controller from './scripts/controllers/calculator.js';
-import changePage from './scripts/controllers/pages.js';
 
 let controller;
 let view;
