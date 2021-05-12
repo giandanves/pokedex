@@ -1,13 +1,13 @@
 import { calc, percent } from '../calc.js';
 
-class Controller {
+class Controller extends EventTarget {
   constructor() {
+    super();
     this.state = '0';
     this.lastStateLog = 0;
     this.stateLog = '';
-    this.opChecker = 0;
     this.store = '';
-    this.locallyStoredOperation = '';
+    this.opChecker = 0;
     this.idController = 0;
   }
 
@@ -19,10 +19,6 @@ class Controller {
     return this.stateLog;
   }
 
-  get storedOperation() {
-    return this.locallyStoredOperation;
-  }
-
   storeOperation(stateLog, state, viewState, calculum) {
     if (this.store) {
       if (viewState == '=') {
@@ -32,7 +28,6 @@ class Controller {
       } else {
         this.store += `${viewState}${state}`;
       }
-      console.log(this.store);
     } else if (viewState == '=') {
       this.store = `${stateLog}${state}${viewState}${calculum}`;
     } else {
@@ -40,13 +35,15 @@ class Controller {
     }
 
     if (viewState == '=') {
-      this.locallyStoredOperation = {
-        id: this.idController,
-        operation: this.store,
-        date: new Date().toISOString(),
-      };
-
-      this.store = '';
+      this.dispatchEvent(
+        new CustomEvent('operationFinished', {
+          detail: {
+            id: this.idController,
+            operation: this.store,
+            date: new Date(),
+          },
+        }),
+      );
       this.idController++;
     }
   }
