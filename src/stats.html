@@ -31,11 +31,27 @@
       </div>
 
       <div class="history-screen__history-container">
-        <div class="stats-screen__stats-container">
-          <p class="empty-history--text">Ainda não há histórico</p>
+        <div class="stats-screen__favorite-operations-container">
+          <p class="stats-screen__fav-op-text">Operações favoritas</p>
+          <div class="stats-screen__favorite-operations">
+            <p class="stats-screen__fav-op-calc">678+910-13x5/7=</p>
+            <p class="stats-screen__fav-op-result">1125</p>
+          </div>
           <img
-            class="empty-history--img"
-            src="<%= require('./img/empty-history-img.svg').default %>"
+            class="stats-screen__fav-op-img"
+            src="<%= require('./img/fav-operations-img.svg').default %>"
+          />
+        </div>
+
+        <div class="stats-screen__total-operations-container">
+          <p class="stats-screen__total-op-text">
+            Total de operações
+          </p>
+          <p class="stats-screen__total-op-value">119</p>
+
+          <img
+            class="stats-screen__total-op-img"
+            src="<%= require('./img/total-operations-img.svg').default %>"
           />
         </div>
       </div>
