@@ -1,3 +1,9 @@
+.stats-screen__stats-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .stats-screen__favorite-operations-container {
   display: block;
 }
@@ -13,6 +19,10 @@
   width: 100%;
   font-weight: 400;
   font-size: 16px;
+}
+
+.stats-screen__fav-operations--img {
+  width: 224px;
 }
 
 .stats-screen__total-op-text {

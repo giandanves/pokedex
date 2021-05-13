@@ -32,12 +32,6 @@
   justify-content: center;
 }
 
-.stats-screen__stats-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .empty-history--text {
   margin-top: 72px;
   color: #979899;
@@ -49,10 +43,6 @@
 .empty-history--img {
   height: 170px;
   margin-top: 61px;
-}
-
-.stats-screen__fav-operations--img {
-  width: 224px;
 }
 
 .history-screen__history-container__filled-history {
