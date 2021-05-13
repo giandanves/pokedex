@@ -3,6 +3,7 @@
 @import 'history';
 @import 'footer';
 @import 'navbar';
+@import 'stats';
 
 body {
   background-color: grey;
@@ -11,19 +12,12 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 0px;
-}
-
-::-webkit-scrollbar-track {
-  height: 0px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #6859b2;
+  background-color: #6859b3;
   border: 1.2px solid #6859b3;
-  width: 0px;
-  height: 0px;
 }
 
 p {

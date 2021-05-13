@@ -1,0 +1,66 @@
+.stats-screen__favorite-operations-container {
+  display: block;
+}
+
+.stats-screen__total-operations-container {
+  display: none;
+}
+
+.stats-screen__fav-op-text {
+  margin-top: 53px;
+  color: #979899;
+  text-align: center;
+  width: 100%;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.stats-screen__total-op-text {
+  margin-top: 53px;
+  color: #979899;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+}
+
+.stats-screen__total-op-value {
+  font-size: 24px;
+  color: #4c4c4d;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 0em;
+  margin-top: 18px;
+  text-align: center;
+}
+.stats-screen__favorite-operations {
+  margin-top: 26px;
+  display: flex;
+  justify-content: center;
+}
+
+.stats-screen__fav-op-calc {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 12px;
+  letter-spacing: 0em;
+  color: #4c4c4d;
+}
+
+.stats-screen__fav-op-result {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 12px;
+  color: #6859b2;
+}
+
+.stats-screen__fav-op-img {
+  margin-top: 70px;
+  width: 224px;
+  align-self: center;
+}
+
+.stats-screen__total-op-img {
+  margin-top: 65px;
+  width: 184px;
+  align-self: center;
+}
