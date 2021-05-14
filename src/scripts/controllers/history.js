@@ -18,29 +18,35 @@ function separateOperationAndResult(operation, result, calculum) {
 }
 
 function checkStorageIsFilled(storage) {
-  if (storage.history) {
-    storage.history.then((r) => {
-      r.forEach((savedOperation) => {
-        const calculumDiv = document.createElement('div');
-        calculumDiv.className = 'history-container__calculum';
-        const operation = document.createElement('h3');
-        operation.className = 'calculum__operation';
-        const result = document.createElement('h2');
-        result.className = 'calculum__result';
-        separateOperationAndResult(
-          operation,
-          result,
-          savedOperation.operation,
-        );
-        calculumDiv.appendChild(operation);
-        calculumDiv.appendChild(result);
-        filledHistory.appendChild(calculumDiv);
-      });
-    });
+  storage.history.then((r) => {
+    if (r.length) {
+      renderOperationsOnHistory(r);
+      filledHistory.style.display = 'flex';
+      emptyHistory.style.display = 'none';
+    } else {
+      filledHistory.style.display = 'none';
+      emptyHistory.style.display = 'flex';
+    }
+  });
+}
 
-    filledHistory.style.display = 'flex';
-    emptyHistory.style.display = 'none';
-  }
+function renderOperationsOnHistory(history) {
+  history.forEach((savedOperation) => {
+    const calculumDiv = document.createElement('div');
+    calculumDiv.className = 'history-container__calculum';
+    const operation = document.createElement('h3');
+    operation.className = 'calculum__operation';
+    const result = document.createElement('h2');
+    result.className = 'calculum__result';
+    separateOperationAndResult(
+      operation,
+      result,
+      savedOperation.operation,
+    );
+    calculumDiv.appendChild(operation);
+    calculumDiv.appendChild(result);
+    filledHistory.appendChild(calculumDiv);
+  });
 }
 
 export default checkStorageIsFilled;
