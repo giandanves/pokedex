@@ -13,6 +13,7 @@
       <div class="history-screen__display">
         <img
           class="history-screen__display__back-button"
+          onclick="window.location.href = '/'"
           src="<%= require('./img/back-button.svg').default %>"
         />
         <div class="nav-bar">
@@ -53,32 +54,6 @@
           />
         </div>
       </div>
-
-      <footer class="footer">
-        <div class="footer__nav-bar">
-          <div class="footer__nav-bar--button">
-            <img
-              class="footer__nav-bar--button--icon"
-              src="<%= require('./img/trash.svg').default %>"
-            />
-          </div>
-          <div class="footer__nav-bar--button">
-            <img
-              class="footer__nav-bar--button--icon"
-              src="<%= require('./img/star.svg').default %>"
-            />
-          </div>
-          <div class="footer__nav-bar--button">
-            <img
-              class="footer__nav-bar--button--icon"
-              src="<%= require('./img/stats.svg').default %>"
-            />
-          </div>
-        </div>
-        <div class="footer__calc-button">
-          <p class="footer__calc-button--text">Calcular</p>
-        </div>
-      </footer>
     </div>
   </body>
 </html>
