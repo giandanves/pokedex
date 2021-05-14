@@ -17,23 +17,21 @@
         />
         <div class="nav-bar">
           <div
-            class="navbar__button"
+            class="nav-bar__button"
             onclick="window.location.href = '/history.html'"
           >
-            <p class="navbar__button--text--left">Histórico</p>
+            <p class="nav-bar__button--text">Histórico</p>
           </div>
-          <div class="navbar__button">
-            <p class="navbar__button--text--right--stats">
-              Estatísticas
-            </p>
+          <div class="nav-bar__button">
+            <p class="nav-bar__button--text--onpage">Estatísticas</p>
           </div>
         </div>
       </div>
 
-      <div class="history-screen__history-container">
+      <div class="stats-screen">
         <div class="stats-screen__favorite-operations-container">
           <p class="stats-screen__fav-op-text">Operações favoritas</p>
-          <div class="stats-screen__favorite-operations">
+          <div class="stats-screen__fav-op">
             <p class="stats-screen__fav-op-calc">678+910-13x5/7=</p>
             <p class="stats-screen__fav-op-result">1125</p>
           </div>
@@ -58,21 +56,21 @@
 
       <footer class="footer">
         <div class="footer__nav-bar">
-          <div class="footer__navbar--button">
+          <div class="footer__nav-bar--button">
             <img
-              class="footer__navbar--button--icon"
+              class="footer__nav-bar--button--icon"
               src="<%= require('./img/trash.svg').default %>"
             />
           </div>
-          <div class="footer__navbar--button">
+          <div class="footer__nav-bar--button">
             <img
-              class="footer__navbar--button--icon"
+              class="footer__nav-bar--button--icon"
               src="<%= require('./img/star.svg').default %>"
             />
           </div>
-          <div class="footer__navbar--button">
+          <div class="footer__nav-bar--button">
             <img
-              class="footer__navbar--button--icon"
+              class="footer__nav-bar--button--icon"
               src="<%= require('./img/stats.svg').default %>"
             />
           </div>
