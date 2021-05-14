@@ -4,16 +4,26 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: {
+    index: './src/index.js',
+    history: './src/history.js',
+  },
+  output: {
+    filename: '[name]bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    clean: true,
+  },
 
   plugins: [
     new HtmlWebpackPlugin({
       inject: 'body',
+      chunks: ['index'],
       template: 'src/index.html',
       filename: 'index.html',
     }),
     new HtmlWebpackPlugin({
       inject: 'body',
+      chunks: ['history'],
       template: 'src/history.html',
       filename: 'history.html',
     }),
@@ -28,11 +38,6 @@ module.exports = {
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',
-  },
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    clean: true,
   },
 
   module: {
