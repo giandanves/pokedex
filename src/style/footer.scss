@@ -4,39 +4,42 @@
   background-color: blue;
   margin-bottom: 0px;
   width: 100%;
-}
-.footer__nav-bar {
-  width: 192px;
-  background-color: white;
-  display: flex;
-  align-items: center;
-}
-.footer__navbar--button {
-  border: 1px solid #6859b3;
-  margin-left: 16px;
-  box-sizing: border-box;
-  border-radius: 7px;
-  height: 40px;
-  width: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.footer__navbar--button--icon {
-  height: 14px;
-}
 
-.footer__calc-button {
-  display: flex;
-  align-items: center;
-  background-color: #6859b2;
-  width: 104px;
-}
+  &__nav-bar {
+    width: 192px;
+    background-color: white;
+    display: flex;
+    align-items: center;
 
-.footer__calc-button--text {
-  width: 100%;
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 16px;
-  color: white;
+    &--button {
+      border: 1px solid #6859b3;
+      margin-left: 16px;
+      box-sizing: border-box;
+      border-radius: 7px;
+      height: 40px;
+      width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &--icon {
+        height: 14px;
+      }
+    }
+  }
+
+  &__calc-button {
+    display: flex;
+    align-items: center;
+    background-color: #6859b2;
+    width: 104px;
+
+    &--text {
+      width: 100%;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 16px;
+      color: white;
+    }
+  }
 }

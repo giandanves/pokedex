@@ -4,39 +4,21 @@
   align-items: flex-end;
   width: 100%;
   background-color: rgb(227, 228, 229, 0.1);
-}
 
-.navbar__button {
-  height: 22px;
-  width: 148px;
-}
+  &__button {
+    height: 22px;
+    width: 148px;
 
-.navbar__button--text--left {
-  font-size: 14px;
-  color: #4c4c4d;
-  font-weight: 500;
-  padding: 8px;
-}
+    &--text {
+      font-size: 14px;
+      color: #4c4c4d;
+      font-weight: 500;
+      padding: 8px;
 
-.navbar__button--text--right {
-  font-size: 14px;
-  color: #4c4c4d;
-  font-weight: 500;
-  padding: 8px;
-}
-
-.navbar__button--text--left--history {
-  font-size: 14px;
-  color: #4c4c4d;
-  font-weight: 500;
-  padding: 8px;
-  border-bottom: 1.2px solid #6859b3;
-}
-
-.navbar__button--text--right--stats {
-  font-size: 14px;
-  color: #4c4c4d;
-  font-weight: 500;
-  padding: 8px;
-  border-bottom: 1.2px solid #6859b3;
+      &--onpage {
+        @extend .nav-bar__button--text;
+        border-bottom: 1.2px solid #6859b3;
+      }
+    }
+  }
 }
