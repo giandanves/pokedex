@@ -1,10 +1,23 @@
 @import 'keyboard';
 @import 'display';
+@import 'history';
+@import 'footer';
+@import 'navbar';
+@import 'stats';
 
 body {
   background-color: grey;
   font-family: Inter;
   font-style: normal;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #6859b3;
+  border: 1.2px solid #6859b3;
 }
 
 p {

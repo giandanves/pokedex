@@ -12,6 +12,16 @@ module.exports = {
       template: 'src/index.html',
       filename: 'index.html',
     }),
+    new HtmlWebpackPlugin({
+      inject: 'body',
+      template: 'src/history.html',
+      filename: 'history.html',
+    }),
+    new HtmlWebpackPlugin({
+      inject: 'body',
+      template: 'src/stats.html',
+      filename: 'stats.html',
+    }),
     new MiniCssExtractPlugin({ filename: 'style.css' }),
   ],
 

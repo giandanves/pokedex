@@ -1,0 +1,83 @@
+.stats-screen {
+  height: 390px;
+  width: 100%;
+  background-color: rgb(227, 228, 229, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__stats-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__favorite-operations-container {
+    display: block;
+  }
+
+  &__total-operations-container {
+    display: none;
+  }
+
+  &__fav-operations--img {
+    width: 224px;
+  }
+
+  &__total-op-text {
+    margin-top: 53px;
+    color: #979899;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  &__total-op-value {
+    font-size: 24px;
+    color: #4c4c4d;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: 0em;
+    margin-top: 18px;
+    text-align: center;
+  }
+  &__fav-op {
+    margin-top: 26px;
+    display: flex;
+    justify-content: center;
+
+    &-text {
+      margin-top: 53px;
+      color: #979899;
+      text-align: center;
+      width: 100%;
+      font-weight: 400;
+      font-size: 16px;
+    }
+
+    &-calc {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 12px;
+      letter-spacing: 0em;
+      color: #4c4c4d;
+    }
+
+    &-result {
+      @extend .stats-screen__fav-op-calc;
+      color: #6859b2;
+    }
+
+    &-img {
+      margin-top: 70px;
+      width: 224px;
+      align-self: center;
+    }
+  }
+
+  &__total-op-img {
+    margin-top: 65px;
+    width: 184px;
+    align-self: center;
+  }
+}

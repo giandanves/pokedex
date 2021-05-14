@@ -2,4 +2,4 @@
 src/styles.css
 dist/
 node_modules
-src/img/Group 2.svg:Zone.Identifier
+*.Identifier
