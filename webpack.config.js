@@ -7,6 +7,7 @@ module.exports = {
   entry: {
     index: './src/index.js',
     history: './src/history.js',
+    stats: './src/stats.js',
   },
   output: {
     filename: '[name]bundle.js',
@@ -29,6 +30,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       inject: 'body',
+      chunks: ['stats'],
       template: 'src/stats.html',
       filename: 'stats.html',
     }),
