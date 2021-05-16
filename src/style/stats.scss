@@ -1,3 +1,39 @@
+#favorite-numbers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#favorite-operations {
+  @extend #favorite-numbers;
+}
+
+.favorite-numbers-2 {
+  align-self: flex-start;
+  margin-left: 15px;
+  margin-top: -15px;
+}
+
+.favorite-numbers-3 {
+  align-self: flex-end;
+  margin-right: 15px;
+  margin-top: -15px;
+}
+
+.favorite-numbers-4 {
+  align-self: flex-start;
+  margin-left: 15px;
+  margin-top: -15px;
+}
+
+#empty-stats-container {
+  display: block;
+}
+
+#filled-stats-container {
+  display: none;
+}
+
 .stats-screen {
   height: 390px;
   width: 100%;
@@ -10,14 +46,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-
-  &__favorite-operations-container {
-    display: none;
-  }
-
-  &__total-operations-container {
-    display: block;
   }
 
   &__fav-operations--img {
@@ -33,13 +61,24 @@
   }
 
   &__total-op-value {
-    font-size: 24px;
+    font-size: 25px;
     color: #4c4c4d;
     font-weight: 500;
     line-height: 32px;
     letter-spacing: 0em;
-    margin-top: 18px;
+    margin-top: 5px;
     text-align: center;
+  }
+
+  &__favorite-number-div {
+    margin-left: 5px;
+  }
+
+  &__total-op-times {
+    @extend .stats-screen__total-op-value;
+    font-size: 10px;
+    font-weight: 300;
+    line-height: 10px;
   }
   &__fav-op {
     margin-top: 26px;
