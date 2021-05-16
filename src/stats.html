@@ -30,19 +30,26 @@
       </div>
 
       <div class="stats-screen">
-        <div class="stats-screen__favorite-operations-container">
-          <p class="stats-screen__fav-op-text">Operações favoritas</p>
-          <div class="stats-screen__fav-op">
-            <p class="stats-screen__fav-op-calc">678+910-13x5/7=</p>
-            <p class="stats-screen__fav-op-result">1125</p>
-          </div>
+        <div id="empty-stats-container">
+          <p class="stats-screen__fav-op-text">Ainda não há estatísticas</p>
           <img
-            class="stats-screen__fav-op-img"
-            src="<%= require('./img/fav-operations-img.svg').default %>"
+            class="stats-screen__total-op-img"
+            src="<%= require('./img/total-operations-img.svg').default %>"
           />
         </div>
 
-        <div class="stats-screen__total-operations-container">
+        <div id="filled-stats-container">
+
+          <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+              <ul class="glide__slides">
+                <li class="glide__slide">0</li>
+                <li class="glide__slide">1</li>
+                <li class="glide__slide">2</li>
+              </ul>
+            </div>
+          </div>
+          <div></div>
           <p class="stats-screen__total-op-text">
             Total de operações
           </p>
@@ -54,22 +61,12 @@
           </p>
 
           <p class="stats-screen__total-op-text">Números favoritos</p>
-          <p
-            class="stats-screen__total-op-value"
-            id="favorite-numbers"
-          >
-            No data yet
-          </p>
+          <div id = 'favorite-numbers'> </div>
 
           <p class="stats-screen__total-op-text">
             Operações favoritas
           </p>
-          <p
-            class="stats-screen__total-op-value"
-            id="favorite-operations"
-          >
-            No data yet
-          </p>
+          <div id ="favorite-operations"> </div>
 
           <p class="stats-screen__total-op-text">
             Dia com mais operações
@@ -79,11 +76,12 @@
           </p>
 
           <img
-            class="stats-screen__total-op-img"
-            src="<%= require('./img/total-operations-img.svg').default %>"
+            class="stats-screen__fav-op-img"
+            src="<%= require('./img/fav-operations-img.svg').default %>"
           />
         </div>
       </div>
+    </div>
     </div>
   </body>
 </html>
