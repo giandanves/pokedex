@@ -1,6 +1,7 @@
 const totalOperations = document.querySelector('#total-operations');
 const filledStats = document.querySelector('#filled-stats-container');
 const emptyStats = document.querySelector('#empty-stats-container');
+import Glide from '@glidejs/glide';
 
 function renderStatsPage(storage) {
   storage.history.then((r) => {
@@ -176,6 +177,7 @@ function updateStats(storage) {
     renderFavoriteNumbers(favoriteNumbers);
     renderFavoriteOperations(favoriteOperations);
     renderFavoriteDay(favoriteDays);
+    new Glide('.glide').mount();
   });
 }
 

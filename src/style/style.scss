@@ -1,4 +1,4 @@
-@import 'node_modules/@glidejs/glide/src/assets/sass/glide.core';
+@import '@glidejs/glide/src/assets/sass/glide.core';
 @import 'keyboard';
 @import 'display';
 @import 'history';
@@ -10,6 +10,11 @@ body {
   background-color: grey;
   font-family: Inter;
   font-style: normal;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
 }
 
 ::-webkit-scrollbar {
