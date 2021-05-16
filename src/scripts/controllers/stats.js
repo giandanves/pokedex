@@ -1,9 +1,19 @@
 const totalOperations = document.querySelector('#total-operations');
-const favoriteNumbers = document.querySelector('#favorite-numbers');
-const favoriteOperations = document.querySelector(
-  '#favorite-operations',
-);
-//const favoriteDays = document.querySelector('#favorite-days');
+const filledStats = document.querySelector('#filled-stats-container');
+const emptyStats = document.querySelector('#empty-stats-container');
+
+function renderStatsPage(storage) {
+  storage.history.then((r) => {
+    if (r.length) {
+      filledStats.style.display = 'block';
+      emptyStats.style.display = 'none';
+      updateStats(storage);
+    } else {
+      filledStats.style.display = 'none';
+      emptyStats.style.display = 'block';
+    }
+  });
+}
 
 function countTotalOperations(history) {
   return history.length;
@@ -44,70 +54,129 @@ function checkAllNumbersAndOperations(history) {
   return { allNumbers, allOperations };
 }
 
-function renderFavoriteNumbers(numbers) {
-  numbers.sort();
+function getFavorites(elements) {
+  elements.sort();
 
-  const NumberRepeatCounter = (number, times) => {
-    return { number, times };
+  const elementRepeatCounter = (element, times) => {
+    return { element, times };
   };
 
-  let arrayNumberRepeatitions = [];
-  let objNumber;
-  let lastNumber;
-  numbers.forEach((number) => {
-    if (number == lastNumber) {
-      objNumber.times++;
+  let ElementRepeatitions = [];
+  let objElement;
+  let lastElement;
+  elements.forEach((element) => {
+    if (element == lastElement) {
+      objElement.times++;
     } else {
-      arrayNumberRepeatitions.push(objNumber);
-      objNumber = NumberRepeatCounter(number, 1);
+      ElementRepeatitions.push(objElement);
+      objElement = elementRepeatCounter(element, 1);
     }
 
-    lastNumber = number;
+    lastElement = element;
   });
-  arrayNumberRepeatitions.push(objNumber);
-  arrayNumberRepeatitions.sort(function (a, b) {
+  ElementRepeatitions.push(objElement);
+  ElementRepeatitions.sort(function (a, b) {
     if (a.times > b.times) return -1;
     if (a.times < b.times) return 1;
     return 0;
   });
-  favoriteNumbers.textContent = `1º: ${arrayNumberRepeatitions[0].number}(${arrayNumberRepeatitions[0].times} vezes) | 2º: ${arrayNumberRepeatitions[1].number}(${arrayNumberRepeatitions[1].times} vezes) | 3º: ${arrayNumberRepeatitions[2].number}(${arrayNumberRepeatitions[2].times} vezes)`;
+
+  return ElementRepeatitions;
+}
+
+function getDates(history) {
+  const dates = [];
+
+  history.forEach((operation) => {
+    const dateConvertor = new Date(operation.date);
+    const dateToString = `${dateConvertor.getDate()}/${dateConvertor.getMonth()}/${dateConvertor.getFullYear()}`;
+    dates.push(dateToString);
+  });
+
+  return dates;
+}
+function timesGramaticalChecker(times) {
+  if (times == 1) {
+    return 'vez';
+  } else return 'vezes';
+}
+
+function renderFavoriteNumbers(numbers) {
+  const favoriteNumbers = document.querySelector('#favorite-numbers');
+  numbers.forEach((number, i) => {
+    if (i < 3) {
+      const favoriteNumberDiv = document.createElement('div');
+      favoriteNumberDiv.className =
+        'stats-screen__favorite-number-div';
+      if (i > 0) {
+        favoriteNumberDiv.classList.add(`favorite-numbers-${i + 1}`);
+      }
+      const numberRendered = document.createElement('p');
+      numberRendered.textContent = `${number.element}`;
+      numberRendered.className = 'stats-screen__total-op-value';
+      favoriteNumbers.appendChild(numberRendered);
+      const timesRendered = document.createElement('p');
+      timesRendered.textContent = `${
+        number.times
+      } ${timesGramaticalChecker(number.times)}`;
+      timesRendered.className = 'stats-screen__total-op-times';
+      favoriteNumberDiv.appendChild(numberRendered);
+      favoriteNumberDiv.appendChild(timesRendered);
+      favoriteNumbers.appendChild(favoriteNumberDiv);
+    }
+  });
 }
 
 function renderFavoriteOperations(operations) {
-  operations.sort();
-  const OperationRepeatCounter = (operation, times) => {
-    return { operation, times };
-  };
+  const favoriteOperations = document.querySelector(
+    '#favorite-operations',
+  );
 
-  let arrayOperationRepeatitions = [];
-  let objOperation;
-  let lastOperation;
-  operations.forEach((operation) => {
-    if (operation == lastOperation) {
-      objOperation.times++;
-    } else {
-      arrayOperationRepeatitions.push(objOperation);
-      objOperation = OperationRepeatCounter(operation, 1);
+  operations.forEach((operation, i) => {
+    if (operation) {
+      const favoriteOperationDiv = document.createElement('div');
+      favoriteOperationDiv.className =
+        'stats-screen__favorite-number-div';
+      if (i > 0) {
+        favoriteOperationDiv.classList.add(
+          `favorite-numbers-${i + 1}`,
+        );
+      }
+      const operationRendered = document.createElement('p');
+      operationRendered.textContent = `${operation.element}`;
+      operationRendered.className = 'stats-screen__total-op-value';
+      favoriteOperations.appendChild(operationRendered);
+      const timesRendered = document.createElement('p');
+      timesRendered.textContent = `${
+        operation.times
+      } ${timesGramaticalChecker(operation.times)}`;
+      timesRendered.className = 'stats-screen__total-op-times';
+      favoriteOperationDiv.appendChild(operationRendered);
+      favoriteOperationDiv.appendChild(timesRendered);
+      favoriteOperations.appendChild(favoriteOperationDiv);
     }
+  });
+}
 
-    lastOperation = operation;
-  });
-  arrayOperationRepeatitions.push(objOperation);
-  arrayOperationRepeatitions.sort(function (a, b) {
-    if (a.times > b.times) return -1;
-    if (a.times < b.times) return 1;
-    return 0;
-  });
-  favoriteOperations.textContent = `1º: ${arrayOperationRepeatitions[0].operation}(${arrayOperationRepeatitions[0].times} vezes) | 2º: ${arrayOperationRepeatitions[1].operation}(${arrayOperationRepeatitions[1].times} vezes) | 3º: ${arrayOperationRepeatitions[2].operation}(${arrayOperationRepeatitions[2].times} vezes)`;
+function renderFavoriteDay(days) {
+  const favoriteDays = document.querySelector('#favorite-days');
+  favoriteDays.textContent = `${days[0].element}`;
 }
 
 function updateStats(storage) {
   storage.history.then((r) => {
     totalOperations.textContent = countTotalOperations(r);
-    let numbersAndOp = checkAllNumbersAndOperations(r);
-    renderFavoriteNumbers(numbersAndOp.allNumbers);
-    renderFavoriteOperations(numbersAndOp.allOperations);
+    const numbersAndOp = checkAllNumbersAndOperations(r);
+    const dates = getDates(r);
+    const favoriteNumbers = getFavorites(numbersAndOp.allNumbers);
+    const favoriteOperations = getFavorites(
+      numbersAndOp.allOperations,
+    );
+    const favoriteDays = getFavorites(dates);
+    renderFavoriteNumbers(favoriteNumbers);
+    renderFavoriteOperations(favoriteOperations);
+    renderFavoriteDay(favoriteDays);
   });
 }
 
-export default updateStats;
+export default renderStatsPage;
