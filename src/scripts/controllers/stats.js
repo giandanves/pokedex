@@ -88,9 +88,16 @@ function getFavorites(elements) {
 function getDates(history) {
   const dates = [];
 
+  function twoDigitsMonthHandler(month) {
+    if (month > 9) {
+      return '';
+    } else return 0;
+  }
   history.forEach((operation) => {
     const dateConvertor = new Date(operation.date);
-    const dateToString = `${dateConvertor.getDate()}/${dateConvertor.getMonth()}/${dateConvertor.getFullYear()}`;
+    const dateToString = `${dateConvertor.getDate()}/${twoDigitsMonthHandler(
+      dateConvertor.getMonth(),
+    )}${dateConvertor.getMonth() + 1}/${dateConvertor.getFullYear()}`;
     dates.push(dateToString);
   });
 
