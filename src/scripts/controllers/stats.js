@@ -21,68 +21,55 @@ function countTotalOperations(history) {
 }
 
 function checkAllNumbersAndOperations(history) {
-  let numberIterate = '';
   let allNumbers = [];
   let allOperations = [];
+  let filteredOp = '';
+
   history.forEach((savedOp) => {
-    let stopIterate = false;
+    let i = true;
     savedOp.operation.split('').forEach((char) => {
-      let number;
-
-      if (stopIterate) {
-        return;
-      } else {
-        if (char == '=') {
-          stopIterate = true;
-          let number = numberIterate;
-          numberIterate = '';
-          allNumbers.push(number);
-          return number;
-        }
-
-        if (isNaN(char)) {
-          allOperations.push(char);
-          number = numberIterate;
-          numberIterate = '';
-          allNumbers.push(number);
-          return number;
-        } else {
-          numberIterate += char;
-        }
+      if (char == '=') {
+        i = false;
+        const numbers = filteredOp.split(/\D/);
+        const operations = filteredOp.match(/\D/g);
+        allNumbers = allNumbers.concat(numbers);
+        allOperations = allOperations.concat(operations);
+        filteredOp = '';
+      }
+      if (i) {
+        filteredOp += char;
       }
     });
   });
+
   return { allNumbers, allOperations };
 }
 
 function getFavorites(elements) {
   elements.sort();
 
-  const elementRepeatCounter = (element, times) => {
-    return { element, times };
-  };
+  const createElementRepeatCounter = (element, times) => ({
+    element,
+    times,
+  });
 
-  let ElementRepeatitions = [];
-  let objElement;
-  let lastElement;
-  elements.forEach((element) => {
-    if (element == lastElement) {
-      objElement.times++;
+  const elementRepetitions = [];
+  let elementRepeatCounter;
+
+  elements.forEach((element, index) => {
+    const lastElement = elements[index - 1];
+
+    if (element === lastElement) {
+      elementRepeatCounter.times++;
     } else {
-      ElementRepeatitions.push(objElement);
-      objElement = elementRepeatCounter(element, 1);
+      elementRepetitions.push(elementRepeatCounter);
+      elementRepeatCounter = createElementRepeatCounter(element, 1);
     }
-
-    lastElement = element;
-  });
-  ElementRepeatitions.push(objElement);
-  ElementRepeatitions.sort(function (a, b) {
-    if (a.times > b.times) return -1;
-    if (a.times < b.times) return 1;
-    return 0;
   });
 
-  return ElementRepeatitions;
+  elementRepetitions.push(elementRepeatCounter);
+  elementRepetitions.sort();
+  return elementRepetitions;
 }
 
 function getDates(history) {
