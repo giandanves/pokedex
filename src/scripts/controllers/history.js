@@ -2,7 +2,6 @@ const emptyHistory = document.querySelector('#empty-history');
 const filledHistory = document.querySelector('#filled-history');
 
 function separateOperationAndResult(operation, result, calculum) {
-  console.log(calculum);
   let equalsChecker = false;
   calculum.split('').forEach((char) => {
     if (char == '=') {

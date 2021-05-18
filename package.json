@@ -7,6 +7,7 @@
     "doc": "docs"
   },
   "dependencies": {
+    "@glidejs/glide": "^3.4.1",
     "implement-js": "0.0.31",
     "uniqid": "^5.3.0",
     "webpack-cli": "^4.6.0"

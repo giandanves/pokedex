@@ -14,9 +14,6 @@ controller.addEventListener('operationFinished', (e) => {
     operation: e.detail,
     date: new Date(),
   });
-  storage.history.then((r) => {
-    console.log(r);
-  });
 });
 
 function onClick(btn) {
