@@ -68,7 +68,12 @@ function getFavorites(elements) {
   });
 
   elementRepetitions.push(elementRepeatCounter);
-  elementRepetitions.sort();
+  elementRepetitions.sort(function (a, b) {
+    if (a.times > b.times) return -1;
+    if (a.times < b.times) return 1;
+    return 0;
+  });
+
   return elementRepetitions;
 }
 
