@@ -2,13 +2,15 @@ const totalOperations = document.querySelector('#total-operations');
 const filledStats = document.querySelector('#filled-stats-container');
 const emptyStats = document.querySelector('#empty-stats-container');
 import Glide from '@glidejs/glide';
+import ReactDOM from 'react-dom';
+import React from 'react';
+import FavoriteOperationsContainer from '../views/stats.js';
 
 function renderStatsPage(storage) {
   storage.history.then((r) => {
     if (r.length) {
       filledStats.style.display = 'block';
       emptyStats.style.display = 'none';
-      updateStats(storage);
     } else {
       filledStats.style.display = 'none';
       emptyStats.style.display = 'block';
@@ -127,37 +129,6 @@ function renderFavoriteNumbers(numbers) {
   });
 }
 
-function renderFavoriteOperations(operations) {
-  const favoriteOperations = document.querySelector(
-    '#favorite-operations',
-  );
-
-  operations.forEach((operation, i) => {
-    if (operation) {
-      const favoriteOperationDiv = document.createElement('div');
-      favoriteOperationDiv.className =
-        'stats-screen__favorite-number-div';
-      if (i > 0) {
-        favoriteOperationDiv.classList.add(
-          `favorite-numbers-${i + 1}`,
-        );
-      }
-      const operationRendered = document.createElement('p');
-      operationRendered.textContent = `${operation.element}`;
-      operationRendered.className = 'stats-screen__total-op-value';
-      favoriteOperations.appendChild(operationRendered);
-      const timesRendered = document.createElement('p');
-      timesRendered.textContent = `${
-        operation.times
-      } ${timesGramaticalChecker(operation.times)}`;
-      timesRendered.className = 'stats-screen__total-op-times';
-      favoriteOperationDiv.appendChild(operationRendered);
-      favoriteOperationDiv.appendChild(timesRendered);
-      favoriteOperations.appendChild(favoriteOperationDiv);
-    }
-  });
-}
-
 function renderFavoriteDay(days) {
   const favoriteDays = document.querySelector('#favorite-days');
   favoriteDays.textContent = `${days[0].element}`;
@@ -174,10 +145,16 @@ function updateStats(storage) {
     );
     const favoriteDays = getFavorites(dates);
     renderFavoriteNumbers(favoriteNumbers);
-    renderFavoriteOperations(favoriteOperations);
     renderFavoriteDay(favoriteDays);
+    console.dir(favoriteOperations);
     new Glide('.glide').mount();
+    ReactDOM.render(
+      <FavoriteOperationsContainer
+        operations={favoriteOperations}
+      ></FavoriteOperationsContainer>,
+      document.getElementById('favorite-operations-slide'),
+    );
   });
 }
 
-export default renderStatsPage;
+export { renderStatsPage, updateStats };
