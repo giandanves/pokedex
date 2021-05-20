@@ -1,10 +1,8 @@
-const totalOperations = document.querySelector('#total-operations');
 const filledStats = document.querySelector('#filled-stats-container');
 const emptyStats = document.querySelector('#empty-stats-container');
-import Glide from '@glidejs/glide';
 import ReactDOM from 'react-dom';
 import React from 'react';
-import FavoriteOperationsContainer from '../views/stats.js';
+import Slide from '../components/glide.js';
 
 function renderStatsPage(storage) {
   storage.history.then((r) => {
@@ -18,8 +16,26 @@ function renderStatsPage(storage) {
   });
 }
 
-function countTotalOperations(history) {
-  return history.length;
+function updateStats(storage) {
+  storage.history.then((r) => {
+    const numbersAndOp = checkAllNumbersAndOperations(r);
+    const dates = getDates(r);
+    const favoriteNumbers = getFavorites(numbersAndOp.allNumbers);
+    const favoriteOperations = getFavorites(
+      numbersAndOp.allOperations,
+    );
+    const favoriteDay = getFavorites(dates);
+
+    ReactDOM.render(
+      <Slide
+        favoriteOperations={favoriteOperations}
+        totalOperations={r.length}
+        favoriteNumbers={favoriteNumbers}
+        favoriteDay={favoriteDay}
+      />,
+      document.querySelector('#filled-stats-container'),
+    );
+  });
 }
 
 function checkAllNumbersAndOperations(history) {
@@ -96,65 +112,6 @@ function getDates(history) {
   });
 
   return dates;
-}
-function timesGramaticalChecker(times) {
-  if (times == 1) {
-    return 'vez';
-  } else return 'vezes';
-}
-
-function renderFavoriteNumbers(numbers) {
-  const favoriteNumbers = document.querySelector('#favorite-numbers');
-  numbers.forEach((number, i) => {
-    if (i < 3) {
-      const favoriteNumberDiv = document.createElement('div');
-      favoriteNumberDiv.className =
-        'stats-screen__favorite-number-div';
-      if (i > 0) {
-        favoriteNumberDiv.classList.add(`favorite-numbers-${i + 1}`);
-      }
-      const numberRendered = document.createElement('p');
-      numberRendered.textContent = `${number.element}`;
-      numberRendered.className = 'stats-screen__total-op-value';
-      favoriteNumbers.appendChild(numberRendered);
-      const timesRendered = document.createElement('p');
-      timesRendered.textContent = `${
-        number.times
-      } ${timesGramaticalChecker(number.times)}`;
-      timesRendered.className = 'stats-screen__total-op-times';
-      favoriteNumberDiv.appendChild(numberRendered);
-      favoriteNumberDiv.appendChild(timesRendered);
-      favoriteNumbers.appendChild(favoriteNumberDiv);
-    }
-  });
-}
-
-function renderFavoriteDay(days) {
-  const favoriteDays = document.querySelector('#favorite-days');
-  favoriteDays.textContent = `${days[0].element}`;
-}
-
-function updateStats(storage) {
-  storage.history.then((r) => {
-    totalOperations.textContent = countTotalOperations(r);
-    const numbersAndOp = checkAllNumbersAndOperations(r);
-    const dates = getDates(r);
-    const favoriteNumbers = getFavorites(numbersAndOp.allNumbers);
-    const favoriteOperations = getFavorites(
-      numbersAndOp.allOperations,
-    );
-    const favoriteDays = getFavorites(dates);
-    renderFavoriteNumbers(favoriteNumbers);
-    renderFavoriteDay(favoriteDays);
-    console.dir(favoriteOperations);
-    new Glide('.glide').mount();
-    ReactDOM.render(
-      <FavoriteOperationsContainer
-        operations={favoriteOperations}
-      ></FavoriteOperationsContainer>,
-      document.getElementById('favorite-operations-slide'),
-    );
-  });
 }
 
 export { renderStatsPage, updateStats };
