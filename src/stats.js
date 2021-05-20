@@ -6,5 +6,6 @@ import {
 } from './scripts/controllers/stats.js';
 
 let storage = new LocalStorage();
+
 renderStatsPage(storage);
 updateStats(storage);
