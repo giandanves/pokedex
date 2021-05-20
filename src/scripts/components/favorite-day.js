@@ -1,5 +1,5 @@
 import React from 'react';
-import favDayImg from '../../img/calendar.svg';
+import favDayImg from 'Img/calendar.svg';
 
 class FavoriteDay extends React.Component {
   constructor(props) {

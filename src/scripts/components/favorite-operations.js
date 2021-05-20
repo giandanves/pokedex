@@ -1,12 +1,12 @@
 import React from 'react';
-import favOpImg from '../../img/fav-operations-img.svg';
+import favOpImg from 'Img/fav-operations-img.svg';
 
 class FavoriteOperations extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  checkTimes(times) {
+  getSuffix(times) {
     if (times == 1) {
       return 'vez';
     } else {
@@ -15,10 +15,12 @@ class FavoriteOperations extends React.Component {
   }
 
   render() {
-    const firstOperation = this.props.favoriteOperations[0];
-    const secondOperation = this.props.favoriteOperations[1];
-    const thirdOperation = this.props.favoriteOperations[2];
-    const fourthOperation = this.props.favoriteOperations[3];
+    const [
+      firstOperation,
+      secondOperation,
+      thirdOperation,
+      fourthOperation,
+    ] = this.props.favoriteOperations;
     return (
       <div className="slide">
         <p className="stats-screen__total-op-text">
@@ -31,7 +33,7 @@ class FavoriteOperations extends React.Component {
             </p>
             <p className="stats-screen__total-op-times">
               {firstOperation.times}{' '}
-              {this.checkTimes(firstOperation.times)}
+              {this.getSuffix(firstOperation.times)}
             </p>
           </div>
           <div className="stats-screen__favorite-number-div favorite-numbers-2">
@@ -40,7 +42,7 @@ class FavoriteOperations extends React.Component {
             </p>
             <p className="stats-screen__total-op-times">
               {secondOperation.times}{' '}
-              {this.checkTimes(secondOperation.times)}
+              {this.getSuffix(secondOperation.times)}
             </p>
           </div>
           <div className="stats-screen__favorite-number-div favorite-numbers-3">
@@ -49,7 +51,7 @@ class FavoriteOperations extends React.Component {
             </p>
             <p className="stats-screen__total-op-times">
               {thirdOperation.times}{' '}
-              {this.checkTimes(thirdOperation.times)}
+              {this.getSuffix(thirdOperation.times)}
             </p>
           </div>
           <div className="stats-screen__favorite-number-div favorite-numbers-4">
@@ -58,7 +60,7 @@ class FavoriteOperations extends React.Component {
             </p>
             <p className="stats-screen__total-op-times">
               {fourthOperation.times}{' '}
-              {this.checkTimes(fourthOperation.times)}
+              {this.getSuffix(fourthOperation.times)}
             </p>
           </div>
         </div>

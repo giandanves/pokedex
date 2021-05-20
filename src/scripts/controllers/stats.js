@@ -2,7 +2,7 @@ const filledStats = document.querySelector('#filled-stats-container');
 const emptyStats = document.querySelector('#empty-stats-container');
 import ReactDOM from 'react-dom';
 import React from 'react';
-import Slide from '../components/glide.js';
+import Slide from 'Components/glide.js';
 
 function renderStatsPage(storage) {
   storage.history.then((r) => {

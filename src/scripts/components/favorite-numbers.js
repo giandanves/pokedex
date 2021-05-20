@@ -1,12 +1,12 @@
 import React from 'react';
-import favNumbersImg from '../../img/podium.svg';
+import favNumbersImg from 'Img/podium.svg';
 
 class FavoriteNumbers extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  checkTimes(times) {
+  getSuffix(times) {
     if (times == 1) {
       return 'vez';
     } else {
@@ -26,7 +26,7 @@ class FavoriteNumbers extends React.Component {
             </p>
             <p className="stats-screen__total-op-times">
               {this.props.favoriteNumbers[0].times}{' '}
-              {this.checkTimes(this.props.favoriteNumbers[0].times)}
+              {this.getSuffix(this.props.favoriteNumbers[0].times)}
             </p>
           </div>
           <div className="stats-screen__favorite-number-div favorite-numbers-2">
@@ -35,7 +35,7 @@ class FavoriteNumbers extends React.Component {
             </p>
             <p className="stats-screen__total-op-times">
               {this.props.favoriteNumbers[1].times}{' '}
-              {this.checkTimes(this.props.favoriteNumbers[1].times)}
+              {this.getSuffix(this.props.favoriteNumbers[1].times)}
             </p>
           </div>
           <div className="stats-screen__favorite-number-div favorite-numbers-3">
@@ -44,7 +44,7 @@ class FavoriteNumbers extends React.Component {
             </p>
             <p className="stats-screen__total-op-times">
               {this.props.favoriteNumbers[2].times}{' '}
-              {this.checkTimes(this.props.favoriteNumbers[0].times)}
+              {this.getSuffix(this.props.favoriteNumbers[2].times)}
             </p>
           </div>
         </div>

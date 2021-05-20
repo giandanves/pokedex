@@ -1,5 +1,5 @@
 import React from 'react';
-import totalOpImg from '../../img/total-operations-img.svg';
+import totalOpImg from 'Img/total-operations-img.svg';
 
 class TotalOperations extends React.Component {
   constructor(props) {

@@ -15,6 +15,13 @@ module.exports = {
     clean: true,
   },
 
+  resolve: {
+    alias: {
+      Img: path.resolve(__dirname, 'src/img'),
+      Components: path.resolve(__dirname, 'src/scripts/components'),
+    },
+  },
+
   plugins: [
     new HtmlWebpackPlugin({
       inject: 'body',
