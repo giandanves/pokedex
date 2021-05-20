@@ -34,7 +34,8 @@ module.exports = {
       template: 'src/stats.html',
       filename: 'stats.html',
     }),
-    new MiniCssExtractPlugin({ filename: 'style.css' }),
+
+    new MiniCssExtractPlugin({ filename: '[name]style.css' }),
   ],
 
   devtool: 'inline-source-map',
@@ -51,6 +52,10 @@ module.exports = {
           'css-loader',
           'sass-loader',
         ],
+      },
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.svg$/,
