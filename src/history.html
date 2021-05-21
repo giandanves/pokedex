@@ -8,34 +8,6 @@
   </head>
 
   <body>
-    <div class="history-screen">
-      <div class="history-screen__header"></div>
-      <div class="history-screen__display">
-        <img
-          class="history-screen__display__back-button" onclick="window.location.href = '/'"
-          src="<%= require('./img/back-button.svg').default %>"
-        />
-        <div class="nav-bar">
-          <div class="nav-bar__button">
-            <p class="nav-bar__button--text--onpage">Histórico</p>
-          </div>
-          <div class="nav-bar__button" onclick="window.location.href = '/stats.html'">
-            <p class="nav-bar__button--text" >Estatísticas</p>
-          </div>
-        </div>
-      </div>
-        <div class="history-screen__history-container">
-          <div class="history-screen__history-container__empty-history" id="empty-history">
-            <p class="empty-history--text">Ainda não há histórico</p>
-            <img
-              class="empty-history--img"
-              src="<%= require('./img/empty-history-img.svg').default %>"
-            />
-          </div>      
-          <div class="history-screen__history-container__filled-history " id ="filled-history">
-            
-          </div>
-    </div>
-    
+    <div id="historyroot"></div>
   </body>
 </html>

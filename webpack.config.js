@@ -15,6 +15,13 @@ module.exports = {
     clean: true,
   },
 
+  resolve: {
+    alias: {
+      Img: path.resolve(__dirname, 'src/img'),
+      Components: path.resolve(__dirname, 'src/scripts/components'),
+    },
+  },
+
   plugins: [
     new HtmlWebpackPlugin({
       inject: 'body',
@@ -34,7 +41,8 @@ module.exports = {
       template: 'src/stats.html',
       filename: 'stats.html',
     }),
-    new MiniCssExtractPlugin({ filename: 'style.css' }),
+
+    new MiniCssExtractPlugin({ filename: '[name]style.css' }),
   ],
 
   devtool: 'inline-source-map',
@@ -53,6 +61,10 @@ module.exports = {
         ],
       },
       {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
         test: /\.svg$/,
         use: [
           {
@@ -68,6 +80,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: [
+              '@babel/preset-react',
               [
                 '@babel/preset-env',
                 {

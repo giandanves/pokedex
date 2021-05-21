@@ -1,7 +1,5 @@
 {
-  
-
-  "extends": "eslint:recommended",
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
 
   "env": {
     "browser": true,
@@ -14,6 +12,7 @@
   },
 
   "rules": {
-    "semi": "error"
+    "semi": "error",
+    "react/prop-types": 0
   }
 }
