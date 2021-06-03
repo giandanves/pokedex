@@ -1,20 +1,21 @@
+
 export function Pokemons(props) {
   const { pokemons } = props;
   return (
     <section>
       {pokemons.map((pokemon) => {
+        const { picture, name, id } = pokemon;
+        const [firstType, secondType] = pokemon.type;
+
         return (
-          <article className="pokemon-card" key={pokemon.id}>
+          <article className="pokemon-card" key={id}>
             <li>
-              <img
-                className="pokemon-avatar"
-                src={pokemon.picture}
-                alt={pokemon.name}
-              />
-              <h2>{pokemon.name}</h2>
+              <img className="pokemon-avatar" src={picture} alt={name} />
+              <h2>{name}</h2>
               <div className="types-grid">
-                <p>{pokemon.type[0]}</p>
-                <p>{pokemon.type[1] ? pokemon.type[1] : ""}</p>
+                <p>{firstType}</p>
+                <p>{secondType || ""}</p>
+                <p>{`id: #${id}`}</p>
               </div>
             </li>
           </article>
@@ -22,4 +23,4 @@ export function Pokemons(props) {
       })}
     </section>
   );
-};
+}
