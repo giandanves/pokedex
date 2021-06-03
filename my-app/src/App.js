@@ -1,5 +1,5 @@
 import {useFetch} from './useFetch'
-import {useState} from 'react'
+import {useState, useRef} from 'react'
 import {Pokemons} from './Pokemons'
 import {PokemonTypes} from './PokemonTypes.js'
 import {handleLoadAndError} from './HandleLoadAndError'
@@ -15,15 +15,17 @@ let [url, setUrl] = useState(defaultUrl);
 const [loading, pokemons, error] = useFetch(url);
 const types = useFetch(poketypesUrl);
 let filter = '?';
+const form = useRef(null);
+const inputText = useRef(null);
 
 const handleFilter = () => {
-  const formElements = document.querySelector("#search-form").elements;
+  const formElements = Array.from(form.current);
   let criteriaHolder = "";
-  for (let i = 0; i < formElements.length; i++) {
-    if (formElements[i].checked) {
-      criteriaHolder += `${formElements[i].id}&`;
+  formElements.forEach((element)=> {
+    if (element.checked) {
+      criteriaHolder += `${element.id}&`;
     }
-  }
+  })
   filter +=criteriaHolder;
 }
 
@@ -31,12 +33,10 @@ const handleFilter = () => {
 const handleSearch = (e) => {
   e.preventDefault();
       filter = "?";
-  const inputVal = document.getElementById("text-area").value;
-  if (inputVal) {
-    filter+= `search=${inputVal}&`
+  if (inputText.current.value) {
+    filter+= `search=${inputText.current.value}&`
   } 
-  console.log(filter);
-  url = defaultUrlValue;
+  url = defaultUrl;
   handleFilter();
   setUrl(url + filter);
   
@@ -44,11 +44,11 @@ const handleSearch = (e) => {
 
 return (
   <>
-    <form id="search-form">
+    <form id="search-form" ref={form}>
       <button type="submit" onClick={(e) => handleSearch(e)}>
         Search
       </button>
-      <input type = 'text' id='text-area'></input>
+      <input type = 'text' id='text-area' ref = {inputText}></input>
       <HeightCheckBox/>
       <WeightCheckBox/>
       <section className = 'typePokemonContainer'>
@@ -63,7 +63,7 @@ return (
         {handleLoadAndError(loading, error) ? (
           handleLoadAndError(loading, error)
         ) : (
-          <Pokemons pokemons={products} />
+          <Pokemons pokemons={pokemons} />
         )}
       </ul>
     </form>
