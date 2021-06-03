@@ -6,11 +6,14 @@ import {handleLoadAndError} from './HandleLoadAndError'
 import {HeightCheckBox} from './height-checkbox'
 import {WeightCheckBox} from './weight-checkbox'
 
+
+const defaultUrl = process.env.REACT_APP_DEFAULT_URL;
+const poketypesUrl = process.env.REACT_APP_POKETYPES_URL;
+
 function App() {
-const defaultUrlValue = "http://pokedex.jhonnymichel.com/pokemon";
-let [url, setUrl] = useState(defaultUrlValue);
-const [loading, products, error] = useFetch(url);
-const types = useFetch("http://pokedex.jhonnymichel.com/type");
+let [url, setUrl] = useState(defaultUrl);
+const [loading, pokemons, error] = useFetch(url);
+const types = useFetch(poketypesUrl);
 let filter = '?';
 
 const handleFilter = () => {
