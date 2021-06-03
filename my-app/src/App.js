@@ -1,5 +1,5 @@
 import {useFetch} from './useFetch'
-import {useState, useRef} from 'react'
+import {useState, useRef, useEffect} from 'react'
 import {Pokemons} from './Pokemons'
 import {PokemonTypes} from './PokemonTypes.js'
 import {handleLoadAndError} from './HandleLoadAndError'
@@ -14,9 +14,15 @@ function App() {
 let [url, setUrl] = useState(defaultUrl);
 const [loading, pokemons, error] = useFetch(url);
 const types = useFetch(poketypesUrl);
+let [typeIsLoading, typeResult, typeHasError] = types;
 let filter = '?';
 const form = useRef(null);
 const inputText = useRef(null);
+
+useEffect(()=>{
+  [typeIsLoading, typeResult, typeHasError] = types;
+}, [types])
+
 
 const handleFilter = () => {
   const formElements = Array.from(form.current);
@@ -48,18 +54,17 @@ return (
       <button type="submit" onClick={(e) => handleSearch(e)}>
         Search
       </button>
-      <input type = 'text' id='text-area' ref = {inputText}></input>
-      <HeightCheckBox/>
-      <WeightCheckBox/>
-      <section className = 'typePokemonContainer'>
-        {handleLoadAndError(types[0], types[2]) ? (
-          handleLoadAndError(types[0], types[2])
-        ) : (
-          <PokemonTypes types={types[1].results} />
+      <input type="text" id="text-area" ref={inputText}></input>
+      <HeightCheckBox />
+      <WeightCheckBox />
+
+      <section className="typePokemonContainer">
+        {handleLoadAndError(typeIsLoading, typeHasError) || (
+          <PokemonTypes types={typeResult.results} />
         )}
       </section>
 
-      <ul className ='PokemonsContainer'>
+      <ul className="PokemonsContainer">
         {handleLoadAndError(loading, error) ? (
           handleLoadAndError(loading, error)
         ) : (
