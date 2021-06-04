@@ -1,10 +1,9 @@
-import {useRef} from 'react'
-import {handleCheckBox} from './handleCheckBox'
+import { useRef } from "react";
+import { handleCheckBox } from "./handleCheckBox";
 
 export function PokemonTypes(props) {
   const { types, poketypesCheckeds, setPoketypesCheckeds } = props;
   const poketypeRefs = useRef([]);
-
 
   return (
     <section>
@@ -18,7 +17,13 @@ export function PokemonTypes(props) {
               name="type"
               key={pokeType.url}
               ref={(element) => poketypeRefs.current.push(element)}
-              onChange={() => handleCheckBox(poketypeRefs.current[i], poketypesCheckeds, setPoketypesCheckeds)}
+              onChange={() =>
+                handleCheckBox(
+                  poketypeRefs.current[i],
+                  poketypesCheckeds,
+                  setPoketypesCheckeds
+                )
+              }
             />
             <label key={pokeType.name}>{pokeType.name}</label>
           </>

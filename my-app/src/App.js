@@ -1,12 +1,12 @@
 import { useFetch } from "./useFetch";
-import { useState} from "react";
+import { useState } from "react";
 import { Pokemons } from "./Pokemons";
 import { PokemonTypes } from "./PokemonTypes.js";
 import { handleLoadAndError } from "./HandleLoadAndError";
 import { HeightCheckBox } from "./height-checkbox";
 import { WeightCheckBox } from "./weight-checkbox";
-import {TextBox} from './textBox';
-import {getBoxesChecked} from './handleCheckBox';
+import { TextBox } from "./textBox";
+import { getBoxesChecked } from "./handleCheckBox";
 
 const defaultUrl = process.env.REACT_APP_DEFAULT_URL;
 const poketypesUrl = process.env.REACT_APP_POKETYPES_URL;
@@ -24,14 +24,18 @@ function App() {
   const handleFilter = (filter) => {
     if (textBox) {
       filter += `search=${textBox}&`;
-    } 
-    filter+= getBoxesChecked(heightBoxesCheckeds, weightBoxesCheckeds, poketypesCheckeds);
+    }
+    filter += getBoxesChecked(
+      heightBoxesCheckeds,
+      weightBoxesCheckeds,
+      poketypesCheckeds
+    );
     return filter;
   };
 
   const handleSearch = (e) => {
     e.preventDefault();
-    let filter = "?"
+    let filter = "?";
     filter = handleFilter(filter);
     url = defaultUrl;
     setUrl(url + filter);
@@ -43,7 +47,7 @@ function App() {
         <button type="submit" onClick={(e) => handleSearch(e)}>
           Search
         </button>
-        <TextBox setTextBox={setTextBox}/>
+        <TextBox setTextBox={setTextBox} />
         <HeightCheckBox
           heightBoxesCheckeds={heightBoxesCheckeds}
           setHeightBoxesCheckeds={setHeightBoxesCheckeds}

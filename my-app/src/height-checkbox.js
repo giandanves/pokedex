@@ -1,8 +1,8 @@
-import {useRef } from "react";
+import { useRef } from "react";
 import { handleCheckBox } from "./handleCheckBox";
 
 export function HeightCheckBox(props) {
-  const {heightBoxesCheckeds, setHeightBoxesCheckeds} = props;
+  const { heightBoxesCheckeds, setHeightBoxesCheckeds } = props;
   const refHeight1 = useRef(null);
   const refHeight2 = useRef(null);
   const refHeight3 = useRef(null);

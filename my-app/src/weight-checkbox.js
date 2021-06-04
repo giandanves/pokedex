@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 
 export function WeightCheckBox(props) {
   const { weightBoxesCheckeds, setWeightBoxesCheckeds } = props;
