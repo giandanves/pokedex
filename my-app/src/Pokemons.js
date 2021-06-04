@@ -22,6 +22,8 @@ export function Pokemons(props) {
               </li>
             </article>
           );
+        } else {
+          return <></>;
         }
       })}
     </section>
