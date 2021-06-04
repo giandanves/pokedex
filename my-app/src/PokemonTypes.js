@@ -1,4 +1,4 @@
-export function PokemonTypes(props){
+export function PokemonTypes(props) {
   const { types } = props;
   return (
     <section>
@@ -18,4 +18,4 @@ export function PokemonTypes(props){
       })}
     </section>
   );
-};
+}
