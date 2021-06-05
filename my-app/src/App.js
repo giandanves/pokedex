@@ -7,7 +7,7 @@ import { HeightCheckBox } from "./height-checkbox";
 import { WeightCheckBox } from "./weight-checkbox";
 import { TextBox } from "./textBox";
 import { getBoxesChecked } from "./getBoxesCheckeds";
-
+import { initialCheckboxValue } from "./initialCheckboxValues";
 const defaultUrl = process.env.REACT_APP_DEFAULT_URL;
 const poketypesUrl = process.env.REACT_APP_POKETYPES_URL;
 
@@ -19,9 +19,9 @@ function App() {
 
   const [formState, setFormState] = useState({
     search: "",
-    weights: [],
-    types: [],
-    heights: [],
+    weights: initialCheckboxValue(6),
+    types: initialCheckboxValue(20),
+    heights: initialCheckboxValue(6),
   });
 
   const handleFilter = (filter) => {
@@ -66,9 +66,9 @@ function App() {
             e.preventDefault();
             setFormState({
               search: "",
-              weights: [],
-              types: [],
-              heights: [],
+              weights: initialCheckboxValue(6),
+              types: initialCheckboxValue(20),
+              heights: initialCheckboxValue(6),
             });
           }}
         >
