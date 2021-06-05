@@ -4,10 +4,7 @@ export function HeightCheckBox(props) {
   const clearAll = (e) => {
     e.preventDefault();
     setFormState((prev) => {
-      let auxBoolean = false;
-      prev.heights.forEach((height, i) => {
-        prev.heights[i] = auxBoolean;
-      });
+      prev.heights = prev.heights.map(() => false);
       return { ...prev };
     });
   };

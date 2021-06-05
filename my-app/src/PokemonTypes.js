@@ -4,10 +4,7 @@ export function PokemonTypes(props) {
   const clearAll = (e) => {
     e.preventDefault();
     setFormState((prev) => {
-      let auxBoolean = false;
-      prev.types.forEach((type, i) => {
-        prev.types[i] = auxBoolean;
-      });
+      prev.types = prev.types.map(() => false);
       return { ...prev };
     });
   };

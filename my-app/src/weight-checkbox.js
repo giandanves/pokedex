@@ -4,10 +4,7 @@ export function WeightCheckBox(props) {
   const clearAll = (e) => {
     e.preventDefault();
     setFormState((prev) => {
-      let auxBoolean = false;
-      prev.weights.forEach((weight, i) => {
-        prev.weights[i] = auxBoolean;
-      });
+      prev.weights = prev.weights.map(() => false);
       return { ...prev };
     });
   };
