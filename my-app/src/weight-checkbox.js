@@ -1,23 +1,23 @@
-import { useRef } from "react";
-
 export function WeightCheckBox(props) {
-  const { weightBoxesCheckeds, setWeightBoxesCheckeds } = props;
-  const refWeight1 = useRef(null);
-  const refWeight2 = useRef(null);
-  const refWeight3 = useRef(null);
-  const refWeight4 = useRef(null);
-  const refWeight5 = useRef(null);
+  const { formState, setFormState } = props;
 
-  const handleCheckBox = (ref) => {
-    if (ref.checked) {
-      setWeightBoxesCheckeds((prev) => [...prev, ref]);
-    } else {
-      const filteredCheckBox = weightBoxesCheckeds.filter(
-        (checkbox) => checkbox !== ref
-      );
-      setWeightBoxesCheckeds(filteredCheckBox);
-    }
-    console.dir(weightBoxesCheckeds);
+  const clearAll = (e) => {
+    e.preventDefault();
+    setFormState((prev) => {
+      let auxBoolean = false;
+      prev.weights.forEach((weight, i) => {
+        prev.weights[i] = auxBoolean;
+      });
+      return { ...prev };
+    });
+  };
+
+  const handleCheckBox = (i, checkBox) => {
+    const isChecked = !checkBox;
+    setFormState((prev) => {
+      prev.weights[i] = isChecked;
+      return { ...prev };
+    });
   };
   return (
     <>
@@ -27,44 +27,44 @@ export function WeightCheckBox(props) {
           type="checkbox"
           id="weight=1"
           name="weight"
-          ref={refWeight1}
-          onChange={() => handleCheckBox(refWeight1.current)}
+          checked={formState.weights[1]}
+          onChange={() => handleCheckBox(1, formState.weights[1])}
         />
         <label>1</label>
         <input
           type="checkbox"
           id="weight=2"
           name="weight"
-          ref={refWeight2}
-          onChange={() => handleCheckBox(refWeight2.current)}
+          checked={formState.weights[2]}
+          onChange={() => handleCheckBox(2, formState.weights[2])}
         />
         <label>2</label>
         <input
           type="checkbox"
           id="weight=3"
           name="weight"
-          ref={refWeight3}
-          onChange={() => handleCheckBox(refWeight3.current)}
+          checked={formState.weights[3]}
+          onChange={() => handleCheckBox(3, formState.weights[3])}
         />
         <label>3</label>
         <input
           type="checkbox"
           id="weight=4"
           name="weight"
-          ref={refWeight4}
-          onChange={() => handleCheckBox(refWeight4.current)}
+          checked={formState.weights[4]}
+          onChange={() => handleCheckBox(4, formState.weights[4])}
         />
         <label>4</label>
         <input
           type="checkbox"
           id="weight=5"
           name="weight"
-          ref={refWeight5}
-          onChange={() => handleCheckBox(refWeight5.current)}
+          checked={formState.weights[5]}
+          onChange={() => handleCheckBox(5, formState.weights[5])}
         />
         <label>5</label>
       </section>
-      <button onClick={() => setWeightBoxesCheckeds([])}>clear</button>
+      <button onClick={(e) => clearAll(e)}>clear</button>
     </>
   );
 }
