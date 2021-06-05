@@ -64,6 +64,7 @@ export function WeightCheckBox(props) {
         />
         <label>5</label>
       </section>
+      <button onClick={() => setWeightBoxesCheckeds([])}>clear</button>
     </>
   );
 }

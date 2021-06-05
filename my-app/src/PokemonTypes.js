@@ -29,6 +29,7 @@ export function PokemonTypes(props) {
           </>
         );
       })}
+      <button onClick={() => setPoketypesCheckeds([])}>clear</button>
     </section>
   );
 }
