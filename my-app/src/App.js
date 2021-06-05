@@ -37,7 +37,6 @@ function App() {
     e.preventDefault();
     let filter = "?";
     filter = handleFilter(filter);
-    console.log(filter);
     url = defaultUrl;
     setUrl(url + filter);
   };
