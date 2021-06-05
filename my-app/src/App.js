@@ -6,7 +6,7 @@ import { handleLoadAndError } from "./HandleLoadAndError";
 import { HeightCheckBox } from "./height-checkbox";
 import { WeightCheckBox } from "./weight-checkbox";
 import { TextBox } from "./textBox";
-import { getBoxesChecked } from "./handleCheckBox";
+import { getBoxesChecked } from "./getBoxesCheckeds";
 
 const defaultUrl = process.env.REACT_APP_DEFAULT_URL;
 const poketypesUrl = process.env.REACT_APP_POKETYPES_URL;
@@ -14,30 +14,22 @@ const poketypesUrl = process.env.REACT_APP_POKETYPES_URL;
 function App() {
   let [url, setUrl] = useState(defaultUrl);
   const [loading, pokemons, error] = useFetch(url);
-  const types = useFetch(poketypesUrl);
-  const [typeIsLoading, typeResult, typeHasError] = types;
+  const typeList = useFetch(poketypesUrl);
+  const [typeIsLoading, typeResult, typeHasError] = typeList;
 
   const [formState, setFormState] = useState({
     search: "",
     weights: [],
     types: [],
-    heights: [null, false, false, false, false, false],
+    heights: [],
   });
 
-  const [textBox, setTextBox] = useState("");
-  const [heightBoxesCheckeds, setHeightBoxesCheckeds] = useState([]);
-  const [weightBoxesCheckeds, setWeightBoxesCheckeds] = useState([]);
-  const [poketypesCheckeds, setPoketypesCheckeds] = useState([]);
-
   const handleFilter = (filter) => {
-    if (textBox) {
-      filter += `search=${textBox}&`;
+    const { search, weights, types, heights } = formState;
+    if (search) {
+      filter += `search=${search}&`;
     }
-    filter += getBoxesChecked(
-      heightBoxesCheckeds,
-      weightBoxesCheckeds,
-      poketypesCheckeds
-    );
+    filter += getBoxesChecked(heights, weights, types, typeResult.results);
     return filter;
   };
 
@@ -45,6 +37,7 @@ function App() {
     e.preventDefault();
     let filter = "?";
     filter = handleFilter(filter);
+    console.log(filter);
     url = defaultUrl;
     setUrl(url + filter);
   };
@@ -68,7 +61,19 @@ function App() {
             />
           )}
         </section>
-
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            setFormState({
+              search: "",
+              weights: [],
+              types: [],
+              heights: [],
+            });
+          }}
+        >
+          clear all
+        </button>
         <ul className="PokemonsContainer">
           {handleLoadAndError(loading, error) || (
             <Pokemons pokemons={pokemons} />
