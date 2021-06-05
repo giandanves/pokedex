@@ -4,8 +4,13 @@ export function TextBox(props) {
   const { formState, setFormState } = props;
   const textRef = useRef(null);
 
-  const clearText = () => {
-    textRef.current.value = "";
+  const clearText = (e) => {
+    e.preventDefault();
+    const emptyValue = "";
+    setFormState((prev) => {
+      prev.search = emptyValue;
+      return { ...prev };
+    });
   };
 
   return (
@@ -14,6 +19,7 @@ export function TextBox(props) {
         type="text"
         id="text-area"
         ref={textRef}
+        value={formState.search}
         onInput={() =>
           setFormState((prev) => {
             prev.search = textRef.current.value;
@@ -21,7 +27,7 @@ export function TextBox(props) {
           })
         }
       />
-      <button onClick={() => clearText()}>clear</button>
+      <button onClick={(e) => clearText(e)}>clear</button>
     </>
   );
 }
