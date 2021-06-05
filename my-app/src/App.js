@@ -15,11 +15,19 @@ function App() {
   let [url, setUrl] = useState(defaultUrl);
   const [loading, pokemons, error] = useFetch(url);
   const types = useFetch(poketypesUrl);
+  const [typeIsLoading, typeResult, typeHasError] = types;
+
+  const [formState, setFormState] = useState({
+    search: "",
+    weights: [],
+    types: [],
+    heights: [null, false, false, false, false, false],
+  });
+
   const [textBox, setTextBox] = useState("");
   const [heightBoxesCheckeds, setHeightBoxesCheckeds] = useState([]);
   const [weightBoxesCheckeds, setWeightBoxesCheckeds] = useState([]);
   const [poketypesCheckeds, setPoketypesCheckeds] = useState([]);
-  const [typeIsLoading, typeResult, typeHasError] = types;
 
   const handleFilter = (filter) => {
     if (textBox) {
@@ -47,22 +55,16 @@ function App() {
         <button type="submit" onClick={(e) => handleSearch(e)}>
           Search
         </button>
-        <TextBox setTextBox={setTextBox} />
-        <HeightCheckBox
-          heightBoxesCheckeds={heightBoxesCheckeds}
-          setHeightBoxesCheckeds={setHeightBoxesCheckeds}
-        />
-        <WeightCheckBox
-          weightBoxesCheckeds={weightBoxesCheckeds}
-          setWeightBoxesCheckeds={setWeightBoxesCheckeds}
-        />
+        <TextBox formState={formState} setFormState={setFormState} />
+        <HeightCheckBox formState={formState} setFormState={setFormState} />
+        <WeightCheckBox formState={formState} setFormState={setFormState} />
 
         <section className="typePokemonContainer">
           {handleLoadAndError(typeIsLoading, typeHasError) || (
             <PokemonTypes
               types={typeResult.results}
-              poketypesCheckeds={poketypesCheckeds}
-              setPoketypesCheckeds={setPoketypesCheckeds}
+              formState={formState}
+              setFormState={setFormState}
             />
           )}
         </section>
