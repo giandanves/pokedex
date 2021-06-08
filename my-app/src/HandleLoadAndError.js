@@ -4,6 +4,10 @@ export const handleLoadAndError = (loading, error) => {
   }
 
   if (error) {
-    return "error";
+    return (
+      <>
+        <p>An error occurred while loading data.</p>
+      </>
+    );
   } else return false;
 };
