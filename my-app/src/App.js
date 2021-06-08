@@ -15,7 +15,7 @@ function App() {
   let [url, setUrl] = useState(defaultUrl);
   const [loading, pokemons, error, refetchData] = useFetch(url);
   const typeList = useFetch(poketypesUrl);
-  const [typeIsLoading, typeResult, typeHasError] = typeList;
+  const [typeIsLoading, typeResult, typeHasError, refetchTypes] = typeList;
 
   const [formState, setFormState] = useState({
     search: "",
@@ -27,6 +27,11 @@ function App() {
   const newFetch = (e) => {
     e.preventDefault();
     refetchData();
+  };
+
+  const refetchTypeList = (e) => {
+    e.preventDefault();
+    refetchTypes();
   };
 
   const handleSearch = (e) => {
@@ -61,6 +66,11 @@ function App() {
               formState={formState}
               setFormState={setFormState}
             />
+          )}
+          {error ? (
+            <button onClick={(e) => refetchTypeList(e)}>Try Again</button>
+          ) : (
+            <></>
           )}
         </section>
         <button
