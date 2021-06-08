@@ -1,10 +1,13 @@
 const queryString = require("query-string");
 
-export const getBoxesChecked = (height, weight, type, typeList) => {
+export const getUrl = (height, weight, type, typeList, search, url) => {
   let heightCheckeds = [];
   let weightCheckeds = [];
   let typesCheckeds = [];
-
+  let searchBox = [];
+  if (search) {
+    searchBox.push(search);
+  }
   height.forEach((state, i) => {
     if (state) {
       heightCheckeds.push(i);
@@ -21,9 +24,15 @@ export const getBoxesChecked = (height, weight, type, typeList) => {
     }
   });
 
-  return queryString.stringify({
-    height: [heightCheckeds],
-    weight: [weightCheckeds],
-    type: [typesCheckeds],
+  const queryObject = {
+    search: searchBox,
+    height: heightCheckeds,
+    weight: weightCheckeds,
+    type: typesCheckeds,
+  };
+
+  return queryString.stringifyUrl({
+    url: url,
+    query: queryObject,
   });
 };
