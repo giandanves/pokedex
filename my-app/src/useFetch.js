@@ -5,11 +5,13 @@ export const useFetch = (url) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const getData = useCallback(async () => {
+    setLoading(true);
     try {
       const response = await fetch(url);
       const data = await response.json();
       setData(data);
       setLoading(false);
+      setError(false);
     } catch (e) {
       setError(true);
       setLoading(false);
@@ -17,7 +19,8 @@ export const useFetch = (url) => {
   }, [url]);
 
   const refetchData = useCallback(() => {
-    console.log("REFETCHDATAA");
+    setError(false);
+    setLoading(true);
     getData(url);
   }, [getData, url]);
 
