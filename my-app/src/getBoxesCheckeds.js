@@ -1,19 +1,29 @@
+const queryString = require("query-string");
+
 export const getBoxesChecked = (height, weight, type, typeList) => {
-  let boxesCheckeds = "";
+  let heightCheckeds = [];
+  let weightCheckeds = [];
+  let typesCheckeds = [];
+
   height.forEach((state, i) => {
     if (state) {
-      boxesCheckeds += `height=${i}&`;
+      heightCheckeds.push(i);
     }
   });
   weight.forEach((state, i) => {
     if (state) {
-      boxesCheckeds += `weight=${i}&`;
+      weightCheckeds.push(i);
     }
   });
   type.forEach((state, i) => {
     if (state) {
-      boxesCheckeds += `type=${typeList[i].name}&`;
+      typesCheckeds.push(typeList[i].name);
     }
   });
-  return boxesCheckeds;
+
+  return queryString.stringify({
+    height: [heightCheckeds],
+    weight: [weightCheckeds],
+    type: [typesCheckeds],
+  });
 };
