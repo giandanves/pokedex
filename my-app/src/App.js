@@ -13,7 +13,7 @@ const poketypesUrl = process.env.REACT_APP_POKETYPES_URL;
 
 function App() {
   let [url, setUrl] = useState(defaultUrl);
-  const [loading, pokemons, error] = useFetch(url);
+  const [loading, pokemons, error, refetchData] = useFetch(url);
   const typeList = useFetch(poketypesUrl);
   const [typeIsLoading, typeResult, typeHasError] = typeList;
 
@@ -24,6 +24,11 @@ function App() {
     heights: initialCheckboxValue(6),
   });
 
+  const newFetch = (e) => {
+    e.preventDefault();
+    refetchData();
+    console.log(error);
+  };
   const handleFilter = (filter) => {
     const { search, weights, types, heights } = formState;
     if (search) {
@@ -76,6 +81,11 @@ function App() {
         <ul className="PokemonsContainer">
           {handleLoadAndError(loading, error) || (
             <Pokemons pokemons={pokemons} />
+          )}
+          {error ? (
+            <button onClick={(e) => newFetch(e)}>Try Again</button>
+          ) : (
+            <></>
           )}
         </ul>
       </form>
