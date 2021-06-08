@@ -6,7 +6,7 @@ import { handleLoadAndError } from "./HandleLoadAndError";
 import { HeightCheckBox } from "./height-checkbox";
 import { WeightCheckBox } from "./weight-checkbox";
 import { TextBox } from "./textBox";
-import { getBoxesChecked } from "./getBoxesCheckeds";
+import { getUrl } from "./getUrl";
 import { initialCheckboxValue } from "./initialCheckboxValues";
 const defaultUrl = process.env.REACT_APP_DEFAULT_URL;
 const poketypesUrl = process.env.REACT_APP_POKETYPES_URL;
@@ -27,23 +27,21 @@ function App() {
   const newFetch = (e) => {
     e.preventDefault();
     refetchData();
-    console.log(error);
-  };
-  const handleFilter = (filter) => {
-    const { search, weights, types, heights } = formState;
-    if (search) {
-      filter += `search=${search}&`;
-    }
-    filter += getBoxesChecked(heights, weights, types, typeResult.results);
-    return filter;
   };
 
   const handleSearch = (e) => {
     e.preventDefault();
-    let filter = "?";
-    filter = handleFilter(filter);
+    const { search, weights, types, heights } = formState;
     url = defaultUrl;
-    setUrl(url + filter);
+    const filteredUrl = getUrl(
+      heights,
+      weights,
+      types,
+      typeResult.results,
+      search,
+      url
+    );
+    setUrl(filteredUrl);
   };
 
   return (
