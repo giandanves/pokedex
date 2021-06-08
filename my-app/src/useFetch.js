@@ -15,8 +15,14 @@ export const useFetch = (url) => {
     }
   }, [url]);
 
+  const refetchData = useCallback(() => {
+    console.log("REFETCHDATAA");
+    getData(url);
+  }, [getData, url]);
+
   useEffect(() => {
     getData();
   }, [url, getData]);
-  return [loading, data, error];
+
+  return [loading, data, error, refetchData];
 };
