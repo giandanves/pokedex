@@ -1,28 +1,22 @@
 const queryString = require("query-string");
 
-export const getUrl = (height, weight, type, typeList, search, url) => {
-  let heightCheckeds = [];
-  let weightCheckeds = [];
-  let typesCheckeds = [];
-  let searchBox = [];
+export const getUrl = (height, weight, types, typeList, search, url) => {
+  const searchBox = [];
   if (search) {
     searchBox.push(search);
   }
-  height.forEach((state, i) => {
-    if (state) {
-      heightCheckeds.push(i);
-    }
-  });
-  weight.forEach((state, i) => {
-    if (state) {
-      weightCheckeds.push(i);
-    }
-  });
-  type.forEach((state, i) => {
-    if (state) {
-      typesCheckeds.push(typeList[i].name);
-    }
-  });
+
+  const typesCheckeds = typeList
+    .map((type) => type.name)
+    .filter((type, index) => types[index]);
+
+  const heightCheckeds = height
+    .map((ht, i) => i)
+    .filter((ht, index) => height[index]);
+
+  const weightCheckeds = weight
+    .map((wt, i) => i)
+    .filter((wt, index) => weight[index]);
 
   const queryObject = {
     search: searchBox,
