@@ -2,7 +2,7 @@ export function Pokemons(props) {
   const { pokemons } = props;
   return (
     <section>
-      {pokemons ? (
+      {!pokemons ? (
         <p>
           No Pokemons matches this criterias, change the filters and try again
         </p>
