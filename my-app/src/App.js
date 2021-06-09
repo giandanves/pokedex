@@ -38,14 +38,9 @@ function App() {
     e.preventDefault();
     const { search, weights, types, heights } = formState;
     url = defaultUrl;
-    const filteredUrl = getUrl(
-      heights,
-      weights,
-      types,
-      typeResult.results,
-      search,
-      url
-    );
+    const results = typeResult.results;
+    const filterParams = { heights, weights, types, results, search, url };
+    const filteredUrl = getUrl(filterParams);
     setUrl(filteredUrl);
   };
 
