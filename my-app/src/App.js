@@ -6,6 +6,7 @@ import { handleLoadAndError } from "./HandleLoadAndError";
 import { HeightCheckBox } from "./height-checkbox";
 import { WeightCheckBox } from "./weight-checkbox";
 import { TextBox } from "./textBox";
+import { DropdownBox } from "./DropdownBox";
 import { getUrl } from "./getUrl";
 import { initialCheckboxValue } from "./initialCheckboxValues";
 const defaultUrl = process.env.REACT_APP_DEFAULT_URL;
@@ -13,12 +14,18 @@ const poketypesUrl = process.env.REACT_APP_POKETYPES_URL;
 
 function App() {
   let [url, setUrl] = useState(defaultUrl);
-  const [loading, pokemons, error, refetchData] = useFetch(url);
+  const [limit, setLimit] = useState(10);
+
+  const getLimit = () => {
+    return `&limit=${limit}`;
+  };
+  const [loading, pokemons, error, refetchData] = useFetch(url + getLimit());
   const typeList = useFetch(poketypesUrl);
   const [typeIsLoading, typeResult, typeHasError, refetchTypes] = typeList;
 
   const [formState, setFormState] = useState({
     search: "",
+    limit: 10,
     weights: initialCheckboxValue(6),
     types: initialCheckboxValue(20),
     heights: initialCheckboxValue(6),
@@ -39,7 +46,14 @@ function App() {
     const { search, weights, types, heights } = formState;
     url = defaultUrl;
     const results = typeResult.results;
-    const filterParams = { heights, weights, types, results, search, url };
+    const filterParams = {
+      heights,
+      weights,
+      types,
+      results,
+      search,
+      url,
+    };
     const filteredUrl = getUrl(filterParams);
     setUrl(filteredUrl);
   };
@@ -97,13 +111,7 @@ function App() {
             <></>
           )}
         </ul>
-        <p>Show: </p>
-        <select>
-          <option value={10}>10</option>
-          <option value={10}>25</option>
-          <option value={10}>50</option>
-          <option value={10}>100</option>
-        </select>
+        <DropdownBox setLimit={setLimit} />
       </form>
     </>
   );
