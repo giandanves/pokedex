@@ -97,6 +97,13 @@ function App() {
             <></>
           )}
         </ul>
+        <p>Show: </p>
+        <select>
+          <option value={10}>10</option>
+          <option value={10}>25</option>
+          <option value={10}>50</option>
+          <option value={10}>100</option>
+        </select>
       </form>
     </>
   );
