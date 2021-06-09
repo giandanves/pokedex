@@ -15,11 +15,17 @@ const poketypesUrl = process.env.REACT_APP_POKETYPES_URL;
 function App() {
   let [url, setUrl] = useState(defaultUrl);
   const [limit, setLimit] = useState(10);
-
+  const [offset, setOffset] = useState(0);
   const getLimit = () => {
     return `&limit=${limit}`;
   };
-  const [loading, pokemons, error, refetchData] = useFetch(url + getLimit());
+
+  const getOffset = () => {
+    return `&offset=${offset}`;
+  };
+  const [loading, pokemons, error, refetchData] = useFetch(
+    url + getLimit() + getOffset()
+  );
   const typeList = useFetch(poketypesUrl);
   const [typeIsLoading, typeResult, typeHasError, refetchTypes] = typeList;
 
@@ -82,7 +88,7 @@ function App() {
             clear all
           </button>
         </div>
-
+        <DropdownBox limit={limit} setLimit={setLimit} setOffset={setOffset} />
         <HeightCheckBox formState={formState} setFormState={setFormState} />
         <WeightCheckBox formState={formState} setFormState={setFormState} />
 
@@ -101,7 +107,7 @@ function App() {
           )}
         </section>
 
-        <ul className="PokemonsContainer">
+        <ul>
           {handleLoadAndError(loading, error) || (
             <Pokemons pokemons={pokemons} />
           )}
@@ -111,7 +117,6 @@ function App() {
             <></>
           )}
         </ul>
-        <DropdownBox setLimit={setLimit} />
       </form>
     </>
   );
