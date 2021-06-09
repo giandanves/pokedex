@@ -21,6 +21,10 @@ code {
   flex-direction: row;
 }
 
+.pokemons-container {
+  display: flex;
+  flex-wrap: wrap;
+}
 .pokemon-avatar {
   height: 120px;
   width: 120px;
