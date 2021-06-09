@@ -47,10 +47,28 @@ function App() {
   return (
     <>
       <form id="search-form">
-        <button type="submit" onClick={(e) => handleSearch(e)}>
-          Search
-        </button>
-        <TextBox formState={formState} setFormState={setFormState} />
+        <div className="search-box">
+          <TextBox formState={formState} setFormState={setFormState} />
+          <button type="submit" onClick={(e) => handleSearch(e)}>
+            Search
+          </button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setUrl(defaultUrl);
+              refetchData();
+              setFormState({
+                search: "",
+                weights: initialCheckboxValue(6),
+                types: initialCheckboxValue(20),
+                heights: initialCheckboxValue(6),
+              });
+            }}
+          >
+            clear all
+          </button>
+        </div>
+
         <HeightCheckBox formState={formState} setFormState={setFormState} />
         <WeightCheckBox formState={formState} setFormState={setFormState} />
 
@@ -68,19 +86,7 @@ function App() {
             <></>
           )}
         </section>
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            setFormState({
-              search: "",
-              weights: initialCheckboxValue(6),
-              types: initialCheckboxValue(20),
-              heights: initialCheckboxValue(6),
-            });
-          }}
-        >
-          clear all
-        </button>
+
         <ul className="PokemonsContainer">
           {handleLoadAndError(loading, error) || (
             <Pokemons pokemons={pokemons} />
