@@ -15,6 +15,12 @@ code {
     monospace;
 }
 
+.search-box {
+  display: flex;
+  width: 250px;
+  flex-direction: row;
+}
+
 .pokemon-avatar {
   height: 120px;
   width: 120px;
@@ -47,6 +53,9 @@ p {
   padding: 2px;
 }
 
+button {
+  width: fit-content;
+}
 .types-grid {
   display: flex;
 }
