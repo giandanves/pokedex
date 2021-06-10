@@ -6,7 +6,7 @@ import { handleLoadAndError } from "./HandleLoadAndError";
 import { HeightCheckBox } from "./height-checkbox";
 import { WeightCheckBox } from "./weight-checkbox";
 import { TextBox } from "./textBox";
-import { PaginationController } from "./DropdownBox";
+import { PaginationController } from "./PaginationController";
 import { getUrl } from "./getUrl";
 import { initialCheckboxValue } from "./initialCheckboxValues";
 const defaultUrl = process.env.REACT_APP_DEFAULT_URL;
