@@ -6,7 +6,7 @@ import { handleLoadAndError } from "./HandleLoadAndError";
 import { HeightCheckBox } from "./height-checkbox";
 import { WeightCheckBox } from "./weight-checkbox";
 import { TextBox } from "./textBox";
-import { DropdownBox } from "./DropdownBox";
+import { PaginationController } from "./DropdownBox";
 import { getUrl } from "./getUrl";
 import { initialCheckboxValue } from "./initialCheckboxValues";
 const defaultUrl = process.env.REACT_APP_DEFAULT_URL;
@@ -16,7 +16,7 @@ function App() {
   let [url, setUrl] = useState(defaultUrl);
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
-  let [page, setPage] = useState(0);
+
   const getLimit = () => {
     return `&limit=${limit}`;
   };
@@ -50,7 +50,6 @@ function App() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    setPage(0);
     setOffset(0);
     const { search, weights, types, heights } = formState;
     url = defaultUrl;
@@ -91,12 +90,11 @@ function App() {
             clear all
           </button>
         </div>
-        <DropdownBox
+        <PaginationController
           limit={limit}
           setLimit={setLimit}
           setOffset={setOffset}
-          page={page}
-          setPage={setPage}
+          offset={offset}
           loading={loading}
         />
         <HeightCheckBox formState={formState} setFormState={setFormState} />
