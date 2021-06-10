@@ -1,16 +1,14 @@
-export const DropdownBox = (props) => {
-  const { limit, setLimit, setOffset, setPage, loading } = props;
-  let { page } = props;
+export const PaginationController = (props) => {
+  const { limit, setLimit, setOffset, offset, loading } = props;
 
   const handlePagination = (e) => {
-    e.preventDefault();
     setLimit(e.target.value);
   };
 
   const handleOffset = (e, change) => {
     e.preventDefault();
+    let page = offset / limit;
     page = page + change;
-    setPage(page);
     setOffset(page * limit);
   };
   return (
@@ -26,7 +24,7 @@ export const DropdownBox = (props) => {
         <option value={100}>100</option>
       </select>
       <button
-        disabled={page === 0 || loading ? true : false}
+        disabled={offset / limit === 0 || loading ? true : false}
         onClick={(e) => handleOffset(e, -1)}
       >
         previous page
@@ -37,7 +35,7 @@ export const DropdownBox = (props) => {
       >
         next page
       </button>
-      <p>Page {page + 1}</p>
+      <p>Page {offset / limit + 1}</p>
     </>
   );
 };
