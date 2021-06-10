@@ -16,6 +16,7 @@ function App() {
   let [url, setUrl] = useState(defaultUrl);
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
+  let [page, setPage] = useState(0);
   const getLimit = () => {
     return `&limit=${limit}`;
   };
@@ -49,6 +50,8 @@ function App() {
 
   const handleSearch = (e) => {
     e.preventDefault();
+    setPage(0);
+    setOffset(0);
     const { search, weights, types, heights } = formState;
     url = defaultUrl;
     const results = typeResult.results;
@@ -88,7 +91,14 @@ function App() {
             clear all
           </button>
         </div>
-        <DropdownBox limit={limit} setLimit={setLimit} setOffset={setOffset} />
+        <DropdownBox
+          limit={limit}
+          setLimit={setLimit}
+          setOffset={setOffset}
+          page={page}
+          setPage={setPage}
+          loading={loading}
+        />
         <HeightCheckBox formState={formState} setFormState={setFormState} />
         <WeightCheckBox formState={formState} setFormState={setFormState} />
 
