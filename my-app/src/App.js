@@ -6,6 +6,7 @@ import { handleLoadAndError } from "./HandleLoadAndError";
 import { HeightCheckBox } from "./height-checkbox";
 import { WeightCheckBox } from "./weight-checkbox";
 import { TextBox } from "./textBox";
+import { PaginationController } from "./PaginationController";
 import { getUrl } from "./getUrl";
 import { initialCheckboxValue } from "./initialCheckboxValues";
 const defaultUrl = process.env.REACT_APP_DEFAULT_URL;
@@ -13,12 +14,25 @@ const poketypesUrl = process.env.REACT_APP_POKETYPES_URL;
 
 function App() {
   let [url, setUrl] = useState(defaultUrl);
-  const [loading, pokemons, error, refetchData] = useFetch(url);
+  const [limit, setLimit] = useState(10);
+  const [offset, setOffset] = useState(0);
+
+  const getLimit = () => {
+    return `&limit=${limit}`;
+  };
+
+  const getOffset = () => {
+    return `&offset=${offset}`;
+  };
+  const [loading, pokemons, error, refetchData] = useFetch(
+    url + getLimit() + getOffset()
+  );
   const typeList = useFetch(poketypesUrl);
   const [typeIsLoading, typeResult, typeHasError, refetchTypes] = typeList;
 
   const [formState, setFormState] = useState({
     search: "",
+    limit: 10,
     weights: initialCheckboxValue(6),
     types: initialCheckboxValue(20),
     heights: initialCheckboxValue(6),
@@ -36,10 +50,18 @@ function App() {
 
   const handleSearch = (e) => {
     e.preventDefault();
+    setOffset(0);
     const { search, weights, types, heights } = formState;
     url = defaultUrl;
     const results = typeResult.results;
-    const filterParams = { heights, weights, types, results, search, url };
+    const filterParams = {
+      heights,
+      weights,
+      types,
+      results,
+      search,
+      url,
+    };
     const filteredUrl = getUrl(filterParams);
     setUrl(filteredUrl);
   };
@@ -68,7 +90,13 @@ function App() {
             clear all
           </button>
         </div>
-
+        <PaginationController
+          limit={limit}
+          setLimit={setLimit}
+          setOffset={setOffset}
+          offset={offset}
+          loading={loading}
+        />
         <HeightCheckBox formState={formState} setFormState={setFormState} />
         <WeightCheckBox formState={formState} setFormState={setFormState} />
 
@@ -87,7 +115,7 @@ function App() {
           )}
         </section>
 
-        <ul className="PokemonsContainer">
+        <ul>
           {handleLoadAndError(loading, error) || (
             <Pokemons pokemons={pokemons} />
           )}
