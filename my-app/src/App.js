@@ -1,14 +1,10 @@
 import { useFetch } from "./useFetch";
 import { useState } from "react";
 import { Pokemons } from "./Pokemons";
-import { PokemonTypes } from "./PokemonTypes.js";
 import { handleLoadAndError } from "./HandleLoadAndError";
-import { HeightCheckBox } from "./height-checkbox";
-import { WeightCheckBox } from "./weight-checkbox";
-import { TextBox } from "./textBox";
 import { PaginationController } from "./PaginationController";
 import { getUrl } from "./getUrl";
-import { initialCheckboxValue } from "./initialCheckboxValues";
+import { Formik, Form, Field } from "formik";
 const defaultUrl = process.env.REACT_APP_DEFAULT_URL;
 const poketypesUrl = process.env.REACT_APP_POKETYPES_URL;
 
@@ -30,14 +26,6 @@ function App() {
   const typeList = useFetch(poketypesUrl);
   const [typeIsLoading, typeResult, typeHasError, refetchTypes] = typeList;
 
-  const [formState, setFormState] = useState({
-    search: "",
-    limit: 10,
-    weights: initialCheckboxValue(6),
-    types: initialCheckboxValue(20),
-    heights: initialCheckboxValue(6),
-  });
-
   const newFetch = (e) => {
     e.preventDefault();
     refetchData();
@@ -48,84 +36,116 @@ function App() {
     refetchTypes();
   };
 
-  const handleSearch = (e) => {
-    e.preventDefault();
+  const onSubmit = (values) => {
     setOffset(0);
-    const { search, weights, types, heights } = formState;
     url = defaultUrl;
-    const results = typeResult.results;
-    const filterParams = {
-      heights,
-      weights,
-      types,
-      results,
-      search,
-      url,
-    };
-    const filteredUrl = getUrl(filterParams);
+    const filteredUrl = getUrl(values, url);
     setUrl(filteredUrl);
+    console.log(values);
   };
 
   return (
     <>
-      <form id="search-form">
-        <div className="search-box">
-          <TextBox formState={formState} setFormState={setFormState} />
-          <button type="submit" onClick={(e) => handleSearch(e)}>
-            Search
-          </button>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              setUrl(defaultUrl);
-              refetchData();
-              setFormState({
-                search: "",
-                weights: initialCheckboxValue(6),
-                types: initialCheckboxValue(20),
-                heights: initialCheckboxValue(6),
-              });
-            }}
-          >
-            clear all
-          </button>
-        </div>
-        <PaginationController
-          limit={limit}
-          setLimit={setLimit}
-          setOffset={setOffset}
-          offset={offset}
-          loading={loading}
-        />
-        <HeightCheckBox formState={formState} setFormState={setFormState} />
-        <WeightCheckBox formState={formState} setFormState={setFormState} />
+      <Formik
+        onSubmit={onSubmit}
+        initialValues={{
+          heights: [],
+          weights: [],
+          search: "",
+          type: [],
+        }}
+      >
+        <Form>
+          <div>
+            <Field name="search" type="text" placeholder="Search by name" />
+            <button type="submit">Search</button>
+          </div>
+          <div>
+            <p>Height</p>
+            <label>
+              <Field type="checkbox" name="heights" value="1" />1
+            </label>
 
-        <section className="typePokemonContainer">
-          {handleLoadAndError(typeIsLoading, typeHasError) || (
-            <PokemonTypes
-              types={typeResult.results}
-              formState={formState}
-              setFormState={setFormState}
-            />
-          )}
+            <label>
+              <Field type="checkbox" name="heights" value="2" />2
+            </label>
+
+            <label>
+              <Field type="checkbox" name="heights" value="3" />3
+            </label>
+
+            <label>
+              <Field type="checkbox" name="heights" value="4" />4
+            </label>
+
+            <label>
+              <Field type="checkbox" name="heights" value="5" />5
+            </label>
+          </div>
+          <div>
+            <p>Weight</p>
+            <label>
+              <Field type="checkbox" name="weights" value="1" />1
+            </label>
+
+            <label>
+              <Field type="checkbox" name="weights" value="2" />2
+            </label>
+
+            <label>
+              <Field type="checkbox" name="weights" value="3" />3
+            </label>
+
+            <label>
+              <Field type="checkbox" name="weights" value="4" />4
+            </label>
+
+            <label>
+              <Field type="checkbox" name="weights" value="5" />5
+            </label>
+          </div>
+
+          <div>
+            <p>Types</p>
+            {handleLoadAndError(typeIsLoading, typeHasError) ||
+              typeResult.results.map((pokeType) => {
+                return (
+                  <>
+                    <label>
+                      <Field
+                        type="checkbox"
+                        name="type"
+                        value={pokeType.name}
+                      />
+                      {pokeType.name}
+                    </label>
+                  </>
+                );
+              })}
+          </div>
           {error ? (
             <button onClick={(e) => refetchTypeList(e)}>Try Again</button>
           ) : (
             <></>
           )}
-        </section>
-
-        <ul>
-          {handleLoadAndError(loading, error) || (
-            <Pokemons pokemons={pokemons} />
-          )}
-          {error ? (
-            <button onClick={(e) => newFetch(e)}>Try Again</button>
-          ) : (
-            <></>
-          )}
-        </ul>
-      </form>
+          <button type="reset">Clear filters</button>
+          <PaginationController
+            limit={limit}
+            setLimit={setLimit}
+            setOffset={setOffset}
+            offset={offset}
+            loading={loading}
+          />
+        </Form>
+      </Formik>
+      <ul>
+        {handleLoadAndError(loading, error) || <Pokemons pokemons={pokemons} />}
+        {error ? (
+          <button onClick={(e) => newFetch(e)}>Try Again</button>
+        ) : (
+          <></>
+        )}
+      </ul>
     </>
   );
 }
