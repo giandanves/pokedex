@@ -104,8 +104,8 @@ function App() {
 
           <div>
             <p>Types</p>
-            {handleLoadAndError(typeIsLoading, typeHasError) ||
-              typeResult.results.map((pokeType) => {
+            {handleLoadAndError(typeList.isLoading, typeList.error) ||
+              typeList.data.results.map((pokeType) => {
                 return (
                   <>
                     <label>
