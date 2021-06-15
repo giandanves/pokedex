@@ -12,10 +12,13 @@ function App() {
   let [url, setUrl] = useState(defaultUrl);
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
-  const { isLoading, error, data, refetch } = useQuery(
+  const { isLoading, error, data, refetch, status } = useQuery(
     [url, limit, offset],
-    () => fetch(url + getLimit() + getOffset()).then((res) => res.json())
+    () => fetch(url + getLimit() + getOffset()).then((res) => res.json()),
+    { retry: false }
   );
+
+  console.log(status);
 
   const getLimit = () => {
     return `&limit=${limit}`;
@@ -25,8 +28,10 @@ function App() {
     return `&offset=${offset}`;
   };
 
-  const typeList = useQuery(poketypesUrl, () =>
-    fetch(poketypesUrl).then((res) => res.json())
+  const typeList = useQuery(
+    poketypesUrl,
+    () => fetch(poketypesUrl).then((res) => res.json()),
+    { retry: false }
   );
 
   const onSubmit = (values) => {
