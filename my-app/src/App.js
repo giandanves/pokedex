@@ -121,7 +121,7 @@ function App() {
               })}
           </div>
           {error ? (
-            <button onClick={(e) => refetchTypeList(e)}>Try Again</button>
+            <button onClick={() => typeList.refetch()}>Try Again</button>
           ) : (
             <></>
           )}
@@ -139,11 +139,7 @@ function App() {
       </Formik>
       <ul>
         {handleLoadAndError(isLoading, error) || <Pokemons pokemons={data} />}
-        {error ? (
-          <button onClick={(e) => newFetch(e)}>Try Again</button>
-        ) : (
-          <></>
-        )}
+        {error ? <button onClick={() => refetch()}>Try Again</button> : <></>}
       </ul>
     </>
   );
