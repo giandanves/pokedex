@@ -5,6 +5,7 @@ import { handleLoadAndError } from "./HandleLoadAndError";
 import { PaginationController } from "./PaginationController";
 import { getUrl } from "./getUrl";
 import { Formik, Form, Field } from "formik";
+import { useQuery } from "react-query";
 const defaultUrl = process.env.REACT_APP_DEFAULT_URL;
 const poketypesUrl = process.env.REACT_APP_POKETYPES_URL;
 
@@ -12,6 +13,9 @@ function App() {
   let [url, setUrl] = useState(defaultUrl);
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
+  const { isLoading, error, data } = useQuery(url, () =>
+    fetch(url + getLimit() + getOffset()).then((res) => res.json())
+  );
 
   const getLimit = () => {
     return `&limit=${limit}`;
@@ -20,15 +24,12 @@ function App() {
   const getOffset = () => {
     return `&offset=${offset}`;
   };
-  const [loading, pokemons, error, refetchData] = useFetch(
-    url + getLimit() + getOffset()
-  );
+
   const typeList = useFetch(poketypesUrl);
   const [typeIsLoading, typeResult, typeHasError, refetchTypes] = typeList;
 
   const newFetch = (e) => {
     e.preventDefault();
-    refetchData();
   };
 
   const refetchTypeList = (e) => {
@@ -41,7 +42,10 @@ function App() {
     url = defaultUrl;
     const filteredUrl = getUrl(values, url);
     setUrl(filteredUrl);
-    console.log(values);
+  };
+
+  const resetUrl = () => {
+    setUrl(defaultUrl);
   };
 
   return (
@@ -128,18 +132,20 @@ function App() {
           ) : (
             <></>
           )}
-          <button type="reset">Clear filters</button>
+          <button type="reset" onClick={resetUrl}>
+            Clear filters
+          </button>
           <PaginationController
             limit={limit}
             setLimit={setLimit}
             setOffset={setOffset}
             offset={offset}
-            loading={loading}
+            loading={isLoading}
           />
         </Form>
       </Formik>
       <ul>
-        {handleLoadAndError(loading, error) || <Pokemons pokemons={pokemons} />}
+        {handleLoadAndError(isLoading, error) || <Pokemons pokemons={data} />}
         {error ? (
           <button onClick={(e) => newFetch(e)}>Try Again</button>
         ) : (
