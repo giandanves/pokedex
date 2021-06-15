@@ -1,4 +1,3 @@
-import { useFetch } from "./useFetch";
 import { useState } from "react";
 import { Pokemons } from "./Pokemons";
 import { handleLoadAndError } from "./HandleLoadAndError";
@@ -39,6 +38,7 @@ function App() {
 
   const resetUrl = () => {
     setUrl(defaultUrl);
+    setOffset(0);
   };
 
   return (
