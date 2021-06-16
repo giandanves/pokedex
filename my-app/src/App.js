@@ -61,7 +61,6 @@ function App() {
         <Form>
           <div>
             <Field name="search" type="text" placeholder="Search by name" />
-            <button type="submit">Search</button>
           </div>
           <div>
             <p>Height</p>
@@ -134,6 +133,7 @@ function App() {
           <button type="reset" onClick={resetUrl}>
             Clear filters
           </button>
+          <button type="submit">Search</button>
           <PaginationController
             limit={limit}
             setLimit={setLimit}
