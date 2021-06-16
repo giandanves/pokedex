@@ -147,6 +147,7 @@ function App() {
             setOffset={setOffset}
             offset={offset}
             loading={isLoading}
+            count={pokemons?.count}
           />
         </Form>
       </Formik>
