@@ -3,6 +3,7 @@ export const PaginationController = (props) => {
 
   const handlePagination = (e) => {
     setLimit(e.target.value);
+    setOffset(0);
   };
 
   const handleOffset = (e, change) => {
