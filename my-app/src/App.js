@@ -12,13 +12,16 @@ function App() {
   let [url, setUrl] = useState(defaultUrl);
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
-  const { isLoading, error, data, refetch, status } = useQuery(
+  const {
+    isLoading,
+    error,
+    data: pokemons,
+    refetch,
+  } = useQuery(
     [url, limit, offset],
     () => fetch(url + getLimit() + getOffset()).then((res) => res.json()),
     { retry: false }
   );
-
-  console.log(status);
 
   const getLimit = () => {
     return `&limit=${limit}`;
@@ -28,7 +31,12 @@ function App() {
     return `&offset=${offset}`;
   };
 
-  const typeList = useQuery(
+  const {
+    isLoading: typelistIsLoading,
+    isError: typelistHaserror,
+    data: typelistData,
+    refetch: refetchTypelist,
+  } = useQuery(
     poketypesUrl,
     () => fetch(poketypesUrl).then((res) => res.json()),
     { retry: false }
@@ -109,8 +117,8 @@ function App() {
 
           <div>
             <p>Types</p>
-            {handleLoadAndError(typeList.isLoading, typeList.error) ||
-              typeList.data.results.map((pokeType) => {
+            {handleLoadAndError(typelistIsLoading, typelistHaserror) ||
+              typelistData.results.map((pokeType) => {
                 return (
                   <>
                     <label>
@@ -126,7 +134,7 @@ function App() {
               })}
           </div>
           {error ? (
-            <button onClick={() => typeList.refetch()}>Try Again</button>
+            <button onClick={() => refetchTypelist()}>Try Again</button>
           ) : (
             <></>
           )}
@@ -143,7 +151,9 @@ function App() {
         </Form>
       </Formik>
       <ul>
-        {handleLoadAndError(isLoading, error) || <Pokemons pokemons={data} />}
+        {handleLoadAndError(isLoading, error) || (
+          <Pokemons pokemons={pokemons.results} />
+        )}
         {error ? <button onClick={() => refetch()}>Try Again</button> : <></>}
       </ul>
     </>
