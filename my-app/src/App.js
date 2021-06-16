@@ -1,10 +1,10 @@
-import { useFetch } from "./useFetch";
 import { useState } from "react";
 import { Pokemons } from "./Pokemons";
 import { handleLoadAndError } from "./HandleLoadAndError";
 import { PaginationController } from "./PaginationController";
 import { getUrl } from "./getUrl";
 import { Formik, Form, Field } from "formik";
+import { useQuery } from "react-query";
 const defaultUrl = process.env.REACT_APP_DEFAULT_URL;
 const poketypesUrl = process.env.REACT_APP_POKETYPES_URL;
 
@@ -20,28 +20,31 @@ function App() {
   const getOffset = () => {
     return `&offset=${offset}`;
   };
-  const [loading, pokemons, error, refetchData] = useFetch(
-    url + getLimit() + getOffset()
-  );
-  const typeList = useFetch(poketypesUrl);
-  const [typeIsLoading, typeResult, typeHasError, refetchTypes] = typeList;
 
-  const newFetch = (e) => {
-    e.preventDefault();
-    refetchData();
-  };
+  const {
+    isLoading,
+    error,
+    data: pokemons,
+    refetch,
+  } = useQuery(`${url}${getLimit()}${getOffset()}`, { retryDelay: 1000 });
 
-  const refetchTypeList = (e) => {
-    e.preventDefault();
-    refetchTypes();
-  };
+  const {
+    isLoading: typelistIsLoading,
+    isError: typelistHaserror,
+    data: typelistData,
+    refetch: refetchTypelist,
+  } = useQuery(poketypesUrl, { retryDelay: 1000 });
 
   const onSubmit = (values) => {
     setOffset(0);
     url = defaultUrl;
     const filteredUrl = getUrl(values, url);
     setUrl(filteredUrl);
-    console.log(values);
+  };
+
+  const resetUrl = () => {
+    setUrl(defaultUrl);
+    setOffset(0);
   };
 
   return (
@@ -58,7 +61,6 @@ function App() {
         <Form>
           <div>
             <Field name="search" type="text" placeholder="Search by name" />
-            <button type="submit">Search</button>
           </div>
           <div>
             <p>Height</p>
@@ -107,8 +109,8 @@ function App() {
 
           <div>
             <p>Types</p>
-            {handleLoadAndError(typeIsLoading, typeHasError) ||
-              typeResult.results.map((pokeType) => {
+            {handleLoadAndError(typelistIsLoading, typelistHaserror) ||
+              typelistData.results.map((pokeType) => {
                 return (
                   <>
                     <label>
@@ -124,27 +126,29 @@ function App() {
               })}
           </div>
           {error ? (
-            <button onClick={(e) => refetchTypeList(e)}>Try Again</button>
+            <button onClick={() => refetchTypelist()}>Try Again</button>
           ) : (
             <></>
           )}
-          <button type="reset">Clear filters</button>
+          <button type="reset" onClick={resetUrl}>
+            Clear filters
+          </button>
+          <button type="submit">Search</button>
           <PaginationController
             limit={limit}
             setLimit={setLimit}
             setOffset={setOffset}
             offset={offset}
-            loading={loading}
+            loading={isLoading}
+            count={pokemons?.count}
           />
         </Form>
       </Formik>
       <ul>
-        {handleLoadAndError(loading, error) || <Pokemons pokemons={pokemons} />}
-        {error ? (
-          <button onClick={(e) => newFetch(e)}>Try Again</button>
-        ) : (
-          <></>
+        {handleLoadAndError(isLoading, error) || (
+          <Pokemons pokemons={pokemons.results} />
         )}
+        {error ? <button onClick={() => refetch()}>Try Again</button> : <></>}
       </ul>
     </>
   );

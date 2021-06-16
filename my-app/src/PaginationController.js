@@ -1,8 +1,9 @@
 export const PaginationController = (props) => {
-  const { limit, setLimit, setOffset, offset, loading } = props;
+  const { limit, setLimit, setOffset, offset, loading, count } = props;
 
   const handlePagination = (e) => {
-    setLimit(e.target.value);
+    setLimit(parseInt(e.target.value));
+    setOffset(0);
   };
 
   const handleOffset = (e, change) => {
@@ -11,26 +12,24 @@ export const PaginationController = (props) => {
     page = page + change;
     setOffset(page * limit);
   };
+
   return (
     <>
       <p>Show: </p>
-      <select
-        disabled={loading ? true : false}
-        onChange={(e) => handlePagination(e)}
-      >
+      <select disabled={loading} onChange={(e) => handlePagination(e)}>
         <option value={10}>10</option>
         <option value={25}>25</option>
         <option value={50}>50</option>
         <option value={100}>100</option>
       </select>
       <button
-        disabled={offset / limit === 0 || loading ? true : false}
+        disabled={offset / limit === 0 || loading}
         onClick={(e) => handleOffset(e, -1)}
       >
         previous page
       </button>
       <button
-        disabled={loading ? true : false}
+        disabled={loading || limit + offset >= count}
         onClick={(e) => handleOffset(e, 1)}
       >
         next page
