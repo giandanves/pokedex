@@ -4,7 +4,19 @@ import "./index.css";
 import App from "./App";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-const queryClient = new QueryClient();
+async function fetcher(key) {
+  const url = key.queryKey;
+  const response = await fetch(url);
+  return response.json();
+}
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      queryFn: fetcher,
+    },
+  },
+});
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
