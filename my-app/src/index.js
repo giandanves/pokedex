@@ -5,8 +5,7 @@ import App from "./App";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 async function fetcher(key) {
-  const url = key.queryKey;
-  const response = await fetch(url);
+  const response = await fetch(key.queryKey);
   return response.json();
 }
 
