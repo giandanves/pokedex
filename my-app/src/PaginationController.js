@@ -2,7 +2,7 @@ export const PaginationController = (props) => {
   const { limit, setLimit, setOffset, offset, loading, count } = props;
 
   const handlePagination = (e) => {
-    setLimit(e.target.value);
+    setLimit(parseInt(e.target.value));
     setOffset(0);
   };
 
@@ -13,13 +13,6 @@ export const PaginationController = (props) => {
     setOffset(page * limit);
   };
 
-  const checkCount = () => {
-    let page = offset / limit + 1;
-    if (limit * page >= count) {
-      return true;
-    }
-    return false;
-  };
   return (
     <>
       <p>Show: </p>
@@ -39,7 +32,7 @@ export const PaginationController = (props) => {
         previous page
       </button>
       <button
-        disabled={loading || checkCount() ? true : false}
+        disabled={loading || limit + offset >= count ? true : false}
         onClick={(e) => handleOffset(e, 1)}
       >
         next page
