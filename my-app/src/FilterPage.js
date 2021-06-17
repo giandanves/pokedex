@@ -14,6 +14,7 @@ export const FilterPage = () => {
   const history = useHistory();
   let { url, setUrl, setOffset } = useContext(Context);
   const [abilityFilter, setAbilityFilter] = useState("");
+  const [movesFilter, setMovesFilter] = useState("");
 
   const {
     isLoading: typelistIsLoading,
@@ -28,6 +29,13 @@ export const FilterPage = () => {
     data: abilitiesData,
     refetch: refetchAbilities,
   } = useQuery(abilitiesUrl, { retryDelay: 1000 });
+
+  const {
+    isLoading: movesIsLoading,
+    isError: movesHaserror,
+    data: movesData,
+    refetch: refetchMoves,
+  } = useQuery(movesUrl, { retryDelay: 1000 });
 
   const onSubmit = (values) => {
     console.dir(values);
@@ -51,6 +59,8 @@ export const FilterPage = () => {
         weight: [],
         search: "",
         type: [],
+        ability: [],
+        move: [],
       }}
     >
       <Form>
@@ -123,6 +133,38 @@ export const FilterPage = () => {
         )}
 
         <div>
+          <p>Moves</p>
+          <Field
+            name="searchMove"
+            type="text"
+            placeholder="Search move"
+            onChange={(e) => setMovesFilter(e.target.value)}
+          />
+
+          {handleLoadAndError(movesIsLoading, movesHaserror) || (
+            <section className="ability-container">
+              {movesData.results.map((move) => {
+                return (
+                  <>
+                    {move.name.startsWith(movesFilter) && (
+                      <label>
+                        <Field type="checkbox" name="move" value={move.name} />
+                        {move.name}
+                      </label>
+                    )}
+                  </>
+                );
+              })}
+            </section>
+          )}
+        </div>
+        {movesHaserror ? (
+          <button onClick={() => refetchMoves()}>Try Again</button>
+        ) : (
+          <></>
+        )}
+
+        <div>
           <p>Abilities</p>
           <Field
             name="searchAbility"
@@ -152,7 +194,7 @@ export const FilterPage = () => {
             </section>
           )}
         </div>
-        {typelistHaserror ? (
+        {abilitiesHaserror ? (
           <button onClick={() => refetchAbilities()}>Try Again</button>
         ) : (
           <></>
