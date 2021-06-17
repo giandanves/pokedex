@@ -38,7 +38,6 @@ export const FilterPage = () => {
   } = useQuery(movesUrl, { retryDelay: 1000 });
 
   const onSubmit = (values) => {
-    console.dir(values);
     setOffset(0);
     url = defaultUrl;
     const filteredUrl = getUrl(values, url);
@@ -64,6 +63,11 @@ export const FilterPage = () => {
       }}
     >
       <Form>
+        <button onClick={() => history.push("/")}>Back</button>
+        <button type="reset" onClick={resetUrl}>
+          Reset
+        </button>
+        <button type="submit">Apply</button>
         <div>
           <Field name="search" type="text" placeholder="Search by name" />
         </div>
@@ -199,10 +203,6 @@ export const FilterPage = () => {
         ) : (
           <></>
         )}
-        <button type="reset" onClick={resetUrl}>
-          Clear filters
-        </button>
-        <button type="submit">Search</button>
       </Form>
     </Formik>
   );
