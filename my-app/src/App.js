@@ -27,9 +27,8 @@ function App() {
 
   return (
     <>
-      <Link to="/filters">
-        <button>Filters</button>
-      </Link>
+      <button onClick={() => history.push("/filters")}>Filters</button>
+
       <PaginationController
         limit={limit}
         setLimit={setLimit}
