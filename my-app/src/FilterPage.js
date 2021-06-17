@@ -159,18 +159,38 @@ export const FilterPage = () => {
 
           {handleLoadAndError(movesIsLoading, movesHaserror) || (
             <section className="ability-container">
-              {movesData.results.map((move) => {
-                return (
-                  <>
-                    {move.name.startsWith(movesFilter) && (
-                      <label>
-                        <Field type="checkbox" name="move" value={move.name} />
-                        {move.name}
-                      </label>
-                    )}
-                  </>
-                );
-              })}
+              {movesData.results
+                .sort(function (a) {
+                  let sorter = 0;
+                  if (
+                    filter.move.map((e) => {
+                      if (e === a.name) {
+                        sorter = -1;
+                      }
+                      return sorter;
+                    })
+                  ) {
+                    return sorter;
+                  }
+
+                  return 0;
+                })
+                .map((move) => {
+                  return (
+                    <>
+                      {move.name.startsWith(movesFilter) && (
+                        <label>
+                          <Field
+                            type="checkbox"
+                            name="move"
+                            value={move.name}
+                          />
+                          {move.name}
+                        </label>
+                      )}
+                    </>
+                  );
+                })}
             </section>
           )}
         </div>
@@ -191,22 +211,38 @@ export const FilterPage = () => {
 
           {handleLoadAndError(abilitiesIsLoading, abilitiesHaserror) || (
             <section className="ability-container">
-              {abilitiesData.results.map((ability) => {
-                return (
-                  <>
-                    {ability.name.startsWith(abilityFilter) && (
-                      <label>
-                        <Field
-                          type="checkbox"
-                          name="ability"
-                          value={ability.name}
-                        />
-                        {ability.name}
-                      </label>
-                    )}
-                  </>
-                );
-              })}
+              {abilitiesData.results
+                .sort(function (a) {
+                  let sorter = 0;
+                  if (
+                    filter.ability.map((e) => {
+                      if (e === a.name) {
+                        sorter = -1;
+                      }
+                      return sorter;
+                    })
+                  ) {
+                    return sorter;
+                  }
+
+                  return 0;
+                })
+                .map((ability) => {
+                  return (
+                    <>
+                      {ability.name.startsWith(abilityFilter) && (
+                        <label>
+                          <Field
+                            type="checkbox"
+                            name="ability"
+                            value={ability.name}
+                          />
+                          {ability.name}
+                        </label>
+                      )}
+                    </>
+                  );
+                })}
             </section>
           )}
         </div>
