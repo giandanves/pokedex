@@ -63,6 +63,7 @@ export const FilterPage = () => {
 
   return (
     <Formik
+      enableReinitialize={true}
       onSubmit={onSubmit}
       initialValues={{
         height: filter.height,
