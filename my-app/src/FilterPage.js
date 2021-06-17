@@ -4,13 +4,16 @@ import { Formik, Form, Field } from "formik";
 import { useQuery } from "react-query";
 import { handleLoadAndError } from "./HandleLoadAndError";
 import { Context } from "./Context";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 const poketypesUrl = process.env.REACT_APP_POKETYPES_URL;
 const defaultUrl = process.env.REACT_APP_DEFAULT_URL;
+const abilitiesUrl = process.env.REACT_APP_POKETYPES_ABILITY_URL;
+const movesUrl = process.env.REACT_APP_POKETYPES_MOVE_URL;
 
 export const FilterPage = () => {
   const history = useHistory();
   let { url, setUrl, setOffset } = useContext(Context);
+  const [abilityFilter, setAbilityFilter] = useState("");
 
   const {
     isLoading: typelistIsLoading,
@@ -18,6 +21,13 @@ export const FilterPage = () => {
     data: typelistData,
     refetch: refetchTypelist,
   } = useQuery(poketypesUrl, { retryDelay: 1000 });
+
+  const {
+    isLoading: abilitiesIsLoading,
+    isError: abilitiesHaserror,
+    data: abilitiesData,
+    refetch: refetchAbilities,
+  } = useQuery(abilitiesUrl, { retryDelay: 1000 });
 
   const onSubmit = (values) => {
     console.dir(values);
@@ -108,6 +118,42 @@ export const FilterPage = () => {
         </div>
         {typelistHaserror ? (
           <button onClick={() => refetchTypelist()}>Try Again</button>
+        ) : (
+          <></>
+        )}
+
+        <div>
+          <p>Abilities</p>
+          <Field
+            name="searchAbility"
+            type="text"
+            placeholder="Search ability"
+            onChange={(e) => setAbilityFilter(e.target.value)}
+          />
+
+          {handleLoadAndError(abilitiesIsLoading, abilitiesHaserror) || (
+            <section className="ability-container">
+              {abilitiesData.results.map((ability) => {
+                return (
+                  <>
+                    {ability.name.startsWith(abilityFilter) && (
+                      <label>
+                        <Field
+                          type="checkbox"
+                          name="ability"
+                          value={ability.name}
+                        />
+                        {ability.name}
+                      </label>
+                    )}
+                  </>
+                );
+              })}
+            </section>
+          )}
+        </div>
+        {typelistHaserror ? (
+          <button onClick={() => refetchAbilities()}>Try Again</button>
         ) : (
           <></>
         )}
