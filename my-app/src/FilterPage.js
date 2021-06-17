@@ -12,7 +12,7 @@ const movesUrl = process.env.REACT_APP_POKETYPES_MOVE_URL;
 
 export const FilterPage = () => {
   const history = useHistory();
-  let { url, setUrl, setOffset } = useContext(Context);
+  let { url, setUrl, setOffset, filter, setFilter } = useContext(Context);
   const [abilityFilter, setAbilityFilter] = useState("");
   const [movesFilter, setMovesFilter] = useState("");
 
@@ -39,14 +39,25 @@ export const FilterPage = () => {
 
   const onSubmit = (values) => {
     setOffset(0);
+    setFilter((prev) => (prev = values));
     url = defaultUrl;
     const filteredUrl = getUrl(values, url);
     setUrl(filteredUrl);
     history.push("/");
   };
 
-  const resetUrl = () => {
+  const resetFilters = (values) => {
+    console.dir(values);
     setUrl(defaultUrl);
+    setFilter({
+      height: [],
+      weight: [],
+      search: "",
+      type: [],
+      ability: [],
+      move: [],
+    });
+
     setOffset(0);
   };
 
@@ -54,17 +65,17 @@ export const FilterPage = () => {
     <Formik
       onSubmit={onSubmit}
       initialValues={{
-        height: [],
-        weight: [],
-        search: "",
-        type: [],
-        ability: [],
-        move: [],
+        height: filter.height,
+        weight: filter.weight,
+        search: filter.search,
+        type: filter.type,
+        ability: filter.ability,
+        move: filter.move,
       }}
     >
       <Form>
         <button onClick={() => history.push("/")}>Back</button>
-        <button type="reset" onClick={resetUrl}>
+        <button type="reset" onClick={resetFilters}>
           Reset
         </button>
         <button type="submit">Apply</button>
