@@ -4,15 +4,14 @@ import { useContext } from "react";
 import { handleLoadAndError } from "./HandleLoadAndError";
 import { useQuery } from "react-query";
 import { Context } from "./Context";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function App() {
+  const history = useHistory();
   const { url, limit, setLimit, offset, setOffset } = useContext(Context);
   const getLimit = () => {
     return `&limit=${limit}`;
   };
-
-  console.log(url);
 
   const getOffset = () => {
     return `&offset=${offset}`;
