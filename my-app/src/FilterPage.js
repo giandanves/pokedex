@@ -1,48 +1,28 @@
 import { getUrl } from "./getUrl";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
-import { useQuery } from "react-query";
-import { handleLoadAndError } from "./HandleLoadAndError";
-import { Context } from "./Context";
-import { useContext, useState } from "react";
-const poketypesUrl = process.env.REACT_APP_POKETYPES_URL;
+import { Type } from "./TypeFilter";
+import { Moves } from "./Moves";
+import { Weight } from "./Weight";
+import { Height } from "./Height";
+import { Abilities } from "./Abilities";
+import { FilterContext } from "./FilterContext";
+import { useContext, useEffect, useState } from "react";
 const defaultUrl = process.env.REACT_APP_DEFAULT_URL;
-const abilitiesUrl = process.env.REACT_APP_POKETYPES_ABILITY_URL;
-const movesUrl = process.env.REACT_APP_POKETYPES_MOVE_URL;
 
 export const FilterPage = () => {
   const history = useHistory();
-  let { url, setUrl, setOffset, filter, setFilter } = useContext(Context);
-  const [abilityFilter, setAbilityFilter] = useState("");
-  const [movesFilter, setMovesFilter] = useState("");
+  let { url, setUrl, setOffset, filter, setFilter } = useContext(FilterContext);
+  const [filteredUrl, setFilteredUrl] = useState(url);
 
-  const {
-    isLoading: typelistIsLoading,
-    isError: typelistHaserror,
-    data: typelistData,
-    refetch: refetchTypelist,
-  } = useQuery(poketypesUrl, { retryDelay: 1000 });
-
-  const {
-    isLoading: abilitiesIsLoading,
-    isError: abilitiesHaserror,
-    data: abilitiesData,
-    refetch: refetchAbilities,
-  } = useQuery(abilitiesUrl, { retryDelay: 1000 });
-
-  const {
-    isLoading: movesIsLoading,
-    isError: movesHaserror,
-    data: movesData,
-    refetch: refetchMoves,
-  } = useQuery(movesUrl, { retryDelay: 1000 });
+  useEffect(() => {
+    setUrl(filteredUrl);
+  }, [setUrl, filteredUrl]);
 
   const onSubmit = (values) => {
     setOffset(0);
     setFilter((prev) => (prev = values));
-    url = defaultUrl;
-    const filteredUrl = getUrl(values, url);
-    setUrl(filteredUrl);
+    setFilteredUrl(getUrl(values, defaultUrl));
     history.push("/");
   };
 
@@ -65,192 +45,29 @@ export const FilterPage = () => {
     <Formik
       enableReinitialize={true}
       onSubmit={onSubmit}
-      initialValues={{
-        height: filter.height,
-        weight: filter.weight,
-        search: filter.search,
-        type: filter.type,
-        ability: filter.ability,
-        move: filter.move,
-      }}
+      initialValues={filter}
     >
       <Form>
-        <button onClick={() => history.push("/")}>Back</button>
+        <Link to="/">
+          <button>Back</button>
+        </Link>
         <button type="reset" onClick={resetFilters}>
           Reset
         </button>
         <button type="submit">Apply</button>
         <div>
-          <Field name="search" type="text" placeholder="Search by name" />
-        </div>
-        <div>
-          <p>Height</p>
-          <label>
-            <Field type="checkbox" name="height" value="1" />1
-          </label>
-
-          <label>
-            <Field type="checkbox" name="height" value="2" />2
-          </label>
-
-          <label>
-            <Field type="checkbox" name="height" value="3" />3
-          </label>
-
-          <label>
-            <Field type="checkbox" name="height" value="4" />4
-          </label>
-
-          <label>
-            <Field type="checkbox" name="height" value="5" />5
-          </label>
-        </div>
-        <div>
-          <p>Weight</p>
-          <label>
-            <Field type="checkbox" name="weight" value="1" />1
-          </label>
-
-          <label>
-            <Field type="checkbox" name="weight" value="2" />2
-          </label>
-
-          <label>
-            <Field type="checkbox" name="weight" value="3" />3
-          </label>
-
-          <label>
-            <Field type="checkbox" name="weight" value="4" />4
-          </label>
-
-          <label>
-            <Field type="checkbox" name="weight" value="5" />5
-          </label>
-        </div>
-
-        <div>
-          <p>Types</p>
-          {handleLoadAndError(typelistIsLoading, typelistHaserror) ||
-            typelistData.results.map((pokeType) => {
-              return (
-                <>
-                  <label>
-                    <Field type="checkbox" name="type" value={pokeType.name} />
-                    {pokeType.name}
-                  </label>
-                </>
-              );
-            })}
-        </div>
-        {typelistHaserror ? (
-          <button onClick={() => refetchTypelist()}>Try Again</button>
-        ) : (
-          <></>
-        )}
-
-        <div>
-          <p>Moves</p>
           <Field
-            name="searchMove"
+            name="search"
             type="text"
-            placeholder="Search move"
-            onChange={(e) => setMovesFilter(e.target.value)}
+            placeholder="Search by name (min. 3 characteres)"
           />
-
-          {handleLoadAndError(movesIsLoading, movesHaserror) || (
-            <section className="ability-container">
-              {movesData.results
-                .sort(function (a) {
-                  let sorter = 0;
-                  if (
-                    filter.move.map((e) => {
-                      if (e === a.name) {
-                        sorter = -1;
-                      }
-                      return sorter;
-                    })
-                  ) {
-                    return sorter;
-                  }
-
-                  return 0;
-                })
-                .map((move) => {
-                  return (
-                    <>
-                      {move.name.startsWith(movesFilter) && (
-                        <label>
-                          <Field
-                            type="checkbox"
-                            name="move"
-                            value={move.name}
-                          />
-                          {move.name}
-                        </label>
-                      )}
-                    </>
-                  );
-                })}
-            </section>
-          )}
         </div>
-        {movesHaserror ? (
-          <button onClick={() => refetchMoves()}>Try Again</button>
-        ) : (
-          <></>
-        )}
+        <Height />
+        <Weight />
 
-        <div>
-          <p>Abilities</p>
-          <Field
-            name="searchAbility"
-            type="text"
-            placeholder="Search ability"
-            onChange={(e) => setAbilityFilter(e.target.value)}
-          />
-
-          {handleLoadAndError(abilitiesIsLoading, abilitiesHaserror) || (
-            <section className="ability-container">
-              {abilitiesData.results
-                .sort(function (a) {
-                  let sorter = 0;
-                  if (
-                    filter.ability.map((e) => {
-                      if (e === a.name) {
-                        sorter = -1;
-                      }
-                      return sorter;
-                    })
-                  ) {
-                    return sorter;
-                  }
-
-                  return 0;
-                })
-                .map((ability) => {
-                  return (
-                    <>
-                      {ability.name.startsWith(abilityFilter) && (
-                        <label>
-                          <Field
-                            type="checkbox"
-                            name="ability"
-                            value={ability.name}
-                          />
-                          {ability.name}
-                        </label>
-                      )}
-                    </>
-                  );
-                })}
-            </section>
-          )}
-        </div>
-        {abilitiesHaserror ? (
-          <button onClick={() => refetchAbilities()}>Try Again</button>
-        ) : (
-          <></>
-        )}
+        <Type />
+        <Moves filter={filter} />
+        <Abilities filter={filter} />
       </Form>
     </Formik>
   );

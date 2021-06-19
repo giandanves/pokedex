@@ -5,7 +5,7 @@ import App from "./App";
 import { FilterPage } from "./FilterPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
-import ContextProvider from "./Context";
+import FilterContextProvider from "./FilterContext";
 
 async function fetcher(key) {
   const response = await fetch(key.queryKey);
@@ -25,14 +25,14 @@ ReactDOM.render(
     <QueryClientProvider client={queryClient}>
       <Router>
         <Switch>
-          <ContextProvider>
+          <FilterContextProvider>
             <Route path="/" exact>
               <App />
             </Route>
             <Route path="/filters">
               <FilterPage />
             </Route>
-          </ContextProvider>
+          </FilterContextProvider>
         </Switch>
       </Router>
     </QueryClientProvider>

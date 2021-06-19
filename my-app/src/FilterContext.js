@@ -1,9 +1,9 @@
 import { createContext, useState } from "react";
 const defaultUrl = process.env.REACT_APP_DEFAULT_URL;
 
-export const Context = createContext();
+export const FilterContext = createContext();
 
-const ContextProvider = (props) => {
+const FilterContextProvider = (props) => {
   let [url, setUrl] = useState(defaultUrl);
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
@@ -16,7 +16,7 @@ const ContextProvider = (props) => {
     move: [],
   });
   return (
-    <Context.Provider
+    <FilterContext.Provider
       value={{
         url,
         setUrl,
@@ -29,8 +29,8 @@ const ContextProvider = (props) => {
       }}
     >
       {props.children}
-    </Context.Provider>
+    </FilterContext.Provider>
   );
 };
 
-export default ContextProvider;
+export default FilterContextProvider;

@@ -3,12 +3,11 @@ import { Pokemons } from "./Pokemons";
 import { useContext } from "react";
 import { handleLoadAndError } from "./HandleLoadAndError";
 import { useQuery } from "react-query";
-import { Context } from "./Context";
-import { useHistory } from "react-router-dom";
+import { FilterContext } from "./FilterContext";
+import { Link } from "react-router-dom";
 
 function App() {
-  const history = useHistory();
-  const { url, limit, setLimit, offset, setOffset } = useContext(Context);
+  const { url, limit, setLimit, offset, setOffset } = useContext(FilterContext);
   const getLimit = () => {
     return `&limit=${limit}`;
   };
@@ -26,7 +25,9 @@ function App() {
 
   return (
     <>
-      <button onClick={() => history.push("/filters")}>Filters</button>
+      <Link to="/filters">
+        <button>Filters</button>
+      </Link>
 
       <PaginationController
         limit={limit}
