@@ -2,7 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import { FilterPage } from "./FilterPage";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
+import FilterContextProvider from "./FilterContext";
 
 async function fetcher(key) {
   const response = await fetch(key.queryKey);
@@ -16,10 +19,22 @@ const queryClient = new QueryClient({
     },
   },
 });
+
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <App />
+      <Router>
+        <Switch>
+          <FilterContextProvider>
+            <Route path="/" exact>
+              <App />
+            </Route>
+            <Route path="/filters">
+              <FilterPage />
+            </Route>
+          </FilterContextProvider>
+        </Switch>
+      </Router>
     </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById("root")
