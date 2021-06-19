@@ -1,7 +1,17 @@
 export function Pokemons(props) {
   const { pokemons } = props;
+
+  const getThreeDigits = (n) => {
+    if (n < 10) {
+      return "00" + n;
+    }
+    if (n < 100) {
+      return "0" + n;
+    }
+    return n;
+  };
   return (
-    <section className="pokemons-container">
+    <section className="flex space-x-5">
       {pokemons.length === 0 ? (
         <p>
           No Pokemons matches this criterias, change the filters and try again
@@ -11,18 +21,35 @@ export function Pokemons(props) {
           const { picture, name, id, type } = pokemon;
 
           return (
-            <article className="pokemon-card" key={id}>
-              <li>
+            <article
+              className={`border border-${type[0]} rounded-md h-card w-card`}
+              key={id}
+            >
+              <li
+                className={`w-full bg-gradient-to-br from-${type[0]} to-transparent h-full flex flex-col items-center justify-end`}
+              >
+                <p className="text-subtitle self-start">
+                  {"#" + getThreeDigits(id)}
+                </p>
                 <img className="pokemon-avatar" src={picture} alt={name} />
                 <h2>{name}</h2>
-                <div className="types-grid">
+                <div className=" flex bg-white h-1/6 w-full space-x-1">
                   {type.map((poketype, i) => {
                     if (i === 1) {
-                      return <p>{`- ${poketype}`}</p>;
+                      return (
+                        <p
+                          className={`h-4 text-subtitle self-center rounded border border-${poketype}`}
+                        >{`${poketype}`}</p>
+                      );
                     }
-                    return <p>{poketype}</p>;
+                    return (
+                      <p
+                        className={`h-4 text-subtitle self-center border rounded ml-1 border-${poketype}`}
+                      >
+                        {poketype}
+                      </p>
+                    );
                   })}
-                  <p>{`id: #${id}`}</p>
                 </div>
               </li>
             </article>

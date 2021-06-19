@@ -26,7 +26,7 @@ function App() {
   return (
     <>
       <Link to="/filters">
-        <button className="text-bug">Filters</button>
+        <button className="font-nunito text-heading">Filters</button>
       </Link>
 
       <PaginationController
