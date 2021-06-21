@@ -28,6 +28,9 @@ module.exports = {
       rock: "#A3A3AB",
       water: "#77D4F5",
       white: "#FFFFFF",
+      primary: "#3156C6",
+      success: "#1CBB30",
+      danger: "#E3190E",
     },
     extend: {
       fontSize: {
@@ -39,10 +42,15 @@ module.exports = {
       },
       fontFamily: { nunito: "Nunito" },
       height: {
-        card: "204px",
+        card: "268px",
+        avatar: "160px",
       },
       width: {
-        card: "128px",
+        card: "200px",
+        avatar: "160px",
+      },
+      lineHeight: {
+        subtitle: "12px",
       },
     },
   },
