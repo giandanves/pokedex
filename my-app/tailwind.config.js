@@ -43,11 +43,11 @@ module.exports = {
       fontFamily: { nunito: "Nunito" },
       height: {
         card: "268px",
-        avatar: "160px",
+        avatar: "60%",
       },
       width: {
         card: "200px",
-        avatar: "160px",
+        avatar: "60%",
       },
       lineHeight: {
         subtitle: "12px",
