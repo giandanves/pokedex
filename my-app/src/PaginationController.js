@@ -17,10 +17,10 @@ export const PaginationController = (props) => {
     <>
       <p>Show: </p>
       <select disabled={loading} onChange={(e) => handlePagination(e)}>
-        <option value={10}>10</option>
-        <option value={25}>25</option>
-        <option value={50}>50</option>
-        <option value={100}>100</option>
+        <option value={12}>12</option>
+        <option value={24}>24</option>
+        <option value={48}>48</option>
+        <option value={96}>96</option>
       </select>
       <button
         disabled={offset / limit === 0 || loading}
