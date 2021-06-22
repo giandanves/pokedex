@@ -7,6 +7,7 @@ const FilterContextProvider = (props) => {
   let [url, setUrl] = useState(defaultUrl);
   const [limit, setLimit] = useState(12);
   const [offset, setOffset] = useState(0);
+  const [filteredUrl, setFilteredUrl] = useState(url);
   const [filter, setFilter] = useState({
     height: [],
     weight: [],
@@ -26,6 +27,8 @@ const FilterContextProvider = (props) => {
         setOffset,
         filter,
         setFilter,
+        filteredUrl,
+        setFilteredUrl,
       }}
     >
       {props.children}
