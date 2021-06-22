@@ -24,7 +24,10 @@ export function Pokemons(props) {
           const { picture, name, id, type } = pokemon;
 
           return (
-            <div className={`w-6/12 md:w-4/12 lg:w-3/12 xl:w-2/12 p-1`}>
+            <div
+              key={id}
+              className={`w-6/12 md:w-4/12 lg:w-3/12 xl:w-2/12 p-1`}
+            >
               <li
                 className={`border border-${type[0]} rounded-md bg-gradient-to-br from-${type[0]} to-transparent flex flex-col items-center overflow-hidden`}
               >
