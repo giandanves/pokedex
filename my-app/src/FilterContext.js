@@ -5,7 +5,7 @@ export const FilterContext = createContext();
 
 const FilterContextProvider = (props) => {
   let [url, setUrl] = useState(defaultUrl);
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(12);
   const [offset, setOffset] = useState(0);
   const [filter, setFilter] = useState({
     height: [],
