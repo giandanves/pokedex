@@ -37,12 +37,12 @@ function App() {
         loading={isLoading}
         count={pokemons?.count}
       />
-      <ul>
+      <>
         {handleLoadAndError(isLoading, error) || (
           <Pokemons pokemons={pokemons.results} />
         )}
         {error ? <button onClick={() => refetch()}>Try Again</button> : <></>}
-      </ul>
+      </>
     </>
   );
 }
