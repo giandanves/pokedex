@@ -34,16 +34,20 @@ function App() {
 
   return (
     <div>
+      <h1 className=" text-heading font-nunito font-bold  mt-6 mb-4">
+        Pokedex
+      </h1>
       <div>
         <input
           name="search"
+          className="text-body-02 border border-gray rounded w-full h-12"
           type="text"
           onChange={(e) => setFilter({ ...filter, search: e.target.value })}
-          placeholder="Search..."
+          placeholder={"   Search..."}
         />
       </div>
       <Link to="/filters">
-        <button className="font-nunito text-heading">Filters</button>
+        <button className="font-nunito">Filters</button>
       </Link>
 
       <PaginationController

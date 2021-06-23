@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     colors: {
       black: "#2B3140",
+      gray: "#D1D7E5",
       "black-700": "#4F586E",
       "black-500": "#6E7A96",
       "black-300": "#99A2B8",
@@ -31,6 +32,7 @@ module.exports = {
       primary: "#3156C6",
       success: "#1CBB30",
       danger: "#E3190E",
+      lightgrey: "#D1D7E5",
     },
     extend: {
       fontSize: {
@@ -42,12 +44,13 @@ module.exports = {
       },
       fontFamily: { nunito: "Nunito" },
       height: {
-        card: "268px",
-        avatar: "60%",
+        card: "204px",
+        avatar: "104px",
+        add: "14px",
+        fav: "18px",
       },
       width: {
-        card: "200px",
-        avatar: "60%",
+        card: "148px",
       },
       lineHeight: {
         subtitle: "12px",
