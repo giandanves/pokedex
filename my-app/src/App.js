@@ -1,6 +1,7 @@
 import { PaginationController } from "./PaginationController";
 import { Pokemons } from "./Pokemons";
 import { getUrl } from "./getUrl";
+import { SelectedFilters } from "./SelectedFilters";
 import { useContext, useEffect } from "react";
 import { handleLoadAndError } from "./HandleLoadAndError";
 import { useQuery } from "react-query";
@@ -46,9 +47,13 @@ function App() {
           placeholder={"   Search..."}
         />
       </div>
-      <Link to="/filters">
-        <button className="font-nunito">Filters</button>
-      </Link>
+      <div className="flex">
+        <Link to="/filters">
+          <button className="font-nunito">Filters</button>
+        </Link>
+
+        <SelectedFilters />
+      </div>
 
       <PaginationController
         limit={limit}
