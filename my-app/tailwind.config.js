@@ -47,13 +47,16 @@ module.exports = {
         card: "204px",
         avatar: "104px",
         add: "14px",
-        fav: "18px",
+        fav: "18.35px",
+        topbar: "172px",
+        downbar: "32px",
       },
       width: {
         card: "148px",
       },
       lineHeight: {
         subtitle: "12px",
+        "body-03": "16px",
       },
     },
   },
