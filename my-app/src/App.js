@@ -34,7 +34,7 @@ function App() {
   } = useQuery(`${url}${getLimit()}${getOffset()}`, { retryDelay: 1000 });
 
   return (
-    <div>
+    <div className="pl-4 lg:pl-10">
       <h1 className=" text-heading font-nunito font-bold  mt-6 mb-4">
         Pokedex
       </h1>

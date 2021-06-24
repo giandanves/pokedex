@@ -56,6 +56,7 @@ module.exports = {
       },
       lineHeight: {
         subtitle: "12px",
+        "body-01": "24px",
         "body-03": "16px",
       },
     },

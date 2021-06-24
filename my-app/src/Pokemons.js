@@ -26,15 +26,15 @@ export function Pokemons(props) {
           return (
             <div
               key={id}
-              className={`w-6/12  md:w-4/12 lg:w-3/12 xl:w-2/12 p-2`}
+              className={`w-6/12 py-2 pr-4 sm:w-4/12 sm:pr-4 md:w-3/12 md:py-3 md:pr-8 lg:w-2/12`}
             >
               <li
-                className={`h-full w-full border border-${type[0]} rounded-md flex flex-col overflow-hidden`}
+                className={`border border-${type[0]} rounded-md overflow-hidden`}
               >
                 <div
-                  className={`w-full bg-${type[0]} bg-opacity-20 bg-gradient-to-br from-${type[0]} to-transparent flex flex-col items-center  rounded-br-2xl`}
+                  className={`w-full bg-${type[0]} bg-opacity-20 bg-gradient-to-br from-${type[0]} to-transparent rounded-br-2xl flex flex-col items-center`}
                 >
-                  <div className="flex justify-between  w-full px-3 py-2">
+                  <div className="flex justify-between items-center w-full px-3 py-2">
                     <p className="text-subtitle font-bold text-black">
                       {"#" + getThreeDigits(id)}
                     </p>
@@ -45,23 +45,23 @@ export function Pokemons(props) {
                   </div>
 
                   <img className="px-5" src={picture} alt={name} />
-                  <h2 className="font-nunito text-body-03 capitalize font-bold">
+                  <h2 className="font-nunito text-body-03 capitalize font-bold sm:text-body-01 sm:leading-body-01">
                     {name}
                   </h2>
                 </div>
-                <div className="bg-white w-full px-2 py-2">
-                  <div className="h-full flex content-center">
+                <div className="bg-white w-full py-2">
+                  <div className="flex px-2">
                     {type.map((poketype, i) => {
                       if (i === 1) {
                         return (
                           <p
-                            className={`capitalize flex text-subtitle m-1 text-black font-bold px-1 py-px leading-subtitle items-center self-center rounded border border-${poketype}`}
+                            className={`capitalize flex text-subtitle leading-subtitle px-1 mx-1  text-black font-bold   items-center self-center rounded border border-${poketype}`}
                           >{`${poketype}`}</p>
                         );
                       }
                       return (
                         <p
-                          className={`capitalize flex text-subtitle px-1 py-px text-black font-bold self-center leading-subtitle items-center border rounded border-${poketype}`}
+                          className={`capitalize flex text-subtitle leading-subtitle px-1  text-black font-bold self-center  items-center border rounded border-${poketype}`}
                         >
                           {poketype}
                         </p>
