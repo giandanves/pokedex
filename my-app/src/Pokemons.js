@@ -55,13 +55,13 @@ export function Pokemons(props) {
                       if (i === 1) {
                         return (
                           <p
-                            className={`capitalize flex text-subtitle leading-subtitle px-1 mx-1  text-black font-bold   items-center self-center rounded border border-${poketype}`}
+                            className={`capitalize flex text-subtitle leading-subtitle px-1 mx-1  text-black font-bold   items-center self-center rounded border border-${poketype} lg:py-px`}
                           >{`${poketype}`}</p>
                         );
                       }
                       return (
                         <p
-                          className={`capitalize flex text-subtitle leading-subtitle px-1  text-black font-bold self-center  items-center border rounded border-${poketype}`}
+                          className={`capitalize flex text-subtitle leading-subtitle px-1  text-black font-bold self-center  items-center border rounded border-${poketype} lg:py-px`}
                         >
                           {poketype}
                         </p>
