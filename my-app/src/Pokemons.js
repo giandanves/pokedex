@@ -39,8 +39,12 @@ export function Pokemons(props) {
                       {"#" + getThreeDigits(id)}
                     </p>
                     <div className="flex">
-                      <img className="mx-3" src={addIcon} alt="add Pokemon" />
-                      <img src={favoriteIcon} alt="favorite Pokemon" />
+                      <button>
+                        <img className="mx-3" src={addIcon} alt="add Pokemon" />
+                      </button>
+                      <button>
+                        <img src={favoriteIcon} alt="favorite Pokemon" />
+                      </button>
                     </div>
                   </div>
 
