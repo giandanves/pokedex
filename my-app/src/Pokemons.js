@@ -45,7 +45,7 @@ export function Pokemons(props) {
                   </div>
 
                   <img className="p-2" src={picture} alt={name} />
-                  <h2 className="font-nunito text-body-03 capitalize font-bold sm:text-body-02 sm:leading-body-02 xl:text-body-01 xl:leading-body-01">
+                  <h2 className="font-nunito text-body-03 capitalize font-bold sm:text-body-02 sm:leading-body-02 xl:text-2xl">
                     {name}
                   </h2>
                 </div>
