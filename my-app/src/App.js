@@ -7,6 +7,7 @@ import { handleLoadAndError } from "./HandleLoadAndError";
 import { useQuery } from "react-query";
 import { FilterContext } from "./FilterContext";
 import { Link } from "react-router-dom";
+import { debounce } from "lodash";
 const defaultUrl = process.env.REACT_APP_DEFAULT_URL;
 
 function App() {
@@ -20,11 +21,15 @@ function App() {
     return `&offset=${offset}`;
   };
 
+  const handleUrl = debounce(() => {
+    setUrl(getUrl(filter, defaultUrl));
+  }, 1500);
+
   useEffect(() => {
     if (filter.search.length > 2 || filter.search.length === 0) {
-      setUrl(getUrl(filter, defaultUrl));
+      handleUrl();
     }
-  }, [filter, setUrl]);
+  }, [filter, handleUrl]);
 
   const {
     isLoading,
@@ -46,6 +51,11 @@ function App() {
           onChange={(e) => setFilter({ ...filter, search: e.target.value })}
           placeholder={"   Search..."}
         />
+        {filter.search.length < 3 && filter.search.length > 0 && (
+          <p className="text-danger text-xs">
+            {"Type at least 2 characteres to search"}
+          </p>
+        )}
       </div>
       <div className="flex">
         <Link to="/filters">
