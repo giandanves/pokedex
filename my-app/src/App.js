@@ -23,7 +23,7 @@ function App() {
 
   const handleUrl = debounce(() => {
     setUrl(getUrl(filter, defaultUrl));
-  }, 1500);
+  }, 300);
 
   useEffect(() => {
     if (filter.search.length > 2 || filter.search.length === 0) {
@@ -53,7 +53,7 @@ function App() {
         />
         {filter.search.length < 3 && filter.search.length > 0 && (
           <p className="text-danger text-xs">
-            {"Type at least 2 characteres to search"}
+            {"Type at least 2 characters to search"}
           </p>
         )}
       </div>
