@@ -32,39 +32,30 @@ export function Pokemons(props) {
                 className={`border border-${type[0]} rounded-md overflow-hidden`}
               >
                 <div
-                  className={`w-full bg-${type[0]} bg-opacity-20 bg-gradient-to-br from-${type[0]} to-transparent rounded-br-2xl flex flex-col items-center`}
+                  className={`w-full bg-${type[0]} bg-opacity-20 bg-gradient-to-br from-${type[0]} to-transparent rounded-br-2xl flex flex-col items-center p-3`}
                 >
-                  <div className="flex justify-between items-center w-full px-3 py-2">
+                  <div className="flex justify-between items-center w-full">
                     <p className="text-subtitle font-bold text-black">
                       {"#" + getThreeDigits(id)}
                     </p>
                     <div className="flex">
-                      <img className="h mx-3" src={addIcon} alt="add Pokemon" />
+                      <img className="mx-3" src={addIcon} alt="add Pokemon" />
                       <img src={favoriteIcon} alt="favorite Pokemon" />
                     </div>
                   </div>
 
-                  <img className="px-5" src={picture} alt={name} />
-                  <h2 className="font-nunito text-body-03 capitalize font-bold sm:text-body-01 sm:leading-body-01">
+                  <img className="p-2" src={picture} alt={name} />
+                  <h2 className="font-nunito text-body-03 capitalize font-bold sm:text-body-02 sm:leading-body-02 xl:text-body-01 xl:leading-body-01">
                     {name}
                   </h2>
                 </div>
                 <div className="bg-white w-full py-2">
                   <div className="flex px-2">
                     {type.map((poketype, i) => {
-                      if (i === 1) {
-                        return (
-                          <p
-                            className={`capitalize flex text-subtitle leading-subtitle px-1 mx-1  text-black font-bold   items-center self-center rounded border border-${poketype} lg:py-px`}
-                          >{`${poketype}`}</p>
-                        );
-                      }
                       return (
                         <p
-                          className={`capitalize flex text-subtitle leading-subtitle px-1  text-black font-bold self-center  items-center border rounded border-${poketype} lg:py-px`}
-                        >
-                          {poketype}
-                        </p>
+                          className={`capitalize flex text-subtitle leading-subtitle px-1 mx-1  text-black font-bold   items-center self-center rounded border border-${poketype} lg:py-px`}
+                        >{`${poketype}`}</p>
                       );
                     })}
                   </div>
