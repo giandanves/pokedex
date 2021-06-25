@@ -21,6 +21,7 @@ function App() {
     return `&offset=${offset}`;
   };
 
+  //check this please!
   const handleUrl = debounce(() => {
     setUrl(getUrl(filter, defaultUrl));
   }, 300);
@@ -30,6 +31,8 @@ function App() {
       handleUrl();
     }
   }, [filter, handleUrl]);
+
+  //thanks
 
   const {
     isLoading,
