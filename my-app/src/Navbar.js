@@ -5,7 +5,7 @@ import signin from "./img/signin.svg";
 
 export const Navbar = () => {
   return (
-    <div className="flex justify-between border-b border-lightgrey h-16 w-full max-w-fullscreen py-6 px-5">
+    <div className="hidden sm:flex justify-between border-b border-lightgrey h-16 w-full max-w-fullscreen py-6 px-5">
       <div className="flex">
         <button className="flex h-6 pr-3 items-center">
           <img src={pokedex} alt="pokedexIcon" className="mr-2" />
