@@ -46,7 +46,7 @@ module.exports = {
       },
       fontFamily: { nunito: "Nunito" },
       height: {
-        filtercircle: "10px",
+        filtercircle: "15px",
         card: "204px",
         avatar: "104px",
         add: "14px",
@@ -55,7 +55,7 @@ module.exports = {
         downbar: "32px",
       },
       width: {
-        filtercircle: "10px",
+        filtercircle: "15px",
         card: "148px",
       },
       lineHeight: {
