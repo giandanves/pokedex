@@ -33,6 +33,8 @@ module.exports = {
       success: "#1CBB30",
       danger: "#E3190E",
       lightgrey: "#D1D7E5",
+      lightblue: "#EDEEF8",
+      shade: "#99A2B8",
     },
     extend: {
       fontSize: {
@@ -44,6 +46,7 @@ module.exports = {
       },
       fontFamily: { nunito: "Nunito" },
       height: {
+        filtercircle: "10px",
         card: "204px",
         avatar: "104px",
         add: "14px",
@@ -52,6 +55,7 @@ module.exports = {
         downbar: "32px",
       },
       width: {
+        filtercircle: "10px",
         card: "148px",
       },
       lineHeight: {
