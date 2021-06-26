@@ -1,4 +1,5 @@
 import { PaginationController } from "./PaginationController";
+import { Navbar } from "./Navbar";
 import { Pokemons } from "./Pokemons";
 import { getUrl } from "./getUrl";
 import { SelectedFilters } from "./SelectedFilters";
@@ -42,47 +43,50 @@ function App() {
   } = useQuery(`${url}${getLimit()}${getOffset()}`, { retryDelay: 1000 });
 
   return (
-    <div className="pl-4 lg:pl-10">
-      <h1 className=" text-heading font-nunito font-bold  mt-6 mb-4">
-        Pokedex
-      </h1>
-      <div>
-        <input
-          name="search"
-          className="text-body-02 border border-gray rounded w-full h-12"
-          type="text"
-          onChange={(e) => setFilter({ ...filter, search: e.target.value })}
-          placeholder={"   Search..."}
+    <>
+      <Navbar />
+      <div className="pl-4 lg:pl-10 max-w-fullscreen">
+        <h1 className=" text-heading font-nunito font-bold  mt-6 mb-4">
+          Pokedex
+        </h1>
+        <div>
+          <input
+            name="search"
+            className="text-body-02 border border-gray rounded w-full h-12"
+            type="text"
+            onChange={(e) => setFilter({ ...filter, search: e.target.value })}
+            placeholder={"   Search..."}
+          />
+          {filter.search.length < 3 && filter.search.length > 0 && (
+            <p className="text-danger text-xs">
+              {"Type at least 2 characters to search"}
+            </p>
+          )}
+        </div>
+        <div className="flex">
+          <Link to="/filters">
+            <button className="font-nunito">Filters</button>
+          </Link>
+
+          <SelectedFilters />
+        </div>
+
+        <PaginationController
+          limit={limit}
+          setLimit={setLimit}
+          setOffset={setOffset}
+          offset={offset}
+          loading={isLoading}
+          count={pokemons?.count}
         />
-        {filter.search.length < 3 && filter.search.length > 0 && (
-          <p className="text-danger text-xs">
-            {"Type at least 2 characters to search"}
-          </p>
-        )}
+        <>
+          {handleLoadAndError(isLoading, error) || (
+            <Pokemons pokemons={pokemons.results} />
+          )}
+          {error ? <button onClick={() => refetch()}>Try Again</button> : <></>}
+        </>
       </div>
-      <div className="flex">
-        <Link to="/filters">
-          <button className="font-nunito">Filters</button>
-        </Link>
-
-        <SelectedFilters />
-      </div>
-
-      <PaginationController
-        limit={limit}
-        setLimit={setLimit}
-        setOffset={setOffset}
-        offset={offset}
-        loading={isLoading}
-        count={pokemons?.count}
-      />
-      <>
-        {handleLoadAndError(isLoading, error) || (
-          <Pokemons pokemons={pokemons.results} />
-        )}
-        {error ? <button onClick={() => refetch()}>Try Again</button> : <></>}
-      </>
-    </div>
+    </>
   );
 }
 
