@@ -57,6 +57,10 @@ module.exports = {
       lineHeight: {
         subtitle: "12px",
       },
+
+      maxWidth: {
+        fullscreen: "1440px",
+      },
     },
   },
   variants: {
