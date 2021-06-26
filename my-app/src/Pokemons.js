@@ -14,7 +14,7 @@ export function Pokemons(props) {
     return n;
   };
   return (
-    <div className="flex flex-wrap mx-auto max-w-screen-2xl">
+    <div className="flex flex-wrap mx-auto max-w-fullscreen">
       {pokemons.length === 0 ? (
         <p>
           No Pokemons matches this criterias, change the filters and try again
