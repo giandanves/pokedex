@@ -10,9 +10,14 @@ export const Filters = () => {
   const getSelected = useCallback(() => {
     return selected.map((e) => {
       return (
-        <p key={e} className="text-body-03 border m-px">
-          {e}
-        </p>
+        <div className="flex mx-1 border border-shade rounded h-8 items-center px-3">
+          <p
+            key={e}
+            className="flex capitalize text-black font-bold text-xs pl-1"
+          >
+            {e}
+          </p>
+        </div>
       );
     });
   }, [selected]);
@@ -56,7 +61,7 @@ export const Filters = () => {
         <p className="flex text-black font-bold text-xs pl-1">
           Filters
           {selected.length > 0 && (
-            <p className="ml-1 bg-primary text-white text-subtitle font-bold px-1 rounded-full">
+            <p className="flex ml-1 items-center justify-center bg-primary text-white text-subtitle font-bold px-1 rounded-full h-4 w-4">
               {selected.length}
             </p>
           )}
