@@ -46,13 +46,11 @@ function App() {
     <>
       <Navbar />
       <div className="pl-4 lg:pl-10 max-w-fullscreen">
-        <h1 className=" text-heading font-nunito font-bold  mt-6 mb-4">
-          Pokedex
-        </h1>
-        <div>
+        <div className="flex justify-between pr-10 py-8">
+          <h1 className=" text-heading font-nunito font-bold">Pokedex</h1>
           <input
             name="search"
-            className="text-body-02 border border-gray rounded w-full h-12"
+            className="text-body-02 border border-gray rounded w-full max-w-searchbar h-12"
             type="text"
             onChange={(e) => setFilter({ ...filter, search: e.target.value })}
             placeholder={"   Search..."}
