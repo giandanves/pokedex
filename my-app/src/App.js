@@ -2,12 +2,11 @@ import { PaginationController } from "./PaginationController";
 import { Navbar } from "./Navbar";
 import { Pokemons } from "./Pokemons";
 import { getUrl } from "./getUrl";
-import { SelectedFilters } from "./SelectedFilters";
+import { Filters } from "./Filters";
 import { useContext, useEffect } from "react";
 import { handleLoadAndError } from "./HandleLoadAndError";
 import { useQuery } from "react-query";
 import { FilterContext } from "./FilterContext";
-import { Link } from "react-router-dom";
 import { debounce } from "lodash";
 const defaultUrl = process.env.REACT_APP_DEFAULT_URL;
 
@@ -61,13 +60,7 @@ function App() {
             </p>
           )}
         </div>
-        <div className="flex">
-          <Link to="/filters">
-            <button className="font-nunito">Filters</button>
-          </Link>
-
-          <SelectedFilters />
-        </div>
+        <Filters />
 
         <PaginationController
           limit={limit}
