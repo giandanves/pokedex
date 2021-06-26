@@ -60,6 +60,7 @@ module.exports = {
 
       maxWidth: {
         fullscreen: "1440px",
+        searchbar: "432px",
       },
     },
   },
