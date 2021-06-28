@@ -4,6 +4,7 @@ import { NavbarMobile } from "./NavbarMobile";
 import { Pokemons } from "./Pokemons";
 import { TeamsPage } from "./TeamsPage";
 import { FavoritesPage } from "./FavoritesPage";
+import { SignInPage } from "./SignInPage";
 import { getUrl } from "./getUrl";
 import { Filters } from "./Filters";
 import { useContext, useEffect } from "react";
@@ -78,6 +79,7 @@ function App() {
         <>
           <TeamsPage />
           <FavoritesPage />
+          <SignInPage />
           {handleLoadAndError(isLoading, error) || (
             <Pokemons pokemons={pokemons.results} />
           )}

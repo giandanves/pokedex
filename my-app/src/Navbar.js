@@ -6,8 +6,14 @@ import { useContext, useState } from "react";
 import { FilterContext } from "./FilterContext";
 
 export const Navbar = () => {
-  const { teamsIsOpen, setTeamsIsOpen, favoritesIsOpen, setFavoritesIsOpen } =
-    useContext(FilterContext);
+  const {
+    teamsIsOpen,
+    setTeamsIsOpen,
+    favoritesIsOpen,
+    setFavoritesIsOpen,
+    signInIsOpen,
+    setSignInIsOpen,
+  } = useContext(FilterContext);
 
   const [isOnPokedex, setIsOnPokedex] = useState(true);
 
@@ -15,18 +21,28 @@ export const Navbar = () => {
     setIsOnPokedex(true);
     setTeamsIsOpen(false);
     setFavoritesIsOpen(false);
+    setSignInIsOpen(false);
   };
 
   const goToTeams = () => {
     setTeamsIsOpen(true);
     setFavoritesIsOpen(false);
     setIsOnPokedex(false);
+    setSignInIsOpen(false);
   };
 
   const goToFavorites = () => {
+    setFavoritesIsOpen(true);
     setTeamsIsOpen(false);
     setIsOnPokedex(false);
-    setFavoritesIsOpen(true);
+    setSignInIsOpen(false);
+  };
+
+  const goToSignIn = () => {
+    setSignInIsOpen(true);
+    setTeamsIsOpen(false);
+    setIsOnPokedex(false);
+    setFavoritesIsOpen(false);
   };
 
   return (
@@ -94,11 +110,24 @@ export const Navbar = () => {
         </button>
       </div>
 
-      <button className="flex h-12 px-3 items-start">
+      <button
+        className="flex h-12 px-3 items-start"
+        onClick={() => goToSignIn()}
+      >
         <img src={signin} alt="sign in" className="mr-3" />
         <div>
-          <h2 className="text-base text-black font-bold">Sign in</h2>
-          <div className="h-0.5 w-full bg-white rounded-lg"></div>
+          <h2
+            className={`text-base text-${
+              signInIsOpen ? "primary" : "black"
+            } font-bold`}
+          >
+            Sign in
+          </h2>
+          <div
+            className={`h-0.5 w-full bg-${
+              signInIsOpen ? "primary" : "white"
+            } rounded-lg`}
+          ></div>
         </div>
       </button>
     </div>
