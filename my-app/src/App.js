@@ -2,6 +2,7 @@ import { PaginationController } from "./PaginationController";
 import { Navbar } from "./Navbar";
 import { NavbarMobile } from "./NavbarMobile";
 import { Pokemons } from "./Pokemons";
+import { TeamsPage } from "./TeamsPage";
 import { getUrl } from "./getUrl";
 import { Filters } from "./Filters";
 import { useContext, useEffect } from "react";
@@ -74,6 +75,7 @@ function App() {
           count={pokemons?.count}
         />
         <>
+          <TeamsPage />
           {handleLoadAndError(isLoading, error) || (
             <Pokemons pokemons={pokemons.results} />
           )}
