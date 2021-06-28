@@ -10,7 +10,10 @@ export const Filters = () => {
   const getSelected = useCallback(() => {
     return selected.map((e) => {
       return (
-        <div className="flex mx-1 border border-shade rounded h-8 items-center px-3">
+        <div
+          key={e}
+          className="flex mx-1 border border-shade rounded h-8 items-center px-3"
+        >
           <p
             key={e}
             className="flex capitalize text-black font-bold text-xs pl-1"
@@ -48,7 +51,7 @@ export const Filters = () => {
   }, [filter]);
 
   return (
-    <div className="flex">
+    <div className="flex w-full py-2 pl-2 overflow-x-auto">
       <Link
         to="/filters"
         className={`${
