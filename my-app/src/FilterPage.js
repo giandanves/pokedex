@@ -1,4 +1,3 @@
-import { getUrl } from "./getUrl";
 import { useHistory, Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import { Type } from "./TypeFilter";
@@ -7,22 +6,15 @@ import { Weight } from "./Weight";
 import { Height } from "./Height";
 import { Abilities } from "./Abilities";
 import { FilterContext } from "./FilterContext";
-import { useContext, useEffect } from "react";
-const defaultUrl = process.env.REACT_APP_DEFAULT_URL;
+import { useContext } from "react";
 
 export const FilterPage = () => {
   const history = useHistory();
-  let { setUrl, setOffset, filter, setFilter, filteredUrl, setFilteredUrl } =
-    useContext(FilterContext);
-
-  useEffect(() => {
-    setUrl(filteredUrl);
-  }, [setUrl, filteredUrl]);
+  let { setOffset, filter, setFilter } = useContext(FilterContext);
 
   const onSubmit = (values) => {
     setOffset(0);
     setFilter((prev) => (prev = values));
-    setFilteredUrl(getUrl(values, defaultUrl));
     history.push("/");
   };
 
@@ -35,7 +27,6 @@ export const FilterPage = () => {
       move: [],
       search: [],
     });
-
     setOffset(0);
   };
 
