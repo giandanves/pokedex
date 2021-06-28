@@ -14,7 +14,7 @@ export function Pokemons(props) {
     return n;
   };
   return (
-    <div className="flex flex-wrap mx-auto max-w-fullscreen">
+    <div className="flex flex-wrap mx-auto max-w-fullscreen max-h-pokemoncontainer md:max-h-full overflow-auto">
       {pokemons.length === 0 ? (
         <p>
           No Pokemons matches this criterias, change the filters and try again
@@ -49,7 +49,7 @@ export function Pokemons(props) {
                   </div>
 
                   <img className="p-2" src={picture} alt={name} />
-                  <h2 className="font-nunito text-body-03 capitalize font-bold sm:text-body-02 sm:leading-body-02 xl:text-2xl">
+                  <h2 className="font-nunito text-xs capitalize font-bold sm:text-body-02 sm:leading-body-02 xl:text-base">
                     {name}
                   </h2>
                 </div>

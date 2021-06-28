@@ -66,6 +66,10 @@ module.exports = {
         fullscreen: "1440px",
         searchbar: "432px",
       },
+
+      maxHeight: {
+        pokemoncontainer: "692px",
+      },
     },
   },
   variants: {
