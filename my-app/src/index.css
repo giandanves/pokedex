@@ -6,6 +6,7 @@ body {
   @apply font-nunito;
   flex-direction: column;
   align-items: center;
+  max-width: 1440px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
