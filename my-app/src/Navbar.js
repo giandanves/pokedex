@@ -2,14 +2,17 @@ import pokedex from "./img/pokedex.svg";
 import favpage from "./img/favpage.svg";
 import teams from "./img/teams.svg";
 import signin from "./img/signin.svg";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FilterContext } from "./FilterContext";
 
 export const Navbar = () => {
   const { teamsIsOpen, setTeamsIsOpen, favoritesIsOpen, setFavoritesIsOpen } =
     useContext(FilterContext);
 
+  const [isOnPokedex, setIsOnPokedex] = useState(true);
+
   const goToPokedex = () => {
+    setIsOnPokedex(true);
     setTeamsIsOpen(false);
     setFavoritesIsOpen(false);
   };
@@ -17,10 +20,12 @@ export const Navbar = () => {
   const goToTeams = () => {
     setTeamsIsOpen(true);
     setFavoritesIsOpen(false);
+    setIsOnPokedex(false);
   };
 
   const goToFavorites = () => {
     setTeamsIsOpen(false);
+    setIsOnPokedex(false);
     setFavoritesIsOpen(true);
   };
 
@@ -33,8 +38,18 @@ export const Navbar = () => {
         >
           <img src={pokedex} alt="pokedexIcon" className="mr-2" />
           <div>
-            <h2 className="text-base text-black font-bold">Pokedex</h2>
-            <div className="h-0.5 w-full bg-primary rounded-lg"></div>
+            <h2
+              className={`text-base text-${
+                isOnPokedex ? "primary" : "black"
+              } font-bold`}
+            >
+              Pokedex
+            </h2>
+            <div
+              className={`h-0.5 w-full bg-${
+                isOnPokedex ? "primary" : "white"
+              } rounded-lg`}
+            ></div>
           </div>
         </button>
         <button
