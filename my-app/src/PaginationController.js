@@ -14,7 +14,7 @@ export const PaginationController = (props) => {
   };
 
   return (
-    <>
+    <div className="hidden sm:block">
       <p>Show: </p>
       <select disabled={loading} onChange={(e) => handlePagination(e)}>
         <option value={12}>12</option>
@@ -35,6 +35,6 @@ export const PaginationController = (props) => {
         next page
       </button>
       <p>Page {offset / limit + 1}</p>
-    </>
+    </div>
   );
 };
