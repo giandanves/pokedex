@@ -8,6 +8,7 @@ const FilterContextProvider = (props) => {
   const [limit, setLimit] = useState(12);
   const [offset, setOffset] = useState(0);
   const [filteredUrl, setFilteredUrl] = useState(url);
+  const [teamsIsOpen, setTeamsIsOpen] = useState(false);
   const [filter, setFilter] = useState({
     height: [],
     weight: [],
@@ -29,6 +30,8 @@ const FilterContextProvider = (props) => {
         setFilter,
         filteredUrl,
         setFilteredUrl,
+        teamsIsOpen,
+        setTeamsIsOpen,
       }}
     >
       {props.children}
