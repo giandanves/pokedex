@@ -15,6 +15,10 @@ code {
     monospace;
 }
 
+.filter-primary {
+  filter: invert(32%) sepia(91%) saturate(1412%) hue-rotate(212deg)
+    brightness(78%) contrast(98%);
+}
 .search-box {
   display: flex;
   width: 250px;

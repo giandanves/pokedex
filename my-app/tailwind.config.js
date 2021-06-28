@@ -70,6 +70,13 @@ module.exports = {
       maxHeight: {
         pokemoncontainer: "692px",
       },
+
+      backgroundImage: (theme) => ({
+        pokedex: "url('./img/pokedex.svg')",
+        teams: "url('./img/teams.svg')",
+        favorites: "url('./img/favpage.svg')",
+        signin: "url('./img/signin.svg')",
+      }),
     },
   },
   variants: {

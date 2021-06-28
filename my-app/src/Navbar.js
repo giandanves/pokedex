@@ -52,7 +52,11 @@ export const Navbar = () => {
           className="flex h-12 pr-3 items-start"
           onClick={() => goToPokedex()}
         >
-          <img src={pokedex} alt="pokedexIcon" className="mr-2" />
+          <img
+            src={pokedex}
+            alt="pokedexIcon"
+            className={`mr-2 ${isOnPokedex && "filter-primary"}`}
+          />
           <div>
             <h2
               className={`text-base text-${
@@ -72,7 +76,11 @@ export const Navbar = () => {
           className="flex h-12 px-3 items-start"
           onClick={() => goToTeams()}
         >
-          <img src={teams} alt="teamsIcon" className="mr-2" />
+          <img
+            src={teams}
+            alt="teamsIcon"
+            className={`mr-2 ${teamsIsOpen && "filter-primary"}`}
+          />
           <div>
             <h2
               className={`text-base text-${
@@ -92,7 +100,11 @@ export const Navbar = () => {
           className="flex h-12 px-3 items-start"
           onClick={() => goToFavorites()}
         >
-          <img src={favpage} alt="favorites" className="mr-2" />
+          <img
+            src={favpage}
+            alt="favorites"
+            className={`mr-2 ${favoritesIsOpen && "filter-primary"}`}
+          />
           <div>
             <h2
               className={`text-base text-${
@@ -114,7 +126,11 @@ export const Navbar = () => {
         className="flex h-12 px-3 items-start"
         onClick={() => goToSignIn()}
       >
-        <img src={signin} alt="sign in" className="mr-3" />
+        <img
+          src={signin}
+          alt="sign in"
+          className={`mr-3 ${signInIsOpen && "filter-primary"}`}
+        />
         <div>
           <h2
             className={`text-base text-${

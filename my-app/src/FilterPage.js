@@ -26,9 +26,7 @@ export const FilterPage = () => {
     history.push("/");
   };
 
-  const resetFilters = (values) => {
-    console.dir(values);
-    setUrl(defaultUrl);
+  const resetFilters = () => {
     setFilter({
       height: [],
       weight: [],
