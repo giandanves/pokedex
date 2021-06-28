@@ -7,7 +7,6 @@ const FilterContextProvider = (props) => {
   let [url, setUrl] = useState(defaultUrl);
   const [limit, setLimit] = useState(12);
   const [offset, setOffset] = useState(0);
-  const [filteredUrl, setFilteredUrl] = useState(defaultUrl);
   const [teamsIsOpen, setTeamsIsOpen] = useState(false);
   const [favoritesIsOpen, setFavoritesIsOpen] = useState(false);
   const [signInIsOpen, setSignInIsOpen] = useState(false);
@@ -30,8 +29,6 @@ const FilterContextProvider = (props) => {
         setOffset,
         filter,
         setFilter,
-        filteredUrl,
-        setFilteredUrl,
         teamsIsOpen,
         setTeamsIsOpen,
         favoritesIsOpen,

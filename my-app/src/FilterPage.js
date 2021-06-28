@@ -25,7 +25,7 @@ export const FilterPage = () => {
       type: [],
       ability: [],
       move: [],
-      search: [],
+      search: "",
     });
     setOffset(0);
   };

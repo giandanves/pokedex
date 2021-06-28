@@ -43,7 +43,9 @@ function App() {
     error,
     data: pokemons,
     refetch,
-  } = useQuery(`${url}${getLimit()}${getOffset()}`, { retryDelay: 1000 });
+  } = useQuery(`${url}${getLimit()}${getOffset()}`, {
+    retryDelay: 1000,
+  });
 
   return (
     <>
