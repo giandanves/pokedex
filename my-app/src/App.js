@@ -1,5 +1,6 @@
 import { PaginationController } from "./PaginationController";
 import { Navbar } from "./Navbar";
+import { NavbarMobile } from "./NavbarMobile";
 import { Pokemons } from "./Pokemons";
 import { getUrl } from "./getUrl";
 import { Filters } from "./Filters";
@@ -44,12 +45,14 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="pl-4 lg:pl-10 max-w-fullscreen">
-        <div className="flex justify-between pr-10 py-8">
-          <h1 className=" text-heading font-nunito font-bold">Pokedex</h1>
+      <div className="px-6 pt-6 h-full md:pl-4 lg:pl-10 lg:pt-8 max-w-fullscreen">
+        <div className="pb-3 md:flex justify-between lg:pr-10">
+          <h1 className=" text-2xl font-nunito font-bold pb-3 lg: pt-2">
+            Pokedex
+          </h1>
           <input
             name="search"
-            className="text-body-02 border border-gray rounded w-full max-w-searchbar h-12"
+            className="text-body-02 border border-gray rounded w-full md:max-w-searchbar h-12"
             type="text"
             onChange={(e) => setFilter({ ...filter, search: e.target.value })}
             placeholder={"   Search..."}
@@ -77,6 +80,7 @@ function App() {
           {error ? <button onClick={() => refetch()}>Try Again</button> : <></>}
         </>
       </div>
+      <NavbarMobile />
     </>
   );
 }
