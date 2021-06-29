@@ -58,24 +58,23 @@ export const FilterModal = () => {
       }}
     >
       <div className="h-full w-full bg-white bg-opacity-1">
-        <p>Filters</p>
+        <p className="text-2xl font-normal text-black">Filters</p>
         <Formik
           enableReinitialize={true}
           onSubmit={onSubmit}
           initialValues={filter}
         >
           <Form>
-            <button type="reset" onClick={resetFilters}>
-              Reset
-            </button>
-            <button type="submit">Apply</button>
-
             <Height />
             <Weight />
 
             <Type />
             <Moves filter={filter} />
             <Abilities filter={filter} />
+            <button type="reset" onClick={resetFilters}>
+              Reset
+            </button>
+            <button type="submit">Apply</button>
           </Form>
         </Formik>
       </div>
