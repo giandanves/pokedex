@@ -1,10 +1,9 @@
 import { useContext, useState, useEffect, useCallback } from "react";
 import { FilterContext } from "./FilterContext";
 import filterimg from "./img/filter.svg";
-import { Link } from "react-router-dom";
 
 export const Filters = () => {
-  const { filter } = useContext(FilterContext);
+  const { filter, setFilterModalIsOpen } = useContext(FilterContext);
   const [selected, setSelected] = useState([]);
 
   const getSelected = useCallback(() => {
@@ -52,11 +51,11 @@ export const Filters = () => {
 
   return (
     <div className="flex w-full py-2 pl-2 overflow-x-auto">
-      <Link
-        to="/filters"
+      <button
         className={`${
           selected.length > 0 ? "bg-lightblue" : "bg-white"
         } flex border border-shade rounded h-8 items-center px-3`}
+        onClick={() => setFilterModalIsOpen(true)}
       >
         <div className="flex h-4 items-center">
           <img src={filterimg} alt="filter" className="h-3" />
@@ -69,7 +68,7 @@ export const Filters = () => {
             </p>
           )}
         </p>
-      </Link>
+      </button>
 
       <div className="flex">{getSelected()}</div>
     </div>
