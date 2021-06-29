@@ -4,21 +4,25 @@ export const FilterModal = () => {
   return (
     <ReactModal
       isOpen={true}
+      bodyOpenClassName="body-open"
       style={{
-        overlay: {},
+        overlay: {
+          maxWidth: "1440px",
+          backgroundColor: "#2B314060",
+        },
         content: {
+          opacity: "1",
+          backgroundColor: "white",
           height: "100%",
           width: "100%",
           maxWidth: "666px",
           maxHeight: "720px",
-          top: "40px",
-          left: "40px",
-          right: "40px",
-          bottom: "40px",
+          marginLeft: "auto",
+          marginRight: "auto",
         },
       }}
     >
-      <p>FILTER MODAL</p>
+      <div className="h-full w-full bg-white bg-opacity-1">FILTER MODAL</div>
     </ReactModal>
   );
 };
