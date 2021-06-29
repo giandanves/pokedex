@@ -4,13 +4,13 @@ export const Weight = () => {
   const labels = ["Extra Light", "Light", "Medium", "Large", "Extra Large"];
   const { values } = useFormikContext();
   return (
-    <div className="pt-9">
+    <div className="py-6">
       <p className="pb-4 text-base font-bold text-black">Weight</p>
       {[1, 2, 3, 4, 5].map((vl) => (
         <label
           className={`bg-${
             values.weight.includes(vl.toString()) && "lightblue"
-          } label-for-check py-2 px-3 mr-2 text-black font-bold text-xs border border-black-300 rounded`}
+          }  py-2 px-3 mr-2 text-black font-bold text-xs border border-black-300 rounded`}
         >
           <Field
             type="checkbox"
