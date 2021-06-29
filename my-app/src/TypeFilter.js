@@ -12,7 +12,7 @@ export const Type = () => {
           types.data.results.map((pokeType) => {
             return (
               <>
-                <label>
+                <label className="capitalize">
                   <Field type="checkbox" name="type" value={pokeType.name} />
                   {pokeType.name}
                 </label>
