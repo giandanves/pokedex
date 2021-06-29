@@ -57,7 +57,7 @@ export const FilterModal = () => {
         },
       }}
     >
-      <div className="h-full w-full bg-white bg-opacity-1">
+      <div className="h-full max-h-filtermodal w-full bg-white bg-opacity-1">
         <p className="text-2xl font-normal text-black">Filters</p>
         <Formik
           enableReinitialize={true}
@@ -66,17 +66,24 @@ export const FilterModal = () => {
         >
           <Form>
             <Height />
+            <div className="border border-dashed border-lightgrey w-full"></div>
             <Weight />
-
+            <div className="border border-dashed border-lightgrey w-full"></div>
             <Type />
+            <div className="border border-dashed border-lightgrey w-full"></div>
             <Moves filter={filter} />
+            <div className="border border-dashed border-lightgrey w-full"></div>
             <Abilities filter={filter} />
+            <div className="border border-dashed border-lightgrey w-full"></div>
             <button type="reset" onClick={resetFilters}>
               Reset
             </button>
             <button type="submit">Apply</button>
           </Form>
         </Formik>
+      </div>
+      <div className="w-full h-full bg-white">
+        <p>Papai tamo quase</p>
       </div>
     </ReactModal>
   );
