@@ -69,6 +69,7 @@ module.exports = {
 
       maxHeight: {
         pokemoncontainer: "692px",
+        filtermodal: "642px",
       },
 
       backgroundImage: (theme) => ({
