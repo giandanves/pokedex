@@ -10,6 +10,7 @@ const FilterContextProvider = (props) => {
   const [teamsIsOpen, setTeamsIsOpen] = useState(false);
   const [favoritesIsOpen, setFavoritesIsOpen] = useState(false);
   const [signInIsOpen, setSignInIsOpen] = useState(false);
+  const [filterModalIsOpen, setFilterModalIsOpen] = useState(false);
   const [filter, setFilter] = useState({
     height: [],
     weight: [],
@@ -35,6 +36,8 @@ const FilterContextProvider = (props) => {
         setFavoritesIsOpen,
         signInIsOpen,
         setSignInIsOpen,
+        filterModalIsOpen,
+        setFilterModalIsOpen,
       }}
     >
       {props.children}
