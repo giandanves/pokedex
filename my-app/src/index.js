@@ -2,8 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { FilterPage } from "./FilterPage";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import FilterContextProvider from "./FilterContext";
 
@@ -23,18 +21,9 @@ const queryClient = new QueryClient({
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <Router>
-        <Switch>
-          <FilterContextProvider>
-            <Route path="/" exact>
-              <App />
-            </Route>
-            <Route path="/filters">
-              <FilterPage />
-            </Route>
-          </FilterContextProvider>
-        </Switch>
-      </Router>
+      <FilterContextProvider>
+        <App />
+      </FilterContextProvider>
     </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById("root")
