@@ -17,12 +17,15 @@ export const FilterModal = () => {
           width: "100%",
           maxWidth: "666px",
           maxHeight: "720px",
-          marginLeft: "auto",
-          marginRight: "auto",
+          margin: "auto",
+          border: "1px solid #EDEEF8",
+          borderRadius: "8px",
         },
       }}
     >
-      <div className="h-full w-full bg-white bg-opacity-1">FILTER MODAL</div>
+      <div className="h-full w-full bg-white bg-opacity-1">
+        <p>Filter</p>
+      </div>
     </ReactModal>
   );
 };
