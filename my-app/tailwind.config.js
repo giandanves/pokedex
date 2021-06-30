@@ -37,6 +37,9 @@ module.exports = {
       shade: "#99A2B8",
     },
     extend: {
+      boxShadow: {
+        shadow: "0 0 30px rgba(0, 0, 0, 0.1)",
+      },
       fontSize: {
         heading: "24px",
         "body-01": "16px",
