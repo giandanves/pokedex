@@ -11,7 +11,7 @@ export const Height = () => {
           <label
             className={`bg-${
               values.height.includes(vl.toString()) && "lightblue"
-            } label-for-check py-2 px-3 mr-2 text-black font-bold text-xs border border-black-300 rounded`}
+            }  py-1 px-1 sm:py-2 sm:px-3 mr-2 mb-2 text-black font-bold text-subtitle leading-subtitle sm:text-xs border border-black-300 rounded`}
           >
             <Field
               type="checkbox"
