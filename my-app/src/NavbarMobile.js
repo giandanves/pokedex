@@ -5,7 +5,7 @@ import signin from "./img/signin.svg";
 
 export const NavbarMobile = () => {
   return (
-    <div className="sm:hidden flex w-full h-14 justify-between bg-lightgrey px-10 rounded-t-2xl">
+    <div className="fixed bottom-0 sm:hidden flex w-full h-14 justify-between bg-lightgrey px-10 rounded-t-2xl">
       <button className="flex flex-col h-full items-center justify-between">
         <div className="h-full flex flex-col justify-center">
           <img src={pokedex} alt="pokedexIcon" className="" />
