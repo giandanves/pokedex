@@ -1,13 +1,16 @@
-import { useContext, useState, useEffect, useCallback } from "react";
+import { useContext, useState, useEffect, useCallback, useRef } from "react";
 import { FilterContext } from "./FilterContext";
 import filterimg from "./img/filter.svg";
 
 export const Filters = () => {
   const { filter, setFilterModalIsOpen } = useContext(FilterContext);
   const [selected, setSelected] = useState([]);
+  const selectedFilters = useRef(0);
 
   const getSelected = useCallback(() => {
-    return selected.map((e) => {
+    const unique = [...new Set(selected)];
+    selectedFilters.current = unique.length;
+    return unique.map((e) => {
       return (
         <div
           key={e}
@@ -27,6 +30,10 @@ export const Filters = () => {
   useEffect(() => {
     const height = ["Extra Small", "Small", "Medium", "Tall", "Extra Tall"];
     const weight = ["Extra Light", "Light", "Medium", "Large", "Extra Large"];
+
+    if (Object.values(filter).every((array) => array.length === 0)) {
+      setSelected([]);
+    }
 
     filter.height.forEach((e) => {
       setSelected((prev) => [...prev, height[e - 1]]);
@@ -64,7 +71,7 @@ export const Filters = () => {
           Filters
           {selected.length > 0 && (
             <p className="flex ml-1 items-center justify-center bg-primary text-white text-subtitle font-bold px-1 rounded-full h-4 w-4">
-              {selected.length}
+              {selectedFilters.current}
             </p>
           )}
         </p>
