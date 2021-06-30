@@ -58,7 +58,7 @@ export const Abilities = (props) => {
 
   return (
     <>
-      <div>
+      <div className="mb-4">
         <p className="pb-4 pt-6 text-base font-bold text-black">Abilities</p>
         <Field
           name="searchAbility"
