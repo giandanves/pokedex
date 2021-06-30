@@ -56,18 +56,20 @@ function App() {
           <h1 className=" text-2xl font-nunito font-bold pb-3 lg: pt-2">
             Pokedex
           </h1>
-          <input
-            name="search"
-            className="text-body-02 border border-gray rounded w-full md:max-w-searchbar h-12"
-            type="text"
-            onChange={(e) => setFilter({ ...filter, search: e.target.value })}
-            placeholder={"   Search..."}
-          />
-          {filter.search.length < 3 && filter.search.length > 0 && (
-            <p className="text-danger text-xs">
-              {"Type at least 2 characters to search"}
-            </p>
-          )}
+          <div className="w-full md:max-w-searchbar">
+            <input
+              name="search"
+              className="text-body-02 border border-gray rounded w-full h-12"
+              type="text"
+              onChange={(e) => setFilter({ ...filter, search: e.target.value })}
+              placeholder={"   Search..."}
+            />
+            {filter.search.length < 3 && filter.search.length > 0 && (
+              <p className="text-danger text-xs">
+                {"Type at least 2 characters to search"}
+              </p>
+            )}
+          </div>
         </div>
         <Filters />
 
