@@ -53,6 +53,7 @@ module.exports = {
         fav: "18.35px",
         topbar: "172px",
         downbar: "32px",
+        navbarmodal: "72px",
       },
       width: {
         filtercircle: "15px",
@@ -65,11 +66,12 @@ module.exports = {
       maxWidth: {
         fullscreen: "1440px",
         searchbar: "432px",
+        navbarmodal: "645px",
       },
 
       maxHeight: {
         pokemoncontainer: "692px",
-        filtermodal: "642px",
+        form: "592px",
       },
 
       backgroundImage: (theme) => ({
