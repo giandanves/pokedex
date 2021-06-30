@@ -59,6 +59,7 @@ module.exports = {
         filtercircle: "15px",
         card: "148px",
         dropbox: "144px",
+        "modal-sm": "560px",
       },
       lineHeight: {
         subtitle: "12px",
