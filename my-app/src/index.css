@@ -26,22 +26,6 @@ body {
   margin: auto;
 }
 
-@media (min-width: 640px) {
-  .Modal {
-    overflow: hidden;
-    border: 1px solid #6b6b6d;
-    border-radius: 8px;
-    width: 560px;
-    max-height: 720px;
-  }
-}
-
-@media (min-width: 780px) {
-  .Modal {
-    width: 666px;
-  }
-}
-
 .Overlay {
   max-width: 1440px;
   background-color: #2b314060;
@@ -51,6 +35,40 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+.Modal-Teams {
+  margin: auto;
+}
+
+.Overlay-Teams {
+  display: flex;
+  position: fixed;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  max-width: 1440px;
+  background-color: white;
+}
+
+@media (min-width: 640px) {
+  .Modal {
+    overflow: hidden;
+    border: 1px solid #6b6b6d;
+    border-radius: 8px;
+    width: 560px;
+    max-height: 720px;
+  }
+
+  .Overlay-Teams {
+    top: 64px;
+  }
+}
+
+@media (min-width: 780px) {
+  .Modal {
+    width: 666px;
+  }
 }
 
 code {

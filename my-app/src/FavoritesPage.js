@@ -8,19 +8,10 @@ export const FavoritesPage = () => {
   return (
     <ReactModal
       isOpen={favoritesIsOpen}
-      style={{
-        overlay: {
-          top: "64px",
-          width: "100%",
-        },
-        content: {
-          border: 0,
-          padding: 0,
-          inset: 0,
-        },
-      }}
+      className={"Modal-Teams"}
+      overlayClassName={"Overlay-Teams"}
     >
-      <p>OUVE AQUIIIIIIIIII</p>
+      <p className="h-20">OUVE AQUIIIIIIIIII</p>
     </ReactModal>
   );
 };

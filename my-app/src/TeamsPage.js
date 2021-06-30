@@ -8,19 +8,10 @@ export const TeamsPage = () => {
   return (
     <ReactModal
       isOpen={teamsIsOpen}
-      style={{
-        overlay: {
-          top: "64px",
-          width: "100%",
-        },
-        content: {
-          border: 0,
-          padding: 0,
-          inset: 0,
-        },
-      }}
+      className={"Modal-Teams"}
+      overlayClassName={"Overlay-Teams"}
     >
-      <p>Eta nós vó?</p>
+      <p className="h-20">Eta nós vó?</p>
     </ReactModal>
   );
 };
