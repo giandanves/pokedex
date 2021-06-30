@@ -58,6 +58,7 @@ module.exports = {
       width: {
         filtercircle: "15px",
         card: "148px",
+        dropbox: "144px",
       },
       lineHeight: {
         subtitle: "12px",
@@ -67,6 +68,7 @@ module.exports = {
         fullscreen: "1440px",
         searchbar: "432px",
         navbarmodal: "645px",
+        dropbox: "144px",
       },
 
       maxHeight: {
