@@ -57,7 +57,7 @@ export const Moves = (props) => {
 
   return (
     <>
-      <div className="pb-6">
+      <div>
         <p className="pb-4 pt-6 text-base font-bold text-black">Moves</p>
         <Field
           name="searchMove"
