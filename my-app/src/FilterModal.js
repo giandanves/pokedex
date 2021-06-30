@@ -39,28 +39,10 @@ export const FilterModal = () => {
     <ReactModal
       isOpen={filterModalIsOpen}
       bodyOpenClassName="body-open"
-      style={{
-        overlay: {
-          maxWidth: "1440px",
-          position: "absolute",
-          backgroundColor: "#2B314060",
-        },
-        content: {
-          overflow: "hidden",
-          padding: 0,
-          opacity: "1",
-          backgroundColor: "white",
-          height: "100%",
-          width: "100%",
-          maxWidth: "666px",
-          maxHeight: "720px",
-          margin: "auto",
-          border: "1px solid #EDEEF8",
-          borderRadius: "8px",
-        },
-      }}
+      className="Modal"
+      overlayClassName="Overlay"
     >
-      <div className="h-full w-full absolute  bg-white bg-opacity-1">
+      <div className="h-full w-full  bg-white bg-opacity-1">
         <div className="flex justify-between">
           <p className="text-2xl font-normal text-black pt-5 px-8">Filters</p>
           <img
@@ -76,7 +58,7 @@ export const FilterModal = () => {
           initialValues={filter}
         >
           <Form>
-            <div className="px-8 max-h-form w-full overflow-y-auto">
+            <div className="px-8 sm:max-h-form w-full overflow-y-auto">
               <Height />
               <div className="border border-dashed border-lightgrey w-full"></div>
               <Weight />
