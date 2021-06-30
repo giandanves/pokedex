@@ -13,6 +13,7 @@ import { handleLoadAndError } from "./HandleLoadAndError";
 import { useQuery } from "react-query";
 import { FilterContext } from "./FilterContext";
 import { debounce } from "lodash";
+import search from "./img/search.svg";
 const defaultUrl = process.env.REACT_APP_DEFAULT_URL;
 
 function App() {
@@ -56,13 +57,13 @@ function App() {
           <h1 className=" text-2xl font-nunito font-bold pb-3 lg: pt-2">
             Pokedex
           </h1>
-          <div className="w-full md:max-w-searchbar">
+          <div className="w-full md:max-w-searchbar border border-gray rounded pl-2 pr-4">
             <input
               name="search"
-              className="text-body-02 border border-gray rounded w-full h-12"
+              className="text-body-02 w-full h-12 px-2 bg-search bg-no-repeat bg-right"
               type="text"
               onChange={(e) => setFilter({ ...filter, search: e.target.value })}
-              placeholder={"   Search..."}
+              placeholder={"Search..."}
             />
             {filter.search.length < 3 && filter.search.length > 0 && (
               <p className="text-danger text-xs">

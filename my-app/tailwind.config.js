@@ -75,6 +75,7 @@ module.exports = {
       },
 
       backgroundImage: (theme) => ({
+        search: "url('./img/search.svg')",
         pokedex: "url('./img/pokedex.svg')",
         teams: "url('./img/teams.svg')",
         favorites: "url('./img/favpage.svg')",
