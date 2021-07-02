@@ -13,7 +13,6 @@ import { handleLoadAndError } from "./HandleLoadAndError";
 import { useQuery } from "react-query";
 import { FilterContext } from "./FilterContext";
 import { debounce } from "lodash";
-import search from "./img/search.svg";
 const defaultUrl = process.env.REACT_APP_DEFAULT_URL;
 
 function App() {
