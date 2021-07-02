@@ -46,7 +46,7 @@ export const NavbarMobile = () => {
   };
 
   return (
-    <div className="fixed bottom-0 sm:hidden flex w-full h-14 justify-between bg-white px-10 rounded-t-2xl">
+    <div className="fixed bottom-0 sm:hidden shadow-shadow flex w-full h-14 justify-between bg-white px-10 rounded-t-2xl">
       <button
         className="flex flex-col h-full items-center justify-between"
         onClick={() => goToPokedex()}
