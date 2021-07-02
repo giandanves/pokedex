@@ -58,7 +58,9 @@ function App() {
               name="search"
               className="text-body-02 w-full h-12 px-2 bg-search bg-no-repeat bg-right"
               type="text"
-              onChange={(e) => setFilter({ ...filter, search: e.target.value })}
+              onChange={(e) =>
+                setFilter({ ...filter, search: e.target.value.toLowerCase() })
+              }
               placeholder={"Search..."}
             />
             {filter.search.length < 3 && filter.search.length > 0 && (
