@@ -17,15 +17,13 @@ export const PaginationController = (props) => {
   };
 
   return (
-    <div className="hidden sm:flex w-full justify-between pr-8">
+    <div className="flex w-full justify-between pr-8">
       <select
         className="w-dropbox max-w-dropbox"
         disabled={loading}
         onChange={(e) => handlePagination(e)}
       >
-        <option className="hover:bg-lightblue" value={12}>
-          12
-        </option>
+        <option value={12}>12</option>
         <option value={24}>24</option>
         <option value={48}>48</option>
         <option value={96}>96</option>
