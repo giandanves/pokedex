@@ -19,7 +19,7 @@ export const PaginationController = (props) => {
   return (
     <div className="flex w-full justify-between pr-8">
       <select
-        className="w-dropbox max-w-dropbox"
+        className="w-dropbox max-w-dropbox rounded-md appearance-none text-center shadow-md px-4"
         disabled={loading}
         onChange={(e) => handlePagination(e)}
       >
