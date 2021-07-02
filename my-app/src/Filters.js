@@ -77,7 +77,7 @@ export const Filters = () => {
         </p>
       </button>
 
-      <div className="flex">{getSelected()}</div>
+      <div className="flex overflow-x-scroll">{getSelected()}</div>
     </div>
   );
 };
