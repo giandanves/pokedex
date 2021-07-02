@@ -68,11 +68,11 @@ export const Abilities = (props) => {
           onChange={(e) => setAbilityFilter(e.target.value)}
         />
 
-        {handleLoadAndError(abilities.isLoading, abilities.isError) ||
+        {handleLoadAndError(abilities.isLoading, abilities.error) ||
           getAbilities()}
       </div>
       {abilities.isError && (
-        <button onClick={() => abilities.Refetch()}>Try Again</button>
+        <button onClick={() => abilities.refetch()}>Try Again</button>
       )}
     </>
   );
