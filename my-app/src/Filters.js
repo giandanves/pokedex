@@ -31,9 +31,7 @@ export const Filters = () => {
     const height = ["Extra Small", "Small", "Medium", "Tall", "Extra Tall"];
     const weight = ["Extra Light", "Light", "Medium", "Large", "Extra Large"];
 
-    if (Object.values(filter).every((array) => array.length === 0)) {
-      setSelected([]);
-    }
+    setSelected([]);
 
     filter.height.forEach((e) => {
       setSelected((prev) => [...prev, height[e - 1]]);
@@ -77,7 +75,7 @@ export const Filters = () => {
         </p>
       </button>
 
-      <div className="flex overflow-x-scroll">{getSelected()}</div>
+      <div className="flex overflow-x-auto">{getSelected()}</div>
     </div>
   );
 };
