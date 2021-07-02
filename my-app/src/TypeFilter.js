@@ -1,7 +1,8 @@
 import { handleLoadAndError } from "./HandleLoadAndError";
-import { Field } from "formik";
+import { Field, useFormikContext } from "formik";
 import { useQuery } from "react-query";
 export const Type = () => {
+  const { values } = useFormikContext();
   const poketypesUrl = process.env.REACT_APP_POKETYPES_URL;
   const types = useQuery(poketypesUrl, { retryDelay: 1000 });
   return (
@@ -13,7 +14,12 @@ export const Type = () => {
             {types.data.results.map((pokeType) => {
               return (
                 <>
-                  <label className="capitalize py-2 px-2 mr-2 mb-2  text-black font-bold text-subtitle leading-subtitle border border-black-300 rounded">
+                  <label
+                    className={`bg-${
+                      values.type.includes(pokeType.name.toString()) &&
+                      "lightblue"
+                    } capitalize py-2 px-2 mr-2 mb-2  text-black font-bold text-subtitle leading-subtitle border border-black-300 rounded`}
+                  >
                     <Field
                       type="checkbox"
                       name="type"
