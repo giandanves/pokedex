@@ -56,7 +56,7 @@ export const Moves = (props) => {
                   <Field
                     type="checkbox"
                     name="move"
-                    className="hidden"
+                    className="appearance-none"
                     key={move}
                     value={move.name}
                   />
