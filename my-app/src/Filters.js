@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect, useCallback, useRef } from "react";
 import { FilterContext } from "./FilterContext";
 import filterimg from "./img/filter.svg";
+import classNames from "classnames";
 
 export const Filters = () => {
   const { filter, setFilterModalIsOpen } = useContext(FilterContext);
@@ -57,9 +58,10 @@ export const Filters = () => {
   return (
     <div className="flex w-full py-2 pl-2 overflow-x-auto">
       <button
-        className={`${
-          selected.length > 0 ? "bg-lightblue" : "bg-white"
-        } flex border border-shade rounded h-8 items-center px-3`}
+        className={classNames(
+          "flex border border-shade rounded h-8 items-center px-3 bg-white",
+          { "bg-lightblue": selected.length > 0 }
+        )}
         onClick={() => setFilterModalIsOpen(true)}
       >
         <div className="flex h-4 items-center">

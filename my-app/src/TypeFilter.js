@@ -2,6 +2,8 @@ import { handleLoadAndError } from "./HandleLoadAndError";
 import { Field, useFormikContext } from "formik";
 import checkedImg from "./img/checked.svg";
 import { useQuery } from "react-query";
+import classNames from "classnames";
+
 export const Type = () => {
   const { values } = useFormikContext();
   const poketypesUrl = process.env.REACT_APP_POKETYPES_URL;
@@ -16,24 +18,28 @@ export const Type = () => {
               return (
                 <>
                   <label
-                    className={`flex bg-${
-                      values.type.includes(pokeType.name) &&
-                      "lightblue border-primary"
-                    } capitalize py-2 px-2 mr-2 mb-2  text-black font-bold text-subtitle leading-subtitle border border-black-300 rounded`}
+                    className={classNames(
+                      "flex capitalize py-2 px-2 mr-2 mb-2  text-black font-bold text-subtitle leading-subtitle border border-black-300 rounded",
+                      {
+                        "bg-lightblue border-primary": values.type.includes(
+                          pokeType.name
+                        ),
+                      }
+                    )}
                   >
                     <img
                       src={checkedImg}
                       alt="checked"
-                      className={`opacity-0 ${
-                        values.type.includes(pokeType.name) && "opacity-100"
-                      }`}
+                      className={classNames("opacity-0", {
+                        "opacity-100": values.type.includes(pokeType.name),
+                      })}
                     />
 
                     <Field
                       type="checkbox"
                       name="type"
                       value={pokeType.name}
-                      className="hidden"
+                      className="appearance-none"
                     />
                     {pokeType.name}
                   </label>

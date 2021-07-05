@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useQuery } from "react-query";
 import { Field, useFormikContext } from "formik";
 import checkedImg from "./img/checked.svg";
+import classNames from "classnames";
 
 export const Moves = (props) => {
   const { filter } = props;
@@ -35,17 +36,21 @@ export const Moves = (props) => {
             <>
               {move.name.startsWith(movesFilter) && (
                 <label
-                  className={`flex whitespace-nowrap bg-${
-                    values.move.includes(move.name) &&
-                    "lightblue border-primary"
-                  } capitalize h-6 px-2 mr-2 mb-2 py-1  text-black font-bold text-subtitle leading-subtitle border border-black-300 rounded`}
+                  className={classNames(
+                    "flex whitespace-nowrap capitalize h-6 py-1 px-2 mr-2 mb-2  text-black font-bold text-subtitle leading-subtitle border border-black-300 rounded",
+                    {
+                      "bg-lightblue border-primary": values.move.includes(
+                        move.name.toString()
+                      ),
+                    }
+                  )}
                 >
                   <img
                     src={checkedImg}
                     alt="checked"
-                    className={`opacity-0 ${
-                      values.move.includes(move.name) && "opacity-100"
-                    }`}
+                    className={classNames("opacity-0", {
+                      "opacity-100": values.move.includes(move.name),
+                    })}
                   />
 
                   <Field

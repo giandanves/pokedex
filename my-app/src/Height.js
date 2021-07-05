@@ -1,5 +1,6 @@
 import { Field, useFormikContext } from "formik";
 import checkedImg from "./img/checked.svg";
+import classNames from "classnames";
 
 export const Height = () => {
   const labels = ["Extra Small", "Small", "Medium", "Tall", "Extra Tall"];
@@ -10,24 +11,28 @@ export const Height = () => {
       <div className="flex pb-6">
         {[1, 2, 3, 4, 5].map((vl) => (
           <label
-            className={`flex py-1 px-1 sm:py-2 sm:px-3 mr-2 mb-2 text-black font-bold text-subtitle leading-subtitle sm:text-xs border border-black-300 rounded ${
-              values.height.includes(vl.toString()) &&
-              "bg-lightblue border-primary"
-            }`}
+            className={classNames(
+              "flex py-1 px-1 sm:py-2 sm:px-3 mr-2 mb-2 text-black font-bold text-subtitle leading-subtitle sm:text-xs border border-black-300 rounded",
+              {
+                "bg-lightblue border-primary": values.height.includes(
+                  vl.toString()
+                ),
+              }
+            )}
           >
             <img
               src={checkedImg}
               alt="checked"
-              className={`opacity-0 ${
-                values.height.includes(vl.toString()) && "opacity-100"
-              }`}
+              className={classNames("opacity-0", {
+                "opacity-100": values.height.includes(vl.toString()),
+              })}
             />
             <Field
               type="checkbox"
               name="height"
               value={`${vl}`}
               key={vl}
-              className="hidden"
+              className="appearance-none"
             />
             {labels[vl - 1]}
           </label>
