@@ -1,17 +1,25 @@
-import { useContext, useState, useEffect, useCallback, useRef } from "react";
+import { useContext } from "react";
 import { FilterContext } from "./FilterContext";
 import filterimg from "./img/filter.svg";
 import classNames from "classnames";
 
 export const Filters = () => {
   const { filter, setFilterModalIsOpen } = useContext(FilterContext);
-  const [selected, setSelected] = useState([]);
-  const selectedFilters = useRef(0);
+  const height = ["Extra Small", "Small", "Medium", "Tall", "Extra Tall"];
+  const weight = ["Extra Light", "Light", "Medium", "Large", "Extra Large"];
 
-  const getSelected = useCallback(() => {
-    const unique = [...new Set(selected)];
-    selectedFilters.current = unique.length;
-    return unique.map((e) => {
+  const allSelected = {
+    type: filter.type,
+    ability: filter.ability,
+    move: filter.move,
+    height: filter.height.map((h) => height[h - 1]),
+    weight: filter.weight.map((w) => weight[w - 1]),
+  };
+
+  const list = Object.values(allSelected).flat();
+
+  const getSelected = () => {
+    return list.map((e) => {
       return (
         <div
           key={e}
@@ -26,55 +34,28 @@ export const Filters = () => {
         </div>
       );
     });
-  }, [selected]);
-
-  useEffect(() => {
-    const height = ["Extra Small", "Small", "Medium", "Tall", "Extra Tall"];
-    const weight = ["Extra Light", "Light", "Medium", "Large", "Extra Large"];
-
-    setSelected([]);
-
-    filter.height.forEach((e) => {
-      setSelected((prev) => [...prev, height[e - 1]]);
-    });
-
-    filter.weight.forEach((e) => {
-      setSelected((prev) => [...prev, weight[e - 1]]);
-    });
-
-    filter.type.forEach((e) => {
-      setSelected((prev) => [...prev, e]);
-    });
-
-    filter.ability.forEach((e) => {
-      setSelected((prev) => [...prev, e]);
-    });
-
-    filter.move.forEach((e) => {
-      setSelected((prev) => [...prev, e]);
-    });
-  }, [filter]);
+  };
 
   return (
     <div className="flex w-full py-2 pl-2 overflow-x-auto">
       <button
         className={classNames(
           "flex border border-shade rounded h-8 items-center px-3 bg-white",
-          { "bg-lightblue": selected.length > 0 }
+          { "bg-lightblue": list.length > 0 }
         )}
         onClick={() => setFilterModalIsOpen(true)}
       >
         <div className="flex h-4 items-center">
           <img src={filterimg} alt="filter" className="h-3" />
         </div>
-        <p className="flex text-black font-bold text-xs pl-1">
-          Filters
-          {selected.length > 0 && (
+        <div className="flex">
+          <p className="flex text-black font-bold text-xs pl-1">Filters</p>
+          {list.length > 0 && (
             <p className="flex ml-1 items-center justify-center bg-primary text-white text-subtitle font-bold px-1 rounded-full h-4 w-4">
-              {selectedFilters.current}
+              {list.length}
             </p>
           )}
-        </p>
+        </div>
       </button>
 
       <div className="flex overflow-x-auto">{getSelected()}</div>
