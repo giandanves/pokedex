@@ -17,17 +17,20 @@ export const PaginationController = (props) => {
   };
 
   return (
-    <div className="flex w-full justify-between pr-8">
-      <select
-        className="w-dropbox max-w-dropbox rounded-md appearance-none text-center shadow-md px-4"
-        disabled={loading}
-        onChange={(e) => handlePagination(e)}
-      >
-        <option value={12}>12</option>
-        <option value={24}>24</option>
-        <option value={48}>48</option>
-        <option value={96}>96</option>
-      </select>
+    <div className="flex w-full max-w-fullscreen mx-auto px-10 justify-between">
+      <div className="flex">
+        <select
+          className="w-12 rounded-md appearance-none text-center shadow-md bg-expand bg-no-repeat bg-right"
+          disabled={loading}
+          onChange={(e) => handlePagination(e)}
+        >
+          <option value={12}>12</option>
+          <option value={24}>24</option>
+          <option value={48}>48</option>
+          <option value={96}>96</option>
+        </select>
+        <p className="mx-2">per page</p>
+      </div>
       <div>
         <button
           disabled={offset / limit === 0 || loading}

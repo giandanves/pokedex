@@ -18,7 +18,7 @@ export const Filters = () => {
         >
           <p
             key={e}
-            className="flex capitalize text-black font-bold text-xs pl-1"
+            className="flex capitalize whitespace-nowrap text-black font-bold text-xs pl-1"
           >
             {e}
           </p>

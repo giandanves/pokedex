@@ -46,78 +46,110 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="hidden sm:flex justify-between border-b border-lightgrey h-16 w-full max-w-fullscreen pt-5 pb-6 px-6">
-      <div className="flex">
-        <button className="flex h-12 pr-3" onClick={() => goToPokedex()}>
-          <div className="flex">
-            <img
-              src={pokedex}
-              alt="pokedexIcon"
-              className={`self-end mr-2 ${isOnPokedex && "filter-primary"}`}
-            />
-            <div className="self-end">
-              <h2
-                className={`text-base text-${
-                  isOnPokedex ? "primary" : "black"
-                } font-bold`}
-              >
-                Pokedex
-              </h2>
-              {isOnPokedex && (
-                <div
-                  className="h-0.5 w-full bg-primary
+    <div className="hidden sm:flex border-b  border-lightgrey h-16 w-full pt-5 pb-6 px-6">
+      <div className="flex justify-between w-full max-w-fullscreen mx-auto">
+        <div className="flex">
+          <button className="flex h-12 pr-3" onClick={() => goToPokedex()}>
+            <div className="flex">
+              <img
+                src={pokedex}
+                alt="pokedexIcon"
+                className={`self-end mr-2 ${isOnPokedex && "filter-primary"}`}
+              />
+              <div className="self-end">
+                <h2
+                  className={`text-base text-${
+                    isOnPokedex ? "primary" : "black"
+                  } font-bold`}
+                >
+                  Pokedex
+                </h2>
+                {isOnPokedex && (
+                  <div
+                    className="h-0.5 w-full bg-primary
               } rounded-lg"
-                ></div>
-              )}
+                  ></div>
+                )}
+              </div>
             </div>
-          </div>
-        </button>
+          </button>
+          <button
+            className="flex h-12 px-3 items-start"
+            onClick={() => goToTeams()}
+          >
+            <div className="flex">
+              <img
+                src={teams}
+                alt="teamsIcon"
+                className={`self-end mr-2 ${teamsIsOpen && "filter-primary"}`}
+              />
+              <div className="self-end">
+                <h2
+                  className={`text-base text-${
+                    teamsIsOpen ? "primary" : "black"
+                  } font-bold`}
+                >
+                  Teams
+                </h2>
+                {teamsIsOpen && (
+                  <div
+                    className="h-0.5 w-full bg-primary
+              } rounded-lg"
+                  ></div>
+                )}
+              </div>
+            </div>
+          </button>
+          <button
+            className="flex h-12 px-3 items-start"
+            onClick={() => goToFavorites()}
+          >
+            <div className="flex">
+              <img
+                src={favpage}
+                alt="favorites"
+                className={`self-end mr-2 ${
+                  favoritesIsOpen && "filter-primary"
+                }`}
+              />
+              <div className="self-end">
+                <h2
+                  className={`text-base text-${
+                    favoritesIsOpen ? "primary" : "black"
+                  } font-bold`}
+                >
+                  Favorites
+                </h2>
+                {favoritesIsOpen && (
+                  <div
+                    className="h-0.5 w-full bg-primary
+              } rounded-lg"
+                  ></div>
+                )}
+              </div>
+            </div>
+          </button>
+        </div>
+
         <button
           className="flex h-12 px-3 items-start"
-          onClick={() => goToTeams()}
+          onClick={() => goToSignIn()}
         >
           <div className="flex">
             <img
-              src={teams}
-              alt="teamsIcon"
-              className={`self-end mr-2 ${teamsIsOpen && "filter-primary"}`}
+              src={signin}
+              alt="sign in"
+              className={`self-center mr-3 ${signInIsOpen && "filter-primary"}`}
             />
             <div className="self-end">
               <h2
                 className={`text-base text-${
-                  teamsIsOpen ? "primary" : "black"
+                  signInIsOpen ? "primary" : "black"
                 } font-bold`}
               >
-                Teams
+                Sign in
               </h2>
-              {teamsIsOpen && (
-                <div
-                  className="h-0.5 w-full bg-primary
-              } rounded-lg"
-                ></div>
-              )}
-            </div>
-          </div>
-        </button>
-        <button
-          className="flex h-12 px-3 items-start"
-          onClick={() => goToFavorites()}
-        >
-          <div className="flex">
-            <img
-              src={favpage}
-              alt="favorites"
-              className={`self-end mr-2 ${favoritesIsOpen && "filter-primary"}`}
-            />
-            <div className="self-end">
-              <h2
-                className={`text-base text-${
-                  favoritesIsOpen ? "primary" : "black"
-                } font-bold`}
-              >
-                Favorites
-              </h2>
-              {favoritesIsOpen && (
+              {signInIsOpen && (
                 <div
                   className="h-0.5 w-full bg-primary
               } rounded-lg"
@@ -127,34 +159,6 @@ export const Navbar = () => {
           </div>
         </button>
       </div>
-
-      <button
-        className="flex h-12 px-3 items-start"
-        onClick={() => goToSignIn()}
-      >
-        <div className="flex">
-          <img
-            src={signin}
-            alt="sign in"
-            className={`self-center mr-3 ${signInIsOpen && "filter-primary"}`}
-          />
-          <div className="self-end">
-            <h2
-              className={`text-base text-${
-                signInIsOpen ? "primary" : "black"
-              } font-bold`}
-            >
-              Sign in
-            </h2>
-            {signInIsOpen && (
-              <div
-                className="h-0.5 w-full bg-primary
-              } rounded-lg"
-              ></div>
-            )}
-          </div>
-        </div>
-      </button>
     </div>
   );
 };

@@ -14,7 +14,7 @@ export function Pokemons(props) {
     return n;
   };
   return (
-    <div className="flex flex-wrap mx-auto max-w-fullscreen max-h-pokemoncontainer sm:max-h-full overflow-auto">
+    <div className="flex flex-wrap  -mx-2 max-w-fullscreen max-h-pokemoncontainer sm:max-h-full overflow-auto pr-2">
       {pokemons.length === 0 ? (
         <p>
           No Pokemons matches this criterias, change the filters and try again
@@ -26,7 +26,7 @@ export function Pokemons(props) {
           return (
             <div
               key={id}
-              className={`w-6/12 py-2 pr-4 sm:w-4/12 sm:pr-4 md:w-3/12 md:py-3 md:pr-8 lg:w-2/12`}
+              className={`w-6/12 p-2  sm:w-4/12 md:w-3/12 lg:w-2/12`}
             >
               <li
                 className={`border border-${type[0]} rounded-md overflow-hidden`}

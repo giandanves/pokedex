@@ -61,7 +61,7 @@ module.exports = {
       width: {
         filtercircle: "15px",
         card: "148px",
-        dropbox: "144px",
+        dropbox: "40px",
         "modal-sm": "560px",
       },
       lineHeight: {
@@ -72,16 +72,17 @@ module.exports = {
         fullscreen: "1440px",
         searchbar: "432px",
         navbarmodal: "645px",
-        dropbox: "144px",
       },
 
       maxHeight: {
         pokemoncontainer: "692px",
         form: "592px",
+        "50p": "50%",
       },
 
       backgroundImage: (theme) => ({
         search: "url('./img/search.svg')",
+        expand: "url('./img/expand.svg')",
         pokedex: "url('./img/pokedex.svg')",
         teams: "url('./img/teams.svg')",
         favorites: "url('./img/favpage.svg')",

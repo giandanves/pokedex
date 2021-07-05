@@ -48,8 +48,8 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="px-6 pt-6 h-full md:pl-4 lg:pl-10 lg:pt-8 max-w-fullscreen">
-        <div className="pb-3 md:flex justify-between lg:pr-10">
+      <div className="mx-auto h-full p-8 max-w-fullscreen">
+        <div className="pb-3 md:flex justify-between px-2">
           <h1 className=" text-2xl font-nunito font-bold pb-3 lg: pt-2">
             Pokedex
           </h1>
@@ -72,14 +72,6 @@ function App() {
         </div>
         <Filters />
 
-        <PaginationController
-          limit={limit}
-          setLimit={setLimit}
-          setOffset={setOffset}
-          offset={offset}
-          loading={isLoading}
-          count={pokemons?.count}
-        />
         <>
           <FilterModal />
           <TeamsPage />
@@ -91,6 +83,14 @@ function App() {
           {error ? <button onClick={() => refetch()}>Try Again</button> : <></>}
         </>
       </div>
+      <PaginationController
+        limit={limit}
+        setLimit={setLimit}
+        setOffset={setOffset}
+        offset={offset}
+        loading={isLoading}
+        count={pokemons?.count}
+      />
       <NavbarMobile />
     </>
   );
