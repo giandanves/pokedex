@@ -3,9 +3,6 @@ import { Navbar } from "./Navbar";
 import { NavbarMobile } from "./NavbarMobile";
 import { Pokemons } from "./Pokemons";
 import { FilterModal } from "./FilterModal";
-import { TeamsPage } from "./TeamsPage";
-import { FavoritesPage } from "./FavoritesPage";
-import { SignInPage } from "./SignInPage";
 import { getUrl } from "./getUrl";
 import { Filters } from "./Filters";
 import { useContext, useEffect } from "react";
@@ -74,9 +71,6 @@ function App() {
 
         <>
           <FilterModal />
-          <TeamsPage />
-          <FavoritesPage />
-          <SignInPage />
           {handleLoadAndError(isLoading, error) || (
             <Pokemons pokemons={pokemons.results} />
           )}

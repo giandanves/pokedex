@@ -36,20 +36,6 @@ body {
   bottom: 0;
 }
 
-.Modal-Teams {
-  margin: auto;
-}
-
-.Overlay-Teams {
-  display: flex;
-  position: fixed;
-  bottom: 56px;
-  height: 100%;
-  width: 100%;
-  max-width: 1440px;
-  background-color: white;
-}
-
 @media (min-width: 640px) {
   .Modal {
     overflow: hidden;
@@ -57,10 +43,6 @@ body {
     border-radius: 8px;
     width: 560px;
     max-height: 720px;
-  }
-
-  .Overlay-Teams {
-    top: 64px;
   }
 }
 

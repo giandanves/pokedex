@@ -1,17 +1,12 @@
-import ReactModal from "react-modal";
-import { useContext } from "react";
-import { FilterContext } from "./FilterContext";
+import { Navbar } from "./Navbar";
+import { NavbarMobile } from "./NavbarMobile";
 
 export const FavoritesPage = () => {
-  const { favoritesIsOpen } = useContext(FilterContext);
-
   return (
-    <ReactModal
-      isOpen={favoritesIsOpen}
-      className={"Modal-Teams"}
-      overlayClassName={"Overlay-Teams"}
-    >
-      <p className="h-20">OUVE AQUIIIIIIIIII</p>
-    </ReactModal>
+    <div>
+      <Navbar />
+      <p className="h-20 text-center">FAVORITES</p>
+      <NavbarMobile />
+    </div>
   );
 };

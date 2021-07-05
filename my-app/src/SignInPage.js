@@ -1,17 +1,12 @@
-import ReactModal from "react-modal";
-import { useContext } from "react";
-import { FilterContext } from "./FilterContext";
+import { Navbar } from "./Navbar";
+import { NavbarMobile } from "./NavbarMobile";
 
 export const SignInPage = () => {
-  const { signInIsOpen } = useContext(FilterContext);
-
   return (
-    <ReactModal
-      isOpen={signInIsOpen}
-      className={"Modal-Teams"}
-      overlayClassName={"Overlay-Teams"}
-    >
-      <p className="h-20">SIGN IN PLACEHOLDER</p>
-    </ReactModal>
+    <div>
+      <Navbar />
+      <p className="h-20 text-center">SIGN IN</p>
+      <NavbarMobile />
+    </div>
   );
 };

@@ -1,17 +1,12 @@
-import ReactModal from "react-modal";
-import { useContext } from "react";
-import { FilterContext } from "./FilterContext";
+import { Navbar } from "./Navbar";
+import { NavbarMobile } from "./NavbarMobile";
 
 export const TeamsPage = () => {
-  const { teamsIsOpen } = useContext(FilterContext);
-
   return (
-    <ReactModal
-      isOpen={teamsIsOpen}
-      className={"Modal-Teams"}
-      overlayClassName={"Overlay-Teams"}
-    >
-      <p className="h-20">Eta nós vó?</p>
-    </ReactModal>
+    <div>
+      <Navbar />
+      <p className="h-20 text-center">TEAMS</p>
+      <NavbarMobile />
+    </div>
   );
 };
