@@ -2,6 +2,7 @@ import { handleLoadAndError } from "./HandleLoadAndError";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { Field, useFormikContext } from "formik";
+import checkedImg from "./img/checked.svg";
 
 export const Abilities = (props) => {
   const { filter } = props;
@@ -34,11 +35,18 @@ export const Abilities = (props) => {
             <>
               {ability.name.startsWith(abilityFilter) && (
                 <label
-                  className={`bg-${
+                  className={`flex whitespace-nowrap bg-${
                     values.ability.includes(ability.name.toString()) &&
-                    "lightblue"
+                    "lightblue border-primary"
                   } capitalize h-6 py-1 px-2 mr-2 mb-2  text-black font-bold text-subtitle leading-subtitle border border-black-300 rounded`}
                 >
+                  <img
+                    src={checkedImg}
+                    alt="checked"
+                    className={`opacity-0 ${
+                      values.ability.includes(ability.name) && "opacity-100"
+                    }`}
+                  />
                   <Field
                     type="checkbox"
                     name="ability"

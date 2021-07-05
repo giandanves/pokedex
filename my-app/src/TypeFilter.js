@@ -1,5 +1,6 @@
 import { handleLoadAndError } from "./HandleLoadAndError";
 import { Field, useFormikContext } from "formik";
+import checkedImg from "./img/checked.svg";
 import { useQuery } from "react-query";
 export const Type = () => {
   const { values } = useFormikContext();
@@ -15,11 +16,19 @@ export const Type = () => {
               return (
                 <>
                   <label
-                    className={`bg-${
-                      values.type.includes(pokeType.name.toString()) &&
-                      "lightblue"
+                    className={`flex bg-${
+                      values.type.includes(pokeType.name) &&
+                      "lightblue border-primary"
                     } capitalize py-2 px-2 mr-2 mb-2  text-black font-bold text-subtitle leading-subtitle border border-black-300 rounded`}
                   >
+                    <img
+                      src={checkedImg}
+                      alt="checked"
+                      className={`opacity-0 ${
+                        values.type.includes(pokeType.name) && "opacity-100"
+                      }`}
+                    />
+
                     <Field
                       type="checkbox"
                       name="type"
