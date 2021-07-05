@@ -8,7 +8,7 @@ import { FilterContext } from "./FilterContext";
 import { useContext } from "react";
 import ReactModal from "react-modal";
 import close from "./img/close.svg";
-
+import FieldWrapper from "./FieldWrapper";
 export const FilterModal = () => {
   let {
     setOffset,
@@ -60,13 +60,14 @@ export const FilterModal = () => {
           <Form>
             <div className="px-8 sm:max-h-form w-full overflow-y-auto">
               <Height />
-              <div className="border border-dashed border-lightgrey w-full"></div>
+              <FieldWrapper />
+
               <Weight />
-              <div className="border border-dashed border-lightgrey w-full"></div>
+              <FieldWrapper />
               <Type />
-              <div className="border border-dashed border-lightgrey w-full"></div>
+              <FieldWrapper />
               <Moves filter={filter} />
-              <div className="border border-dashed mt-6 border-lightgrey w-full"></div>
+              <FieldWrapper className="mt-6" />
 
               <Abilities filter={filter} />
             </div>
