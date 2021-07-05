@@ -1,4 +1,4 @@
-export const handleLoadAndError = (loading, error) => {
+export const handleLoadAndError = (loading, error, refetch) => {
   if (loading) {
     return "loading";
   }
@@ -7,6 +7,7 @@ export const handleLoadAndError = (loading, error) => {
     return (
       <>
         <p>An error occurred while loading data.</p>
+        <button onClick={() => refetch()}>Try Again</button>
       </>
     );
   } else return false;

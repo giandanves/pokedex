@@ -82,11 +82,9 @@ export const Moves = (props) => {
           onChange={(e) => setMovesFilter(e.target.value)}
         />
 
-        {handleLoadAndError(moves.isLoading, moves.error) || getMoves()}
+        {handleLoadAndError(moves.isLoading, moves.error, moves.refetch) ||
+          getMoves()}
       </div>
-      {moves.isError && (
-        <button onClick={() => moves.refetch()}>Try Again</button>
-      )}
     </>
   );
 };

@@ -71,10 +71,9 @@ function App() {
 
         <>
           <FilterModal />
-          {handleLoadAndError(isLoading, error) || (
+          {handleLoadAndError(isLoading, error, refetch) || (
             <Pokemons pokemons={pokemons.results} />
           )}
-          {error ? <button onClick={() => refetch()}>Try Again</button> : <></>}
         </>
       </div>
       <PaginationController

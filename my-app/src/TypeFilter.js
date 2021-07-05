@@ -12,7 +12,7 @@ export const Type = () => {
     <>
       <div className="pt-6 pb-4 w-full">
         <p className="pb-4 text-base font-bold text-black">Type</p>
-        {handleLoadAndError(types.isLoading, types.isError) || (
+        {handleLoadAndError(types.isLoading, types.isError, types.refetch) || (
           <div className="flex flex-wrap">
             {types.data.results.map((pokeType) => {
               return (
@@ -49,9 +49,6 @@ export const Type = () => {
           </div>
         )}
       </div>
-      {types.isError && (
-        <button onClick={() => types.refetch()}>Try Again</button>
-      )}
     </>
   );
 };
