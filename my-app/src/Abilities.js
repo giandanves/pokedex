@@ -1,16 +1,15 @@
 import { handleLoadAndError } from "./HandleLoadAndError";
-import { useState } from "react";
 import { useQuery } from "react-query";
 import { Field, useFormikContext } from "formik";
-import checkedImg from "./img/checked.svg";
-import classNames from "classnames";
+import Checkbox from "./Checkbox";
+import { useState } from "react";
 
 export const Abilities = (props) => {
   const { filter } = props;
   const { values } = useFormikContext();
   const abilitiesUrl = process.env.REACT_APP_POKETYPES_ABILITY_URL;
   const abilities = useQuery(abilitiesUrl, { retryDelay: 1000 });
-  const [abilityFilter, setAbilityFilter] = useState("");
+  const [abilitySearch, setAbilitySearch] = useState("");
 
   abilities.data?.results.sort(function (a) {
     let sorter = 0;
@@ -33,36 +32,13 @@ export const Abilities = (props) => {
       <section className="ability-container flex flex-wrap border border-gray rounded p-px">
         {abilities.data.results.map((ability) => {
           return (
-            <>
-              {ability.name.startsWith(abilityFilter) && (
-                <label
-                  className={classNames(
-                    "flex whitespace-nowrap capitalize h-6 py-1 px-2 mr-2 mb-2  text-black font-bold text-subtitle leading-subtitle border border-black-300 rounded",
-                    {
-                      "bg-lightblue border-primary": values.ability.includes(
-                        ability.name.toString()
-                      ),
-                    }
-                  )}
-                >
-                  <img
-                    src={checkedImg}
-                    alt="checked"
-                    className={classNames("opacity-0", {
-                      "opacity-100": values.ability.includes(ability.name),
-                    })}
-                  />
-                  <Field
-                    type="checkbox"
-                    name="ability"
-                    key={ability}
-                    className="appearance-none"
-                    value={ability.name}
-                  />
-                  {ability.name}
-                </label>
-              )}
-            </>
+            ability.name.startsWith(abilitySearch) && (
+              <Checkbox
+                label={ability.name}
+                name="ability"
+                values={values.ability}
+              />
+            )
           );
         })}
       </section>
@@ -78,7 +54,7 @@ export const Abilities = (props) => {
           type="text"
           placeholder="Search..."
           className="text-sm border h-12 w-full pl-4 border-gray rounded-lg mb-6"
-          onChange={(e) => setAbilityFilter(e.target.value)}
+          onChange={(e) => setAbilitySearch(e.target.value)}
         />
 
         {handleLoadAndError(

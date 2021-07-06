@@ -1,8 +1,7 @@
 import { handleLoadAndError } from "./HandleLoadAndError";
-import { Field, useFormikContext } from "formik";
-import checkedImg from "./img/checked.svg";
+import { useFormikContext } from "formik";
 import { useQuery } from "react-query";
-import classNames from "classnames";
+import Checkbox from "./Checkbox";
 
 export const Type = () => {
   const { values } = useFormikContext();
@@ -16,34 +15,11 @@ export const Type = () => {
           <div className="flex flex-wrap">
             {types.data.results.map((pokeType) => {
               return (
-                <>
-                  <label
-                    className={classNames(
-                      "flex capitalize py-2 px-2 mr-2 mb-2  text-black font-bold text-subtitle leading-subtitle border border-black-300 rounded",
-                      {
-                        "bg-lightblue border-primary": values.type.includes(
-                          pokeType.name
-                        ),
-                      }
-                    )}
-                  >
-                    <img
-                      src={checkedImg}
-                      alt="checked"
-                      className={classNames("opacity-0", {
-                        "opacity-100": values.type.includes(pokeType.name),
-                      })}
-                    />
-
-                    <Field
-                      type="checkbox"
-                      name="type"
-                      value={pokeType.name}
-                      className="appearance-none"
-                    />
-                    {pokeType.name}
-                  </label>
-                </>
+                <Checkbox
+                  label={pokeType.name}
+                  name="type"
+                  values={values.type}
+                />
               );
             })}
           </div>
