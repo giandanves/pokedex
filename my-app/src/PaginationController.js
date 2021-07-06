@@ -1,6 +1,22 @@
 import next from "./img/next.svg";
 import previous from "./img/previous.svg";
 
+const Select = (props) => {
+  const { options, selectFunction, loading } = props;
+
+  return (
+    <select
+      className="w-10 appearance-none text-center text-primary  bg-white bg-expand bg-no-repeat bg-right"
+      disabled={loading}
+      onChange={(e) => selectFunction(e)}
+    >
+      {options.map((option) => {
+        return <option value={option.value}>{option.label}</option>;
+      })}
+    </select>
+  );
+};
+
 export const PaginationController = (props) => {
   const { limit, setLimit, setOffset, offset, loading, count } = props;
 
@@ -19,16 +35,16 @@ export const PaginationController = (props) => {
   return (
     <div className="flex w-full max-w-fullscreen mx-auto px-10 justify-between">
       <div className="flex">
-        <select
-          className="w-10 appearance-none text-center text-primary  bg-white bg-expand bg-no-repeat bg-right"
-          disabled={loading}
-          onChange={(e) => handlePagination(e)}
-        >
-          <option value={12}>12</option>
-          <option value={24}>24</option>
-          <option value={48}>48</option>
-          <option value={96}>96</option>
-        </select>
+        <Select
+          options={[
+            { value: 12, label: "12" },
+            { value: 24, label: "24" },
+            { value: 48, label: "48" },
+            { value: 96, label: "96" },
+          ]}
+          selectFunction={handlePagination}
+          loading={loading}
+        />
         <p className="mx-2">per page</p>
       </div>
       <div>
