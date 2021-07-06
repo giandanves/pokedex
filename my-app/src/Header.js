@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div className="pb-3 md:flex justify-between px-2">
       <h1 className=" text-2xl font-nunito font-bold pb-3 lg: pt-2">Pokedex</h1>
-      <div className="w-full md:max-w-searchbar border border-gray rounded pl-2 pr-4">
+      <div className="w-full md:max-w-1/3 border border-gray rounded pl-2 pr-4">
         <input
           name="search"
           className="text-body-02 w-full h-12 px-2 bg-search bg-no-repeat bg-right"

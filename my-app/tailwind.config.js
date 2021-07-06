@@ -70,12 +70,10 @@ module.exports = {
 
       maxWidth: {
         fullscreen: "1440px",
-        searchbar: "432px",
-        navbarmodal: "645px",
+        "1/3": "33%",
       },
 
       maxHeight: {
-        pokemoncontainer: "692px",
         form: "592px",
         "50p": "50%",
       },
