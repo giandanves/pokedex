@@ -1,18 +1,6 @@
 import { FilterContext } from "./FilterContext";
 import { useContext } from "react";
-
-const Button = (props) => {
-  const { label, text, bg, type, onClickFunction } = props;
-  return (
-    <button
-      type={type}
-      className={`text-${text} bg-${bg} font-bold text-sm py-3 px-4 rounded`}
-      onClick={() => onClickFunction()}
-    >
-      {label}
-    </button>
-  );
-};
+import Button from "./Button";
 
 const FilterFooter = () => {
   const { setOffset, setFilter } = useContext(FilterContext);
@@ -28,25 +16,26 @@ const FilterFooter = () => {
     setOffset(0);
   };
 
-  const submitClick = () => {
-    return;
+  const Paragrafh = (props) => {
+    const { text } = props;
+    return <p>{text}</p>;
   };
+
   return (
     <div className="flex flex-col w-full h-navbarmodal bg-white items-end">
       <div className="flex h-full items-center px-4">
         <Button
-          label={"Clear Filters"}
-          text={"primary"}
+          children={<Paragrafh text={"Clear Filters"} />}
+          textColor={"primary"}
           bg={"white"}
           type={"reset"}
-          onClickFunction={resetFilters}
+          onClick={resetFilters}
         />
         <Button
-          label={"Show Results"}
-          text={"white"}
+          children={<Paragrafh text={"Show Results"} />}
+          textColor={"white"}
           bg={"primary"}
           type={"submit"}
-          onClickFunction={submitClick}
         />
       </div>
     </div>
