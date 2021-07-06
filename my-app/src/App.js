@@ -44,7 +44,6 @@ function App() {
 
   return (
     <>
-      <Navbar />
       <div className="mx-auto h-full p-8 max-w-fullscreen">
         <div className="pb-3 md:flex justify-between px-2">
           <h1 className=" text-2xl font-nunito font-bold pb-3 lg: pt-2">
@@ -67,7 +66,6 @@ function App() {
             )}
           </div>
         </div>
-        <Filters />
 
         <>
           <FilterModal />

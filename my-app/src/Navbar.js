@@ -7,7 +7,7 @@ import { NavbarIcon } from "./NavbarIcon";
 
 export const Navbar = () => {
   return (
-    <div className="hidden sm:flex border-b  border-lightgrey h-16 w-full pt-5 pb-6 px-6">
+    <div className="hidden sm:flex border-b  border-lightgrey h-16 w-full pb-6 px-6">
       <div className="flex justify-between w-full max-w-fullscreen mx-auto">
         <div className="flex">
           <Link to="/">

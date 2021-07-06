@@ -1,14 +1,12 @@
 import classNames from "classnames";
+import { useLocation } from "react-router-dom";
 
 export const NavbarIcon = (props) => {
   const { img, title, path } = props;
-  let onPage = false;
-
-  if (window.location.pathname === path) {
-    onPage = true;
-  }
+  const local = useLocation();
+  const onPage = local.pathname === path;
   return (
-    <button className="flex h-12 pr-3">
+    <div className="flex h-12 pr-3">
       <div className="flex">
         <img
           src={img}
@@ -33,21 +31,17 @@ export const NavbarIcon = (props) => {
           )}
         </div>
       </div>
-    </button>
+    </div>
   );
 };
 
 export const MobileIcon = (props) => {
   const { img, title, path } = props;
-
-  let onPage = false;
-
-  if (window.location.pathname === path) {
-    onPage = true;
-  }
+  const local = useLocation();
+  const onPage = local.pathname === path;
 
   return (
-    <button className="flex flex-col h-full items-center justify-between">
+    <div className="flex flex-col h-full items-center justify-between">
       <div className="h-full flex flex-col justify-center">
         <img
           src={img}
@@ -60,6 +54,6 @@ export const MobileIcon = (props) => {
           "bg-primary": onPage,
         })}
       ></div>
-    </button>
+    </div>
   );
 };

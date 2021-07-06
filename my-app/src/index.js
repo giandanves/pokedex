@@ -8,6 +8,8 @@ import { SignInPage } from "./SignInPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import FilterContextProvider from "./FilterContext";
+import { Navbar } from "./Navbar";
+import { NavbarMobile } from "./NavbarMobile";
 
 async function fetcher(key) {
   const response = await fetch(key.queryKey);
@@ -28,6 +30,7 @@ ReactDOM.render(
       <Router>
         <Switch>
           <FilterContextProvider>
+            <Navbar />
             <Route path="/" exact>
               <App />
             </Route>
@@ -40,6 +43,7 @@ ReactDOM.render(
             <Route path="/signin" exact>
               <SignInPage />
             </Route>
+            <NavbarMobile />
           </FilterContextProvider>
         </Switch>
       </Router>
