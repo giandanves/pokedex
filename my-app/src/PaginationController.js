@@ -1,21 +1,6 @@
 import next from "./img/next.svg";
 import previous from "./img/previous.svg";
-
-const Select = (props) => {
-  const { options, selectFunction, loading } = props;
-
-  return (
-    <select
-      className="w-10 appearance-none text-center text-primary  bg-white bg-expand bg-no-repeat bg-right"
-      disabled={loading}
-      onChange={(e) => selectFunction(e)}
-    >
-      {options.map((option) => {
-        return <option value={option.value}>{option.label}</option>;
-      })}
-    </select>
-  );
-};
+import Select from "./Select";
 
 export const PaginationController = (props) => {
   const { limit, setLimit, setOffset, offset, loading, count } = props;
