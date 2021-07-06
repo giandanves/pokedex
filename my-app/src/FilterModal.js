@@ -7,9 +7,9 @@ import { Abilities } from "./Abilities";
 import { FilterContext } from "./FilterContext";
 import { useContext } from "react";
 import ReactModal from "react-modal";
-import close from "./img/close.svg";
 import FieldWrapper from "./FieldWrapper";
 import FilterFooter from "./FilterFooter";
+import ModalHeader from "./ModalHeader";
 export const FilterModal = () => {
   let {
     setOffset,
@@ -33,15 +33,7 @@ export const FilterModal = () => {
       overlayClassName="Overlay"
     >
       <div className="h-full w-full  bg-white bg-opacity-1">
-        <div className="flex justify-between">
-          <p className="text-2xl font-normal text-black pt-5 px-8">Filters</p>
-          <img
-            src={close}
-            alt="close"
-            className="px-5"
-            onClick={() => setFilterModalIsOpen(false)}
-          />
-        </div>
+        <ModalHeader />
         <Formik
           enableReinitialize={true}
           onSubmit={onSubmit}
