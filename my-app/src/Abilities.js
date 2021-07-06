@@ -36,6 +36,7 @@ export const Abilities = (props) => {
               <Checkbox
                 label={ability.name}
                 name="ability"
+                value={ability.name}
                 values={values.ability}
               />
             )

@@ -18,6 +18,7 @@ export const Type = () => {
                 <Checkbox
                   label={pokeType.name}
                   name="type"
+                  value={pokeType.name}
                   values={values.type}
                 />
               );

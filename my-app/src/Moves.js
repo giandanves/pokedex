@@ -33,7 +33,12 @@ export const Moves = (props) => {
         {moves.data.results.map((move) => {
           return (
             move.name.startsWith(movesSearch) && (
-              <Checkbox label={move.name} name="move" values={values.move} />
+              <Checkbox
+                label={move.name}
+                name="move"
+                value={move.name}
+                values={values.move}
+              />
             )
           );
         })}
