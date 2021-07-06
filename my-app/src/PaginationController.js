@@ -20,7 +20,7 @@ export const PaginationController = (props) => {
     <div className="flex w-full max-w-fullscreen mx-auto px-10 justify-between">
       <div className="flex">
         <select
-          className="w-12 rounded-md appearance-none text-center shadow-md bg-expand bg-no-repeat bg-right"
+          className="w-10 appearance-none text-center text-primary  bg-white bg-expand bg-no-repeat bg-right"
           disabled={loading}
           onChange={(e) => handlePagination(e)}
         >
