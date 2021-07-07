@@ -5,7 +5,15 @@ const ResourceState = ({
   renderError,
   render,
 }) => {
-  return <div>{renderError()}</div>;
+  if (loading) {
+    return <>{renderLoading()}</>;
+  }
+
+  if (error) {
+    return <>{renderError()}</>;
+  }
+
+  return <> {render()} </>;
 };
 
 export default ResourceState;
