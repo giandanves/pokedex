@@ -1,11 +1,13 @@
 import { PaginationController } from "../components/PaginationController";
 import { Pokemons } from "../Pokemons";
 import Header from "../components/Header";
+import Error from "../error";
+import Loading from "../loading";
+import ResourceState from "../ResourceState";
 import { Filters } from "../components/Filters";
 import { FilterModal } from "../modal/FilterModal";
 import { getUrl } from "../getUrl";
 import { useContext, useEffect } from "react";
-import { handleLoadAndError } from "../HandleLoadAndError";
 import { useQuery } from "react-query";
 import { FilterContext } from "../FilterContext";
 import { debounce } from "lodash";
@@ -48,9 +50,13 @@ function Home() {
         <Filters />
         <>
           <FilterModal />
-          {handleLoadAndError(isLoading, error, refetch) || (
-            <Pokemons pokemons={pokemons.results} />
-          )}
+          <ResourceState
+            loading={isLoading}
+            renderLoading={() => <Loading />}
+            error={error}
+            renderError={() => <Error />}
+            render={() => <Pokemons pokemons={pokemons.results} />}
+          />
         </>
       </div>
       <PaginationController
