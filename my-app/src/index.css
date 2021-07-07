@@ -38,11 +38,12 @@ body {
 
 @media (min-width: 640px) {
   .Modal {
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
     border: 1px solid #6b6b6d;
     border-radius: 8px;
+    max-height: 75%;
     width: 560px;
-    max-height: 720px;
   }
 }
 

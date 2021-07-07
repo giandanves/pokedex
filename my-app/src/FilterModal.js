@@ -40,7 +40,7 @@ export const FilterModal = () => {
           initialValues={filter}
         >
           <Form>
-            <div className="px-8 sm:max-h-form w-full overflow-y-auto">
+            <div className="px-8  w-full overflow-y-auto">
               <Height />
               <FieldWrapper />
 

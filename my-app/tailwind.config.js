@@ -74,7 +74,7 @@ module.exports = {
       },
 
       maxHeight: {
-        form: "592px",
+        "2/3": "66%",
         "50p": "50%",
       },
 
