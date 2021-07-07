@@ -1,5 +1,5 @@
 import { useFormikContext } from "formik";
-import Checkbox from "./Checkbox";
+import Checkbox from "../components/Checkbox";
 
 export const Weight = () => {
   const labels = ["Extra Light", "Light", "Medium", "Large", "Extra Large"];

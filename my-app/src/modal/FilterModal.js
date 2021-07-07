@@ -4,10 +4,10 @@ import { Moves } from "./Moves";
 import { Weight } from "./Weight";
 import { Height } from "./Height";
 import { Abilities } from "./Abilities";
-import { FilterContext } from "./FilterContext";
+import { FilterContext } from "../FilterContext";
 import { useContext } from "react";
 import ReactModal from "react-modal";
-import FieldWrapper from "./FieldWrapper";
+import FieldWrapper from "../components/FieldWrapper";
 import FilterFooter from "./FilterFooter";
 import ModalHeader from "./ModalHeader";
 export const FilterModal = () => {

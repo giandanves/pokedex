@@ -1,15 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
-import { TeamsPage } from "./TeamsPage";
-import { FavoritesPage } from "./FavoritesPage";
-import { SignInPage } from "./SignInPage";
+import Home from "./pages/Home";
+import { TeamsPage } from "./pages/TeamsPage";
+import { FavoritesPage } from "./pages/FavoritesPage";
+import { SignInPage } from "./pages/SignInPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import FilterContextProvider from "./FilterContext";
-import { Navbar } from "./Navbar";
-import { NavbarMobile } from "./NavbarMobile";
+import { Navbar } from "./components/Navbar";
+import { NavbarMobile } from "./components/NavbarMobile";
 
 async function fetcher(key) {
   const response = await fetch(key.queryKey);
@@ -32,7 +32,7 @@ ReactDOM.render(
           <FilterContextProvider>
             <Navbar />
             <Route path="/" exact>
-              <App />
+              <Home />
             </Route>
             <Route path="/teams" exact>
               <TeamsPage />

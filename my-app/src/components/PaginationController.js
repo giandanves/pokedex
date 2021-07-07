@@ -1,5 +1,5 @@
-import next from "./img/next.svg";
-import previous from "./img/previous.svg";
+import next from "../img/next.svg";
+import previous from "../img/previous.svg";
 import Select from "./Select";
 
 export const PaginationController = (props) => {

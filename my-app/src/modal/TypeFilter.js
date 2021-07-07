@@ -1,7 +1,7 @@
-import { handleLoadAndError } from "./HandleLoadAndError";
+import { handleLoadAndError } from "../HandleLoadAndError";
 import { useFormikContext } from "formik";
 import { useQuery } from "react-query";
-import Checkbox from "./Checkbox";
+import Checkbox from "../components/Checkbox";
 
 export const Type = () => {
   const { values } = useFormikContext();

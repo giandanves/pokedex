@@ -1,6 +1,6 @@
 import { Field } from "formik";
 import classNames from "classnames";
-import checkedImg from "./img/checked.svg";
+import checkedImg from "../img/checked.svg";
 
 const Checkbox = (props) => {
   const { label, name, value, values } = props;

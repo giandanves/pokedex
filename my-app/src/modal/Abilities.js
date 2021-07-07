@@ -1,7 +1,7 @@
-import { handleLoadAndError } from "./HandleLoadAndError";
+import { handleLoadAndError } from "../HandleLoadAndError";
 import { useQuery } from "react-query";
 import { Field, useFormikContext } from "formik";
-import Checkbox from "./Checkbox";
+import Checkbox from "../components/Checkbox";
 import { useState } from "react";
 
 export const Abilities = (props) => {

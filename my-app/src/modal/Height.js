@@ -1,5 +1,5 @@
 import { useFormikContext } from "formik";
-import Checkbox from "./Checkbox";
+import Checkbox from "../components/Checkbox";
 
 export const Height = () => {
   const labels = ["Extra Small", "Small", "Medium", "Tall", "Extra Tall"];

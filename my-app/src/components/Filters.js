@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { FilterContext } from "./FilterContext";
-import filterimg from "./img/filter.svg";
+import { FilterContext } from "../FilterContext";
+import filterimg from "../img/filter.svg";
 import classNames from "classnames";
 
 export const Filters = () => {

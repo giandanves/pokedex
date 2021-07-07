@@ -1,8 +1,8 @@
-import pokedex from "./img/pokedex.svg";
+import pokedex from "../img/pokedex.svg";
 import { Link } from "react-router-dom";
-import favorites from "./img/favpage.svg";
-import teams from "./img/teams.svg";
-import signin from "./img/signin.svg";
+import favorites from "../img/favpage.svg";
+import teams from "../img/teams.svg";
+import signin from "../img/signin.svg";
 import { MobileIcon } from "./NavbarIcon";
 
 export const NavbarMobile = () => {

@@ -1,6 +1,6 @@
-import { FilterContext } from "./FilterContext";
+import { FilterContext } from "../FilterContext";
 import { useContext } from "react";
-import Button from "./Button";
+import Button from "../components/Button";
 
 const FilterFooter = () => {
   const { setOffset, setFilter } = useContext(FilterContext);

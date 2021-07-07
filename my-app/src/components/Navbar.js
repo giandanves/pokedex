@@ -1,7 +1,7 @@
-import pokedex from "./img/pokedex.svg";
-import favorites from "./img/favpage.svg";
-import teams from "./img/teams.svg";
-import signin from "./img/signin.svg";
+import pokedex from "../img/pokedex.svg";
+import favorites from "../img/favpage.svg";
+import teams from "../img/teams.svg";
+import signin from "../img/signin.svg";
 import { Link } from "react-router-dom";
 import { NavbarIcon } from "./NavbarIcon";
 

@@ -1,6 +1,6 @@
-import close from "./img/close.svg";
+import close from "../img/close.svg";
 import { useContext } from "react";
-import { FilterContext } from "./FilterContext";
+import { FilterContext } from "../FilterContext";
 
 const ModalHeader = () => {
   const { setFilterModalIsOpen } = useContext(FilterContext);
