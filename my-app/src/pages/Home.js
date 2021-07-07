@@ -40,7 +40,7 @@ function Home() {
     data: pokemons,
     refetch,
   } = useQuery(`${url}${getLimit()}${getOffset()}`, {
-    retryDelay: 1000,
+    retry: false,
   });
 
   return (
