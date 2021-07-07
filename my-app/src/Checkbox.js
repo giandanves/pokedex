@@ -6,11 +6,13 @@ const Checkbox = (props) => {
   const { label, name, value, values } = props;
 
   const isChecked = values.includes(value.toString());
+  const isHeight = !isNaN(value);
 
   return (
     <label
       className={classNames(
         "flex whitespace-nowrap capitalize h-6 py-1 px-2 mr-2 mb-2  text-black font-bold text-subtitle leading-subtitle border border-black-300 rounded",
+        { "sm:text-xs": isHeight },
         {
           "bg-lightblue border-primary": isChecked,
         }
