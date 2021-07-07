@@ -33,8 +33,13 @@ module.exports = {
       success: "#1CBB30",
       danger: "#E3190E",
       lightgrey: "#D1D7E5",
+      lightblue: "#EDEEF8",
+      shade: "#99A2B8",
     },
     extend: {
+      boxShadow: {
+        shadow: "0 0 30px rgba(0, 0, 0, 0.1)",
+      },
       fontSize: {
         heading: "24px",
         "body-01": "16px",
@@ -44,19 +49,43 @@ module.exports = {
       },
       fontFamily: { nunito: "Nunito" },
       height: {
+        filtercircle: "15px",
         card: "204px",
         avatar: "104px",
         add: "14px",
         fav: "18.35px",
         topbar: "172px",
         downbar: "32px",
+        navbarmodal: "72px",
       },
       width: {
+        filtercircle: "15px",
         card: "148px",
+        dropbox: "40px",
+        "modal-sm": "560px",
       },
       lineHeight: {
         subtitle: "12px",
       },
+
+      maxWidth: {
+        fullscreen: "1440px",
+        "1/3": "33%",
+      },
+
+      maxHeight: {
+        "2/3": "66%",
+        "50p": "50%",
+      },
+
+      backgroundImage: (theme) => ({
+        search: "url('./img/search.svg')",
+        expand: "url('./img/expand.svg')",
+        pokedex: "url('./img/pokedex.svg')",
+        teams: "url('./img/teams.svg')",
+        favorites: "url('./img/favpage.svg')",
+        signin: "url('./img/signin.svg')",
+      }),
     },
   },
   variants: {

@@ -14,7 +14,7 @@ export function Pokemons(props) {
     return n;
   };
   return (
-    <div className="flex flex-wrap mx-auto max-w-screen-2xl">
+    <div className="flex flex-wrap  -mx-2 max-w-fullscreen sm:max-h-full overflow-auto pr-2">
       {pokemons.length === 0 ? (
         <p>
           No Pokemons matches this criterias, change the filters and try again
@@ -26,7 +26,7 @@ export function Pokemons(props) {
           return (
             <div
               key={id}
-              className={`w-6/12 py-2 pr-4 sm:w-4/12 sm:pr-4 md:w-3/12 md:py-3 md:pr-8 lg:w-2/12`}
+              className={`w-6/12 p-2  sm:w-4/12 md:w-3/12 lg:w-2/12`}
             >
               <li
                 className={`border border-${type[0]} rounded-md overflow-hidden`}
@@ -39,13 +39,17 @@ export function Pokemons(props) {
                       {"#" + getThreeDigits(id)}
                     </p>
                     <div className="flex">
-                      <img className="mx-3" src={addIcon} alt="add Pokemon" />
-                      <img src={favoriteIcon} alt="favorite Pokemon" />
+                      <button>
+                        <img className="mx-3" src={addIcon} alt="add Pokemon" />
+                      </button>
+                      <button>
+                        <img src={favoriteIcon} alt="favorite Pokemon" />
+                      </button>
                     </div>
                   </div>
 
                   <img className="p-2" src={picture} alt={name} />
-                  <h2 className="font-nunito text-body-03 capitalize font-bold sm:text-body-02 sm:leading-body-02 xl:text-2xl">
+                  <h2 className="font-nunito text-xs capitalize font-bold sm:text-body-02 sm:leading-body-02 xl:text-base">
                     {name}
                   </h2>
                 </div>
