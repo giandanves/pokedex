@@ -4,13 +4,24 @@ const ResourceState = ({
   error,
   renderError,
   render,
+  digimons,
+  renderDigimons,
 }) => {
   if (loading) {
     return <>{renderLoading()}</>;
   }
 
   if (error) {
-    return <>{renderError()}</>;
+    return (
+      <>
+        <p>Erro: {error}</p>
+        {renderError()}
+      </>
+    );
+  }
+
+  if (digimons) {
+    return <>{renderDigimons()}</>;
   }
 
   return <> {render()} </>;
