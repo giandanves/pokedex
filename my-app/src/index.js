@@ -12,7 +12,12 @@ import { Navbar } from "./components/Navbar";
 import { NavbarMobile } from "./components/NavbarMobile";
 
 async function fetcher(key) {
+  let error;
   const response = await fetch(key.queryKey);
+  if (!response.ok) {
+    error = response.status;
+    throw error;
+  }
   return response.json();
 }
 
