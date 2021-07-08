@@ -56,7 +56,7 @@ function Home() {
             error={error}
             digimons={pokemons?.message}
             renderDigimons={() => <p>DIGIMONS HERE</p>}
-            renderError={() => <Error />}
+            renderError={() => <Error error={error} refetch={refetch} />}
             render={() => <Pokemons pokemons={pokemons.results} />}
           />
         </>
