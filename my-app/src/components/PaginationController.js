@@ -1,6 +1,7 @@
 import next from "../img/next.svg";
 import previous from "../img/previous.svg";
 import Select from "./Select";
+import classNames from "classnames";
 
 export const PaginationController = (props) => {
   const { limit, setLimit, setOffset, offset, loading, count } = props;
@@ -18,7 +19,12 @@ export const PaginationController = (props) => {
   };
 
   return (
-    <div className="flex w-full max-w-fullscreen mx-auto px-10 justify-between">
+    <div
+      className={classNames(
+        "flex w-full max-w-fullscreen mx-auto px-10 justify-between",
+        { hidden: loading }
+      )}
+    >
       <div className="flex">
         <Select
           options={[
