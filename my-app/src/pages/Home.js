@@ -54,6 +54,8 @@ function Home() {
             loading={isLoading}
             renderLoading={() => <Loading />}
             error={error}
+            digimons={pokemons?.message}
+            renderDigimons={() => <p>DIGIMONS HERE</p>}
             renderError={() => <Error />}
             render={() => <Pokemons pokemons={pokemons.results} />}
           />
