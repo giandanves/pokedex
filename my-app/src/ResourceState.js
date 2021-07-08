@@ -12,12 +12,7 @@ const ResourceState = ({
   }
 
   if (error) {
-    return (
-      <>
-        <p>Erro: {error}</p>
-        {renderError()}
-      </>
-    );
+    return <>{renderError()}</>;
   }
 
   if (digimons) {
