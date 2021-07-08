@@ -16,7 +16,7 @@ export function Pokemons(props) {
 
   if (pokemons) {
     return (
-      <div className="flex flex-wrap  -mx-2 max-w-fullscreen sm:max-h-full overflow-auto pr-2">
+      <div className="flex flex-wrap -mx-2 max-w-fullscreen sm:max-h-full overflow-auto pr-2">
         {pokemons.length === 0 ? (
           <p>
             No Pokemons matches this criterias, change the filters and try again
