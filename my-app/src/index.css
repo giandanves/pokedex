@@ -10,9 +10,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-#root {
-  height: 90vh;
-}
 .body-open {
   opacity: 1;
 }
@@ -59,6 +56,11 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.button-try-again {
+  height: 50px;
+  width: 168px;
 }
 
 .filter-primary {
