@@ -28,7 +28,7 @@ const getMessageError = (error, message) => {
   }
 };
 
-const Error = ({ error, refetch, message, render }) => {
+const Error = ({ error, refetch, message, renderDigimons }) => {
   if (error) {
     console.log(error);
     const { title, subtitle, img } = getMessageError(error, message);
@@ -62,7 +62,7 @@ const Error = ({ error, refetch, message, render }) => {
               children={<p>See Digimons</p>}
               textColor={"white"}
               bg={"primary"}
-              onClick={render}
+              onClick={renderDigimons}
               addClass={"button-try-again"}
             />
           </div>

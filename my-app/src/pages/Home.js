@@ -54,13 +54,13 @@ function Home() {
             loading={isLoading}
             renderLoading={() => <Loading />}
             error={error}
-            digimons={pokemons?.message}
-            renderDigimons={() => (
+            message={pokemons?.message}
+            renderDigivirusState={() => (
               <Error
                 error={"XXX"}
                 refetch={refetch}
                 message={pokemons?.message}
-                render={() => <Pokemons pokemons={pokemons.results} />}
+                renderDigimons={() => <Pokemons pokemons={pokemons.results} />}
               />
             )}
             renderError={() => <Error error={error} refetch={refetch} />}
