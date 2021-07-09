@@ -51,7 +51,9 @@ export function Pokemons(props) {
                         </div>
                       </div>
 
-                      <img className="p-2" src={picture} alt={name} />
+                      <div className="aspect-w-1 aspect-h-1 w-full">
+                        <img className="p-2" src={picture} alt={name} />
+                      </div>
                       <h2 className="font-nunito text-xs capitalize font-bold sm:text-body-02 sm:leading-body-02 xl:text-base">
                         {name}
                       </h2>
