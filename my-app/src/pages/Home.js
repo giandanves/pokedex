@@ -3,6 +3,7 @@ import { Pokemons } from "../Pokemons";
 import Header from "../components/Header";
 import Error from "../error";
 import Loading from "../loading";
+import Empty from "../empty";
 import ResourceState from "../ResourceState";
 import { Filters } from "../components/Filters";
 import { FilterModal } from "../modal/FilterModal";
@@ -55,6 +56,7 @@ function Home() {
             renderLoading={() => <Loading />}
             error={error}
             message={pokemons?.message}
+            pokemons={pokemons?.results}
             renderDigivirusState={() => (
               <Error
                 error={"XXX"}
@@ -64,7 +66,12 @@ function Home() {
               />
             )}
             renderError={() => <Error error={error} refetch={refetch} />}
-            render={() => <Pokemons pokemons={pokemons.results} />}
+            render={() => (
+              <Pokemons
+                pokemons={pokemons.results}
+                renderEmpty={() => <Empty />}
+              />
+            )}
           />
         </>
       </div>
