@@ -2,7 +2,7 @@ import emptyIcon from "./img/empty-state-icon.svg";
 
 const Empty = () => {
   return (
-    <div className="flex flex-col mx-auto items-center">
+    <div className="flex flex-col mx-auto items-center min-h-[80%]">
       <img src={emptyIcon} alt="Empty search" />
       <div className="py-6">
         <h2 className="text-base font-bold text-center">
