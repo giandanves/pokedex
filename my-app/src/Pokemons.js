@@ -15,66 +15,66 @@ export function Pokemons(props) {
   };
 
   if (pokemons) {
-    return (
-      <div className="flex flex-wrap -mx-2 max-w-fullscreen sm:max-h-full overflow-auto pr-2">
-        {pokemons.length === 0
-          ? renderEmpty()
-          : pokemons.map((pokemon, i) => {
-              const { picture, name, id, type } = pokemon;
-
-              return (
-                <div
-                  key={id}
-                  className={`w-6/12 p-2  sm:w-4/12 md:w-3/12 lg:w-2/12`}
+    if (pokemons.length === 0) {
+      return <> {renderEmpty()} </>;
+    } else
+      return (
+        <div className="flex flex-wrap -mx-2 max-w-fullscreen min-h-full overflow-auto pr-2">
+          {pokemons.map((pokemon, i) => {
+            const { picture, name, id, type } = pokemon;
+            return (
+              <div
+                key={id}
+                className={`w-6/12 p-2  sm:w-4/12 md:w-3/12 lg:w-2/12`}
+              >
+                <li
+                  className={`border border-${type[0]} rounded-md overflow-hidden`}
                 >
-                  <li
-                    className={`border border-${type[0]} rounded-md overflow-hidden`}
+                  <div
+                    className={`w-full bg-${type[0]} bg-opacity-20 bg-gradient-to-br from-${type[0]} to-transparent rounded-br-2xl flex flex-col items-center p-3`}
                   >
-                    <div
-                      className={`w-full bg-${type[0]} bg-opacity-20 bg-gradient-to-br from-${type[0]} to-transparent rounded-br-2xl flex flex-col items-center p-3`}
-                    >
-                      <div className="flex justify-between items-center w-full">
-                        <p className="text-subtitle font-bold text-black">
-                          {"#" + getThreeDigits(id)}
-                        </p>
-                        <div className="flex">
-                          <button>
-                            <img
-                              className="mx-3"
-                              src={addIcon}
-                              alt="add Pokemon"
-                            />
-                          </button>
-                          <button>
-                            <img src={favoriteIcon} alt="favorite Pokemon" />
-                          </button>
-                        </div>
+                    <div className="flex justify-between items-center w-full">
+                      <p className="text-subtitle font-bold text-black">
+                        {"#" + getThreeDigits(id)}
+                      </p>
+                      <div className="flex">
+                        <button>
+                          <img
+                            className="mx-3"
+                            src={addIcon}
+                            alt="add Pokemon"
+                          />
+                        </button>
+                        <button>
+                          <img src={favoriteIcon} alt="favorite Pokemon" />
+                        </button>
                       </div>
+                    </div>
 
-                      <div className="aspect-w-1 aspect-h-1 w-full">
-                        <img className="p-2" src={picture} alt={name} />
-                      </div>
-                      <h2 className="font-nunito text-xs capitalize font-bold sm:text-body-02 sm:leading-body-02 xl:text-base">
-                        {name}
-                      </h2>
+                    <div className="aspect-w-1 aspect-h-1 w-full">
+                      <img className="p-2" src={picture} alt={name} />
                     </div>
-                    <div className="bg-white w-full py-2">
-                      <div className="flex px-2">
-                        {type.map((poketype, i) => {
-                          return (
-                            <p
-                              className={`capitalize flex text-subtitle leading-subtitle px-1 mx-1  text-black font-bold   items-center self-center rounded border border-${poketype} lg:py-px`}
-                            >{`${poketype}`}</p>
-                          );
-                        })}
-                      </div>
+                    <h2 className="font-nunito text-xs capitalize font-bold sm:text-body-02 sm:leading-body-02 xl:text-base">
+                      {name}
+                    </h2>
+                  </div>
+                  <div className="bg-white w-full py-2">
+                    <div className="flex px-2">
+                      {type.map((poketype, i) => {
+                        return (
+                          <p
+                            className={`capitalize flex text-subtitle leading-subtitle px-1 mx-1  text-black font-bold   items-center self-center rounded border border-${poketype} lg:py-px`}
+                          >{`${poketype}`}</p>
+                        );
+                      })}
                     </div>
-                  </li>
-                </div>
-              );
-            })}
-      </div>
-    );
+                  </div>
+                </li>
+              </div>
+            );
+          })}
+        </div>
+      );
   } else {
     return <></>;
   }
