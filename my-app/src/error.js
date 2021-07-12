@@ -34,7 +34,7 @@ const Error = ({ error, refetch, message, renderDigimons }) => {
     const { title, subtitle, img } = getMessageError(error, message);
 
     return (
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center py-[16px]">
         <div className="flex">
           <img src={img} alt={title} className="mr-2" />
           <div>
