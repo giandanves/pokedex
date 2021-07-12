@@ -3,6 +3,7 @@ import favoriteIcon from "./img/favorite-icon.svg";
 import getBorderColor from "./getBorderColor";
 import getBackground from "./getBackground";
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 
 export function Pokemons(props) {
   const { pokemons, renderEmpty } = props;
@@ -61,7 +62,9 @@ export function Pokemons(props) {
                     </div>
 
                     <div className="aspect-w-1 aspect-h-1 w-full">
-                      <img className="p-2" src={picture} alt={name} />
+                      <Link to={`pokemon/${name}`}>
+                        <img className="p-2" src={picture} alt={name} />
+                      </Link>
                     </div>
                     <h2 className="font-nunito text-xs capitalize font-bold sm:text-body-02 sm:leading-body-02 xl:text-base">
                       {name}

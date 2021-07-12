@@ -78,6 +78,7 @@ module.exports = {
       maxWidth: {
         fullscreen: "1440px",
         "1/3": "33%",
+        "5/12": "41,666%",
       },
 
       maxHeight: {
