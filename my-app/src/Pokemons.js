@@ -1,5 +1,8 @@
 import addIcon from "./img/add-icon.svg";
 import favoriteIcon from "./img/favorite-icon.svg";
+import getBorderColor from "./getBorderColor";
+import getBackground from "./getBackground";
+import classNames from "classnames";
 
 export function Pokemons(props) {
   const { pokemons, renderEmpty } = props;
@@ -28,10 +31,16 @@ export function Pokemons(props) {
                 className={`w-6/12 p-2  sm:w-4/12 md:w-3/12 lg:w-2/12`}
               >
                 <li
-                  className={`border border-${type[0]} rounded-md overflow-hidden`}
+                  className={classNames(
+                    "border rounded-md overflow-hidden",
+                    getBorderColor(type[0])
+                  )}
                 >
                   <div
-                    className={`w-full bg-${type[0]} bg-opacity-20 bg-gradient-to-br from-${type[0]} to-transparent rounded-br-2xl flex flex-col items-center p-3`}
+                    className={classNames(
+                      getBackground(type[0]),
+                      "to-transparent w-full bg-opacity-20 bg-gradient-to-br rounded-br-2xl flex flex-col items-center p-3"
+                    )}
                   >
                     <div className="flex justify-between items-center w-full">
                       <p className="text-subtitle font-bold text-black">
@@ -60,11 +69,16 @@ export function Pokemons(props) {
                   </div>
                   <div className="bg-white w-full py-2">
                     <div className="flex px-2">
-                      {type.map((poketype, i) => {
+                      {type.map((poketype) => {
                         return (
                           <p
-                            className={`capitalize flex text-subtitle leading-subtitle px-1 mx-1  text-black font-bold   items-center self-center rounded border border-${poketype} lg:py-px`}
-                          >{`${poketype}`}</p>
+                            className={classNames(
+                              "capitalize flex text-subtitle leading-subtitle px-1 mx-1  text-black font-bold items-center self-center rounded border lg:py-px",
+                              getBorderColor(poketype)
+                            )}
+                          >
+                            {poketype}
+                          </p>
                         );
                       })}
                     </div>
