@@ -1,6 +1,11 @@
 module.exports = {
-  mode: "jit",
-  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  purge: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./src/components/**/*.{js,jsx,ts,tsx}",
+    "./src/modal/**/*.{js,jsx,ts,tsx}",
+    "./src/pages/**/*.{js,jsx,ts,tsx}",
+    "./public/index.html",
+  ],
   darkMode: false, // or 'media' or 'class'
   theme: {
     colors: {
@@ -78,7 +83,9 @@ module.exports = {
         "2/3": "66%",
         "50p": "50%",
       },
-
+      minHeight: {
+        "4/5": "80%",
+      },
       backgroundImage: (theme) => ({
         search: "url('./img/search.svg')",
         expand: "url('./img/expand.svg')",
