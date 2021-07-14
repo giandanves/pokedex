@@ -25,6 +25,15 @@ const PokemonPage = () => {
     const picture = pokemon.sprites.other["official-artwork"].front_default;
     const type = pokemon.types[0].type.name;
     const hp = pokemon.stats.find((stat) => stat.stat.name === "hp");
+    const attack = pokemon.stats.find((stat) => stat.stat.name === "attack");
+    const defense = pokemon.stats.find((stat) => stat.stat.name === "defense");
+    const specialAttack = pokemon.stats.find(
+      (stat) => stat.stat.name === "special-attack"
+    );
+    const specialDefense = pokemon.stats.find(
+      (stat) => stat.stat.name === "special-defense"
+    );
+    const speed = pokemon.stats.find((stat) => stat.stat.name === "speed");
     return (
       <section className="flex flex-1  w-full self-center max-w-screen-2-x-l -mx-2 relative">
         <div
