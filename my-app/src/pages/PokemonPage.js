@@ -20,7 +20,17 @@ const PokemonPage = () => {
     }
   );
 
+  const { data } = useQuery(
+    `http://pokedex.jhonnymichel.com/pokemon?&limit=3&offset=${
+      pokemon ? pokemon.id - 2 : 0
+    }`,
+    {
+      retry: false,
+    }
+  );
+
   if (pokemon) {
+    console.dir(data);
     console.dir(pokemon);
     const picture = pokemon.sprites.other["official-artwork"].front_default;
     const type = pokemon.types[0].type.name;
@@ -34,6 +44,18 @@ const PokemonPage = () => {
       (stat) => stat.stat.name === "special-defense"
     );
     const speed = pokemon.stats.find((stat) => stat.stat.name === "speed");
+    let prevPokemon = "loading";
+    let nextPokemon = "loading";
+
+    if (data) {
+      prevPokemon = data.results.find(
+        (element) => element.id === pokemon.id - 1
+      );
+      nextPokemon = data.results.find(
+        (element) => element.id === pokemon.id + 1
+      );
+    }
+
     return (
       <section className="flex flex-1  w-full self-center max-w-screen-2-x-l -mx-2 relative">
         <div
@@ -171,8 +193,9 @@ const PokemonPage = () => {
           </div>
         </div>
         <div className="flex flex-1 w-1/12 bg-white"></div>
-        <div className="fixed bottom-0 left-0 w-full  self-center  bg-white h-20 rounded-tl-3xl rounded-tr-3xl p-4 border">
-          Bottom Navigation
+        <div className="fixed flex bottom-0 left-0 w-full  self-center justify-between  bg-white h-20 rounded-tl-3xl rounded-tr-3xl p-4 border">
+          <p>{prevPokemon.name}</p>
+          <p>{nextPokemon.name}</p>
         </div>
       </section>
     );
