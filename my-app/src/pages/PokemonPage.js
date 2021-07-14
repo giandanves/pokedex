@@ -1,5 +1,7 @@
 import { useQuery } from "react-query";
 import { useParams } from "react-router";
+import prevIcon from "../img/previous.svg";
+import nextIcon from "../img/next.svg";
 import classNames from "classnames";
 import getBorderColor from "../getBorderColor";
 import favIcon from "../img/favorite-icon.svg";
@@ -8,7 +10,9 @@ import getBackground from "../getBackground";
 import numberToThreeDigits from "../numberToThreeDigits";
 import Button from "../components/Button";
 import CardInfo from "../CardInfo";
+import { Link } from "react-router-dom";
 import getStatPercentage from "./getStatPercentage";
+import getAbilities from "../getAbilities";
 
 const PokemonPage = () => {
   const { name } = useParams();
@@ -104,14 +108,21 @@ const PokemonPage = () => {
             </div>
           </div>
           <p className="py-4 text-sm text-black-700 font-normal">
-            From the time it is born, this pokemon is crying for it's
-            girlfriend.
+            That's the area where pokemon description will be showed.
           </p>
           <div className="flex">
-            <CardInfo title={"Height"} value={pokemon.height / 10 + "m"} />
-            <CardInfo title={"Category"} value={"Digimon"} />
-            <CardInfo title={"Weight"} value={pokemon.weight / 10 + "kg"} />
-            <CardInfo title={"Gender"} value={"Fluid"} />
+            <div className="flex">
+              <CardInfo title={"Height"} value={pokemon.height / 10 + "m"} />
+              <CardInfo title={"Category"} value={"no data"} />
+              <CardInfo title={"Weight"} value={pokemon.weight / 10 + "kg"} />
+              <CardInfo title={"Gender"} value={"no data"} />
+            </div>
+            <CardInfo
+              title={"Abilities"}
+              value={getAbilities(pokemon.abilities)}
+              addClass={"w-full"}
+              textAlign={"text-left"}
+            />
           </div>
 
           <div className="py-6">
@@ -191,11 +202,45 @@ const PokemonPage = () => {
               </div>
             </article>
           </div>
+          <div className="border border-dashed border-black-100 mt-5" />
+          <h2 className="pt-4 pb-2 text-base font-bold text-black">Teams</h2>
+          <div>
+            <h3 className="text-sm text-black-700 font-normal">No teams yet</h3>
+            <p className="text-sm text-primary font-normal">Add to team</p>
+          </div>
         </div>
         <div className="flex flex-1 w-1/12 bg-white"></div>
-        <div className="fixed flex bottom-0 left-0 w-full  self-center justify-between  bg-white h-20 rounded-tl-3xl rounded-tr-3xl p-4 border">
-          <p>{prevPokemon.name}</p>
-          <p>{nextPokemon.name}</p>
+        <div className="fixed flex bottom-0 left-0 w-full  self-center justify-between p-4  bg-white h-16 rounded-tl-3xl rounded-tr-3xl border border-black-50">
+          <div className="flex">
+            <Link to={`${prevPokemon.name}`}>
+              <img className="pt-1" src={prevIcon} alt="see previous pokemon" />
+            </Link>
+            <div className="px-4">
+              <p className="text-subtitle leading-subtitle text-black-500 font-bold">
+                {prevPokemon.id
+                  ? "#" + numberToThreeDigits(prevPokemon.id)
+                  : "Loading..."}
+              </p>
+              <h3 className="capitalize text-sm text-black font-bold">
+                {prevPokemon.name || "Loading..."}
+              </h3>
+            </div>
+          </div>
+          <div className="flex">
+            <div className="px-4">
+              <p className="text-subtitle leading-subtitle text-black-500 font-bold text-right">
+                {nextPokemon.id
+                  ? "#" + numberToThreeDigits(nextPokemon.id)
+                  : "Loading..."}
+              </p>
+              <h3 className="capitalize text-sm text-black font-bold">
+                {nextPokemon.name || "Loading..."}
+              </h3>
+            </div>
+            <Link to={`${nextPokemon.name}`}>
+              <img className="pt-1" src={nextIcon} alt="see next pokemon" />
+            </Link>
+          </div>
         </div>
       </section>
     );
