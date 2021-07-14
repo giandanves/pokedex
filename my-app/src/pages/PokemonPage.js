@@ -101,14 +101,54 @@ const PokemonPage = () => {
             </div>
           </div>
           <div className="border border-dashed border-black-100" />
-
-          <p>HP: {getStatPercentage(hp.base_stat)}%</p>
-          <div className="h-2 bg-black-50 w-5/12">
-            <div
-              className={`h-2 bg-primary w-[${getStatPercentage(
-                hp.base_stat
-              )}%]`}
-            ></div>
+          <div className="flex">
+            <article className="w-5/12">
+              <h2 className="pt-6 pb-4 text-base font-bold text-black">
+                Stats
+              </h2>
+              <p className="text-dark text-xs font-bold pb-1">HP</p>
+              <div className="h-2 bg-black-50 w-full rounded mb-4">
+                <div
+                  className="h-2 bg-primary rounded"
+                  style={{ width: getStatPercentage(hp.base_stat) }}
+                ></div>
+              </div>
+              <p className="text-dark text-xs font-bold pb-1">Attack</p>
+              <div className="h-2 bg-black-50 w-full rounded mb-4">
+                <div
+                  className="h-2 bg-primary rounded"
+                  style={{ width: getStatPercentage(attack.base_stat) }}
+                ></div>
+              </div>
+              <p className="text-dark text-xs font-bold pb-1">Defense</p>
+              <div className="h-2 bg-black-50 w-full rounded mb-4">
+                <div
+                  className="h-2 bg-primary rounded"
+                  style={{ width: getStatPercentage(defense.base_stat) }}
+                ></div>
+              </div>
+              <p className="text-dark text-xs font-bold pb-1">Special attack</p>
+              <div className="h-2 bg-black-50 w-full rounded mb-4">
+                <div
+                  className="h-2 bg-primary rounded"
+                  style={{ width: getStatPercentage(specialAttack.base_stat) }}
+                ></div>
+              </div>
+              <p className="text-dark text-xs font-bold pb-1">
+                Special defense
+              </p>
+              <div className="h-2 bg-black-50 w-full rounded mb-4">
+                <div
+                  className="h-2 bg-primary rounded"
+                  style={{ width: getStatPercentage(specialDefense.base_stat) }}
+                ></div>
+              </div>
+              <p className="text-dark text-xs font-bold pb-1">Speed</p>
+              <div className="h-2 bg-black-50 w-full rounded mb-4">
+                <div
+                  className="h-2 bg-primary rounded"
+                  style={{ width: getStatPercentage(speed.base_stat) }}
+                ></div>
           </div>
         </div>
         <div className="flex flex-1 w-1/12 bg-white"></div>
