@@ -30,12 +30,14 @@ const FilterFooter = () => {
           bg={"white"}
           type={"reset"}
           onClick={resetFilters}
+          addClass={"px-4 py-3"}
         />
         <Button
           children={<Paragrafh text={"Show Results"} />}
           textColor={"white"}
           bg={"primary"}
           type={"submit"}
+          addClass={"px-4 py-3"}
         />
       </div>
     </div>
