@@ -1,5 +1,3 @@
-import classNames from "classnames";
-import getBorderColor from "../getBorderColor";
 import favIcon from "../img/favorite-icon.svg";
 import expand from "../img/expand.svg";
 import Button from "../components/Button";
@@ -8,6 +6,7 @@ import Header from "./PokemonPageComponents/Header";
 import CardsContainer from "./PokemonPageComponents/CardsContainer";
 import StatsContainer from "./PokemonPageComponents/StatsContainer";
 import BottomNavigation from "./PokemonPageComponents/BottomNavigation";
+import TypeCard from "./PokemonPageComponents/TypeCard";
 
 const PokemonPage = ({ pokemon, name }) => {
   const picture = pokemon.sprites.other["official-artwork"].front_default;
@@ -52,23 +51,7 @@ const PokemonPage = ({ pokemon, name }) => {
           weight={pokemon.weight}
           abilities={pokemon.abilities}
         />
-        <div className="py-6">
-          <h2 className="pb-2 font-bold text-xs text-black-500">Type</h2>
-          <div className="flex">
-            {pokemon.types.map((poketype) => {
-              return (
-                <p
-                  className={classNames(
-                    "capitalize flex text-xs p-2 mr-1  text-black font-bold items-center self-center rounded border",
-                    getBorderColor(poketype.type.name)
-                  )}
-                >
-                  {poketype.type.name}
-                </p>
-              );
-            })}
-          </div>
-        </div>
+        <TypeCard pokemon={pokemon} />
         <div className="border border-dashed border-black-100" />
         <div className="flex">
           <StatsContainer pokemon={pokemon} />
