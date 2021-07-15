@@ -1,12 +1,11 @@
-import favIcon from "../img/favorite-icon.svg";
-import expand from "../img/expand.svg";
-import Button from "../components/Button";
 import PictureContainer from "./PokemonPageComponents/PictureContainer";
 import Header from "./PokemonPageComponents/Header";
 import CardsContainer from "./PokemonPageComponents/CardsContainer";
 import StatsContainer from "./PokemonPageComponents/StatsContainer";
 import BottomNavigation from "./PokemonPageComponents/BottomNavigation";
 import TypeCard from "./PokemonPageComponents/TypeCard";
+import ActionsCard from "./PokemonPageComponents/ActionsCard";
+import About from "./PokemonPageComponents/About";
 
 const PokemonPage = ({ pokemon, name }) => {
   const picture = pokemon.sprites.other["official-artwork"].front_default;
@@ -18,34 +17,9 @@ const PokemonPage = ({ pokemon, name }) => {
       <div className="w-6/12 pb-20 p-8">
         <div className="flex justify-between">
           <Header name={name} id={pokemon.id} />
-          <div className="flex items-center">
-            <Button
-              textColor={"white"}
-              bg={"primary"}
-              children={"+ Add to team"}
-              addClass={"py-2 px-3"}
-            />
-            <img
-              className="h-5 mr-[10px] ml-[18px]"
-              src={favIcon}
-              alt="add to favorite"
-            />
-          </div>
+          <ActionsCard />
         </div>
-        <div className="pt-8 flex justify-between">
-          <h2 className="text-black font-bold text-base">About</h2>
-          <div className="flex">
-            <p className="text-base text-primary font-bold">Gen 8</p>
-            <img
-              className="filter-primary ml-2"
-              src={expand}
-              alt="more generations"
-            />
-          </div>
-        </div>
-        <p className="py-4 text-sm text-black-700 font-normal">
-          That's the area where pokemon description will be showed.
-        </p>
+        <About />
         <CardsContainer
           height={pokemon.height}
           weight={pokemon.weight}
