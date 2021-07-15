@@ -7,11 +7,11 @@ import expand from "../img/expand.svg";
 import numberToThreeDigits from "../numberToThreeDigits";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
-import getStatPercentage from "./getStatPercentage";
 import { useQuery } from "react-query";
 import PictureContainer from "./PokemonPageComponents/PictureContainer";
 import Header from "./PokemonPageComponents/Header";
 import CardsContainer from "./PokemonPageComponents/CardsContainer";
+import StatsContainer from "./PokemonPageComponents/StatsContainer";
 
 const PokemonPage = ({ pokemon, name }) => {
   const { data } = useQuery(
@@ -25,16 +25,6 @@ const PokemonPage = ({ pokemon, name }) => {
 
   const picture = pokemon.sprites.other["official-artwork"].front_default;
   const type = pokemon.types[0].type.name;
-  const hp = pokemon.stats.find((stat) => stat.stat.name === "hp");
-  const attack = pokemon.stats.find((stat) => stat.stat.name === "attack");
-  const defense = pokemon.stats.find((stat) => stat.stat.name === "defense");
-  const specialAttack = pokemon.stats.find(
-    (stat) => stat.stat.name === "special-attack"
-  );
-  const specialDefense = pokemon.stats.find(
-    (stat) => stat.stat.name === "special-defense"
-  );
-  const speed = pokemon.stats.find((stat) => stat.stat.name === "speed");
   let prevPokemon = "loading";
   let nextPokemon = "loading";
 
@@ -101,51 +91,7 @@ const PokemonPage = ({ pokemon, name }) => {
         </div>
         <div className="border border-dashed border-black-100" />
         <div className="flex">
-          <article className="w-5/12">
-            <h2 className="pt-6 pb-4 text-base font-bold text-black">Stats</h2>
-            <p className="text-dark text-xs font-bold pb-1">HP</p>
-            <div className="h-2 bg-black-50 w-full rounded mb-4">
-              <div
-                className="h-2 bg-primary rounded"
-                style={{ width: getStatPercentage(hp.base_stat) }}
-              ></div>
-            </div>
-            <p className="text-dark text-xs font-bold pb-1">Attack</p>
-            <div className="h-2 bg-black-50 w-full rounded mb-4">
-              <div
-                className="h-2 bg-primary rounded"
-                style={{ width: getStatPercentage(attack.base_stat) }}
-              ></div>
-            </div>
-            <p className="text-dark text-xs font-bold pb-1">Defense</p>
-            <div className="h-2 bg-black-50 w-full rounded mb-4">
-              <div
-                className="h-2 bg-primary rounded"
-                style={{ width: getStatPercentage(defense.base_stat) }}
-              ></div>
-            </div>
-            <p className="text-dark text-xs font-bold pb-1">Special attack</p>
-            <div className="h-2 bg-black-50 w-full rounded mb-4">
-              <div
-                className="h-2 bg-primary rounded"
-                style={{ width: getStatPercentage(specialAttack.base_stat) }}
-              ></div>
-            </div>
-            <p className="text-dark text-xs font-bold pb-1">Special defense</p>
-            <div className="h-2 bg-black-50 w-full rounded mb-4">
-              <div
-                className="h-2 bg-primary rounded"
-                style={{ width: getStatPercentage(specialDefense.base_stat) }}
-              ></div>
-            </div>
-            <p className="text-dark text-xs font-bold pb-1">Speed</p>
-            <div className="h-2 bg-black-50 w-full rounded mb-4">
-              <div
-                className="h-2 bg-primary rounded"
-                style={{ width: getStatPercentage(speed.base_stat) }}
-              ></div>
-            </div>
-          </article>
+          <StatsContainer pokemon={pokemon} />
           <article className="pl-8 w-7/12">
             <h2 className="pt-6 pb-4 text-base font-bold text-black">
               Evolutions
