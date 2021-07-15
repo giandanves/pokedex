@@ -1,37 +1,17 @@
-import prevIcon from "../img/previous.svg";
-import nextIcon from "../img/next.svg";
 import classNames from "classnames";
 import getBorderColor from "../getBorderColor";
 import favIcon from "../img/favorite-icon.svg";
 import expand from "../img/expand.svg";
-import numberToThreeDigits from "../numberToThreeDigits";
 import Button from "../components/Button";
-import { Link } from "react-router-dom";
-import { useQuery } from "react-query";
 import PictureContainer from "./PokemonPageComponents/PictureContainer";
 import Header from "./PokemonPageComponents/Header";
 import CardsContainer from "./PokemonPageComponents/CardsContainer";
 import StatsContainer from "./PokemonPageComponents/StatsContainer";
+import BottomNavigation from "./PokemonPageComponents/BottomNavigation";
 
 const PokemonPage = ({ pokemon, name }) => {
-  const { data } = useQuery(
-    `http://pokedex.jhonnymichel.com/pokemon?&limit=3&offset=${
-      pokemon ? pokemon.id - 2 : 0
-    }`,
-    {
-      retry: false,
-    }
-  );
-
   const picture = pokemon.sprites.other["official-artwork"].front_default;
   const type = pokemon.types[0].type.name;
-  let prevPokemon = "loading";
-  let nextPokemon = "loading";
-
-  if (data) {
-    prevPokemon = data.results.find((element) => element.id === pokemon.id - 1);
-    nextPokemon = data.results.find((element) => element.id === pokemon.id + 1);
-  }
 
   return (
     <section className="flex flex-1  w-full self-center max-w-screen-2-x-l -mx-2 relative">
@@ -109,38 +89,7 @@ const PokemonPage = ({ pokemon, name }) => {
         </div>
       </div>
       <div className="flex flex-1 w-1/12 bg-white"></div>
-      <div className="fixed flex bottom-0 left-0 w-full  self-center justify-between p-4  bg-white h-16 rounded-tl-3xl rounded-tr-3xl border border-black-50">
-        <div className="flex">
-          <Link to={`${prevPokemon.name}`}>
-            <img className="pt-1" src={prevIcon} alt="see previous pokemon" />
-          </Link>
-          <div className="px-4">
-            <p className="text-subtitle leading-subtitle text-black-500 font-bold">
-              {prevPokemon.id
-                ? "#" + numberToThreeDigits(prevPokemon.id)
-                : "Loading..."}
-            </p>
-            <h3 className="capitalize text-sm text-black font-bold">
-              {prevPokemon.name || "Loading..."}
-            </h3>
-          </div>
-        </div>
-        <div className="flex">
-          <div className="px-4">
-            <p className="text-subtitle leading-subtitle text-black-500 font-bold text-right">
-              {nextPokemon.id
-                ? "#" + numberToThreeDigits(nextPokemon.id)
-                : "Loading..."}
-            </p>
-            <h3 className="capitalize text-sm text-black font-bold">
-              {nextPokemon.name || "Loading..."}
-            </h3>
-          </div>
-          <Link to={`${nextPokemon.name}`}>
-            <img className="pt-1" src={nextIcon} alt="see next pokemon" />
-          </Link>
-        </div>
-      </div>
+      <BottomNavigation pokemon={pokemon} />
     </section>
   );
 };
