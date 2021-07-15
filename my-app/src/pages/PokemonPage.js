@@ -4,14 +4,14 @@ import classNames from "classnames";
 import getBorderColor from "../getBorderColor";
 import favIcon from "../img/favorite-icon.svg";
 import expand from "../img/expand.svg";
-import getBackground from "../getBackground";
 import numberToThreeDigits from "../numberToThreeDigits";
 import Button from "../components/Button";
-import CardInfo from "../CardInfo";
 import { Link } from "react-router-dom";
 import getStatPercentage from "./getStatPercentage";
-import getAbilities from "../getAbilities";
 import { useQuery } from "react-query";
+import PictureContainer from "./PokemonPageComponents/PictureContainer";
+import Header from "./PokemonPageComponents/Header";
+import CardsContainer from "./PokemonPageComponents/CardsContainer";
 
 const PokemonPage = ({ pokemon, name }) => {
   const { data } = useQuery(
@@ -45,24 +45,10 @@ const PokemonPage = ({ pokemon, name }) => {
 
   return (
     <section className="flex flex-1  w-full self-center max-w-screen-2-x-l -mx-2 relative">
-      <div
-        className={classNames(
-          getBackground(type),
-          "to-transparent w-5/12 bg-opacity-20 bg-gradient-to-br flex items-center justify-center p-2"
-        )}
-      >
-        <div className="max-w-sm">
-          <img src={picture} alt="name" />
-        </div>
-      </div>
+      <PictureContainer type={type} picture={picture} />
       <div className="w-6/12 pb-20 p-8">
         <div className="flex justify-between">
-          <div>
-            <h1 className="capitalize font-bold text-black text-2xl">{name}</h1>
-            <p className="text-black-500 font-bold text-sm">
-              {"#" + numberToThreeDigits(pokemon.id)}
-            </p>
-          </div>
+          <Header name={name} id={pokemon.id} />
           <div className="flex items-center">
             <Button
               textColor={"white"}
@@ -91,21 +77,11 @@ const PokemonPage = ({ pokemon, name }) => {
         <p className="py-4 text-sm text-black-700 font-normal">
           That's the area where pokemon description will be showed.
         </p>
-        <div className="flex">
-          <div className="flex">
-            <CardInfo title={"Height"} value={pokemon.height / 10 + "m"} />
-            <CardInfo title={"Category"} value={"no data"} />
-            <CardInfo title={"Weight"} value={pokemon.weight / 10 + "kg"} />
-            <CardInfo title={"Gender"} value={"no data"} />
-          </div>
-          <CardInfo
-            title={"Abilities"}
-            value={getAbilities(pokemon.abilities)}
-            addClass={"w-full"}
-            textAlign={"text-left"}
-          />
-        </div>
-
+        <CardsContainer
+          height={pokemon.height}
+          weight={pokemon.weight}
+          abilities={pokemon.abilities}
+        />
         <div className="py-6">
           <h2 className="pb-2 font-bold text-xs text-black-500">Type</h2>
           <div className="flex">

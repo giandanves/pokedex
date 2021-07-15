@@ -10,7 +10,7 @@ const CardInfo = ({ title, value, addClass, textAlign }) => {
     >
       <p
         className={classNames(
-          "font-bold text-subtitle text-center leading-subtitle text-black-500",
+          "font-bold text-subtitle leading-subtitle text-black-500",
           { [textAlign]: textAlign }
         )}
       >
@@ -18,7 +18,7 @@ const CardInfo = ({ title, value, addClass, textAlign }) => {
       </p>
       <h3
         className={classNames(
-          "font-black text-sm text-center text-primary pt-1 whitespace-nowrap",
+          "font-black text-sm text-primary pt-1 whitespace-nowrap",
           { [textAlign]: textAlign }
         )}
       >
