@@ -6,6 +6,9 @@ import BottomNavigation from "./PokemonPageComponents/BottomNavigation";
 import TypeCard from "./PokemonPageComponents/TypeCard";
 import ActionsCard from "./PokemonPageComponents/ActionsCard";
 import About from "./PokemonPageComponents/About";
+import FieldWrapper from "./PokemonPageComponents/FieldWrapper";
+import EvolutionsContainer from "./PokemonPageComponents/EvolutionsContainer";
+import TeamsCard from "./PokemonPageComponents/TeamsCard";
 
 const PokemonPage = ({ pokemon, name }) => {
   const picture = pokemon.sprites.other["official-artwork"].front_default;
@@ -26,24 +29,13 @@ const PokemonPage = ({ pokemon, name }) => {
           abilities={pokemon.abilities}
         />
         <TypeCard pokemon={pokemon} />
-        <div className="border border-dashed border-black-100" />
+        <FieldWrapper />
         <div className="flex">
           <StatsContainer pokemon={pokemon} />
-          <article className="pl-8 w-7/12">
-            <h2 className="pt-6 pb-4 text-base font-bold text-black">
-              Evolutions
-            </h2>
-            <div className="w-full">
-              <p className="w-full text-center pt-10">Placeholder</p>
-            </div>
-          </article>
+          <EvolutionsContainer />
         </div>
-        <div className="border border-dashed border-black-100 mt-5" />
-        <h2 className="pt-4 pb-2 text-base font-bold text-black">Teams</h2>
-        <div>
-          <h3 className="text-sm text-black-700 font-normal">No teams yet</h3>
-          <p className="text-sm text-primary font-normal">Add to team</p>
-        </div>
+        <FieldWrapper />
+        <TeamsCard />
       </div>
       <div className="flex flex-1 w-1/12 bg-white"></div>
       <BottomNavigation pokemon={pokemon} />
