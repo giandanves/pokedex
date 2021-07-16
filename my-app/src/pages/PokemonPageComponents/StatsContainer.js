@@ -13,7 +13,7 @@ function StatsContainer({ pokemon }) {
   const speed = pokemon.stats.find((stat) => stat.stat.name === "speed");
 
   return (
-    <article className="w-5/12">
+    <article className="sm:w-5/12">
       <h2 className="pt-6 pb-4 text-base font-bold text-black">Stats</h2>
       <StatBar title={"HP"} stat={hp.base_stat} />
       <StatBar title={"Attack"} stat={attack.base_stat} />
