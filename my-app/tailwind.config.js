@@ -66,6 +66,7 @@ module.exports = {
         17: "68px",
       },
       width: {
+        cardinfo: "25%",
         filtercircle: "15px",
         card: "148px",
         dropbox: "40px",
