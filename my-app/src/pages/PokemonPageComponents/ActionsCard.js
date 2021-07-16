@@ -11,11 +11,7 @@ function ActionsCard() {
         children={"+ Add to team"}
         addClass={"py-2 px-3"}
       />
-      <img
-        className="h-5 mr-[10px] ml-[18px]"
-        src={favIcon}
-        alt="add to favorite"
-      />
+      <img className="h-5 mr-2 ml-4" src={favIcon} alt="add to favorite" />
     </div>
   );
 }

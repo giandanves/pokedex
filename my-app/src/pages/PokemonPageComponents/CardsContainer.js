@@ -8,25 +8,25 @@ const CardsContainer = ({ height, weight, abilities }) => {
         <CardInfo
           title={"Height"}
           value={height / 10 + "m"}
-          addClass={"w-[84px]"}
+          addClass={"w-21"}
           textAlign={"text-center"}
         />
         <CardInfo
           title={"Category"}
           value={"no data"}
-          addClass={"w-[84px]"}
+          addClass={"w-21"}
           textAlign={"text-center"}
         />
         <CardInfo
           title={"Weight"}
           value={weight / 10 + "kg"}
-          addClass={"w-[84px]"}
+          addClass={"w-21"}
           textAlign={"text-center"}
         />
         <CardInfo
           title={"Gender"}
           value={"no data"}
-          addClass={"w-[84px]"}
+          addClass={"w-21"}
           textAlign={"text-center"}
         />
       </div>
