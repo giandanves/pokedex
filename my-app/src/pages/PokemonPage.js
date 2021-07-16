@@ -15,9 +15,9 @@ const PokemonPage = ({ pokemon, name }) => {
   const type = pokemon.types[0].type.name;
 
   return (
-    <section className="flex flex-1  w-full self-center max-w-screen-2-x-l -mx-2 relative">
+    <section className="block sm:flex sm:flex-1  w-full self-center max-w-screen-2-x-l -mx-2 relative">
       <PictureContainer type={type} picture={picture} />
-      <div className="w-6/12 pb-20 p-8">
+      <div className="w-full sm:w-6/12 pb-20 p-8">
         <div className="flex justify-between">
           <Header name={name} id={pokemon.id} />
           <ActionsCard />
@@ -37,7 +37,7 @@ const PokemonPage = ({ pokemon, name }) => {
         <FieldWrapper />
         <TeamsCard />
       </div>
-      <div className="flex flex-1 w-1/12 bg-white"></div>
+      <div className="hidden sm:flex flex-1 w-1/12 bg-white"></div>
       <BottomNavigation pokemon={pokemon} />
     </section>
   );

@@ -4,7 +4,7 @@ import favIcon from "../../img/favorite-icon.svg";
 
 function ActionsCard() {
   return (
-    <div className="flex items-center">
+    <div className="hidden sm:flex items-center">
       <Button
         textColor={"white"}
         bg={"primary"}

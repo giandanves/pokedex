@@ -6,7 +6,7 @@ const PictureContainer = ({ type, picture }) => {
     <div
       className={classNames(
         getBackground(type),
-        "to-transparent w-5/12 bg-opacity-20 bg-gradient-to-br flex items-center justify-center p-2"
+        "to-transparent w-full sm:w-5/12 bg-opacity-20 bg-gradient-to-br flex items-center justify-center p-2"
       )}
     >
       <div className="max-w-sm">
