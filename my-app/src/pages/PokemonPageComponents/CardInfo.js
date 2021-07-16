@@ -4,7 +4,7 @@ const CardInfo = ({ title, value, addClass, textAlign }) => {
   return (
     <div
       className={classNames(
-        "h-[68px] w-[84px] border border-black-100 rounded p-4 mr-4",
+        "h-[68px] border border-black-100 rounded p-4 mr-4",
         { [addClass]: addClass }
       )}
     >
