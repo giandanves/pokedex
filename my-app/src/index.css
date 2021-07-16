@@ -16,12 +16,6 @@ body {
   width: 100%;
 }
 
-@media (max-width: 640px) {
-  .pokemon-page__picture-container {
-    aspect-ratio: 1/1;
-  }
-}
-
 #root {
   min-height: 100%;
   width: 100%;
