@@ -3,9 +3,12 @@ import classNames from "classnames";
 const CardInfo = ({ title, value, addClass, textAlign }) => {
   return (
     <div
-      className={classNames("h-17 border border-black-100 rounded p-4 mr-4", {
-        [addClass]: addClass,
-      })}
+      className={classNames(
+        "h-17 border border-black-100 rounded py-4 sm:p-4 mr-2 sm:mr-4",
+        {
+          [addClass]: addClass,
+        }
+      )}
     >
       <p
         className={classNames(
