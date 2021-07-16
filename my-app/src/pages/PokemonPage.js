@@ -17,7 +17,7 @@ const PokemonPage = ({ pokemon, name }) => {
   return (
     <section className="block sm:flex sm:flex-1  w-full self-center max-w-screen-2-x-l -mx-2 relative">
       <PictureContainer type={type} picture={picture} />
-      <div className="w-full sm:w-6/12 pb-20 p-8">
+      <div className="w-full sm:w-6/12 pb-20 p-6 rounded-t-2xl relative -mt-28 sm:-mt-0 bg-white sm:rounded-none sm:p-8">
         <div className="flex justify-between">
           <Header name={name} id={pokemon.id} />
           <ActionsCard />
@@ -30,7 +30,7 @@ const PokemonPage = ({ pokemon, name }) => {
         />
         <TypeCard pokemon={pokemon} />
         <FieldWrapper />
-        <div className="flex">
+        <div className="block sm:flex">
           <StatsContainer pokemon={pokemon} />
           <EvolutionsContainer />
         </div>
