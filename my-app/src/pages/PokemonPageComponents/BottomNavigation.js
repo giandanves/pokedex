@@ -24,35 +24,41 @@ function BottomNavigation({ pokemon }) {
   return (
     <div className="fixed flex bottom-0 left-0 w-full  self-center justify-between p-4  bg-white h-16 rounded-tl-3xl rounded-tr-3xl border border-black-50">
       <div className="flex">
-        <Link to={`${prevPokemon.name}`}>
-          <img className="pt-1" src={prevIcon} alt="see previous pokemon" />
-        </Link>
-        <div className="px-4">
-          <p className="text-subtitle leading-subtitle text-black-500 font-bold">
-            {prevPokemon.id
-              ? "#" + numberToThreeDigits(prevPokemon.id)
-              : "Loading..."}
-          </p>
-          <h3 className="capitalize text-sm text-black font-bold">
-            {prevPokemon.name || "Loading..."}
-          </h3>
-        </div>
+        {prevPokemon && (
+          <Link to={`${prevPokemon.name}`}>
+            <img className="pt-1" src={prevIcon} alt="see previous pokemon" />
+          </Link>
+        )}
+        {prevPokemon && (
+          <div className="px-4">
+            <p className="text-subtitle leading-subtitle text-black-500 font-bold">
+              {prevPokemon.id
+                ? "#" + numberToThreeDigits(prevPokemon.id)
+                : "Loading..."}
+            </p>
+            <h3 className="capitalize text-sm text-black font-bold">
+              {prevPokemon.name || "Loading..."}
+            </h3>
+          </div>
+        )}
       </div>
-      <div className="flex">
-        <div className="px-4">
-          <p className="text-subtitle leading-subtitle text-black-500 font-bold text-right">
-            {nextPokemon.id
-              ? "#" + numberToThreeDigits(nextPokemon.id)
-              : "Loading..."}
-          </p>
-          <h3 className="capitalize text-sm text-black font-bold">
-            {nextPokemon.name || "Loading..."}
-          </h3>
+      {nextPokemon && (
+        <div className="flex">
+          <div className="px-4">
+            <p className="text-subtitle leading-subtitle text-black-500 font-bold text-right">
+              {nextPokemon.id
+                ? "#" + numberToThreeDigits(nextPokemon.id)
+                : "Loading..."}
+            </p>
+            <h3 className="capitalize text-sm text-black font-bold">
+              {nextPokemon.name || "Loading..."}
+            </h3>
+          </div>
+          <Link to={`${nextPokemon.name}`}>
+            <img className="pt-1" src={nextIcon} alt="see next pokemon" />
+          </Link>
         </div>
-        <Link to={`${nextPokemon.name}`}>
-          <img className="pt-1" src={nextIcon} alt="see next pokemon" />
-        </Link>
-      </div>
+      )}
     </div>
   );
 }
