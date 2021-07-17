@@ -4,6 +4,7 @@ import getBorderColor from "./getBorderColor";
 import getBackground from "./getBackground";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
+import uniqid from "uniqid";
 
 export function Pokemons(props) {
   const { pokemons, renderEmpty } = props;
@@ -75,6 +76,7 @@ export function Pokemons(props) {
                       {type.map((poketype) => {
                         return (
                           <p
+                            key={uniqid()}
                             className={classNames(
                               "capitalize flex text-subtitle leading-subtitle px-1 mx-1  text-black font-bold items-center self-center rounded border lg:py-px",
                               getBorderColor(poketype)

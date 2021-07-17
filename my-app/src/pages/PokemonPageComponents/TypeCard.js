@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import getBorderColor from "../../getBorderColor";
+import uniqid from "uniqid";
 
 function TypeCard({ pokemon }) {
   return (
@@ -9,6 +10,7 @@ function TypeCard({ pokemon }) {
         {pokemon.types.map((poketype) => {
           return (
             <p
+              key={uniqid()}
               className={classNames(
                 "capitalize flex text-xs p-2 mr-1  text-black font-bold items-center self-center rounded border",
                 getBorderColor(poketype.type.name)
