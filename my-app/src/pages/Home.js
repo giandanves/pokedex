@@ -1,11 +1,14 @@
 import { PaginationController } from "../components/PaginationController";
 import { Pokemons } from "../Pokemons";
 import Header from "../components/Header";
+import Error from "../error";
+import Loading from "../loading";
+import Empty from "../empty";
+import ResourceState from "../ResourceState";
 import { Filters } from "../components/Filters";
 import { FilterModal } from "../modal/FilterModal";
 import { getUrl } from "../getUrl";
 import { useContext, useEffect } from "react";
-import { handleLoadAndError } from "../HandleLoadAndError";
 import { useQuery } from "react-query";
 import { FilterContext } from "../FilterContext";
 import { debounce } from "lodash";
@@ -38,19 +41,38 @@ function Home() {
     data: pokemons,
     refetch,
   } = useQuery(`${url}${getLimit()}${getOffset()}`, {
-    retryDelay: 1000,
+    retry: false,
   });
 
   return (
     <>
-      <div className="mx-auto h-full p-8 max-w-fullscreen">
+      <div className="mx-auto min-h-4/5 px-8 pt-8 pb-4 max-w-fullscreen w-full">
         <Header />
         <Filters />
         <>
           <FilterModal />
-          {handleLoadAndError(isLoading, error, refetch) || (
-            <Pokemons pokemons={pokemons.results} />
-          )}
+          <ResourceState
+            loading={isLoading}
+            renderLoading={() => <Loading />}
+            error={error}
+            message={pokemons?.message}
+            pokemons={pokemons?.results}
+            renderDigivirusState={() => (
+              <Error
+                error={"XXX"}
+                refetch={refetch}
+                message={pokemons?.message}
+                renderDigimons={() => <Pokemons pokemons={pokemons.results} />}
+              />
+            )}
+            renderError={() => <Error error={error} refetch={refetch} />}
+            render={() => (
+              <Pokemons
+                pokemons={pokemons.results}
+                renderEmpty={() => <Empty />}
+              />
+            )}
+          />
         </>
       </div>
       <PaginationController

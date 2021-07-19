@@ -10,9 +10,15 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import FilterContextProvider from "./FilterContext";
 import { Navbar } from "./components/Navbar";
 import { NavbarMobile } from "./components/NavbarMobile";
+import PokemonPageIndex from "./pages/PokemonPageIndex.js";
 
 async function fetcher(key) {
+  let error;
   const response = await fetch(key.queryKey);
+  if (!response.ok) {
+    error = response.status;
+    throw error;
+  }
   return response.json();
 }
 
@@ -43,6 +49,11 @@ ReactDOM.render(
             <Route path="/signin" exact>
               <SignInPage />
             </Route>
+            <Route
+              path="/pokemon/:name"
+              children={<PokemonPageIndex />}
+            ></Route>
+
             <NavbarMobile />
           </FilterContextProvider>
         </Switch>

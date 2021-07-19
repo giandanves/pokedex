@@ -5,7 +5,7 @@ const Header = () => {
   const { filter, setFilter } = useContext(FilterContext);
 
   return (
-    <div className="pb-3 md:flex justify-between px-2">
+    <div className="pb-3 md:flex justify-between px-2 pt-2 w-full min-w-full">
       <h1 className=" text-2xl font-nunito font-bold pb-3 lg: pt-2">Pokedex</h1>
       <div className="w-full md:max-w-1/3 border border-gray rounded pl-2 pr-4">
         <input

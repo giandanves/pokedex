@@ -9,5 +9,8 @@
     },
     "[css]": {
         "editor.formatOnSave": true
-    }
+    },
+    "tailwindCSS.experimental.classRegex": [
+  ["classnames\\(([^)]*)\\)", "'([^']*)'"]
+]
 }
