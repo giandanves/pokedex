@@ -46,7 +46,7 @@ function Home() {
 
   return (
     <>
-      <div className="mx-auto min-h-4/5 px-8 pt-8 pb-4 max-w-fullscreen">
+      <div className="mx-auto min-h-4/5 px-8 pt-8 pb-4 max-w-fullscreen w-full">
         <Header />
         <Filters />
         <>

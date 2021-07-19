@@ -1,5 +1,4 @@
 module.exports = {
-  mode: "jit",
   purge: [
     "./src/**/*.{js,jsx,ts,tsx}",
     "./src/components/**/*.{js,jsx,ts,tsx}",
@@ -64,12 +63,15 @@ module.exports = {
         topbar: "172px",
         downbar: "32px",
         navbarmodal: "72px",
+        17: "68px",
       },
       width: {
+        cardinfo: "25%",
         filtercircle: "15px",
         card: "148px",
         dropbox: "40px",
         "modal-sm": "560px",
+        21: "84px",
       },
       lineHeight: {
         subtitle: "12px",
@@ -78,6 +80,7 @@ module.exports = {
       maxWidth: {
         fullscreen: "1440px",
         "1/3": "33%",
+        "5/12": "41,666%",
       },
 
       maxHeight: {

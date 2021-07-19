@@ -8,18 +8,18 @@ const ResourceState = ({
   renderDigivirusState,
 }) => {
   if (loading) {
-    return <>{renderLoading()}</>;
+    return renderLoading();
   }
 
   if (error) {
-    return <>{renderError()}</>;
+    return renderError();
   }
 
   if (message) {
-    return <>{renderDigivirusState()}</>;
+    return renderDigivirusState();
   }
 
-  return <> {render()} </>;
+  return render();
 };
 
 export default ResourceState;

@@ -5,13 +5,12 @@ const Button = (props) => {
   return (
     <button
       type={type}
-      className={classNames(
-        `text-${textColor} bg-${bg} font-bold text-sm py-3 px-4 rounded`,
-        { [addClass]: addClass }
-      )}
+      className={classNames(`bg-${bg} rounded`, { [addClass]: addClass })}
       onClick={onClick}
     >
-      {props.children}
+      <p className={`text-${textColor} font-bold text-sm whitespace-nowrap`}>
+        {props.children}
+      </p>
     </button>
   );
 };
