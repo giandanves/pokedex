@@ -19,8 +19,8 @@ export function createAccount(name, email, password) {
     .then((result) => {
       console.log(result);
       let parsed = JSON.parse(result);
-      if (parsed.message === "User signed in") {
-        localStorage.setItem("token", parsed.token);
+      if (parsed.message === "User created") {
+        signIn(email, password);
       }
     })
     .catch((error) => console.log("error", error));
