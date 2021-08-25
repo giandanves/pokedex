@@ -11,6 +11,17 @@ import FilterContextProvider from "./FilterContext";
 import { Navbar } from "./components/Navbar";
 import { NavbarMobile } from "./components/NavbarMobile";
 import PokemonPageIndex from "./pages/PokemonPageIndex.js";
+import {
+  signIn,
+  signOut,
+  createAccount,
+  getUser,
+} from "./authenticationFunctions.js";
+
+window.signIn = signIn;
+window.signOut = signOut;
+window.createAccount = createAccount;
+window.getUser = getUser;
 
 async function fetcher(key) {
   let error;
