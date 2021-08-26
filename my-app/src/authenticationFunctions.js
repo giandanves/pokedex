@@ -53,7 +53,7 @@ export function signIn(email, password) {
     .catch((error) => console.log("error", error));
 }
 
-export function getUser() {
+export async function getUser() {
   let headers = new Headers();
   let token = localStorage.getItem("token");
   headers.append("Authorization", `Bearer ${token}`);
@@ -64,10 +64,11 @@ export function getUser() {
     redirect: "follow",
   };
 
-  fetch("http://pokedex.jhonnymichel.com/profile", requestOptions)
-    .then((response) => response.text())
-    .then((result) => console.log(result))
-    .catch((error) => console.log("error", error));
+  const response = await fetch(
+    "http://pokedex.jhonnymichel.com/profile",
+    requestOptions
+  );
+  return response.json();
 }
 
 export function signOut() {
