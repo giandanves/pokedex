@@ -1,11 +1,10 @@
 import { Formik, Form, Field } from "formik";
 import { useContext } from "react";
 import Button from "../components/Button";
-import { createAccount } from "../authenticationFunctions";
 import { AuthContext } from "../Authentication";
 
 const SignUpPage = ({ setStep }) => {
-  const { setUser } = useContext(AuthContext);
+  const { createAccount, signUpErrorMessages } = useContext(AuthContext);
   return (
     <div className="py-6">
       <h2 className="text-base font-bold text-center">Sign Up</h2>
@@ -19,7 +18,6 @@ const SignUpPage = ({ setStep }) => {
         onSubmit={(values) => {
           console.dir(values);
           createAccount(values.name, values.email, values.password);
-          setUser("signing up");
         }}
       >
         <Form>
@@ -33,6 +31,11 @@ const SignUpPage = ({ setStep }) => {
               />
             )}
           </Field>
+          {signUpErrorMessages.name && (
+            <p className="text-danger text-xs my-2">
+              {signUpErrorMessages.name}
+            </p>
+          )}
           <Field name="email">
             {({ field, form, meta }) => (
               <input
@@ -43,6 +46,11 @@ const SignUpPage = ({ setStep }) => {
               />
             )}
           </Field>
+          {signUpErrorMessages.email && (
+            <p className="text-danger text-xs my-2">
+              {signUpErrorMessages.email}
+            </p>
+          )}
           <Field name="password">
             {({ field, form, meta }) => (
               <input
@@ -53,6 +61,11 @@ const SignUpPage = ({ setStep }) => {
               />
             )}
           </Field>
+          {signUpErrorMessages.password && (
+            <p className="text-danger text-xs my-2">
+              {signUpErrorMessages.password}
+            </p>
+          )}
           <div className="w-full flex flex-col space-y-2">
             <Button
               textColor={"white"}
