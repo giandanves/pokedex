@@ -6,10 +6,9 @@ import { Link } from "react-router-dom";
 import { NavbarIcon } from "./NavbarIcon";
 import { AuthContext } from "../Authentication";
 import { useContext } from "react";
-import { signOut } from "../authenticationFunctions";
 
 export const Navbar = () => {
-  const { logged, user, setUser } = useContext(AuthContext);
+  const { logged, user, signOut } = useContext(AuthContext);
   return (
     <div className="hidden sm:flex border-b  border-lightgrey h-16 w-full pb-6 px-6">
       <div className="flex justify-between w-full max-w-fullscreen mx-auto">
@@ -26,12 +25,11 @@ export const Navbar = () => {
         </div>
         {logged ? (
           <div>
-            <NavbarIcon img={signin} title={user?.username} path={"/signin"} />
+            <NavbarIcon img={signin} title={user?.name} path={"/signin"} />
             <p
               className="text-xs text-danger text-right"
               onClick={() => {
                 signOut();
-                setUser("logging out");
               }}
             >
               Logout
