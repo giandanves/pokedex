@@ -12,10 +12,10 @@ import AuthProvider from "./Authentication";
 import { Navbar } from "./components/Navbar";
 import { NavbarMobile } from "./components/NavbarMobile";
 import PokemonPageIndex from "./pages/PokemonPageIndex.js";
-import { signOut, signIn, getUser } from "./authenticationFunctions";
+import { signOut, signIn } from "./authenticationFunctions";
 window.signOut = signOut;
 window.signIn = signIn;
-window.getUser = getUser;
+
 async function fetcher(key) {
   let error;
   const response = await fetch(key.queryKey);
