@@ -12,7 +12,7 @@ const AuthProvider = (props) => {
   });
 
   const { data } = useQuery({
-    queryKey: logged,
+    queryKey: "user",
     queryFn: getUser,
   });
 
