@@ -1,13 +1,17 @@
 import { Formik, Form, Field } from "formik";
 import Button from "../components/Button";
-import { useMutation } from "react-query";
+import { useQueryClient, useMutation } from "react-query";
 import { signIn } from "../authSystem";
 import { AuthContext } from "../Authentication";
 import { useContext } from "react";
 
 export const SignInPage = ({ setStep }) => {
-  const { setLogged } = useContext(AuthContext);
-  const { mutateAsync } = useMutation(signIn);
+  const queryClient = useQueryClient();
+  const { mutateAsync } = useMutation(signIn, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("user");
+    },
+  });
 
   return (
     <div className="py-6">
@@ -20,9 +24,6 @@ export const SignInPage = ({ setStep }) => {
         }}
         onSubmit={async (values, actions) => {
           const resp = await mutateAsync(values);
-          if (resp?.success) {
-            setLogged(true);
-          }
           if (resp?.error) {
             actions.setStatus(resp.error);
           }
@@ -33,7 +34,7 @@ export const SignInPage = ({ setStep }) => {
             <Field name="email">
               {({ field, form, meta }) => (
                 <input
-                  type="text"
+                  type="email"
                   className="text-body-02 w-full h-12 px-2 border border-gray rounded-lg my-2"
                   placeholder={"Email"}
                   {...field}
@@ -43,7 +44,7 @@ export const SignInPage = ({ setStep }) => {
             <Field name="password">
               {({ field, form, meta }) => (
                 <input
-                  type="text"
+                  type="password"
                   className="text-body-02 w-full h-12 px-2 mt-6 border border-gray rounded-lg"
                   placeholder={"Password"}
                   {...field}
