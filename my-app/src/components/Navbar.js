@@ -6,11 +6,9 @@ import { Link } from "react-router-dom";
 import { NavbarIcon } from "./NavbarIcon";
 import { AuthContext } from "../Authentication";
 import { useContext } from "react";
-import { useHistory } from "react-router-dom";
 
 export const Navbar = () => {
   const { isLogged, user, userSignOut } = useContext(AuthContext);
-  let history = useHistory();
   return (
     <div className="hidden sm:flex border-b  border-lightgrey h-16 w-full pb-6 px-6">
       <div className="flex justify-between w-full max-w-fullscreen mx-auto">
@@ -30,12 +28,7 @@ export const Navbar = () => {
             <NavbarIcon img={signin} title={user?.name} path={"/signin"} />
             <p
               className="text-xs text-danger text-right"
-              onClick={async () => {
-                const resp = await userSignOut();
-                if (resp === "success") {
-                  history.push("/signin");
-                }
-              }}
+              onClick={async () => userSignOut()}
             >
               Logout
             </p>
