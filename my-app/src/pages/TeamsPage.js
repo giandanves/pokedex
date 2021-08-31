@@ -3,11 +3,11 @@ import { useContext } from "react";
 import NotLoggedError from "../NotLoggedError";
 
 export const TeamsPage = () => {
-  const { logged } = useContext(AuthContext);
+  const { isLogged } = useContext(AuthContext);
 
   return (
     <>
-      {logged ? (
+      {isLogged ? (
         <div>
           <p className="h-20 text-center">TEAMS</p>
         </div>
