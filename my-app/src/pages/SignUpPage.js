@@ -16,10 +16,14 @@ const SignUpPage = ({ setStep }) => {
           password: "",
         }}
         onSubmit={async (values, actions) => {
-          const resp = await signUp(values);
-
-          if (resp !== "success") {
-            actions.setErrors(resp);
+          try {
+            await signUp(values);
+          } catch (error) {
+            let errors = {};
+            error.data.issues.forEach((issue) => {
+              errors[issue.path[0]] = issue.message;
+            });
+            actions.setErrors(errors);
           }
         }}
       >
