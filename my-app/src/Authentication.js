@@ -1,112 +1,51 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext } from "react";
 import getUser from "./authSystem";
-import { useQuery } from "react-query";
+import { useQueryClient, useMutation, useQuery } from "react-query";
+import { signIn, createAccount, signOut } from "./authSystem";
 export const AuthContext = createContext();
 
 const AuthProvider = (props) => {
-  const [logged, setLogged] = useState(false);
-  const [signUpErrorMessages, setSignUpErrorMessages] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+  const queryClient = useQueryClient();
 
-  const { data } = useQuery({
+  const { data, refetch } = useQuery({
     queryKey: "user",
     queryFn: getUser,
   });
 
-  useEffect(() => {
-    if (data?.user) {
-      setLogged(true);
-    } else {
-      setLogged(false);
-    }
-  }, [data]);
+  let user = data?.user;
+  let isLogged = user;
 
-  const createAccount = (name, email, password) => {
-    setSignUpErrorMessages({
-      email: "",
-      name: "",
-      password: "",
-    });
+  const { mutateAsync: userSignIn } = useMutation(signIn, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("user");
+    },
+  });
 
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
+  const { mutateAsync: signUp } = useMutation(createAccount, {
+    onSuccess: async (data) => {
+      if (data === "success") {
+        queryClient.invalidateQueries("user");
+      }
+    },
+  });
 
-    let data = JSON.stringify({
-      email: email,
-      password: password,
-      name: name,
-    });
-
-    let requestOptions = {
-      method: "POST",
-      headers: headers,
-      body: data,
-      redirect: "follow",
-    };
-    fetch("http://pokedex.jhonnymichel.com/signup", requestOptions)
-      .then((response) => response.text())
-      .then((result) => {
-        console.log(result);
-        let rst = JSON.parse(result);
-        if (rst.message === "User created") {
-          //signIn(email, password);
-        } else if (rst.message === "Could not sign you up") {
-          if (rst.data.issues.message === "Email already in use") {
-            setSignUpErrorMessages((prevState) => ({
-              ...prevState,
-              email: rst.data.issues.message,
-            }));
-          } else {
-            rst.data.issues.forEach((issue) => {
-              console.log(issue.path[0]);
-              console.log(issue.message);
-              setSignUpErrorMessages((prevState) => ({
-                ...prevState,
-                [issue.path[0]]: issue.message,
-              }));
-            });
-          }
-        }
-      })
-      .catch((error) => console.log("error", error));
-  };
-
-  const signOut = () => {
-    let headers = new Headers();
-    let token = localStorage.getItem("token");
-    headers.append("Content-Type", "application/json");
-    headers.append("Authorization", `Bearer ${token}`);
-
-    let requestOptions = {
-      method: "POST",
-      headers: headers,
-      redirect: "follow",
-    };
-
-    fetch("http://pokedex.jhonnymichel.com/signout", requestOptions)
-      .then((response) => response.text())
-      .then((result) => {
-        console.log(result);
-        let parsed = JSON.parse(result);
-        if (parsed.message === "User signed out") {
-          localStorage.removeItem("token");
-          setLogged(false);
-        }
-      })
-      .catch((error) => console.log("error", error));
-  };
+  const { mutateAsync: userSignOut } = useMutation(signOut, {
+    onSuccess: async (data) => {
+      if (data === "success") {
+        queryClient.invalidateQueries("user");
+        refetch();
+      }
+    },
+  });
 
   return (
     <AuthContext.Provider
       value={{
-        logged,
-        setLogged,
-        createAccount,
-        signOut,
-        signUpErrorMessages,
+        userSignIn,
+        isLogged,
+        user,
+        signUp,
+        userSignOut,
       }}
     >
       {props.children}
