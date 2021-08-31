@@ -30,11 +30,9 @@ const AuthProvider = (props) => {
   });
 
   const { mutateAsync: userSignOut } = useMutation(signOut, {
-    onSuccess: async (data) => {
-      if (data === "success") {
-        queryClient.invalidateQueries("user");
-        refetch();
-      }
+    onSuccess: async () => {
+      queryClient.invalidateQueries("user");
+      queryClient.resetQueries("user");
     },
   });
 
