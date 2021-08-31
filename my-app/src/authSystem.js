@@ -80,25 +80,15 @@ export const createAccount = async (values) => {
     "http://pokedex.jhonnymichel.com/signup",
     requestOptions
   )
-    .then((response) => response.text())
+    .then((response) => response.json())
     .then((result) => {
-      let rst = JSON.parse(result);
-      if (rst.message === "User created") {
-        signIn({ email: email, password: password });
-        return "success";
-      } else if (rst.message === "Could not sign you up") {
-        let errors = {};
-        if (rst.data.issues.message === "Email already in use") {
-          errors.email = rst.data.issues.message;
-        } else {
-          rst.data.issues.forEach((issue) => {
-            errors[issue.path[0]] = issue.message;
-          });
-        }
-        return errors;
+      console.dir(result);
+      if (result.token) {
+        localStorage.setItem("token", result.token);
+      } else {
+        throw result;
       }
-    })
-    .catch((error) => console.log("error", error));
+    });
 
   return response;
 };
