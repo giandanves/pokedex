@@ -115,23 +115,16 @@ export const signOut = async () => {
     redirect: "follow",
   };
 
-  const response = await fetch(
-    "http://pokedex.jhonnymichel.com/signout",
-    requestOptions
-  )
+  fetch("http://pokedex.jhonnymichel.com/signout", requestOptions)
     .then((response) => response.text())
     .then((result) => {
       console.log(result);
       let r = JSON.parse(result);
       if (r.message === "User signed out") {
-        console.log("Entrou");
         localStorage.removeItem("token");
-        return "success";
       }
     })
     .catch((error) => console.log("error", error));
-
-  return response;
 };
 
 export default getUser;
