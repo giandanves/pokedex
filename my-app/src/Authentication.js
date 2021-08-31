@@ -7,7 +7,7 @@ export const AuthContext = createContext();
 const AuthProvider = (props) => {
   const queryClient = useQueryClient();
 
-  const { data, refetch } = useQuery({
+  const { data } = useQuery({
     queryKey: "user",
     queryFn: getUser,
   });
