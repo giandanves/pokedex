@@ -7,18 +7,18 @@ import classNames from "classnames";
 
 const SignPage = () => {
   const [step, setStep] = useState(0);
-  const { logged } = useContext(AuthContext);
+  const { isLogged } = useContext(AuthContext);
   let history = useHistory();
 
   useEffect(() => {
-    if (logged) {
+    if (isLogged) {
       history.push("/");
     }
-  }, [logged, history]);
+  }, [isLogged, history]);
   return (
     <div
       className={classNames("mx-auto items-center min-h-full", {
-        hidden: logged,
+        hidden: isLogged,
       })}
     >
       {(() => {
