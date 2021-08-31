@@ -22,10 +22,8 @@ const AuthProvider = (props) => {
   });
 
   const { mutateAsync: signUp } = useMutation(createAccount, {
-    onSuccess: async (data) => {
-      if (data === "success") {
-        queryClient.invalidateQueries("user");
-      }
+    onSuccess: async () => {
+      queryClient.invalidateQueries("user");
     },
   });
 
