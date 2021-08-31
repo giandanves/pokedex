@@ -1,17 +1,10 @@
 import { Formik, Form, Field } from "formik";
 import Button from "../components/Button";
-import { useQueryClient, useMutation } from "react-query";
-import { signIn } from "../authSystem";
 import { AuthContext } from "../Authentication";
 import { useContext } from "react";
 
 export const SignInPage = ({ setStep }) => {
-  const queryClient = useQueryClient();
-  const { mutateAsync } = useMutation(signIn, {
-    onSuccess: () => {
-      queryClient.invalidateQueries("user");
-    },
-  });
+  const { userSignIn } = useContext(AuthContext);
 
   return (
     <div className="py-6">
@@ -23,7 +16,7 @@ export const SignInPage = ({ setStep }) => {
           password: "",
         }}
         onSubmit={async (values, actions) => {
-          const resp = await mutateAsync(values);
+          const resp = await userSignIn(values);
           if (resp?.error) {
             actions.setStatus(resp.error);
           }
