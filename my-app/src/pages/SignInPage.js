@@ -16,9 +16,14 @@ export const SignInPage = ({ setStep }) => {
           password: "",
         }}
         onSubmit={async (values, actions) => {
-          const resp = await userSignIn(values);
-          if (resp?.error) {
-            actions.setStatus(resp.error);
+          try {
+            await userSignIn(values);
+          } catch (error) {
+            if (error.message) {
+              actions.setStatus("Incorrect email address or password");
+            } else {
+              actions.setStatus("Something went wrong, try again");
+            }
           }
         }}
       >

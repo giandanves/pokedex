@@ -41,20 +41,14 @@ export async function signIn(user) {
     "http://pokedex.jhonnymichel.com/signin",
     requestOptions
   )
-    .then((response) => response.text())
+    .then((response) => response.json())
     .then((result) => {
-      let r = JSON.parse(result);
-      console.log(result);
-      if (r.message === "User signed in") {
-        localStorage.setItem("token", r.token);
-        return { success: r.message };
+      if (result.token) {
+        localStorage.setItem("token", result.token);
+      } else {
+        throw result;
       }
-      if (r.message === "Invalid Credentials") {
-        return { error: "Incorrect email address or password" };
-      }
-    })
-    .catch((error) => console.log("error", error));
-
+    });
   return response;
 }
 
