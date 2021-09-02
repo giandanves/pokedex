@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import Home from "./pages/Home";
 import TeamsPage from "./pages/TeamsPage";
-import { FavoritesPage } from "./pages/FavoritesPage";
+import FavoritesPage from "./pages/FavoritesPage";
 import SignPage from "./pages/SignPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
