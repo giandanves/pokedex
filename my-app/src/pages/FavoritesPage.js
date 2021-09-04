@@ -1,7 +1,11 @@
-export const FavoritesPage = () => {
+import requireAuth from "../requireAuth";
+
+const FavoritesPage = () => {
   return (
     <div>
       <p className="h-20 text-center">FAVORITES</p>
     </div>
   );
 };
+
+export default requireAuth(FavoritesPage);
