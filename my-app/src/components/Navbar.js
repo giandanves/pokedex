@@ -24,14 +24,14 @@ export const Navbar = () => {
           </Link>
         </div>
         {isLogged ? (
-          <div>
+          <div className="flex">
             <NavbarIcon img={signin} title={user?.name} path={"/signin"} />
-            <p
-              className="text-xs text-danger text-right"
+            <button
+              className="text-xs text-danger w-full mt-7"
               onClick={async () => userSignOut()}
             >
               Logout
-            </p>
+            </button>
           </div>
         ) : (
           <Link to="/signin">

@@ -1,19 +1,12 @@
-import { AuthContext } from "../Authentication";
-import { useContext } from "react";
-import NotLoggedError from "../NotLoggedError";
+import requireAuth from "../requireAuth";
 
-export const TeamsPage = () => {
-  const { isLogged } = useContext(AuthContext);
-
+const TeamsPage = () => {
   return (
-    <>
-      {isLogged ? (
-        <div>
-          <p className="h-20 text-center">TEAMS</p>
-        </div>
-      ) : (
-        <NotLoggedError />
-      )}
-    </>
+    <div>
+      <h2 className="h-20 text-center">TEAMS</h2>
+      <p>Team page content</p>
+    </div>
   );
 };
+
+export default requireAuth(TeamsPage);
