@@ -1,5 +1,3 @@
-import requireAuth from "../requireAuth";
-
 const FavoritesPage = () => {
   return (
     <div>
@@ -8,4 +6,4 @@ const FavoritesPage = () => {
   );
 };
 
-export default requireAuth(FavoritesPage);
+export default FavoritesPage;

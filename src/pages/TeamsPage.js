@@ -1,4 +1,3 @@
-import requireAuth from "../requireAuth";
 
 const TeamsPage = () => {
   return (
@@ -9,4 +8,4 @@ const TeamsPage = () => {
   );
 };
 
-export default requireAuth(TeamsPage);
+export default TeamsPage;
