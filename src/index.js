@@ -11,7 +11,6 @@ import FilterContextProvider from "./FilterContext";
 import { Navbar } from "./components/Navbar";
 import { NavbarMobile } from "./components/NavbarMobile";
 import PokemonPageIndex from "./pages/PokemonPageIndex.js";
-import history from "./history";
 
 async function fetcher(key) {
   let error;
@@ -34,7 +33,7 @@ const queryClient = new QueryClient({
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router>
         <Switch>
           <FilterContextProvider>
             <Navbar />
