@@ -1,7 +1,4 @@
-# Pokedex - GOTTA CATCH THEM ALL
+![Logo](images/logo.png)
 
-![Logo](docs/logo.png)
-
-Design Specs coming soon!
-
-<!-- [Design specs in Figma](https://www.figma.com/file/7KCizfc2mU9GtmzBmcYFWn/Izipizi-Copy?node-id=0%3A1) -->
+Minha primeira aplicação React, feita com Create React App. Um catálogo de pokemóns, com filtros de nome, peso, altura, habilidades e tipos.
+# [Veja em funcionamento aqui](https://giandanves.github.io/pokedex)
