@@ -8,7 +8,6 @@ import SignPage from "./pages/SignPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import FilterContextProvider from "./FilterContext";
-import AuthProvider from "./Authentication";
 import { Navbar } from "./components/Navbar";
 import { NavbarMobile } from "./components/NavbarMobile";
 import PokemonPageIndex from "./pages/PokemonPageIndex.js";
@@ -35,31 +34,27 @@ const queryClient = new QueryClient({
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <Router history={history}>
+      <Router basename={process.env.PUBLIC_URL}>
         <Switch>
-          <AuthProvider>
-            <FilterContextProvider>
-              <Navbar />
-              <Route path="/" exact>
-                <Home />
-              </Route>
-              <Route path="/teams" exact>
-                <TeamsPage />
-              </Route>
-              <Route path="/favorites" exact>
-                <FavoritesPage />
-              </Route>
-              <Route path="/signin" exact>
-                <SignPage />
-              </Route>
-              <Route
-                path="/pokemon/:name"
-                children={<PokemonPageIndex />}
-              ></Route>
+          <FilterContextProvider>
+            <Navbar />
+            <Route path="/" exact>
+              <Home />
+            </Route>
+            <Route path="/teams" exact>
+              <TeamsPage />
+            </Route>
+            <Route path="/favorites" exact>
+              <FavoritesPage />
+            </Route>
+            <Route
+              path="/pokemon/:name"
+              children={<PokemonPageIndex />}
+            ></Route>
 
-              <NavbarMobile />
-            </FilterContextProvider>
-          </AuthProvider>
+            <NavbarMobile />
+          </FilterContextProvider>
+
         </Switch>
       </Router>
     </QueryClientProvider>
