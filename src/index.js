@@ -12,6 +12,7 @@ import AuthProvider from "./Authentication";
 import { Navbar } from "./components/Navbar";
 import { NavbarMobile } from "./components/NavbarMobile";
 import PokemonPageIndex from "./pages/PokemonPageIndex.js";
+import history from "./history";
 
 async function fetcher(key) {
   let error;
@@ -34,7 +35,7 @@ const queryClient = new QueryClient({
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <Router>
+      <Router history={history}>
         <Switch>
           <AuthProvider>
             <FilterContextProvider>
