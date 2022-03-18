@@ -10,7 +10,6 @@
     "@testing-library/user-event": "^12.8.3",
     "autoprefixer": "^9.8.6",
     "classnames": "^2.3.1",
-    "env-cmd": "^10.1.0",
     "formik": "^2.2.9",
     "lodash": "^4.17.21",
     "postcss": "^7.0.36",
@@ -29,7 +28,6 @@
     "dev": "TAILWIND_MODE=watch craco start --watch",
     "start": "craco start",
     "build": "craco build && mv build docs",
-    "build:staging": "env-cmd -f .env.staging npm run build",
     "test": "craco test",
     "eject": "react-scripts eject"
   },
